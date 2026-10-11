@@ -12,3 +12,4 @@ test.ipynb
 .vscode/
 venv/
 data_legacy
+.claude/worktrees

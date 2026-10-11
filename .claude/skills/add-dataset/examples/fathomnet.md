@@ -1,109 +1,90 @@
-# Example: fathomnet (API-based download + COCO direct + random split)
+# Example: fathomnet (API-based download + taxonomy-based mapping + random split)
 
 This is an example of a dataset that:
-- Uses an API/CLI for downloading (not a direct URL)
-- Already has COCO-format annotations (no conversion needed beyond compression)
-- Uses random split (no location/deployment grouping available)
-- Sets `CATEGORIES_FILTER = None` because categories were already filtered at download
+- Uses an API/CLI for downloading (not a direct URL), resumable: files already on disk are skipped
+- Has thousands of source classes (taxonomic concepts), so `CATEGORIES_FILTER` is derived from the WoRMS lineage of each concept with root rules, and the resolved mapping is committed as a JSON file next to the script (`datasets/fathomnet_categories.json`) so it does not change silently between runs
+- Only downloads images that contain a fish or non-fish box (the concept list is passed to the CLI)
+- Already has COCO-format annotations
+- Uses a reproducible random split (sorted file names + `random_state`), because no location/deployment grouping is used
+
+See `datasets/fathomnet.py` for the full script. Abridged:
 
 ```python
-"""
-FathomNet Dataset
-Source: FathomNet API (fathomnet-generate CLI)
-Split logic: Random (no location/camera grouping available)
-Categories kept: All (filtered to fish concepts at download time)
-"""
+DATASET_SHORTNAME = "fathomnet"
+CATEGORIES_FILE = Path(__file__).with_name("fathomnet_categories.json")
 
-import random
-import subprocess
-from pathlib import Path
+# The deepest matching rank in a concept's WoRMS lineage decides its class
+FISH_ROOTS = ["Actinopterygii", "Sarcopterygii", "Chondrichthyes", "Agnatha"]
+NON_FISH_ROOTS = ["Tetrapoda", "Asterozoa", "Echinoidea", "Decapoda", "Cephalopoda", ...]
+DISCARD_ROOTS = ["Psolidae", "Crinoidea", ..., "Animalia", "Chordata"]  # override the roots above them
+MANUAL = {"fish": ["bony fish", "shark", ...], "non-fish": ["brittle star", "urchin", ...], "discard": [...]}
 
-from fathomnet.api import boundingboxes, worms
 
-from datasets.settings import Settings
-from datasets.utils import (
-    compress_annotations_to_single_category,
-    add_dataset_shortname_prefix_to_image_names,
-    split_coco_dataset_into_train_validation,
-    save_preview_image,
+def build_categories_filter() -> dict[str, str]:
+    """Assign every FathomNet concept to "fish", "non-fish" or "discard"."""
+    # For each concept in boundingboxes.find_concepts():
+    #   - MANUAL wins
+    #   - otherwise walk [concept] + reversed(worms.get_ancestors_names(concept)) and stop at
+    #     the first root; if WoRMS does not know the concept, look up its genus ("X sp." -> "X")
+    #   - nothing matched -> discard
+    # Note: worms.get_descendants_names(root) is NOT used: it misses the common names that
+    # FathomNet links to a taxon (e.g. "feather star").
+    ...
+
+
+def load_categories_filter(rebuild: bool = False) -> dict[str, str]:
+    if rebuild or not CATEGORIES_FILE.exists():
+        ...  # build_categories_filter() and write CATEGORIES_FILE
+    with open(CATEGORIES_FILE) as f:
+        mapping = json.load(f)
+    return {c: target for c, target in mapping.items() if target != "discard"}
+
+
+CATEGORIES_FILTER = load_categories_filter(
+    rebuild=__name__ == "__main__" and "--rebuild-categories" in sys.argv
 )
 
 
-DATASET_SHORTNAME = "fathomnet"
-CATEGORIES_FILTER = None
-
-settings = Settings()
-
-
-def download_data(data_dir: Path):
-    annotations_path = data_dir / "dataset.json"
-    images_path = data_dir / "images"
-
-    if data_dir.exists() and len(list(data_dir.glob("*.json"))) > 0:
-        print(f"Dataset already exists in {data_dir}")
-        return annotations_path, images_path
-
-    # ... download logic using fathomnet API ...
-
-    return annotations_path, images_path
+def download_data():
+    # 1. If dataset.json is missing: fetch the image records of every concept in
+    #    CATEGORIES_FILTER with fathomnet.api.images.find (paged, in parallel), keep only the
+    #    boxes of those concepts, and write the COCO file (via .part + rename).
+    #    fathomnet-generate is not used: it crashes on images whose width/height are missing
+    #    in FathomNet, and its --img-download writes dataset.json before fetching any image.
+    # 2. Download every image in dataset.json from its coco_url that is not on disk yet:
+    #    check the HTTP status, write to <name>.part and rename when complete.
+    # 3. Fill in missing width/height from the downloaded files.
+    ...
 
 
-def get_list_of_images_to_include_in_train_set(image_folder: Path) -> list[str]:
-    all_images = list(image_folder.glob("*.png"))
-    train_ratio = 1 - settings.train_val_split_ratio
-    train_size = int(len(all_images) * train_ratio)
-    train_images = random.sample(all_images, train_size)
-    return [image.name for image in train_images]
+def processing():
+    map_annotations_to_fish_and_non_fish(raw_annotations_path, CATEGORIES_FILTER, mapped_annotations_path)
+    # Hard-link the raw images into processing/JPEGImages (keeps the raw folder intact for
+    # resuming) and drop images that failed to download from the annotations
+    link_images_to_processing()
+    add_dataset_shortname_prefix_to_image_names(images_path, mapped_annotations_path, DATASET_SHORTNAME)
+
+
+def dataset_splitting():
+    # Random split by image, reproducible: sorted file names + fixed random_state
+    with open(mapped_annotations_path) as f:
+        image_names = sorted(Path(image["file_name"]).name for image in json.load(f)["images"])
+    train_images, _ = train_test_split(
+        image_names, test_size=settings.train_val_split_ratio, random_state=settings.random_state
+    )
+    train_images = set(train_images)
+    ...  # split_coco_dataset_into_train_validation(..., lambda p: Path(p).name in train_images)
 
 
 def main():
-    # 1. DOWNLOAD
-    raw_download_path = settings.raw_dir / DATASET_SHORTNAME
-    raw_download_path.mkdir(parents=True, exist_ok=True)
-    annotations_path, raw_images_path = download_data(raw_download_path)
-
-    # 2. PROCESS
-    processing_dir = settings.intermediate_dir / DATASET_SHORTNAME
-    processing_dir.mkdir(parents=True, exist_ok=True)
-
-    compressed_annotations_path = processing_dir / "compressed_annotations.json"
-    compressed_annotations_path = compress_annotations_to_single_category(
-        annotations_path, CATEGORIES_FILTER, compressed_annotations_path
-    )
-
-    add_dataset_shortname_prefix_to_image_names(
-        images_path=raw_images_path,
-        annotations_path=compressed_annotations_path,
-        dataset_shortname=DATASET_SHORTNAME,
-    )
-
-    # 3. PREVIEW
-    save_preview_image(raw_images_path, compressed_annotations_path, DATASET_SHORTNAME)
-
-    # 4. SPLIT
-    train_camera_names = get_list_of_images_to_include_in_train_set(raw_images_path)
-    should_the_image_be_included_in_train_set = (
-        lambda image_name: image_name in train_camera_names
-    )
-
-    train_dataset_path = (
-        settings.processed_dir / f"{DATASET_SHORTNAME}{settings.train_dataset_suffix}"
-    )
-    val_dataset_path = (
-        settings.processed_dir / f"{DATASET_SHORTNAME}{settings.val_dataset_suffix}"
-    )
-    train_dataset_path.mkdir(parents=True)
-    val_dataset_path.mkdir(parents=True)
-
-    split_coco_dataset_into_train_validation(
-        raw_images_path,
-        compressed_annotations_path,
-        train_dataset_path,
-        val_dataset_path,
-        should_the_image_be_included_in_train_set,
-    )
+    download_data()                                                                 # 1. DOWNLOAD
+    processing()                                                                    # 2. PROCESS
+    save_preview_image(images_path, mapped_annotations_path, DATASET_SHORTNAME)    # 3. PREVIEW
+    dataset_splitting()                                                             # 4. SPLIT
 
 
 if __name__ == "__main__":
-    main()
+    # With --rebuild-categories, only fathomnet_categories.json is rebuilt (on import above)
+    if "--rebuild-categories" not in sys.argv:
+        main()
 ```
