@@ -62,9 +62,12 @@ Each dataset script in `datasets/` follows a 4-step pattern: Download -> Process
 ### project_natick
 - **Source**: [GitHub](https://github.com/microsoft/Project_Natick_Analysis/releases/download/annotated_data/data_release.zip)
 - **Download**: Automatic
-- **Annotations**: Pascal VOC -> COCO conversion (via supervision library)
-- **Category filter**: `Fish`, `Squid`
-- **Split**: Random (all images from same camera/location/datetime)
+- **Annotations**: Pascal VOC -> COCO conversion. Both subsets are used: `fish_arrow_worms_annotation` (1,072 frames, one video) and `fish_annotations` (46 frames, two videos)
+- **Category mapping**:
+  - fish: `Fish`
+  - non-fish: none
+  - discard: `Squid`. Despite the label these are arrow worms (chaetognaths), thin translucent planktonic worms mostly under ~3 cm
+- **Split**: By chunks of 25 consecutive frames per video (49 chunks). There are only 3 videos, one with 96% of the frames, so a per-video split is not possible
 
 ### roboflow_fish
 - **Source**: [Roboflow](https://public.roboflow.com/ds/KJiCisn7wU?key=9Qk3A2qMF6)
