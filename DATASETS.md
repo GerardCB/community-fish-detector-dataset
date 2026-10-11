@@ -24,9 +24,12 @@ Each dataset script in `datasets/` follows a 4-step pattern: Download -> Process
 ### deepfish
 - **Source**: [QLD Data](http://data.qld.edu.au/public/Q5842/2020-AlzayatSaleh-00e364223a600e83bd9c3f5bcd91045-DeepFish/DeepFish.tar)
 - **Download**: Automatic
-- **Annotations**: Segmentation masks -> bounding boxes (connected component analysis)
-- **Category filter**: None (only fish)
-- **Split**: By deployment (first token of filename before `_`)
+- **Annotations**: Segmentation masks -> bounding boxes (connected component analysis). Uses the 310 `valid` frames (with fish) and the 310 `empty` frames (no fish, kept as background)
+- **Category mapping**:
+  - fish: `fish` (every mask component of at least 100 px)
+  - non-fish: none
+  - discard: mask noise (14 components of 1-20 px)
+- **Split**: By habitat (first token of filename before `_`, 19 habitats). Habitats with fish (13) and habitats with only empty frames (6) are split separately so val is not mostly empty
 
 ### fathomnet
 - **Source**: [FathomNet API](https://fathomnet.org/)
