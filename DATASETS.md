@@ -95,9 +95,12 @@ Each dataset script in `datasets/` follows a 4-step pattern: Download -> Process
 ### zebrafish
 - **Source**: [Kaggle](https://www.kaggle.com/datasets/aalborguniversity/aau-zebrafish-reid)
 - **Download**: Automatic via kagglehub
-- **Annotations**: CSV -> DataFrame -> COCO conversion
-- **Category filter**: None (only Zebrafish)
-- **Split**: By video (Vid1 -> train, Vid2 -> val, hardcoded)
+- **Annotations**: CSV -> DataFrame -> COCO conversion (2,224 frames, 3 boxes per frame)
+- **Category mapping**:
+  - fish: `Zebrafish` (6,672 boxes, including those flagged as occluded or glitched)
+  - non-fish: none
+  - discard: none
+- **Split**: By video (Vid1 -> train, Vid2 -> val, hardcoded). Only two videos of the same tank, so any finer split would put near-identical frames in both sets
 
 ### orange_chromide
 - **Source**: [Mendeley Data](https://data.mendeley.com/datasets/7w45jx35hd/1)

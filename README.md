@@ -392,13 +392,16 @@ Bruslund HJ, Karpova A, Pedersen M, Hein BS, Moeslund TB. Re-identification of z
 - License: CC BY 4.0 DEED
 - Metadata raw format: csv
 - Categories/species: zebrafish
+  - fish: Zebrafish
+  - non-fish: none
+  - discarded: none
 - Vehicle type: underwater camera in fish tank
 - Image information: 2224 images
 - Annotation information: AAU VAP bounding boxes
 - Typical animal size in pixels: N/A
 - Code to render sample annotated image: [zebrafish.py](./datasets/zebrafish.py)
 
-<img src="./previews/Zebrafish_sample_image.png" alt="AAU Zebrafish Re-Identification Dataset sample" width="600">
+<img src="./previews/zebrafish_sample_image.png" alt="AAU Zebrafish Re-Identification Dataset sample" width="600">
 
 
 
