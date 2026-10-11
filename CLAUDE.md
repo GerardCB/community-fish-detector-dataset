@@ -36,8 +36,10 @@ Final output: COCO-format datasets with two categories ("fish", "non-fish"), mer
 ## Class Definitions
 
 - **fish** (id=1): any cartilaginous, ray-finned, or bony fish — e.g. sharks, rays, tunas, groupers, eels, seahorses.
-- **non-fish** (id=2): any marine animal bigger than ~3 cm that is not a fish — e.g. turtles, dolphins, whales, manatees, seals, crabs, shrimp, octopus, squid, jellyfish, starfish, urchins.
-- **discard**: everything else — corals, algae, plants, rocks, debris, humans/divers, equipment, bait, animals smaller than ~3 cm.
+- **non-fish** (id=2): any motile (free-moving, not attached to the seafloor) marine animal clearly bigger than ~3 cm that is not a fish — e.g. turtles, dolphins, whales, manatees, seals, crabs, shrimp, octopus, squid, jellyfish, starfish, urchins, sea cucumbers.
+- **discard**: everything else — corals, algae, plants, rocks, debris, humans/divers, equipment, bait, sessile/attached animals (sponges, anemones, sea squirts, tube worms, barnacles, bivalves), colonies of tiny zooids (siphonophores, pyrosomes), animals smaller than ~3 cm or of doubtful size (e.g. salps, most worms, small jellies).
+
+When in doubt whether an animal moves on its own or is bigger than ~3 cm, discard it.
 
 Watch for misleading names: jellyfish, starfish, cuttlefish, crayfish are non-fish; dolphins, whales, manatees are non-fish despite being fish-shaped.
 

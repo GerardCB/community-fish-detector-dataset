@@ -123,8 +123,10 @@ With the full category list now known, finalize the **eligibility check** and **
 | Output class | id | Definition | Examples |
 |---|---|---|---|
 | `fish` | 1 | Any cartilaginous, ray-finned, or bony fish | sharks, rays, skates, tunas, groupers, eels, salmon, seahorses, any fish species name |
-| `non-fish` | 2 | Any marine animal bigger than ~3 cm that is **not** a fish | turtles, dolphins, whales, seals, manatees, crabs, lobsters, shrimp, octopus, squid, cuttlefish, jellyfish, starfish, sea urchins |
-| discard | — | Everything else | corals, algae, plants, rocks, debris, plastic, humans/divers, equipment, bait, animals smaller than ~3 cm |
+| `non-fish` | 2 | Any **motile** (free-moving, not attached to the seafloor) marine animal clearly bigger than ~3 cm that is **not** a fish | turtles, dolphins, whales, seals, manatees, crabs, lobsters, shrimp, octopus, squid, cuttlefish, jellyfish, starfish, sea urchins, sea cucumbers |
+| discard | — | Everything else | corals, algae, plants, rocks, debris, plastic, humans/divers, equipment, bait, sessile/attached animals (sponges, anemones, sea squirts, tube worms, barnacles, bivalves), colonies of tiny zooids (siphonophores, pyrosomes), animals smaller than ~3 cm or of doubtful size (e.g. salps, most worms, small jellies) |
+
+When in doubt whether an animal moves on its own or is bigger than ~3 cm, discard it.
 
 Watch for misleading names: jellyfish, starfish, cuttlefish, crayfish are `non-fish`; dolphins, whales, manatees are `non-fish` despite looking like fish.
 
