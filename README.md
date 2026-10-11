@@ -39,9 +39,9 @@ Every annotation in the final dataset belongs to one of two categories:
 | id | name | Definition | Examples |
 |----|------|------------|----------|
 | 1 | `fish` | Any cartilaginous, ray-finned, or bony fish | sharks, rays, skates, tunas, groupers, eels, salmon, seahorses |
-| 2 | `non-fish` | Any marine animal bigger than ~3 cm that is **not** a fish | turtles, dolphins, whales, seals, manatees, crabs, lobsters, shrimp, octopus, squid, jellyfish, starfish, sea urchins |
+| 2 | `non-fish` | Any **motile** (free-moving, not attached to the seafloor) marine animal clearly bigger than ~3 cm that is **not** a fish | turtles, dolphins, whales, seals, manatees, crabs, lobsters, shrimp, octopus, squid, jellyfish, starfish, sea urchins, sea cucumbers |
 
-Anything that is neither (corals, algae, plants, rocks, debris, divers/humans, equipment, bait, animals smaller than ~3 cm) is discarded.
+Anything that is neither (corals, algae, plants, rocks, debris, divers/humans, equipment, bait, sessile/attached animals (sponges, anemones, sea squirts, tube worms, barnacles, bivalves), colonies of tiny zooids (siphonophores, pyrosomes), animals smaller than ~3 cm or of doubtful size (e.g. salps, most worms, small jellies)) is discarded. When in doubt whether an animal moves on its own or is bigger than ~3 cm, discard it.
 
 Note that some animals with "fish" in their name are **not** fish (jellyfish, starfish, cuttlefish, crayfish → `non-fish`), and some fish-shaped animals are **not** fish (dolphins, whales, manatees → `non-fish`).
 
