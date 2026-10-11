@@ -72,8 +72,11 @@ Each dataset script in `datasets/` follows a 4-step pattern: Download -> Process
 ### roboflow_fish
 - **Source**: [Roboflow](https://public.roboflow.com/ds/KJiCisn7wU?key=9Qk3A2qMF6)
 - **Download**: Automatic
-- **Annotations**: COCO format (from Roboflow train/val/test splits merged into one)
-- **Category filter**: None (all are fish)
+- **Annotations**: COCO format (from Roboflow train/val/test splits merged into one). The export holds 670 of the 680 source images twice (pixel-identical, identical boxes, one copy with Latin family names and one with common names); one copy is kept, by source filename (the part before `.rf.<hash>`)
+- **Category mapping**:
+  - fish: all 26 source classes (Latin family names, e.g. `Scombridae -Tunas-`, and common names, e.g. `tuna`) plus Roboflow's parent category `fish`
+  - non-fish: none
+  - discard: none
 - **Split**: Pre-provided (uses Roboflow's original split)
 
 ### viame_fishtrack
