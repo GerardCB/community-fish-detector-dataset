@@ -9,8 +9,8 @@ Category mapping:
   fish: fish, bolbometopon_muricatum, chaetodontidae, cheilinus_undulatus,
     cromileptes_altivelis, haemulidae, lutjanidae, muraenidae, scaridae, serranidae,
     shark, ray
-  non-fish: turtle, urchin, giant_clam, sea_cucumber, crown_of_thorns, lobster
-  discard: none
+  non-fish: turtle, urchin, sea_cucumber, crown_of_thorns, lobster
+  discard: giant_clam (sessile)
 
 The two datasets are merged into one, as many images (byte-identical, same filename)
 appear in both with annotations divided between them: FishInv labels fish and
@@ -58,7 +58,6 @@ CATEGORIES_FILTER = {
     "ray": "fish",
     "turtle": "non-fish",
     "urchin": "non-fish",
-    "giant_clam": "non-fish",
     "sea_cucumber": "non-fish",
     "crown_of_thorns": "non-fish",
     "lobster": "non-fish",
@@ -157,7 +156,9 @@ def build_merged_coco_dataset():
         return
 
     images_path.mkdir(parents=True, exist_ok=True)
-    category_names = list(CATEGORIES_FILTER)
+    category_names = list(
+        dict.fromkeys(name for _, _, names in SOURCES.values() for name in names)
+    )
     category_name_to_id = {name: i + 1 for i, name in enumerate(category_names)}
 
     images = {}  # filename -> COCO image entry

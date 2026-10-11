@@ -135,7 +135,7 @@ These datasets require manual download or have special dependencies.
 - **Annotations**: YOLO (normalised centre/size) -> COCO conversion. The two datasets are merged by filename: shared images (byte-identical) get the annotations of both
 - **Category mapping**:
   - fish: `fish`, `bolbometopon_muricatum`, `chaetodontidae`, `cheilinus_undulatus`, `cromileptes_altivelis`, `haemulidae`, `lutjanidae`, `muraenidae`, `scaridae`, `serranidae`, `shark`, `ray`
-  - non-fish: `turtle`, `urchin`, `giant_clam`, `sea_cucumber`, `crown_of_thorns`, `lobster`
-  - discard: none
+  - non-fish: `turtle`, `urchin`, `sea_cucumber`, `crown_of_thorns`, `lobster`
+  - discard: `giant_clam` (sessile)
 - **Split**: By original split: val if the image is in `valid`/`test` of either source dataset, train otherwise
 - **Special**: OzFish images are skipped to avoid duplication. EXIF orientation tags are removed (labels are relative to the stored pixels). Images without annotations are kept

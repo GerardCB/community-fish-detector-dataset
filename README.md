@@ -429,8 +429,8 @@ Two Roboflow datasets with bounding boxes on fish, sharks, rays, turtles and oth
 - Metadata raw format: YOLO
 - Categories/species: fish, shark, ray, turtle, various reef fish families, and reef invertebrates
   - fish: `fish`, `bolbometopon_muricatum`, `chaetodontidae`, `cheilinus_undulatus`, `cromileptes_altivelis`, `haemulidae`, `lutjanidae`, `muraenidae`, `scaridae`, `serranidae`, `shark`, `ray`
-  - non-fish: `turtle`, `urchin`, `giant_clam`, `sea_cucumber`, `crown_of_thorns`, `lobster`
-  - discarded: none
+  - non-fish: `turtle`, `urchin`, `sea_cucumber`, `crown_of_thorns`, `lobster`
+  - discarded: `giant_clam` (sessile)
 - Vehicle type: underwater cameras
 - Code to render sample annotated image: [marine_detect.py](./datasets/marine_detect.py)
 
