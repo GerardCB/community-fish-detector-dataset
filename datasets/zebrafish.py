@@ -2,7 +2,10 @@
 AAU Zebrafish ReID Dataset
 Source: Kaggle - aalborguniversity/aau-zebrafish-reid
 Split logic: By video (Vid1 -> train, Vid2 -> val, hardcoded)
-Categories kept: All (only Zebrafish)
+Category mapping:
+  fish: Zebrafish (including boxes flagged as occluded or glitched)
+  non-fish: none
+  discard: none
 
 Not the ideal split ratio, but we give priority to not polluting
 training/val with images from the same video.
@@ -22,7 +25,7 @@ import tqdm
 
 from datasets.settings import Settings
 from datasets.utils import (
-    compress_annotations_to_single_category,
+    map_annotations_to_fish_and_non_fish,
     split_coco_dataset_into_train_validation,
     add_dataset_shortname_prefix_to_image_names,
     remove_dataset_shortname_prefix_from_image_filename,
@@ -32,7 +35,7 @@ from datasets.utils import (
 
 DATASET_SHORTNAME = "zebrafish"
 DATASET_URL = "aalborguniversity/aau-zebrafish-reid"
-CATEGORIES_FILTER = None
+CATEGORIES_FILTER = {"Zebrafish": "fish"}
 
 settings = Settings()
 
@@ -56,12 +59,14 @@ def clean_annotations_and_get_df(data_dir: Path) -> Tuple[pd.DataFrame, Path]:
 
     data_df = pd.read_csv(annotation_path, sep=";")
 
-    if len(list(data_path.iterdir())) == len(data_df):
-        print("Number of images in the data directory and the dataframe are equal:", len(data_df))
+    # The CSV has one row per box (3 fish per frame), so compare unique filenames
+    num_annotated_images = data_df["Filename"].nunique()
+    if len(list(data_path.iterdir())) == num_annotated_images:
+        print("Number of images in the data directory and the dataframe are equal:", num_annotated_images)
     else:
         print("Number of images in the data directory and the dataframe are not equal")
         print("Number of images in the data directory:", len(list(data_path.iterdir())))
-        print("Number of annotations in the dataframe:", len(data_df))
+        print("Number of annotated images in the dataframe:", num_annotated_images)
 
     combined_col = "Right,Turning,Occlusion,Glitch"
     for idx, col in enumerate(combined_col.split(",")):
@@ -190,19 +195,19 @@ def main():
     for image_path in tqdm.tqdm(total_images, total=len(total_images)):
         shutil.copy2(image_path, coco_images_path / image_path.name)
 
-    compressed_annotations_path = processing_dir / "annotations_coco_compressed.json"
-    compress_annotations_to_single_category(
-        coco_annotations_path, CATEGORIES_FILTER, compressed_annotations_path
+    mapped_annotations_path = processing_dir / "zebrafish_mapped_annotations.json"
+    map_annotations_to_fish_and_non_fish(
+        coco_annotations_path, CATEGORIES_FILTER, mapped_annotations_path
     )
 
     add_dataset_shortname_prefix_to_image_names(
         images_path=coco_images_path,
-        annotations_path=compressed_annotations_path,
+        annotations_path=mapped_annotations_path,
         dataset_shortname=DATASET_SHORTNAME,
     )
 
     # 3. PREVIEW
-    save_preview_image(coco_images_path, compressed_annotations_path, DATASET_SHORTNAME)
+    save_preview_image(coco_images_path, mapped_annotations_path, DATASET_SHORTNAME)
 
     # 4. SPLIT
     should_the_image_be_included_in_train_set = (
@@ -222,7 +227,7 @@ def main():
 
     split_coco_dataset_into_train_validation(
         coco_images_path,
-        compressed_annotations_path,
+        mapped_annotations_path,
         train_dataset_path,
         val_dataset_path,
         should_the_image_be_included_in_train_set,
