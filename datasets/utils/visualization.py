@@ -1,6 +1,7 @@
 import random
 from pathlib import Path
 
+import cv2
 import matplotlib.pyplot as plt
 import supervision as sv
 
@@ -91,7 +92,8 @@ def save_preview_image(images_path: Path, annotations_path: Path, shortname: str
 
     if image_example is not None:
         output_path = settings.preview_dir / f"{shortname}_sample_image.png"
-        plt.imsave(str(output_path), image_example)
+        # supervision loads images with OpenCV (BGR); matplotlib expects RGB
+        plt.imsave(str(output_path), cv2.cvtColor(image_example, cv2.COLOR_BGR2RGB))
         print(f"Sample image saved to {output_path}")
     else:
         print("No annotated images found to save as sample")
