@@ -79,18 +79,29 @@ def extract_keyframes(label_path, video_path, video_name, output_dir, category_i
     vid_width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
     vid_height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
 
-    correction = 3 if video_name.endswith("122") else 0
+    # Decode sequentially instead of seeking with CAP_PROP_POS_FRAMES: several
+    # .flv files (116, 118, 121, 122) have wrong frame-count/timestamp metadata,
+    # so seeking lands on a different frame than the one the XML labels refer to.
+    frames = root.findall("frame")
+    wanted_frame_ids = {int(frame.attrib["id"]) for frame in frames}
+    decoded_frames = {}
+    current_frame_id = 0
+    while current_frame_id <= max(wanted_frame_ids, default=-1):
+        ret, frame_image = cap.read()
+        if not ret:
+            break
+        if current_frame_id in wanted_frame_ids:
+            decoded_frames[current_frame_id] = frame_image
+        current_frame_id += 1
 
-    for frame in root.findall("frame"):
-        frame_id = int(frame.attrib["id"]) + correction
+    for frame in frames:
+        frame_id = int(frame.attrib["id"])
         image_id = f"video_gt_{video_name}_frame_{frame_id}"
         file_name = image_id + '.jpg'
         save_path = os.path.join(str(output_dir), file_name)
 
-        cap.set(cv2.CAP_PROP_POS_FRAMES, frame_id)
-        ret, frame_image = cap.read()
-
-        if not ret:
+        frame_image = decoded_frames.get(frame_id)
+        if frame_image is None:
             print(f"Failed to read frame {frame_id} from {video_path}")
             continue
 
