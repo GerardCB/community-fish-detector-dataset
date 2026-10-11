@@ -162,6 +162,9 @@ Scoulding B, Maguire K, Orenstein E, Jackett C, CSIRO.  [Tasmanian Orange Roughy
 - License: CC BY-NC-SA 4.0
 - Metadata raw format: COCO
 - Categories/species: fish, eel, corals and other benthic organisms.
+  - fish: orange_roughy, orange_roughy_edge, misc_fish, eel, oreo, whiptail, chimera, shark
+  - non-fish: sea_star, sea_urchin, brittle_star
+  - discarded: mollusc, cnidaria, sea_feather, sea_anemone, coral, siphonophore
 - Vehicle type: Net-attached Acoustic and Optical System (AOS)
 - Image information: 1,051 images
 - Annotation information: 14,414 bounding boxes

@@ -130,10 +130,13 @@ These datasets require manual download or have special dependencies.
 
 ### torsi
 - **Source**: [CSIRO](https://data.csiro.au/collection/64913)
-- **Download**: Manual - download zip and place in `data/raw/torsi/`
+- **Download**: Automatic via the CSIRO Data Access Portal API (`instances.json` + 1,051 port-camera images, ~2.3 GB; the 849 unannotated starboard stereo images are skipped)
 - **Annotations**: COCO format (already provided)
-- **Category filter**: `orange_roughy`, `eel`, `misc_fish`, `orange_roughy_edge`, `chimera`, `oreo`, `shark`, `whiptail`
-- **Split**: By date (2019-07-13/14/15 train, 2019-07-16/17 val, ~19% val ratio)
+- **Category mapping**:
+  - fish: `orange_roughy`, `orange_roughy_edge`, `misc_fish`, `eel`, `oreo`, `whiptail`, `chimera`, `shark`
+  - non-fish: `sea_star`, `sea_urchin`, `brittle_star`
+  - discard: `mollusc` (blurry, unidentifiable blobs), `cnidaria` (mostly sessile or unidentifiable), `sea_feather` (sea pens / stalked crinoids, sessile), `sea_anemone`, `coral`, `siphonophore`
+- **Split**: By deployment, via the date (2019-07-13/14/15 train = 4 deployments, 2019-07-16/17 val = 2 deployments, ~19% val ratio). The 6 deployments are separate sessions in the image timestamps
 
 ### f4k
 - **Source**: [UniCT OneDrive](https://bit.ly/f4k-detection-tracking)
