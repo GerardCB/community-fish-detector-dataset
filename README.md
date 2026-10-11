@@ -189,16 +189,19 @@ Scoulding B, Maguire K, Orenstein E, Jackett C, CSIRO.  [Tasmanian Orange Roughy
 
 #### Project Natick Underwater Video
 
-~1k images of fish/squid w/bounding boxes
+~1k images of fish/arrow worms w/bounding boxes
 
 Simon K. [ProjectNatick - Microsoft's Self-sufficient Underwater Datacenters](https://nbn-resolving.org/urn:nbn:de:0168-ssoar-57615-2). IndraStra Global, 4(6), 1-4. 2018.
 
 - Data downloadable via via https from GitHub ([download link](https://github.com/Microsoft/Project_Natick_Analysis/releases/tag/annotated_data))
 - Metadata raw format: Pascal VOC
-- Categories/species: fish, squid
+- Categories/species: fish, arrow worms (labelled "Squid" in the source)
+  - fish: Fish
+  - non-fish: none
+  - discarded: Squid (arrow worms, mostly under ~3 cm)
 - Vehicle type: fixed camera on structure
 - Image information: 1118 RGB images (~5% of images have FN annotations)
-- Annotation information: 998 bounding boxes
+- Annotation information: 1,088 bounding boxes (939 fish, 149 arrow worms)
 - Typical animal size in pixels: N/A
 - Code to render sample annotated image: [project_natick.py](./datasets/project_natick.py)
 

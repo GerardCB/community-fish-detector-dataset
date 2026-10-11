@@ -1,56 +1,50 @@
 """
 Project Natick Dataset
 Source: https://github.com/microsoft/Project_Natick_Analysis/releases/download/annotated_data/data_release.zip
-Split logic: Random (all images from same camera, location, and datetime)
-Categories kept: Fish, Squid
+Split logic: By chunks of FRAMES_PER_CHUNK consecutive frames of each video
+    (train_test_split on video+chunk identifiers). The dataset has only 3 videos,
+    one of them with 96% of the frames, so splitting by video is not possible, and
+    splitting by single frame would put near-identical consecutive frames in both sets.
+Category mapping:
+  fish: Fish
+  non-fish: none
+  discard: Squid. Despite the label, these are arrow worms (chaetognaths): thin,
+    translucent planktonic worms, mostly under ~3 cm. The subset is named
+    "fish_arrow_worms_annotation".
 
-Pascal VOC format annotations converted to COCO format.
+Pascal VOC format annotations converted to COCO format. The release has two subsets,
+"fish_arrow_worms_annotation" (1072 frames from one video) and "fish_annotations"
+(46 frames from two other videos); both are used.
 """
 
-import os
-import random
+import json
+import shutil
 import xml.etree.ElementTree as ET
 from pathlib import Path
 
-import supervision as sv
+from sklearn.model_selection import train_test_split
 
 from datasets.settings import Settings
 from datasets.utils import (
     download_file,
     extract_downloaded_file,
-    compress_annotations_to_single_category,
+    map_annotations_to_fish_and_non_fish,
     split_coco_dataset_into_train_validation,
-    convert_coco_annotations_from_0_indexed_to_1_indexed,
     add_dataset_shortname_prefix_to_image_names,
+    remove_dataset_shortname_prefix_from_image_filename,
     save_preview_image,
 )
 
 
 DATASET_SHORTNAME = "project_natick"
 DATA_URL = "https://github.com/microsoft/Project_Natick_Analysis/releases/download/annotated_data/data_release.zip"
-CATEGORIES_FILTER = ["Fish", "Squid"]
+CATEGORIES_FILTER = {
+    "Fish": "fish",
+}
+SUBSETS = ["fish_arrow_worms_annotation", "fish_annotations"]
+FRAMES_PER_CHUNK = 25
 
 settings = Settings()
-
-
-def add_extension_to_filename(directory, extension=".jpg"):
-    """The XML files have a filename element that does not have an extension.
-    This function adds the extension to the filename."""
-    print(f"Checking and updating XML annotations in {directory}...")
-    for filename in os.listdir(directory):
-        if filename.endswith(".xml"):
-            filepath = Path(directory) / filename
-            tree = ET.parse(filepath)
-            root = tree.getroot()
-
-            filename_element = root.find("filename")
-            if filename_element is not None:
-                if not filename_element.text.endswith(extension):
-                    filename_element.text += extension
-                    tree.write(filepath)
-                    print(f"Updated {filename}")
-                else:
-                    print(f"{filename} already has extension, skipped.")
 
 
 def download_data(data_dir: Path):
@@ -58,7 +52,7 @@ def download_data(data_dir: Path):
 
     data_path = data_dir / "data_release.zip"
 
-    if not data_dir.exists() or len(list(data_dir.glob("*"))) == 0:
+    if not (data_dir / "data_release").exists():
         print("Downloading data...")
         download_file(DATA_URL, data_path)
         print("Extracting data...")
@@ -67,13 +61,92 @@ def download_data(data_dir: Path):
         print("Data already downloaded and extracted")
 
 
-def get_list_of_cameras_to_include_in_train_set(image_folder: Path) -> list[str]:
-    # Split the images randomly as all are from the same camera, location and datetime
-    all_images = list(image_folder.glob("*.jpg"))
-    train_ratio = 1 - settings.train_val_split_ratio
-    train_size = int(len(all_images) * train_ratio)
-    train_images = random.sample(all_images, train_size)
-    return [image.name for image in train_images]
+def pascal_voc_to_coco(dataset_dir: Path, images_output_dir: Path, output_json: Path):
+    """
+    Converts the Pascal VOC subsets to a single COCO file and copies their images.
+    The XML "filename" elements have no extension, so images are matched by the
+    XML file stem instead.
+    """
+    if output_json.exists():
+        print(f"COCO annotations already exist: {output_json}")
+        return
+
+    images_output_dir.mkdir(parents=True, exist_ok=True)
+
+    images = []
+    annotations = []
+    categories = {}
+
+    for subset in SUBSETS:
+        subset_dir = dataset_dir / subset
+        for xml_path in sorted((subset_dir / "Annotations").glob("*.xml")):
+            image_path = subset_dir / "JPEGImages" / f"{xml_path.stem}.jpg"
+            root = ET.parse(xml_path).getroot()
+
+            image_id = len(images) + 1
+            images.append(
+                {
+                    "id": image_id,
+                    "file_name": image_path.name,
+                    "width": int(root.findtext("size/width")),
+                    "height": int(root.findtext("size/height")),
+                }
+            )
+            shutil.copy2(image_path, images_output_dir / image_path.name)
+
+            for obj in root.findall("object"):
+                label = obj.findtext("name")
+                if label not in categories:
+                    categories[label] = len(categories) + 1
+                xmin, ymin, xmax, ymax = (
+                    float(obj.findtext(f"bndbox/{key}"))
+                    for key in ("xmin", "ymin", "xmax", "ymax")
+                )
+                width, height = xmax - xmin, ymax - ymin
+                annotations.append(
+                    {
+                        "id": len(annotations) + 1,
+                        "image_id": image_id,
+                        "category_id": categories[label],
+                        "bbox": [xmin, ymin, width, height],
+                        "area": width * height,
+                        "iscrowd": 0,
+                    }
+                )
+
+    coco_data = {
+        "images": images,
+        "annotations": annotations,
+        "categories": [{"id": i, "name": n} for n, i in categories.items()],
+    }
+    with open(output_json, "w") as f:
+        json.dump(coco_data, f, indent=2)
+
+    print(f"Converted {len(images)} images and {len(annotations)} annotations")
+
+
+def get_video_chunk(image_filename: str) -> str:
+    """
+    "20180602_23-41-08-0730-1430_frame_176.jpg" -> "20180602_23-41-08-0730-1430_7"
+    """
+    image_filename = remove_dataset_shortname_prefix_from_image_filename(
+        Path(image_filename).name, DATASET_SHORTNAME
+    )
+    video, frame = Path(image_filename).stem.rsplit("_frame_", 1)
+    return f"{video}_{int(frame) // FRAMES_PER_CHUNK}"
+
+
+def get_list_of_chunks_to_include_in_train_set(annotations_path: Path) -> list[str]:
+    with open(annotations_path, "r") as f:
+        images = json.load(f)["images"]
+    # Sorted so the split does not depend on set iteration order
+    chunks = sorted({get_video_chunk(image["file_name"]) for image in images})
+    train_chunks, _ = train_test_split(
+        chunks,
+        test_size=settings.train_val_split_ratio,
+        random_state=settings.random_state,
+    )
+    return train_chunks
 
 
 def main():
@@ -86,48 +159,30 @@ def main():
     processing_dir = settings.intermediate_dir / DATASET_SHORTNAME
     processing_dir.mkdir(parents=True, exist_ok=True)
 
-    dataset_path = raw_download_path / "data_release" / "fish_arrow_worms_annotation"
-    images_path = dataset_path / "JPEGImages"
-    annotations_path = dataset_path / "Annotations"
-
-    add_extension_to_filename(annotations_path)
-
-    dataset = sv.DetectionDataset.from_pascal_voc(
-        images_directory_path=str(images_path),
-        annotations_directory_path=str(annotations_path),
-    )
     coco_images_path = processing_dir / settings.images_folder_name
-    coco_images_path.mkdir(parents=True, exist_ok=True)
     coco_annotations_path = processing_dir / settings.coco_file_name
-    dataset.as_coco(str(coco_images_path), str(coco_annotations_path))
-
-    coco_annotations_path_1_indexed = (
-        processing_dir / "project_natick_1_indexed_annotations.json"
-    )
-    convert_coco_annotations_from_0_indexed_to_1_indexed(
-        coco_annotations_path, coco_annotations_path_1_indexed
+    pascal_voc_to_coco(
+        raw_download_path / "data_release", coco_images_path, coco_annotations_path
     )
 
-    compressed_annotations_path = (
-        processing_dir / "project_natick_compressed_annotations.json"
-    )
-    compress_annotations_to_single_category(
-        coco_annotations_path_1_indexed, CATEGORIES_FILTER, compressed_annotations_path
+    mapped_annotations_path = processing_dir / "project_natick_mapped_annotations.json"
+    map_annotations_to_fish_and_non_fish(
+        coco_annotations_path, CATEGORIES_FILTER, mapped_annotations_path
     )
 
     add_dataset_shortname_prefix_to_image_names(
         images_path=coco_images_path,
-        annotations_path=compressed_annotations_path,
+        annotations_path=mapped_annotations_path,
         dataset_shortname=DATASET_SHORTNAME,
     )
 
     # 3. PREVIEW
-    save_preview_image(coco_images_path, compressed_annotations_path, DATASET_SHORTNAME)
+    save_preview_image(coco_images_path, mapped_annotations_path, DATASET_SHORTNAME)
 
     # 4. SPLIT
-    train_image_names = get_list_of_cameras_to_include_in_train_set(coco_images_path)
+    train_chunks = set(get_list_of_chunks_to_include_in_train_set(mapped_annotations_path))
     should_the_image_be_included_in_train_set = (
-        lambda image_path: image_path in train_image_names
+        lambda image_path: get_video_chunk(image_path) in train_chunks
     )
 
     train_dataset_path = (
@@ -141,7 +196,7 @@ def main():
 
     split_coco_dataset_into_train_validation(
         coco_images_path,
-        compressed_annotations_path,
+        mapped_annotations_path,
         train_dataset_path,
         val_dataset_path,
         should_the_image_be_included_in_train_set,
