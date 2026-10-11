@@ -2,7 +2,16 @@
 Roboflow Fish Dataset
 Source: https://public.roboflow.com/ds/KJiCisn7wU?key=9Qk3A2qMF6
 Split logic: Pre-provided split (uses Roboflow's original train/val/test split)
-Categories kept: All (all are fish)
+Category mapping:
+  fish: all 26 source classes (fish families with Latin names, e.g. "Scombridae -Tunas-",
+    and the same families with common names, e.g. "tuna"), plus Roboflow's parent
+    category "fish"
+  non-fish: none
+  discard: none
+
+The export contains most images twice: pixel-identical copies with identical boxes,
+one labelled with Latin family names and one with common names. Only one copy of each
+source image is kept.
 """
 
 import json
@@ -13,16 +22,43 @@ from datasets.settings import Settings
 from datasets.utils import (
     download_file,
     extract_downloaded_file,
-    compress_annotations_to_single_category,
+    map_annotations_to_fish_and_non_fish,
     split_coco_dataset_into_train_validation,
-    convert_coco_annotations_from_0_indexed_to_1_indexed,
     add_dataset_shortname_prefix_to_image_names,
     save_preview_image,
 )
 
 
 DATASET_SHORTNAME = "roboflow_fish"
-CATEGORIES_FILTER = None
+CATEGORIES_FILTER = {
+    "fish": "fish",
+    "Acanthuridae -Surgeonfishes-": "fish",
+    "Balistidae -Triggerfishes-": "fish",
+    "Carangidae -Jacks-": "fish",
+    "Ephippidae -Spadefishes-": "fish",
+    "Labridae -Wrasse-": "fish",
+    "Lutjanidae -Snappers-": "fish",
+    "Pomacanthidae -Angelfishes-": "fish",
+    "Pomacentridae -Damselfishes-": "fish",
+    "Scaridae -Parrotfishes-": "fish",
+    "Scombridae -Tunas-": "fish",
+    "Serranidae -Groupers-": "fish",
+    "Shark -Selachimorpha-": "fish",
+    "Zanclidae (Moorish Idol)": "fish",
+    "Zanclidae -Moorish Idol-": "fish",
+    "angel": "fish",
+    "damsel": "fish",
+    "grouper": "fish",
+    "jack": "fish",
+    "parrot": "fish",
+    "shark": "fish",
+    "snapper": "fish",
+    "spade": "fish",
+    "surgeon": "fish",
+    "trigger": "fish",
+    "tuna": "fish",
+    "wrasse": "fish",
+}
 
 settings = Settings()
 
@@ -45,7 +81,10 @@ def download_data(data_dir: Path):
 def join_all_images_and_annotations_into_single_coco_dataset(
     data_dir: Path, coco_images_dir: Path, coco_annotations_path: Path
 ):
-    """Merges all train/val/test splits into a single COCO dataset."""
+    """
+    Merges all train/val/test splits into a single COCO dataset, keeping one copy of
+    each source image (Roboflow names images "<source>_<ext>.rf.<hash>.jpg").
+    """
     splits = ["train", "valid", "test"]
     split_dirs = [data_dir / split for split in splits]
 
@@ -61,20 +100,31 @@ def join_all_images_and_annotations_into_single_coco_dataset(
     combined_annotations = {"images": [], "annotations": [], "categories": []}
     image_id_offset = 0
     annotation_id_offset = 0
+    seen_source_images = set()
+    duplicate_count = 0
 
     for split_dir in split_dirs:
         annotation_file = split_dir / "_annotations.coco.json"
         with open(annotation_file) as f:
             split_annotations = json.load(f)
 
+        duplicate_image_ids = set()
         for image in split_annotations["images"]:
+            source_image = image["file_name"].rsplit(".rf.", 1)[0]
+            if source_image in seen_source_images:
+                duplicate_image_ids.add(image["id"])
+                continue
+            seen_source_images.add(source_image)
             image["id"] += image_id_offset
             src_path = split_dir / image["file_name"]
             dst_path = coco_images_dir / image["file_name"]
             shutil.copy2(src_path, dst_path)
             combined_annotations["images"].append(image)
+        duplicate_count += len(duplicate_image_ids)
 
         for annotation in split_annotations["annotations"]:
+            if annotation["image_id"] in duplicate_image_ids:
+                continue
             annotation["id"] += annotation_id_offset
             annotation["image_id"] += image_id_offset
             combined_annotations["annotations"].append(annotation)
@@ -91,6 +141,7 @@ def join_all_images_and_annotations_into_single_coco_dataset(
     with open(coco_annotations_path, "w") as f:
         json.dump(combined_annotations, f)
 
+    print(f"Skipped {duplicate_count} duplicate copies of source images")
     print(f"Combined dataset saved to {coco_images_dir}")
     print(f"Total images: {len(combined_annotations['images'])}")
     print(f"Total annotations: {len(combined_annotations['annotations'])}")
@@ -125,26 +176,20 @@ def main():
         )
     )
 
-    coco_annotations_path_1_indexed = processing_dir / "annotations_coco_1_indexed.json"
-    coco_annotations_path = convert_coco_annotations_from_0_indexed_to_1_indexed(
-        coco_annotations_path, coco_annotations_path_1_indexed
-    )
-
-    compressed_annotations_path = (
-        processing_dir / "annotations_coco_compressed.json"
-    )
-    compress_annotations_to_single_category(
-        coco_annotations_path_1_indexed, CATEGORIES_FILTER, compressed_annotations_path
+    # Categories are mapped by name, so Roboflow's 0-indexed ids need no conversion
+    mapped_annotations_path = processing_dir / "annotations_coco_mapped.json"
+    map_annotations_to_fish_and_non_fish(
+        coco_annotations_path, CATEGORIES_FILTER, mapped_annotations_path
     )
 
     add_dataset_shortname_prefix_to_image_names(
         images_path=coco_images_path,
-        annotations_path=compressed_annotations_path,
+        annotations_path=mapped_annotations_path,
         dataset_shortname=DATASET_SHORTNAME,
     )
 
     # 3. PREVIEW
-    save_preview_image(coco_images_path, compressed_annotations_path, DATASET_SHORTNAME)
+    save_preview_image(coco_images_path, mapped_annotations_path, DATASET_SHORTNAME)
 
     # 4. SPLIT
     raw_train_set = raw_download_path / "train"
@@ -164,7 +209,7 @@ def main():
 
     split_coco_dataset_into_train_validation(
         coco_images_path,
-        compressed_annotations_path,
+        mapped_annotations_path,
         train_dataset_path,
         val_dataset_path,
         should_the_image_be_included_in_train_set,

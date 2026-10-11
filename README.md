@@ -215,10 +215,13 @@ Solawetz J Fish object detection dataset. Roboflow. 2023.
 - Data downloadable via via https from Roboflow ([download link](https://public.roboflow.com/object-detection/fish/1))
 - License: CC0 1.0 DEED
 - Metadata raw format: multiple available
-- Categories/species: 26 fish types (e.g. shark, tuna)
+- Categories/species: 26 fish types (e.g. shark, tuna); 13 fish families, each labelled once with a Latin and once with a common name
+  - fish: all 26 classes
+  - non-fish: none
+  - discarded: none
 - Vehicle type: underwater cameras
-- Image information: 1350 RGB images (the taxonomy is often inaccurate)
-- Annotation information: 3142 bounding boxes
+- Image information: 680 RGB images (the export contains 670 of them twice; duplicates are removed) (the taxonomy is often inaccurate)
+- Annotation information: 1,582 bounding boxes after removing duplicate images
 - Typical animal size in pixels: N/A
 - Code to render sample annotated image: [roboflow_fish.py](./datasets/roboflow_fish.py)
 
