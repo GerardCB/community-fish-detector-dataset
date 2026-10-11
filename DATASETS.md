@@ -17,9 +17,12 @@ Each dataset script in `datasets/` follows a 4-step pattern: Download -> Process
 ### deep_vision
 - **Source**: [NMDC FTP](https://ftp.nmdc.no/nmdc/IMR/MachineLearning/fishDatasetSimulationAlgorithm.zip)
 - **Download**: Automatic
-- **Annotations**: CSV -> COCO conversion
-- **Category filter**: None (all are fish)
-- **Split**: By deployment (first token of filename before `_`)
+- **Annotations**: CSV -> COCO conversion. Reads the four per-year CSVs plus the root-level `test_annotations.csv` / `val_annotations.csv`; an image takes its boxes from the first CSV that lists it (4 images are annotated in two CSVs). Some rows give the wrong species folder (e.g. `test/mackerel/` for a file in `test/mixed/`); those images are found by filename. One listed image (`20170511143523664.jpg`) does not exist and is skipped
+- **Category mapping**:
+  - fish: herring, mackerel, bluewhiting, mesopelagic (lanternfish-type fish), Sharpchin barracudina, spotted barracudina, salmon, lumpsucker
+  - non-fish: none
+  - discard: none
+- **Split**: By trawl station (first token of filename split on `-` or `_`, e.g. `ST019`, `ST7`; 40 stations)
 
 ### deepfish
 - **Source**: [QLD Data](http://data.qld.edu.au/public/Q5842/2020-AlzayatSaleh-00e364223a600e83bd9c3f5bcd91045-DeepFish/DeepFish.tar)
