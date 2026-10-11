@@ -235,13 +235,16 @@ Saleh A, Laradji IH, Konovalov DA, Bradley M, Vazquez D, Sheaves M. A realistic 
 - Data downloadable via https from Queensland University ([download link](https://alzayats.github.io/DeepFish/)) (7.1GB)
 - License: Code is MIT, data is implied-MIT
 - Metadata raw format: png (segmentation masks)
-- Categories/species: 
+- Categories/species: fish (species from tropical Australian habitats, e.g. Lutjanus, Caranx, Epinephelus, Gerres)
+  - fish: fish
+  - non-fish: none
+  - discarded: mask noise (14 components of 1-20 px)
 - Vehicle type: underwater camera deployed over the side of a boat
-- Image information: 311 images with segmentation masks
-- Annotation information: 388 segmentation masks
+- Image information: 620 images used (310 with segmentation masks, 310 empty)
+- Annotation information: 310 segmentation masks, 374 fish bounding boxes after connected component analysis
 - Code to render sample annotated image: [deepfish.py](./datasets/deepfish.py)
 
-<img src="./previews/deepfish_sample_image.jpg" alt="DeepFish sample" width="600">
+<img src="./previews/deepfish_sample_image.png" alt="DeepFish sample" width="600">
 
 
 
