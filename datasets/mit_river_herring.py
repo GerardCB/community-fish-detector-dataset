@@ -2,7 +2,13 @@
 MIT Sea Grant River Herring Dataset
 Source: https://storage.googleapis.com/public-datasets-lila/mit-river-herring/mit_river_herring.zip
 Split logic: By location+video (train_test_split on location_video identifiers)
-Categories kept: All (only herring)
+Category mapping:
+  fish: river_herring, trout, perch, bass, eel, lamprey, sunfish, pickerel
+  non-fish: none
+  discard: unknown_fish, together with every image that contains one. These boxes
+    are a mix of real fish and lamp glare, floating debris, bubbles and the
+    timestamp overlay; discarding only the boxes would leave real fish unlabelled.
+Images without annotations (~77% of frames) are kept.
 """
 
 import json
@@ -15,7 +21,7 @@ from sklearn.model_selection import train_test_split
 from datasets.settings import Settings
 from datasets.utils import (
     download_and_extract,
-    compress_annotations_to_single_category,
+    map_annotations_to_fish_and_non_fish,
     add_dataset_shortname_prefix_to_image_names,
     remove_dataset_shortname_prefix_from_image_filename,
     split_coco_dataset_into_train_validation,
@@ -25,13 +31,25 @@ from datasets.utils import (
 
 DATASET_SHORTNAME = "mit_river_herring"
 DATA_URL = "https://storage.googleapis.com/public-datasets-lila/mit-river-herring/mit_river_herring.zip"
-CATEGORIES_FILTER = None
+CATEGORIES_FILTER = {
+    "river_herring": "fish",
+    "trout": "fish",
+    "perch": "fish",
+    "bass": "fish",
+    "eel": "fish",
+    "lamprey": "fish",
+    "sunfish": "fish",
+    "pickerel": "fish",
+}
+AMBIGUOUS_CATEGORIES = ["unknown_fish"]
 
 settings = Settings()
 
 
 def download_data(data_dir: Path):
-    if data_dir.exists():
+    annotations_path = data_dir / "mit_river_herring" / "mit_sea_grant_river_herring.json"
+    # main() creates data_dir before calling this, so check for the extracted files
+    if annotations_path.exists():
         print(f"Data already exists: {data_dir}")
         return
 
@@ -40,25 +58,59 @@ def download_data(data_dir: Path):
     print("Extracting data...")
     download_and_extract(data_dir, DATA_URL, DATASET_SHORTNAME)
 
-    annotations_path = data_dir / "mit_river_herring" / "mit_sea_grant_river_herring.json"
-    images_path = data_dir / "mit_river_herring"
 
-    return annotations_path, images_path
+def drop_images_with_ambiguous_annotations(annotations_path: Path, output_path: Path):
+    """
+    Drops images containing any AMBIGUOUS_CATEGORIES annotation, together with all
+    their annotations. Discarding only the annotations would leave real fish
+    unlabelled in the image.
+    """
+    if output_path.exists():
+        print(f"Filtered annotation file already exists at {output_path}")
+        return output_path
+
+    with open(annotations_path, "r") as f:
+        coco_data = json.load(f)
+
+    ambiguous_category_ids = {
+        c["id"] for c in coco_data["categories"] if c["name"] in AMBIGUOUS_CATEGORIES
+    }
+    ambiguous_image_ids = {
+        a["image_id"]
+        for a in coco_data["annotations"]
+        if a["category_id"] in ambiguous_category_ids
+    }
+    coco_data["images"] = [
+        i for i in coco_data["images"] if i["id"] not in ambiguous_image_ids
+    ]
+    coco_data["annotations"] = [
+        a for a in coco_data["annotations"] if a["image_id"] not in ambiguous_image_ids
+    ]
+    print(
+        f"Dropped {len(ambiguous_image_ids)} images with {AMBIGUOUS_CATEGORIES} annotations"
+    )
+
+    with open(output_path, "w") as f:
+        json.dump(coco_data, f)
+
+    return output_path
 
 
-def get_list_of_deployments_to_include_in_train_set(images_path: Path) -> list[str]:
+def get_location_and_video(image_filename: str) -> str:
+    return "_".join(
+        remove_dataset_shortname_prefix_from_image_filename(
+            image_filename, DATASET_SHORTNAME
+        ).split("_")[:2]
+    )
+
+
+def get_list_of_deployments_to_include_in_train_set(annotations_path: Path) -> list[str]:
     """Extract location and video names from the image filenames."""
-    all_deployments = list(
-        set(
-            [
-                "_".join(
-                    remove_dataset_shortname_prefix_from_image_filename(
-                        img_path.name, DATASET_SHORTNAME
-                    ).split("_")[:2]
-                )
-                for img_path in images_path.glob("*.PNG")
-            ]
-        )
+    with open(annotations_path, "r") as f:
+        images = json.load(f)["images"]
+    # Sorted so the split does not depend on set iteration order
+    all_deployments = sorted(
+        {get_location_and_video(image["file_name"]) for image in images}
     )
     train_deployments, _ = train_test_split(
         all_deployments,
@@ -124,31 +176,31 @@ def main():
         aggregated_images_path,
     )
 
-    compressed_annotations_path = processing_dir / "compressed_annotations.json"
-    compressed_annotations_path = compress_annotations_to_single_category(
-        aggregated_annotations_path, CATEGORIES_FILTER, compressed_annotations_path
+    filtered_annotations_path = processing_dir / "filtered_annotations.json"
+    drop_images_with_ambiguous_annotations(
+        aggregated_annotations_path, filtered_annotations_path
+    )
+
+    mapped_annotations_path = processing_dir / "mapped_annotations.json"
+    map_annotations_to_fish_and_non_fish(
+        filtered_annotations_path, CATEGORIES_FILTER, mapped_annotations_path
     )
 
     add_dataset_shortname_prefix_to_image_names(
         images_path=aggregated_images_path,
-        annotations_path=compressed_annotations_path,
+        annotations_path=mapped_annotations_path,
         dataset_shortname=DATASET_SHORTNAME,
     )
 
     # 3. PREVIEW
-    save_preview_image(aggregated_images_path, compressed_annotations_path, DATASET_SHORTNAME)
+    save_preview_image(aggregated_images_path, mapped_annotations_path, DATASET_SHORTNAME)
 
     # 4. SPLIT
-    train_camera_names = get_list_of_deployments_to_include_in_train_set(
-        aggregated_images_path
+    train_deployments = set(
+        get_list_of_deployments_to_include_in_train_set(mapped_annotations_path)
     )
     should_the_image_be_included_in_train_set = (
-        lambda image_name: "_".join(
-            remove_dataset_shortname_prefix_from_image_filename(
-                image_name, DATASET_SHORTNAME
-            ).split("_")[:2]
-        )
-        in train_camera_names
+        lambda image_name: get_location_and_video(image_name) in train_deployments
     )
 
     train_dataset_path = (
@@ -162,7 +214,7 @@ def main():
 
     split_coco_dataset_into_train_validation(
         aggregated_images_path,
-        compressed_annotations_path,
+        mapped_annotations_path,
         train_dataset_path,
         val_dataset_path,
         should_the_image_be_included_in_train_set,
