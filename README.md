@@ -254,7 +254,10 @@ Allken V, Rosen S. [Deep Vision fish dataset](https://doi.org/10.21335/NMDC-5517
 - Data downloadable via via https from the Norwegian Marine Data Centre ([download link](https://metadata.nmdc.no/metadata-api/landingpage/01d102345aef4639f063a13ea20cd3f3))
 - License: CC BY 4.0
 - Metadata raw format: csv
-- Categories/species: economically important pelagic species
+- Categories/species: economically important pelagic species (herring, mackerel, blue whiting, mesopelagic fish, barracudinas, salmon, lumpsucker)
+  - fish: herring, mackerel, bluewhiting, mesopelagic, Sharpchin barracudina, spotted barracudina, salmon, lumpsucker
+  - non-fish: none
+  - discarded: none
 - Vehicle type: pictures from fish tanks
 - Image information: 1875 RGB images
 - Annotation information: 4834 bounding boxes, segmentation masks

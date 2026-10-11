@@ -1,23 +1,37 @@
 """
 Deep Vision Dataset
 Source: https://ftp.nmdc.no/nmdc/IMR/MachineLearning/fishDatasetSimulationAlgorithm.zip
-Split logic: By deployment (train_test_split on unique deployment identifiers)
-Categories kept: All (all are fish)
+Split logic: By trawl station (train_test_split on the station token of the filename,
+    e.g. "ST019" in "ST019-1-20170511204109920.jpg" or "ST7" in "ST7_129-...jpg")
+Category mapping:
+  fish: herring, mackerel, bluewhiting, mesopelagic (lanternfish-type fish),
+    Sharpchin barracudina, spotted barracudina, salmon, lumpsucker
+  non-fish: none
+  discard: none
+
+Annotations come from several CSVs that partly overlap: a few images appear in more
+than one CSV, annotated separately. Each image takes its boxes from the first CSV
+that lists it, so its fish are not boxed twice. Some CSV rows give the wrong
+species folder for an image (e.g. "test/mackerel/" for a file in "test/mixed/"); those
+images are looked up by filename instead.
 """
 
 import csv
 import json
+import re
 import shutil
 from pathlib import Path
-from typing import Set
 
+from PIL import Image
 from sklearn.model_selection import train_test_split
 
 from datasets.settings import Settings
 from datasets.utils import (
     download_and_extract,
     CompressionType,
-    compress_annotations_to_single_category,
+    map_annotations_to_fish_and_non_fish,
+    add_dataset_shortname_prefix_to_image_names,
+    remove_dataset_shortname_prefix_from_image_filename,
     split_coco_dataset_into_train_validation,
     save_preview_image,
 )
@@ -27,12 +41,24 @@ DATASET_SHORTNAME = "deep_vision"
 DATA_URL = (
     "https://ftp.nmdc.no/nmdc/IMR/MachineLearning/fishDatasetSimulationAlgorithm.zip"
 )
-CATEGORIES_FILTER = None
+CATEGORIES_FILTER = {
+    "herring": "fish",
+    "mackerel": "fish",
+    "bluewhiting": "fish",
+    "mesopelagic": "fish",
+    "Sharpchin barracudina": "fish",
+    "spotted barracudina": "fish",
+    "salmon": "fish",
+    "lumpsucker": "fish",
+}
 
 settings = Settings()
 
 
 def download_data(download_path: Path):
+    if (download_path / "fish_dataset").exists():
+        print(f"Data already exists: {download_path}")
+        return
     download_and_extract(
         download_path, DATA_URL, DATASET_SHORTNAME, CompressionType.ZIP
     )
@@ -41,8 +67,16 @@ def download_data(download_path: Path):
 def csvs_to_coco(download_dir: Path, csv_files, images_path, output_json):
     """
     Converts multiple CSV files with annotations to a COCO-format JSON file.
+    Each image takes its annotations from the first CSV that lists it.
     """
     images = {}
+    image_source_csv = {}
+    # Some CSV rows point to the wrong species folder, so fall back to the filename
+    image_name_to_path = {
+        image_path.name: image_path
+        for image_path in sorted((download_dir / "fish_dataset").glob("20*/test/*/*.jpg"))
+        + sorted((download_dir / "fish_dataset").glob("20*/train/source-images/*/*.jpg"))
+    }
     annotations = []
     categories = {}
 
@@ -60,11 +94,14 @@ def csvs_to_coco(download_dir: Path, csv_files, images_path, output_json):
                 rel_file_name = rel_file_name.lstrip("/")
                 raw_image_path = download_dir / "fish_dataset" / rel_file_name
                 file_name = raw_image_path.name
+                if not raw_image_path.exists():
+                    raw_image_path = image_name_to_path.get(file_name)
+                    if raw_image_path is None:
+                        print(f"Image not found, skipping: {rel_file_name}")
+                        continue
 
-                try:
-                    shutil.copy2(raw_image_path, images_path / file_name)
-                except Exception as e:
-                    print(f"Error copying image {file_name}: {e}")
+                # Skip images already annotated by an earlier CSV
+                if image_source_csv.setdefault(file_name, csv_file) != csv_file:
                     continue
 
                 try:
@@ -72,17 +109,20 @@ def csvs_to_coco(download_dir: Path, csv_files, images_path, output_json):
                 except ValueError:
                     continue
 
-                width = xmax - xmin
-                height = ymax - ymin
-
                 if file_name not in images:
+                    shutil.copy2(raw_image_path, images_path / file_name)
+                    with Image.open(raw_image_path) as img:
+                        image_width, image_height = img.size
                     images[file_name] = {
                         "id": image_id,
                         "file_name": file_name,
-                        "width": None,
-                        "height": None,
+                        "width": image_width,
+                        "height": image_height,
                     }
                     image_id += 1
+
+                width = xmax - xmin
+                height = ymax - ymin
 
                 if label not in categories:
                     cat_id = len(categories) + 1
@@ -123,11 +163,15 @@ def csvs_to_coco(download_dir: Path, csv_files, images_path, output_json):
 
 def create_coco_dataset(download_dir: Path, images_path: Path, annotations_path: Path):
     """Convert CSV annotations to COCO format."""
+    # The per-year CSVs come first; the root-level test/val CSVs mostly repeat them
+    # but also annotate a few images the per-year CSVs miss.
     csv_files = [
         download_dir / "fish_dataset/2017/train/source-train2017-annotations.csv",
         download_dir / "fish_dataset/2017/test/test_2017_annotations.csv",
         download_dir / "fish_dataset/2018/train/source-train2018-annotations.csv",
         download_dir / "fish_dataset/2018/test/test_2018_annotations.csv",
+        download_dir / "fish_dataset/test_annotations.csv",
+        download_dir / "fish_dataset/val_annotations.csv",
     ]
 
     if annotations_path.exists():
@@ -138,21 +182,28 @@ def create_coco_dataset(download_dir: Path, images_path: Path, annotations_path:
     return images_path, annotations_path
 
 
-def get_unique_deployments(image_folder: Path) -> Set:
-    deployments = set()
-    for image_path in image_folder.glob("*.jpg"):
-        deployments.add(image_path.stem.split("_")[0])
-    return deployments
+def get_station(image_filename: str) -> str:
+    """
+    Station token of the filename: "ST019" for "ST019-1-20170511204109920.jpg" (2017)
+    and "ST7" for "ST7_129-20180507063944924.jpg" (2018).
+    """
+    image_filename = remove_dataset_shortname_prefix_from_image_filename(
+        Path(image_filename).name, DATASET_SHORTNAME
+    )
+    return re.split(r"[-_]", image_filename)[0]
 
 
-def get_list_of_deployments_to_include_in_train_set(image_folder: Path) -> list[str]:
-    deployments = list(get_unique_deployments(image_folder))
-    train_deployments, _ = train_test_split(
-        list(deployments),
+def get_list_of_stations_to_include_in_train_set(annotations_path: Path) -> list[str]:
+    with open(annotations_path, "r") as f:
+        images = json.load(f)["images"]
+    # Sorted so the split does not depend on set iteration order
+    stations = sorted({get_station(image["file_name"]) for image in images})
+    train_stations, _ = train_test_split(
+        stations,
         test_size=settings.train_val_split_ratio,
         random_state=settings.random_state,
     )
-    return train_deployments
+    return train_stations
 
 
 def main():
@@ -171,18 +222,24 @@ def main():
 
     create_coco_dataset(raw_download_path, coco_images_path, coco_annotations_path)
 
-    compressed_annotations_path = processing_dir / "annotations_coco_compressed.json"
-    compress_annotations_to_single_category(
-        coco_annotations_path, CATEGORIES_FILTER, compressed_annotations_path
+    mapped_annotations_path = processing_dir / "mapped_annotations.json"
+    map_annotations_to_fish_and_non_fish(
+        coco_annotations_path, CATEGORIES_FILTER, mapped_annotations_path
+    )
+
+    add_dataset_shortname_prefix_to_image_names(
+        coco_images_path, mapped_annotations_path, DATASET_SHORTNAME
     )
 
     # 3. PREVIEW
-    save_preview_image(coco_images_path, compressed_annotations_path, DATASET_SHORTNAME)
+    save_preview_image(coco_images_path, mapped_annotations_path, DATASET_SHORTNAME)
 
     # 4. SPLIT
-    train_deployments = get_list_of_deployments_to_include_in_train_set(coco_images_path)
+    train_stations = set(
+        get_list_of_stations_to_include_in_train_set(mapped_annotations_path)
+    )
     should_the_image_be_included_in_train_set = (
-        lambda image_path: Path(image_path).stem.split("_")[0] in train_deployments
+        lambda image_path: get_station(image_path) in train_stations
     )
 
     train_dataset_path = (
@@ -196,7 +253,7 @@ def main():
 
     split_coco_dataset_into_train_validation(
         coco_images_path,
-        compressed_annotations_path,
+        mapped_annotations_path,
         train_dataset_path,
         val_dataset_path,
         should_the_image_be_included_in_train_set,
