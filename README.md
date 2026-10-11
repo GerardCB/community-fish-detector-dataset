@@ -518,6 +518,7 @@ Datasets that we're aware exist, but that we haven't evaluated or processed yet.
 - [Newfoundland Marine Refuge Fish Classification Dataset (N-MARINE)](https://ouvert.canada.ca/data/dataset/2ae46860-f82a-4127-bb1f-b02e36ef6a70) (~24k images of marine fish in Canada, with ~24k boxes)
 - [J-EDI](https://www.godac.jamstec.go.jp/jedi/e/dataset/jedi_organism_detection_dataset.html) (~8k images with 19 deep-sea animal categories)
 - [OBSEA](https://zenodo.org/records/14888328) (~35k boxes on ~4k images from a cabled observatory in the Mediterranean)
+- [DIGI4ECO](https://zenodo.org/records/20701225) (~126k boxes on ~6k video frames from the Adriatic Sea, the Mediterranean Sea, and Galway Bay)
 - [FjordFish](https://zenodo.org/records/17950781) (~6k boxes on ~3k images from a BRUV in the North Atlantic)
 - [SFISHTRACK](https://github.com/JosepSanchezCano/SFISHTRACK) (~24k frames with segmentation masks)
 - [CoralscapesV2](https://josauder.github.io/coralscapesv2/) (~2.4k images with ~66k fish instance masks; Coralscapes v1 is already included in CFD)
