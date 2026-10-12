@@ -56,7 +56,11 @@ Each dataset script in `datasets/` follows a 4-step pattern: Download -> Process
 - **Source**: [LILA](https://storage.googleapis.com/public-datasets-lila/mit-river-herring/mit_river_herring.zip)
 - **Download**: Automatic
 - **Annotations**: COCO format (multiple sub-datasets joined into one)
-- **Category filter**: None (only herring)
+- **Category mapping**:
+  - fish: river_herring, trout, perch, bass, eel, lamprey, sunfish, pickerel
+  - non-fish: none
+  - discard: unknown_fish. Images containing it are dropped entirely (2,734 frames), as these boxes mix real fish with lamp glare, debris, bubbles and the timestamp overlay
+- **Empty frames**: kept (~77% of frames have no boxes)
 - **Split**: By location+video (first two tokens of filename)
 
 ### noaa_puget

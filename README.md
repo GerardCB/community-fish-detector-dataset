@@ -141,7 +141,10 @@ Images of freshwater fish taken from underwater videos with 91,482 bounding boxe
 - Data downloadable via via https from LILA ([download link](https://lila.science/datasets/mit-sea-grant-river-herring/))
 - License: CDLA-permissive 1.0
 - Metadata raw format: COCO
-- Categories/species: fish
+- Categories/species: river herring (alewife and blueback), trout, perch, bass, eel, lamprey, sunfish, pickerel, unknown fish
+  - fish: river_herring, trout, perch, bass, eel, lamprey, sunfish, pickerel
+  - non-fish: none
+  - discarded: unknown_fish (images containing it are dropped)
 - Vehicle type: Frames taken fromUnderwater Videos
 - Image information: 262,050 images
 - Annotation information: 91,482 bounding boxes
