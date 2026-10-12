@@ -36,10 +36,13 @@ Each dataset script in `datasets/` follows a 4-step pattern: Download -> Process
 
 ### fathomnet
 - **Source**: [FathomNet API](https://fathomnet.org/)
-- **Download**: Automatic via `fathomnet-generate` CLI (~12 hours)
-- **Annotations**: COCO format from FathomNet API (fish concepts: Actinopterygii, Sarcopterygii, Chondrichthyes, Myxini descendants)
-- **Category filter**: None (filtered at download)
-- **Split**: Random
+- **Download**: Automatic. The image records of every fish and non-fish concept are fetched from the FathomNet API and written as COCO annotations (boxes of discarded concepts are dropped, images without a fish or non-fish box are not fetched), then the images are downloaded from their URLs. `fathomnet-generate` is not used: it crashes on images with no width/height in FathomNet, which are filled in from the downloaded files. Takes many hours; an interrupted run resumes, skipping images already on disk
+- **Annotations**: COCO format from the FathomNet API
+- **Category mapping**: every FathomNet concept is assigned from its WoRMS lineage (deepest matching rank wins; for `X sp.` / `X complex` labels the genus is looked up), plus a hand-written list for common names with no WoRMS match. The resolved concept -> class mapping is committed in [`datasets/fathomnet_categories.json`](datasets/fathomnet_categories.json) (rebuild with `python -m datasets.fathomnet --rebuild-categories`). Box counts from the API on 2026-10-11:
+  - fish (698k boxes, 714 concepts): Actinopterygii, Sarcopterygii, Chondrichthyes, Agnatha; `bony fish`, `shark`, `ray or skate`, `chimaera`, `vertebrate` and other unmatched fish labels
+  - non-fish (214k boxes, 784 concepts): Tetrapoda; Asterozoa, Echinoidea, Holothuroidea (except Psolidae), Comatulida / `feather star`; Decapoda, Stomatopoda, Lophogastrida, Aegidae, Cirolanidae, Colossendeidae; Cephalopoda, Neogastropoda, Ringipleura, Pseudothecosomata, Pterotracheoidea, Seguenziida, Pleurotomariida; Scyphozoa, Staurozoa, Cubozoa, Narcomedusae (except *Solmaris*, *Solmundella*), *Colobonema*, *Halicreas*, *Halitrephes*, *Mitrocoma*; Lobata, Beroida; `brittle star`, `urchin`, `sea star`, `sea cucumber`, `shrimp`, `crab`, `squid`, `octopus`, `sea turtle` and other unmatched labels
+  - discard (385k boxes, 1,436 concepts): corals, sea pens, zoanthids, hydroids, sponges, anemones, corallimorphs, sea squirts, brachiopods, bryozoans, barnacles, bivalves, all worms and tunicates, siphonophores, chaetognaths, small or generic jellies, cydippid and generic ctenophores, attached sea cucumbers (Psolidae), stalked crinoids, limpets and small snails, amphipods, mysids, krill, copepods, most isopods, generic labels (`marine organism`, `Chordata`, `echinoderm`, `crustacean`, ...), `Holothuroidea/Actiniaria`, protists, algae and equipment
+- **Split**: Random by image (sorted file names, `random_state`)
 
 ### fishclef
 - **Source**: [Zenodo](https://zenodo.org/records/15202605/files/fishclef_2015_release.zip?download=1)

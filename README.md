@@ -447,6 +447,9 @@ The FathomNet Database is an open-source image database that can be used to trai
 - License: CC BY-NC-ND 4.0 with provision: *Notwithstanding any contrary provisions of such license, all Images may be used for training and development of machine learning algorithms for commercial, academic, and government purposes. For all other uses of the Images, users should contact the original copyright holder indicated in the Database for the applicable Images. The users of the Images accept full responsibility for their use.* ([source](https://fathomnet.org/fathomnet/#/license))
 - Metadata raw format: N/A (exportable via [fathomnet-py](https://github.com/fathomnet/fathomnet-py) to VOC, COCO, YOLO)
 - Categories/species: many (2400+ concepts in the database)
+  - fish: Actinopterygii, Sarcopterygii, Chondrichthyes, Agnatha concepts, plus common names such as bony fish, shark, ray or skate
+  - non-fish: motile animals > ~3 cm: marine mammals, turtles, seabirds, sea stars, brittle stars, urchins, sea cucumbers, feather stars, decapods, cephalopods, large snails and sea slugs, large jellies, comb jellies (Lobata, Beroida), large sea spiders and isopods
+  - discarded: corals, sponges, anemones and other sessile animals, worms, tunicates, siphonophores, small jellies, small crustaceans and snails, generic labels (marine organism), algae, equipment. Full concept list in [fathomnet_categories.json](./datasets/fathomnet_categories.json)
 - Vehicle type: primarily ROV
 - Image information: 100k+ images (growing over time)
 - Annotation information: 300k+ annotations (growing over time)
