@@ -1,103 +1,128 @@
 """
 KakaduFishAI Dataset
-Source: Manual download required
-Split logic: Random (no location/camera grouping available)
-Categories kept: All (all are fish)
+Source: https://zenodo.org/records/7250921 (202210-KakaduFishAI-TrainingData.zip)
+Split logic: Random by image, reproducible (file names are shuffled ids, no
+    deployment/video information is available)
+Category mapping:
+  fish: all 23 classes (freshwater fish species)
+  non-fish: none
+  discard: none
 
-Manual download required: place the dataset in fish-datasets/data/raw/kakadu/
+The zip is compressed with Deflate64, which Python's zipfile cannot decompress, so it is
+extracted with the system `unzip`.
 """
 
 import json
 import shutil
+import subprocess
 from pathlib import Path
+
+from sklearn.model_selection import train_test_split
+from tqdm import tqdm
 
 from datasets.settings import Settings
 from datasets.utils import (
-    compress_annotations_to_single_category,
+    download_file,
+    map_annotations_to_fish_and_non_fish,
     split_coco_dataset_into_train_validation,
-    copy_images_to_processing,
     add_dataset_shortname_prefix_to_image_names,
-    get_train_images_with_random_splitting,
     save_preview_image,
 )
 
 
 DATASET_SHORTNAME = "kakadu"
-CATEGORIES_FILTER = None
+SOURCE_URL = "https://zenodo.org/records/7250921/files/202210-KakaduFishAI-TrainingData.zip?download=1"
+CATEGORIES_FILTER = {
+    "Ambassis agrammus": "fish",
+    "Ambassis macleayi": "fish",
+    "Amniataba percoides": "fish",
+    "Craterocephalus sturcusmuscarum": "fish",
+    "Denariusa bandata": "fish",
+    "Glossamia aprion": "fish",
+    "Glossogobius spp.": "fish",
+    "Hephaestus fuliginosus": "fish",
+    "Lates calcarifer": "fish",
+    "Leiopotherapon unicolor": "fish",
+    "Liza ordensis": "fish",
+    "Megalops cyprinoides": "fish",
+    "Melanotaenia nigrans": "fish",
+    "Melanotaenia splendida inornata": "fish",
+    "Mogurnda mogurnda": "fish",
+    "Nematalosa erebi": "fish",
+    "Neoarius spp.": "fish",
+    "Neosilurus spp.": "fish",
+    "Oxyeleotris lineolata": "fish",
+    "Scleropages jardinii": "fish",
+    "Strongylura krefftii": "fish",
+    "Sycomistes butleri": "fish",
+    "Toxotes chatareus": "fish",
+}
 
 settings = Settings()
 
+raw_data_dir = settings.raw_dir / DATASET_SHORTNAME
+raw_annotations_path = raw_data_dir / "KakaduFishAI_boundingbox.json"
 processing_dir = settings.intermediate_dir / DATASET_SHORTNAME
-annotations_path = processing_dir / "annotations_coco.json"
-coco_images_path = processing_dir / settings.images_folder_name
-compressed_annotations_path = processing_dir / "annotations_coco_compressed.json"
+mapped_annotations_path = processing_dir / "kakadu_mapped_annotations.json"
+images_path = processing_dir / settings.images_folder_name
 
 
 def download_data():
-    """
-    Manual download required. Place the dataset in fish-datasets/data/raw/kakadu/
-    """
-    download_path = settings.raw_dir / DATASET_SHORTNAME
-    if download_path.exists() and any(download_path.iterdir()):
-        print("Data already downloaded")
-        return
-    raise NotImplementedError(
-        "Manual download required. Place the dataset in "
-        f"{download_path}"
-    )
-
-
-def clean_annotations():
-    """Clean annotations by removing entries without bounding boxes."""
-    raw_annotations_path = settings.raw_dir / DATASET_SHORTNAME / "KakaduFishAI_boundingbox.json"
-
-    if not raw_annotations_path.exists():
-        print(f"Annotations file not found: {raw_annotations_path}")
+    """Download the training data zip from Zenodo and extract it with `unzip`."""
+    if raw_annotations_path.exists():
+        print(f"Data already downloaded: {raw_data_dir}")
         return
 
-    with open(raw_annotations_path, "r") as f:
-        annotations = json.load(f)
+    raw_data_dir.mkdir(parents=True, exist_ok=True)
+    zip_path = raw_data_dir / f"{DATASET_SHORTNAME}.zip"
+    if not zip_path.exists():
+        partial = zip_path.with_name(zip_path.name + ".part")
+        download_file(SOURCE_URL, partial)
+        partial.rename(zip_path)
 
-    cleaned_annotations = []
-    print(f"Number of annotations: {len(annotations['annotations'])}")
-
-    for annotation in annotations["annotations"]:
-        if "bbox" not in annotation or len(annotation["bbox"]) == 0:
-            print(f"No bbox found for {annotation['image_id']}")
-        else:
-            cleaned_annotations.append(annotation)
-
-    annotations["annotations"] = cleaned_annotations
-
-    with open(raw_annotations_path, "w") as f:
-        print(f"Number of annotations after cleaning: {len(annotations['annotations'])}")
-        json.dump(annotations, f)
+    # Deflate64-compressed: Python's zipfile (extract_downloaded_file) cannot extract it
+    print(f"Extracting {zip_path} to {raw_data_dir}")
+    subprocess.run(["unzip", "-q", "-o", str(zip_path), "-d", str(raw_data_dir)], check=True)
+    zip_path.unlink()
 
 
-def annotations_processing():
-    clean_annotations()
+def copy_images():
+    images_path.mkdir(parents=True, exist_ok=True)
+    with open(raw_annotations_path) as f:
+        file_names = [image["file_name"] for image in json.load(f)["images"]]
+    for file_name in tqdm(file_names):
+        target = images_path / file_name
+        if not target.exists() and not (images_path / f"{DATASET_SHORTNAME}_{file_name}").exists():
+            shutil.copy2(raw_data_dir / file_name, target)
 
+
+def processing():
     processing_dir.mkdir(parents=True, exist_ok=True)
-    coco_images_path.mkdir(parents=True, exist_ok=True)
 
-    copy_images_to_processing(DATASET_SHORTNAME, settings.raw_dir / DATASET_SHORTNAME)
+    copy_images()
 
-    shutil.move(str(processing_dir / "JPEGImages/KakaduFishAI_boundingbox.json"), str(annotations_path))
-
-    compress_annotations_to_single_category(
-        annotations_path, CATEGORIES_FILTER, compressed_annotations_path
+    map_annotations_to_fish_and_non_fish(
+        raw_annotations_path, CATEGORIES_FILTER, mapped_annotations_path
     )
 
     add_dataset_shortname_prefix_to_image_names(
-        coco_images_path, compressed_annotations_path, DATASET_SHORTNAME
+        images_path, mapped_annotations_path, DATASET_SHORTNAME
     )
 
 
 def dataset_splitting():
-    # Random splitting
-    train_image_names = get_train_images_with_random_splitting(coco_images_path)
+    # Random split by image, reproducible: sorted file names + fixed random_state
+    with open(mapped_annotations_path) as f:
+        image_names = sorted(Path(image["file_name"]).name for image in json.load(f)["images"])
+    train_images, _ = train_test_split(
+        image_names,
+        test_size=settings.train_val_split_ratio,
+        random_state=settings.random_state,
+    )
+    train_images = set(train_images)
+
     should_the_image_be_included_in_train_set = (
-        lambda image_path: image_path in train_image_names
+        lambda image_path: Path(image_path).name in train_images
     )
 
     train_dataset_path = (
@@ -110,8 +135,8 @@ def dataset_splitting():
     val_dataset_path.mkdir(parents=True)
 
     split_coco_dataset_into_train_validation(
-        coco_images_path,
-        compressed_annotations_path,
+        images_path,
+        mapped_annotations_path,
         train_dataset_path,
         val_dataset_path,
         should_the_image_be_included_in_train_set,
@@ -123,10 +148,10 @@ def main():
     download_data()
 
     # 2. PROCESS
-    annotations_processing()
+    processing()
 
     # 3. PREVIEW
-    save_preview_image(coco_images_path, compressed_annotations_path, DATASET_SHORTNAME)
+    save_preview_image(images_path, mapped_annotations_path, DATASET_SHORTNAME)
 
     # 4. SPLIT
     dataset_splitting()
