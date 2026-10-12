@@ -293,10 +293,11 @@ def download_data():
 
     with open(raw_annotations_path) as f:
         coco_images = json.load(f)["images"]
+    downloaded = set(os.listdir(raw_images_path))
     to_download = [
         (image["coco_url"], raw_images_path / image["file_name"])
         for image in coco_images
-        if not (raw_images_path / image["file_name"]).exists()
+        if image["file_name"] not in downloaded
     ]
     print(f"Downloading {len(to_download)} of {len(coco_images)} images to {raw_images_path}")
 
@@ -325,19 +326,22 @@ def link_images_to_processing():
     with open(mapped_annotations_path) as f:
         coco_data = json.load(f)
 
+    # One directory listing each instead of a file check per image (slow on network drives)
+    downloaded = set(os.listdir(raw_images_path))
+    linked = set(os.listdir(images_path))
     kept_images = []
     for image in tqdm(coco_data["images"]):
         # On a rerun the annotations already hold the prefixed names
         file_name = remove_dataset_shortname_prefix_from_image_filename(
             Path(image["file_name"]).name, DATASET_SHORTNAME
         )
-        source = raw_images_path / file_name
-        if not source.exists():
+        if file_name not in downloaded:
             continue
         kept_images.append(image)
-        target = images_path / file_name
-        if target.exists() or (images_path / f"{DATASET_SHORTNAME}_{file_name}").exists():
+        if file_name in linked or f"{DATASET_SHORTNAME}_{file_name}" in linked:
             continue
+        source = raw_images_path / file_name
+        target = images_path / file_name
         try:
             os.link(source, target)
         except OSError:
@@ -353,12 +357,54 @@ def link_images_to_processing():
             json.dump(coco_data, f, indent=2)
 
 
+def clean_boxes():
+    """
+    A few FathomNet boxes have a zero or negative width/height (e.g. [504, 140, 47, -1]):
+    drop them. Boxes that extend past the image border are clipped to it.
+    """
+    with open(mapped_annotations_path) as f:
+        coco_data = json.load(f)
+    image_sizes = {image["id"]: (image["width"], image["height"]) for image in coco_data["images"]}
+
+    kept, dropped, clipped = [], 0, 0
+    for annotation in coco_data["annotations"]:
+        x, y, w, h = annotation["bbox"]
+        width, height = image_sizes[annotation["image_id"]]
+        if w <= 0 or h <= 0:
+            dropped += 1
+            continue
+        x1, y1 = max(x, 0), max(y, 0)
+        x2, y2 = min(x + w, width), min(y + h, height)
+        if x2 - x1 < 1 or y2 - y1 < 1:
+            dropped += 1
+            continue
+        if [x1, y1, x2 - x1, y2 - y1] != [x, y, w, h]:
+            annotation["bbox"] = [x1, y1, x2 - x1, y2 - y1]
+            annotation["area"] = (x2 - x1) * (y2 - y1)
+            clipped += 1
+        kept.append(annotation)
+
+    if dropped or clipped:
+        print(f"Dropped {dropped} boxes with no area, clipped {clipped} boxes to the image")
+        coco_data["annotations"] = kept
+        # An image whose only boxes were dropped would become a false background image
+        annotated_ids = {annotation["image_id"] for annotation in kept}
+        empty = [image for image in coco_data["images"] if image["id"] not in annotated_ids]
+        if empty:
+            print(f"Dropped {len(empty)} images left without boxes")
+            coco_data["images"] = [image for image in coco_data["images"] if image["id"] in annotated_ids]
+        with open(mapped_annotations_path, "w") as f:
+            json.dump(coco_data, f, indent=2)
+
+
 def processing():
     processing_dir.mkdir(parents=True, exist_ok=True)
 
     map_annotations_to_fish_and_non_fish(
         raw_annotations_path, CATEGORIES_FILTER, mapped_annotations_path
     )
+
+    clean_boxes()
 
     link_images_to_processing()
 
