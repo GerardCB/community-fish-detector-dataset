@@ -384,6 +384,9 @@ Jansen A, Walden D, Walker S, Buccella C.  [A deep learning dataset for underwat
 - License: CC BY 4.0 LEGAL CODE
 - Metadata raw format: json
 - Categories/species: Ambassis agrammus, Ambassis macleayi, Amniataba percoides, Craterocephalus stercusmuscarum, Denariusa bandata, Glossamia aprion, Glossogobius spp., Hephaestus fuliginosus, Lates calcarifer, Leiopotherapon unicolor, Liza ordensis, Megalops cyprinoides, Melanotaenia nigrans, Melanotaenia splendida inornata, Mogurnda mogurnda, Nemetalosa erebi, Neoarius spp., Neosilurus spp., Oxyeleotris spp., Scleropages jardinii, Strongylura kreffti, Syncomistes butleri, Toxotes chatareus
+  - fish: all 23 species
+  - non-fish: none
+  - discarded: none
 - Vehicle type: RUV
 - Image information: 44,112 images (images were derived from Remote Underwater Video (RUV) deployments in deep channel and shallow lowland billabongs, Kakadu National Park, Northern Territory Australia)
 - Annotation information: 82,904 bounding boxes

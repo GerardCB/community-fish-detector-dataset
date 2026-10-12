@@ -163,11 +163,14 @@ These datasets require manual download or have special dependencies.
 - **Split**: By video ID (106-109 val, 110-124 train)
 
 ### kakadu
-- **Source**: Manual download
-- **Download**: Manual - place dataset in `data/raw/kakadu/`
-- **Annotations**: COCO format (cleaned to remove empty bboxes)
-- **Category filter**: None (all are fish)
-- **Split**: Random
+- **Source**: [Zenodo](https://zenodo.org/records/7250921) (`202210-KakaduFishAI-TrainingData.zip`, 5.9 GB)
+- **Download**: Automatic. The zip is Deflate64-compressed, which Python's `zipfile` cannot extract, so it is extracted with the system `unzip`
+- **Annotations**: COCO format (already provided; every image has at least one box)
+- **Category mapping**:
+  - fish: all 23 classes (`Ambassis agrammus`, `Ambassis macleayi`, `Amniataba percoides`, `Craterocephalus sturcusmuscarum`, `Denariusa bandata`, `Glossamia aprion`, `Glossogobius spp.`, `Hephaestus fuliginosus`, `Lates calcarifer`, `Leiopotherapon unicolor`, `Liza ordensis`, `Megalops cyprinoides`, `Melanotaenia nigrans`, `Melanotaenia splendida inornata`, `Mogurnda mogurnda`, `Nematalosa erebi`, `Neoarius spp.`, `Neosilurus spp.`, `Oxyeleotris lineolata`, `Scleropages jardinii`, `Strongylura krefftii`, `Sycomistes butleri`, `Toxotes chatareus`)
+  - non-fish: none
+  - discard: none
+- **Split**: Random by image (sorted file names, `random_state`). File names are shuffled numeric ids with no deployment or video information
 
 ### marine_detect
 - **Source**: [Orange marine-detect](https://github.com/Orange-OpenSource/marine-detect) (two datasets: [FishInv](https://stpubtenakanclyw.blob.core.windows.net/marine-detect/FishInv-dataset.zip) + [MegaFauna](https://stpubtenakanclyw.blob.core.windows.net/marine-detect/MegaFauna-dataset.zip))
