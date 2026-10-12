@@ -11,9 +11,6 @@ Category mapping:
 The training set XMLs store the species in "fish_species", the test set XMLs in
 "species_name"; both are read.
 
-Excluded videos: test_set "sub_6d9cde8d43ceff4eecc9fd2259d55063#201103120620_5" has a
-single labelled track that sits on water/coral in every frame and never covers a fish.
-
 Frame extraction from .flv videos. One frame per annotated frame in the XML.
 """
 
@@ -71,9 +68,6 @@ CATEGORIES_FILTER = {
     "Siganus Fuscescens": "fish",
     "Zebrasoma Scopas": "fish",
 }
-
-# Videos whose ground truth does not match the footage (see module docstring)
-EXCLUDED_VIDEOS = {"sub_6d9cde8d43ceff4eecc9fd2259d55063#201103120620_5"}
 
 settings = Settings()
 
@@ -180,17 +174,11 @@ def convert_annotations(download_dir: Path, output_dir: Path):
 
     xml_files = training_annotations_path.rglob("*.xml")
     for xml_file in xml_files:
-        if xml_file.stem in EXCLUDED_VIDEOS:
-            print(f"Skipping excluded video '{xml_file.stem}'")
-            continue
         output_json = convert_xml_to_coco(training_videos_path, xml_file, training_annotations_coco_path)
         print(f"Converted '{xml_file}' to '{output_json}'.")
 
     xml_files = test_annotations_path.rglob("*.xml")
     for xml_file in xml_files:
-        if xml_file.stem in EXCLUDED_VIDEOS:
-            print(f"Skipping excluded video '{xml_file.stem}'")
-            continue
         output_json = convert_xml_to_coco(test_videos_path, xml_file, test_annotations_coco_path)
         print(f"Converted '{xml_file}' to '{output_json}'.")
 

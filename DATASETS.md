@@ -41,7 +41,6 @@ Each dataset script in `datasets/` follows a 4-step pattern: Download -> Process
   - non-fish: none
   - discard: none
 - **Species attribute**: `fish_species` in the training set XMLs, `species_name` in the test set XMLs (both read)
-- **Excluded videos**: `sub_6d9cde8d43ceff4eecc9fd2259d55063#201103120620_5` (test set) — its only labelled track sits on water/coral and never covers a fish
 - **Split**: By video ID
 
 ### mit_river_herring
