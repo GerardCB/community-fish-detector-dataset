@@ -1,28 +1,39 @@
 """
 Orange Chromide (Etroplus maculatus) — Annotated underwater fish detection dataset from pond environments
 Source: https://data.mendeley.com/datasets/7w45jx35hd/1
-Split logic: Random split (all images from same pond environment, no location metadata)
-Categories kept: All (single class — fish)
+Split logic: By blocks of 100 frame numbers (images are frames of pond videos, often only
+    1-2 frames apart; the video is not in the filename and frame numbers restart per video,
+    so frames sharing a number block go to the same split)
+Category mapping:
+  fish: the single YOLO class (every fish is boxed: orange chromides, other cichlids, koi)
+  non-fish: none
+  discard: none
 """
 
 import json
+import re
 import shutil
+import urllib.request
 from pathlib import Path
+
+from sklearn.model_selection import train_test_split
 
 from datasets.settings import Settings
 from datasets.utils import (
-    download_and_extract,
+    extract_downloaded_file,
     CompressionType,
-    compress_annotations_to_single_category,
+    map_annotations_to_fish_and_non_fish,
     split_coco_dataset_into_train_validation,
-    get_train_images_with_random_splitting,
     add_dataset_shortname_prefix_to_image_names,
     save_preview_image,
 )
 
 DATASET_SHORTNAME = "orange_chromide"
 DATA_URL = "https://data.mendeley.com/public-api/zip/7w45jx35hd/download/1"
-CATEGORIES_FILTER = None
+# The YOLO labels have a single class (0) with no name; it is written to COCO as "fish"
+CATEGORIES_FILTER = {
+    "fish": "fish",
+}
 
 settings = Settings()
 
@@ -31,12 +42,32 @@ RAW_DATA_SUBDIR = (
     "/Etroplus_maculatus"
 )
 IMAGE_SIZE = 640  # All images are 640x640
+FRAME_BLOCK_SIZE = 100  # Frames whose numbers fall in the same block go to the same split
+
+raw_download_path = settings.raw_dir / DATASET_SHORTNAME
+raw_data_dir = raw_download_path / RAW_DATA_SUBDIR
+processing_dir = settings.intermediate_dir / DATASET_SHORTNAME
+coco_images_path = processing_dir / settings.images_folder_name
+coco_annotations_path = processing_dir / settings.coco_file_name
+mapped_annotations_path = processing_dir / "orange_chromide_mapped_annotations.json"
 
 
-def download_data(download_path: Path):
-    download_and_extract(
-        download_path, DATA_URL, DATASET_SHORTNAME, CompressionType.ZIP
-    )
+def download_data():
+    if raw_data_dir.exists():
+        print(f"Data already downloaded: {raw_data_dir}")
+        return
+
+    raw_download_path.mkdir(parents=True, exist_ok=True)
+    zip_path = raw_download_path / f"{DATASET_SHORTNAME}.zip"
+
+    # Mendeley is behind Cloudflare, which answers `requests` (download_file) with a 403
+    # challenge page; urllib is let through
+    print(f"Downloading {DATA_URL} to {zip_path}")
+    request = urllib.request.Request(DATA_URL, headers={"User-Agent": "Mozilla/5.0"})
+    with urllib.request.urlopen(request) as response, open(zip_path, "wb") as f:
+        shutil.copyfileobj(response, f)
+
+    extract_downloaded_file(zip_path, raw_download_path, CompressionType.ZIP)
 
 
 def yolo_to_coco(raw_data_dir: Path, coco_images_path: Path, coco_annotations_path: Path):
@@ -116,40 +147,40 @@ def yolo_to_coco(raw_data_dir: Path, coco_images_path: Path, coco_annotations_pa
     print(f"Number of annotations: {len(annotations)}")
 
 
-def main():
-    # 1. DOWNLOAD
-    raw_download_path = settings.raw_dir / DATASET_SHORTNAME
-    raw_download_path.mkdir(parents=True, exist_ok=True)
-    download_data(raw_download_path)
+def get_frame_block(image_name: str) -> int:
+    """orange_chromide_frame1081_jpg.rf.<hash>.jpg -> 10"""
+    return int(re.search(r"frame(\d+)_", image_name).group(1)) // FRAME_BLOCK_SIZE
 
-    # 2. PROCESS
-    processing_dir = settings.intermediate_dir / DATASET_SHORTNAME
+
+def processing():
     processing_dir.mkdir(parents=True, exist_ok=True)
 
-    coco_images_path = processing_dir / settings.images_folder_name
-    coco_annotations_path = processing_dir / settings.coco_file_name
-
-    raw_data_dir = raw_download_path / RAW_DATA_SUBDIR
     yolo_to_coco(raw_data_dir, coco_images_path, coco_annotations_path)
 
-    compressed_annotations_path = processing_dir / "annotations_coco_compressed.json"
-    compress_annotations_to_single_category(
-        coco_annotations_path, CATEGORIES_FILTER, compressed_annotations_path
+    map_annotations_to_fish_and_non_fish(
+        coco_annotations_path, CATEGORIES_FILTER, mapped_annotations_path
     )
 
     add_dataset_shortname_prefix_to_image_names(
         images_path=coco_images_path,
-        annotations_path=compressed_annotations_path,
+        annotations_path=mapped_annotations_path,
         dataset_shortname=DATASET_SHORTNAME,
     )
 
-    # 3. PREVIEW
-    save_preview_image(coco_images_path, compressed_annotations_path, DATASET_SHORTNAME)
 
-    # 4. SPLIT
-    train_image_names = get_train_images_with_random_splitting(coco_images_path)
+def dataset_splitting():
+    # Split by frame-number block, reproducible: sorted blocks + fixed random_state
+    with open(mapped_annotations_path) as f:
+        image_names = [image["file_name"] for image in json.load(f)["images"]]
+    train_blocks, _ = train_test_split(
+        sorted({get_frame_block(name) for name in image_names}),
+        test_size=settings.train_val_split_ratio,
+        random_state=settings.random_state,
+    )
+    train_blocks = set(train_blocks)
+
     should_the_image_be_included_in_train_set = (
-        lambda image_path: image_path in train_image_names
+        lambda image_path: get_frame_block(Path(image_path).name) in train_blocks
     )
 
     train_dataset_path = (
@@ -158,16 +189,30 @@ def main():
     val_dataset_path = (
         settings.processed_dir / f"{DATASET_SHORTNAME}{settings.val_dataset_suffix}"
     )
-    train_dataset_path.mkdir(parents=True, exist_ok=True)
-    val_dataset_path.mkdir(parents=True, exist_ok=True)
+    train_dataset_path.mkdir(parents=True)
+    val_dataset_path.mkdir(parents=True)
 
     split_coco_dataset_into_train_validation(
         coco_images_path,
-        compressed_annotations_path,
+        mapped_annotations_path,
         train_dataset_path,
         val_dataset_path,
         should_the_image_be_included_in_train_set,
     )
+
+
+def main():
+    # 1. DOWNLOAD
+    download_data()
+
+    # 2. PROCESS
+    processing()
+
+    # 3. PREVIEW
+    save_preview_image(coco_images_path, mapped_annotations_path, DATASET_SHORTNAME)
+
+    # 4. SPLIT
+    dataset_splitting()
 
 
 if __name__ == "__main__":

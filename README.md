@@ -420,26 +420,6 @@ Bruslund HJ, Karpova A, Pedersen M, Hein BS, Moeslund TB. Re-identification of z
 
 
 
-#### Orange Chromide Pond Fish Detection
-
-586 annotated underwater images of Orange Chromide (Etroplus maculatus) fish in South Indian pond environments with 10,607 bounding boxes
-
-Vijayalakshmi M, Sasithradevi A.  [Annotated underwater fish detection dataset from pond environments](https://doi.org/10.17632/7w45jx35hd.1). 2024
-
-- Data downloadable via https from Mendeley Data ([download link](https://data.mendeley.com/datasets/7w45jx35hd/1))
-- License: CC BY 4.0
-- Metadata raw format: YOLO TXT
-- Categories/species: Orange Chromide (Etroplus maculatus)
-- Vehicle type: Crosstour CT9000 underwater camera at <4m depth
-- Image information: 586 images (640x640)
-- Annotation information: 10,607 bounding boxes
-- Typical animal size in pixels: N/A
-- Code to render sample annotated image: [orange_chromide.py](./datasets/orange_chromide.py)
-
-<img src="./previews/orange_chromide_sample_image.png" alt="Orange Chromide Pond Fish Detection sample" width="600">
-
-
-
 #### FathomNet Database
 
 Katija K, Orenstein E, Schlining B, et al. [FathomNet: A global image database for enabling artificial intelligence in the ocean](https://doi.org/10.1038/s41598-022-19939-2). Sci Rep 12, 15914 (2022).
@@ -540,6 +520,29 @@ Boxes on fish and other objects in images from the OBSEA seafloor observatory in
 - Code to render sample annotated image: [obsea.py](./datasets/obsea.py)
 
 <img src="./previews/obsea_sample_image.png" alt="OBSEA sample" width="600">
+
+
+
+#### Orange Chromide Pond Fish Detection
+
+586 annotated underwater images of Orange Chromide (Etroplus maculatus) fish in South Indian pond environments with 10,607 bounding boxes
+
+Vijayalakshmi M, Sasithradevi A.  [Annotated underwater fish detection dataset from pond environments](https://doi.org/10.17632/7w45jx35hd.1). 2024
+
+- Data downloadable via https from Mendeley Data ([download link](https://data.mendeley.com/datasets/7w45jx35hd/1))
+- License: CC BY 4.0
+- Metadata raw format: YOLO TXT
+- Categories/species: Orange Chromide (Etroplus maculatus); other cichlids and koi in the same ponds are boxed with the same class
+  - fish: the single class (all fish)
+  - non-fish: none
+  - discarded: none
+- Vehicle type: Crosstour CT9000 underwater camera at <4m depth
+- Image information: 586 images (640x640)
+- Annotation information: 10,607 bounding boxes
+- Typical animal size in pixels: N/A
+- Code to render sample annotated image: [orange_chromide.py](./datasets/orange_chromide.py)
+
+<img src="./previews/orange_chromide_sample_image.png" alt="Orange Chromide Pond Fish Detection sample" width="600">
 
 
 
