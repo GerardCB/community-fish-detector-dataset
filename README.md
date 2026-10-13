@@ -567,4 +567,5 @@ Datasets that we're aware exist, but that we haven't evaluated or processed yet.
 - [FjordFish](https://zenodo.org/records/17950781) (~6k boxes on ~3k images from a BRUV in the North Atlantic)
 - [SFISHTRACK](https://github.com/JosepSanchezCano/SFISHTRACK) (~24k frames with segmentation masks)
 - [CoralscapesV2](https://josauder.github.io/coralscapesv2/) (~2.4k images with ~66k fish instance masks; Coralscapes v1 is already included in CFD)
+- [Caribbean Fish](https://warplab.github.io/corefish/) (~15K images with ~90k bounding boxes collected in 5 different Caribbean coral reefs over 8 years)
 
