@@ -14,6 +14,16 @@ Each dataset script in `datasets/` follows a 4-step pattern: Download -> Process
   - discard: `animals` (Roboflow supercategory, no annotations)
 - **Split**: By deployment site (extracted from image filename prefix before `_jpg`)
 
+### coralscapes_v2
+- **Source**: [CoralscapesV2](https://josauder.github.io/coralscapesv2/) ([Hugging Face](https://huggingface.co/datasets/josauder/coralscapesV2), `instances` configuration)
+- **Download**: Automatic (13 Parquet shards, ~6.9 GB). Each row holds the image, the 95-class semantic mask, the fish instance ids and the site. The `sequences` configuration (31-frame video clips, ~206 GB) is not used. Replaces Coralscapes v1: CoralscapesV2 contains all v1 images but one
+- **Annotations**: Segmentation -> boxes. Fish: one box per instance mask (fish ids are `25 * 2000 + index`). Non-fish classes have no instance masks: one box per connected component of the semantic mask, ignoring components under 200 px (mostly slivers of animals occluded by coral). 2,433 images (2048x1024 PNG) from 41 Red Sea sites; 211 images have no fish or non-fish box and are kept
+- **Category mapping**:
+  - fish: `fish` (65,738 instances; many are small: median box long side 22 px)
+  - non-fish: `acanthaster planci` (crown-of-thorns starfish), `sea cucumber`, `other animal` (mostly sea turtles, some starfish)
+  - discard: `sea urchin` (urchins cluster and have no instance masks, so one component often covers several urchins), `giant clam`, `dead giant clam`, `anemone`, `feather worm`, `cirrhipathes`, `sponge`, `human`, `human-made structure`, `transect line`, `transect tools`, `trash`, and all coral, algae, substrate, seagrass, water and background classes
+- **Split**: By site. The sites in the authors' validation and test splits (site1, site6, site22, site23, site26, site29, site34) go to val; site30, which is in both their train and validation splits, goes to train (~21% of images and fish in val)
+
 ### deep_vision
 - **Source**: [NMDC FTP](https://ftp.nmdc.no/nmdc/IMR/MachineLearning/fishDatasetSimulationAlgorithm.zip)
 - **Download**: Automatic
@@ -133,14 +143,6 @@ Each dataset script in `datasets/` follows a 4-step pattern: Download -> Process
 ## Partial Datasets
 
 These datasets require manual download or have special dependencies.
-
-### coralscapes
-- **Source**: [Coralscapes](https://josauder.github.io/coralscapes/)
-- **Download**: Manual - download Parquet files and place in `data/raw/coralscapes/`
-- **Annotations**: Parquet -> segmentation masks -> bounding boxes (connected components)
-- **Category filter**: fish only (category ID 9 in source, remapped to 1)
-- **Split**: By site (sites 1-24 train, sites 25-35 val)
-- **Special**: Requires `pyarrow` for Parquet reading
 
 ### torsi
 - **Source**: [CSIRO](https://data.csiro.au/collection/64913)

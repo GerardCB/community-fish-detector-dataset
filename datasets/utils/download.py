@@ -1,6 +1,7 @@
 import requests
 import zipfile
 import tarfile
+import time
 from pathlib import Path
 from enum import Enum
 from tqdm import tqdm
@@ -38,6 +39,48 @@ def download_file(url: str, save_path: Path):
                 pbar.update(len(chunk))
 
     print(f"Download complete: {save_path}")
+
+
+def download_file_resumable(url: str, save_path: Path, max_attempts: int = 20):
+    """
+    Download url to save_path through a save_path.part file. A broken connection is
+    resumed from the end of the .part file with an HTTP Range request (up to max_attempts
+    times, and also across reruns); save_path only appears once the download is complete.
+    """
+    if save_path.exists():
+        print(f"Already downloaded: {save_path}")
+        return
+
+    partial = save_path.with_name(save_path.name + ".part")
+    for attempt in range(1, max_attempts + 1):
+        offset = partial.stat().st_size if partial.exists() else 0
+        headers = {"Range": f"bytes={offset}-"} if offset else {}
+        print(f"Downloading {url} to {save_path} (attempt {attempt}, from byte {offset})")
+        try:
+            with requests.get(url, headers=headers, stream=True, timeout=60) as response:
+                if response.status_code == 416:  # the .part file is already complete
+                    break
+                response.raise_for_status()
+                if offset and response.status_code != 206:
+                    raise RuntimeError(f"Server ignored the Range header; delete {partial} and rerun")
+                total = offset + int(response.headers.get("content-length", 0))
+                with (
+                    open(partial, "ab") as f,
+                    tqdm(desc=save_path.name, total=total, initial=offset, unit="B", unit_scale=True, unit_divisor=1024) as pbar,
+                ):
+                    for chunk in response.iter_content(chunk_size=1024 * 1024):
+                        f.write(chunk)
+                        pbar.update(len(chunk))
+        except (requests.ConnectionError, requests.Timeout, requests.exceptions.ChunkedEncodingError) as e:
+            print(f"Connection broken: {e}; retrying in 30 s")
+            time.sleep(30)
+            continue
+        if partial.stat().st_size == total:
+            break
+    else:
+        raise RuntimeError(f"Download of {url} incomplete after {max_attempts} attempts; rerun to resume")
+
+    partial.rename(save_path)
 
 
 def extract_downloaded_file(
