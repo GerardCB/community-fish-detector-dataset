@@ -486,16 +486,20 @@ Boxes on 532,000 frames from 1,567 videos of salmon in two weirs
 
 Atlas WI, Ma S, Chou YC, Connors K, Scurfield D, Nam B, Ma X, Cleveland M, Doire J, Moore JW, Shea R. Wild salmon enumeration and monitoring using deep learning empowered detection and tracking. Frontiers in Marine Science. 2023 Sep 20.
 
-- Data downloadable via https from GitHub ([download link](https://github.com/Salmon-Computer-Vision/salmon-computer-vision))
-- License: CC BY 4.0 
+- Data downloadable via https from Dropbox, linked from GitHub ([download link](https://github.com/Salmon-Computer-Vision/salmon-computer-vision), file `yolov6_salmon.tar.gz`, ~107 GB)
+- License: CC BY-NC-SA 4.0
 - Metadata raw format: YOLOv6
-- Categories/species: pacific salmon
-- Vehicle type: multi-object tracking (MOT) and object detection
-- Image information: 1567 images
-- Annotation information: bounding boxes
-- Typical animal size in pixels: N/A
+- Categories/species: Pacific salmon and other river fish (Coho, Shiner, Bull trout, Pikeminnow, Pink, Rainbow trout, Whitefish, Chinook, Sockeye, Chum, Jack Chinook, juvenile salmonids, Steelhead)
+  - fish: all 16 classes
+  - non-fish: none
+  - discarded: none
+- Vehicle type: fixed underwater cameras at river weirs (Kitwanga River, Bear Creek)
+- Image information: 1,391,168 video frames (1920x1080) from 1,673 videos; every frame is labelled, 962k frames have no fish
+- Annotation information: 480,058 bounding boxes
+- Typical animal size in pixels: ~1100x500 (median box)
+- Code to render sample annotated image: [salmon_computer_vision.py](./datasets/salmon_computer_vision.py)
 
-<img src="./previews/salmon_computer_vision_sample_image.jpg" alt="Salmon Computer Vision sample" width="600">
+<img src="./previews/salmon_computer_vision_sample_image.png" alt="Salmon Computer Vision sample" width="600">
 
 
 
