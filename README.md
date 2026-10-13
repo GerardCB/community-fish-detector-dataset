@@ -429,7 +429,10 @@ Vijayalakshmi M, Sasithradevi A.  [Annotated underwater fish detection dataset f
 - Data downloadable via https from Mendeley Data ([download link](https://data.mendeley.com/datasets/7w45jx35hd/1))
 - License: CC BY 4.0
 - Metadata raw format: YOLO TXT
-- Categories/species: Orange Chromide (Etroplus maculatus)
+- Categories/species: Orange Chromide (Etroplus maculatus); other cichlids and koi in the same ponds are boxed with the same class
+  - fish: the single class (all fish)
+  - non-fish: none
+  - discarded: none
 - Vehicle type: Crosstour CT9000 underwater camera at <4m depth
 - Image information: 586 images (640x640)
 - Annotation information: 10,607 bounding boxes

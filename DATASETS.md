@@ -118,10 +118,13 @@ Each dataset script in `datasets/` follows a 4-step pattern: Download -> Process
 
 ### orange_chromide
 - **Source**: [Mendeley Data](https://data.mendeley.com/datasets/7w45jx35hd/1)
-- **Download**: Automatic
-- **Annotations**: YOLO TXT -> COCO conversion (single class, 640x640 images)
-- **Category filter**: None (single class — fish)
-- **Split**: Random (all images from same pond environment, no location metadata)
+- **Download**: Automatic (17 MB zip)
+- **Annotations**: YOLO TXT -> COCO conversion (single unnamed class, 640x640 images; source train/valid/test merged). Images are Roboflow exports of pond video frames (`frame<n>_jpg.rf.<hash>.jpg`)
+- **Category mapping**:
+  - fish: the single class (every fish is boxed, not only orange chromides: other cichlids and koi too)
+  - non-fish: none
+  - discard: none
+- **Split**: By blocks of 100 frame numbers (`frame<n> // 100`, 26 blocks; sorted, `random_state`). Consecutive frames are near-duplicates, so a random split would put neighbouring frames in train and val. The source video is not in the filename and frame numbers restart per video (31 numbers appear twice, from different scenes); a block can mix frames of different videos, but neighbouring frames of any video stay together
 
 ### pomerfish
 - **Source**: [Zenodo](https://zenodo.org/records/17432128)
