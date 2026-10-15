@@ -178,24 +178,6 @@ Scoulding B, Maguire K, Orenstein E, Jackett C, CSIRO.  [Tasmanian Orange Roughy
 
 
 
-#### CoralScapes
-
-2,027 images captured by diver-borne GoPro cameras from a variety of global coral reefs.
-
-- Home: [https://josauder.github.io/coralscapes/](https://josauder.github.io/coralscapes/)  
-- Data downloadable via HuggingFace from [https://huggingface.co/datasets/EPFL-ECEO/coralscapes](https://huggingface.co/datasets/EPFL-ECEO/coralscapes)
-- License: Apache-2.0
-- Metadata raw format: Parquet
-- Categories/species: fish, coral, human, rock, etc.
-- Vehicle type: diver
-- Image information: 2,027 images
-- Annotation information: 174,000 segmentation annotations, of which 20,849 are fish
-- Code to render sample annotated image: [coralscapes.py](./datasets/coralscapes.py)
-
-<img src="./previews/coralscapes-sample.jpg" alt="CoralScapes sample" width="600">
-
-
-
 #### Project Natick Underwater Video
 
 ~1k images of fish/arrow worms w/bounding boxes
@@ -523,6 +505,30 @@ Boxes on fish and other objects in images from the OBSEA seafloor observatory in
 
 
 
+#### CoralscapesV2
+
+2,433 densely annotated frames from diver-borne cameras at 41 Red Sea reef sites (55 per the project page), with 95-class semantic segmentation and 65,738 fish instance masks. Extends Coralscapes v1, which is no longer processed separately.
+
+Sauder J, Ruckli T, Strodomskyte G, et al. [CoralscapesV2: Panoptic and Fine-Grained Visual Scene Understanding in Coral Reefs](https://arxiv.org/pdf/2609.12826). ECCV 2026 Workshop on Marine Vision.
+
+- Home: [https://josauder.github.io/coralscapesv2/](https://josauder.github.io/coralscapesv2/)
+- Data downloadable via HuggingFace from [https://huggingface.co/datasets/josauder/coralscapesV2](https://huggingface.co/datasets/josauder/coralscapesV2)
+- License: Apache-2.0
+- Metadata raw format: Parquet (images, semantic masks, fish instance masks)
+- Categories/species: fish, crown-of-thorns starfish, sea cucumbers, sea urchins, other animals (mostly sea turtles), corals, substrate, divers, etc. (95 classes)
+  - fish: fish
+  - non-fish: acanthaster planci (crown-of-thorns starfish), sea cucumber, other animal
+  - discarded: sea urchin (clustered urchins have no instance masks), giant clams, anemones, feather worms, sponges, humans, corals, substrate and the other background classes
+- Vehicle type: diver
+- Image information: 2,433 images (2048x1024)
+- Annotation information: 65,738 fish instance masks; 330 non-fish boxes derived from the semantic masks
+- Typical animal size in pixels: fish ~22 px (median box long side)
+- Code to render sample annotated image: [coralscapes_v2.py](./datasets/coralscapes_v2.py)
+
+<img src="./previews/coralscapes_v2_sample_image.png" alt="CoralscapesV2 sample" width="600">
+
+
+
 #### Orange Chromide Pond Fish Detection
 
 586 annotated underwater images of Orange Chromide (Etroplus maculatus) fish in South Indian pond environments with 10,607 bounding boxes
@@ -559,6 +565,7 @@ Vijayalakshmi M, Sasithradevi A.  [Annotated underwater fish detection dataset f
 - [Amazonian Fish ML Classifier](https://sidatasciencelab.github.io/Amazonian_Fish_ML_Classifier/): Excluded because images are in staging environments.
 - [BrackishMOT](https://www.kaggle.com/datasets/maltepedersen/brackishmot): Same data as the Brackish Dataset.
 - Brackish Underwater Dataset: Same data as the Brackish Dataset.
+- [CoralScapes](https://josauder.github.io/coralscapes/): 2,075 images from Red Sea coral reefs with semantic segmentation masks. Excluded because CoralscapesV2 includes all of its images but one, with more classes and fish instance masks.
 
 
 
@@ -573,6 +580,5 @@ Datasets that we're aware exist, but that we haven't evaluated or processed yet.
 - [DIGI4ECO](https://zenodo.org/records/20701225) (~126k boxes on ~6k video frames from the Adriatic Sea, the Mediterranean Sea, and Galway Bay)
 - [FjordFish](https://zenodo.org/records/17950781) (~6k boxes on ~3k images from a BRUV in the North Atlantic)
 - [SFISHTRACK](https://github.com/JosepSanchezCano/SFISHTRACK) (~24k frames with segmentation masks)
-- [CoralscapesV2](https://josauder.github.io/coralscapesv2/) (~2.4k images with ~66k fish instance masks; Coralscapes v1 is already included in CFD)
 - [Caribbean Fish](https://warplab.github.io/corefish/) (~15K images with ~90k bounding boxes collected in 5 different Caribbean coral reefs over 8 years)
 

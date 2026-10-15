@@ -7,6 +7,7 @@ from datasets.utils.download import (
     CompressionType,
     download_and_extract,
     download_file,
+    download_file_resumable,
     extract_downloaded_file,
 )
 from datasets.utils.images import (
