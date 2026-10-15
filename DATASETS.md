@@ -128,10 +128,13 @@ Each dataset script in `datasets/` follows a 4-step pattern: Download -> Process
 
 ### orange_chromide
 - **Source**: [Mendeley Data](https://data.mendeley.com/datasets/7w45jx35hd/1)
-- **Download**: Automatic
-- **Annotations**: YOLO TXT -> COCO conversion (single class, 640x640 images)
-- **Category filter**: None (single class — fish)
-- **Split**: Random (all images from same pond environment, no location metadata)
+- **Download**: Automatic (17 MB zip)
+- **Annotations**: YOLO TXT -> COCO conversion (single unnamed class, 640x640 images; source train/valid/test merged). Images are Roboflow exports of pond video frames (`frame<n>_jpg.rf.<hash>.jpg`)
+- **Category mapping**:
+  - fish: the single class (every fish is boxed, not only orange chromides: other cichlids and koi too)
+  - non-fish: none
+  - discard: none
+- **Split**: By blocks of 100 frame numbers (`frame<n> // 100`, 26 blocks; sorted, `random_state`). Consecutive frames are near-duplicates, so a random split would put neighbouring frames in train and val. The source video is not in the filename and frame numbers restart per video (31 numbers appear twice, from different scenes); a block can mix frames of different videos, but neighbouring frames of any video stay together
 
 ### pomerfish
 - **Source**: [Zenodo](https://zenodo.org/records/17432128)
@@ -139,6 +142,16 @@ Each dataset script in `datasets/` follows a 4-step pattern: Download -> Process
 - **Annotations**: COCO format (already provided, 1-indexed)
 - **Category filter**: None (all 10 categories are freshwater fish species)
 - **Split**: By video/deployment ID (extracted from `dataset_<id>_frame_<n>.PNG` filename pattern, 27 unique IDs)
+
+### salmon_computer_vision
+- **Source**: [Salmon Computer Vision](https://github.com/Salmon-Computer-Vision/salmon-computer-vision) (Dropbox folder linked from the README, file `yolov6_salmon.tar.gz`)
+- **Download**: Automatic (~107 GB, resumes an interrupted download). The tarball is read in one streaming pass: the YOLO labels come first in the archive, then the images, which are written directly to `data/processing/` with the dataset prefix, so the archive is never fully extracted. The archive is kept in `data/raw/` afterwards and can be deleted by hand. The `bytetrack_salmon.tar.gz` copy in the same folder (the same frames in MOT format) is not used
+- **Annotations**: YOLO (normalised centre/size) -> COCO conversion, using the class list from `combined_bear-kitwanga.yaml` (the same names as the COCO files in the archive, which cover only part of the frames). 1,391,168 frames from 1,673 videos at 1920x1080, 480,058 boxes. Every frame of every video is labelled; frames without fish (962k, mostly from 7 continuous hour-long recordings) are kept. Each COCO image entry has extra fields to allow dropping consecutive frames later: `video`, `frame_index`, `video_start` (parsed from the video name; hour only for the continuous recordings) and `camera`
+- **Category mapping**:
+  - fish: `Coho`, `Shiner`, `Bull`, `Pikeminnow`, `Pink`, `Rainbow`, `Whitefish`, `Chinook`, `Sockeye`, `Chum`, `Jack Chinook`, `Juvenile Salmonoid`, `Steelhead`, and `Lan prey`, `Lampray` (lamprey, misspelt), `Cutthroat` (these three have no boxes)
+  - non-fish: none
+  - discard: none
+- **Split**: By video (the frame filename without `_frame_<n>`, 1,673 videos; sorted names, `random_state`). The source's own train/valid/test split is also by video
 
 ## Partial Datasets
 

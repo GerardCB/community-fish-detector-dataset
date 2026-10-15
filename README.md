@@ -402,26 +402,6 @@ Bruslund HJ, Karpova A, Pedersen M, Hein BS, Moeslund TB. Re-identification of z
 
 
 
-#### Orange Chromide Pond Fish Detection
-
-586 annotated underwater images of Orange Chromide (Etroplus maculatus) fish in South Indian pond environments with 10,607 bounding boxes
-
-Vijayalakshmi M, Sasithradevi A.  [Annotated underwater fish detection dataset from pond environments](https://doi.org/10.17632/7w45jx35hd.1). 2024
-
-- Data downloadable via https from Mendeley Data ([download link](https://data.mendeley.com/datasets/7w45jx35hd/1))
-- License: CC BY 4.0
-- Metadata raw format: YOLO TXT
-- Categories/species: Orange Chromide (Etroplus maculatus)
-- Vehicle type: Crosstour CT9000 underwater camera at <4m depth
-- Image information: 586 images (640x640)
-- Annotation information: 10,607 bounding boxes
-- Typical animal size in pixels: N/A
-- Code to render sample annotated image: [orange_chromide.py](./datasets/orange_chromide.py)
-
-<img src="./previews/orange_chromide_sample_image.png" alt="Orange Chromide Pond Fish Detection sample" width="600">
-
-
-
 #### FathomNet Database
 
 Katija K, Orenstein E, Schlining B, et al. [FathomNet: A global image database for enabling artificial intelligence in the ocean](https://doi.org/10.1038/s41598-022-19939-2). Sci Rep 12, 15914 (2022).
@@ -468,16 +448,20 @@ Boxes on 532,000 frames from 1,567 videos of salmon in two weirs
 
 Atlas WI, Ma S, Chou YC, Connors K, Scurfield D, Nam B, Ma X, Cleveland M, Doire J, Moore JW, Shea R. Wild salmon enumeration and monitoring using deep learning empowered detection and tracking. Frontiers in Marine Science. 2023 Sep 20.
 
-- Data downloadable via https from GitHub ([download link](https://github.com/Salmon-Computer-Vision/salmon-computer-vision))
-- License: CC BY 4.0 
+- Data downloadable via https from Dropbox, linked from GitHub ([download link](https://github.com/Salmon-Computer-Vision/salmon-computer-vision), file `yolov6_salmon.tar.gz`, ~107 GB)
+- License: CC BY-NC-SA 4.0
 - Metadata raw format: YOLOv6
-- Categories/species: pacific salmon
-- Vehicle type: multi-object tracking (MOT) and object detection
-- Image information: 1567 images
-- Annotation information: bounding boxes
-- Typical animal size in pixels: N/A
+- Categories/species: Pacific salmon and other river fish (Coho, Shiner, Bull trout, Pikeminnow, Pink, Rainbow trout, Whitefish, Chinook, Sockeye, Chum, Jack Chinook, juvenile salmonids, Steelhead)
+  - fish: all 16 classes
+  - non-fish: none
+  - discarded: none
+- Vehicle type: fixed underwater cameras at river weirs (Kitwanga River, Bear Creek)
+- Image information: 1,391,168 video frames (1920x1080) from 1,673 videos; every frame is labelled, 962k frames have no fish
+- Annotation information: 480,058 bounding boxes
+- Typical animal size in pixels: ~1100x500 (median box)
+- Code to render sample annotated image: [salmon_computer_vision.py](./datasets/salmon_computer_vision.py)
 
-<img src="./previews/salmon_computer_vision_sample_image.jpg" alt="Salmon Computer Vision sample" width="600">
+<img src="./previews/salmon_computer_vision_sample_image.png" alt="Salmon Computer Vision sample" width="600">
 
 
 
@@ -542,6 +526,29 @@ Sauder J, Ruckli T, Strodomskyte G, et al. [CoralscapesV2: Panoptic and Fine-Gra
 - Code to render sample annotated image: [coralscapes_v2.py](./datasets/coralscapes_v2.py)
 
 <img src="./previews/coralscapes_v2_sample_image.png" alt="CoralscapesV2 sample" width="600">
+
+
+
+#### Orange Chromide Pond Fish Detection
+
+586 annotated underwater images of Orange Chromide (Etroplus maculatus) fish in South Indian pond environments with 10,607 bounding boxes
+
+Vijayalakshmi M, Sasithradevi A.  [Annotated underwater fish detection dataset from pond environments](https://doi.org/10.17632/7w45jx35hd.1). 2024
+
+- Data downloadable via https from Mendeley Data ([download link](https://data.mendeley.com/datasets/7w45jx35hd/1))
+- License: CC BY 4.0
+- Metadata raw format: YOLO TXT
+- Categories/species: Orange Chromide (Etroplus maculatus); other cichlids and koi in the same ponds are boxed with the same class
+  - fish: the single class (all fish)
+  - non-fish: none
+  - discarded: none
+- Vehicle type: Crosstour CT9000 underwater camera at <4m depth
+- Image information: 586 images (640x640)
+- Annotation information: 10,607 bounding boxes
+- Typical animal size in pixels: N/A
+- Code to render sample annotated image: [orange_chromide.py](./datasets/orange_chromide.py)
+
+<img src="./previews/orange_chromide_sample_image.png" alt="Orange Chromide Pond Fish Detection sample" width="600">
 
 
 
