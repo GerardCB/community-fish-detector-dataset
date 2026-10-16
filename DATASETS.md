@@ -153,6 +153,16 @@ Each dataset script in `datasets/` follows a 4-step pattern: Download -> Process
   - discard: none
 - **Split**: By video (the frame filename without `_frame_<n>`, 1,673 videos; sorted names, `random_state`). The source's own train/valid/test split is also by video
 
+### obsea
+- **Source**: [Zenodo](https://doi.org/10.5281/zenodo.14888328) (`obsea_dataset_v4.1.zip`)
+- **Download**: Automatic (3.8 GB, resumes an interrupted download, checked against the Zenodo MD5)
+- **Annotations**: YOLO TXT -> COCO conversion. 4,120 images, 35,840 boxes in 74 classes. The YOLO class ids follow the order of the class names in `obsea_dataset.json`; the box count per class listed there is checked against the labels. Images with no boxes left after mapping (413) are kept
+- **Category mapping**:
+  - fish: all 63 fish species/variant classes (variants: `(back)` = fish far in the background, `(night)`, `(alev.)` = juveniles, `(m)`/`(f)`), plus `unknown` and `unknown sp` (48 crops of each checked: nearly all blurry or distant fish; a few boxes in `unknown sp` are unclear)
+  - non-fish: `Cranc` (crab), `Octopus vulgaris`, `Rhizostoma pulmo` and `Chrysaora hysoscella` (large jellyfish), `Asteroidea` (starfish)
+  - discard: `Diver`, `Delphinus (dead)` (a dolphin carcass on the seabed), `Posidonia oceanica (shot)` (seagrass), `Gateropodae` (small snail shells)
+- **Split**: By camera, from the filename. Cameras `AIPC608UW_10_167` and `C4k0193` -> val (834 images, 20%); the other cameras and the videos/images without a camera id -> train
+
 ## Partial Datasets
 
 These datasets require manual download or have special dependencies.
