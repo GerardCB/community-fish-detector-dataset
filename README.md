@@ -552,6 +552,29 @@ Vijayalakshmi M, Sasithradevi A.  [Annotated underwater fish detection dataset f
 
 
 
+#### PEBL Seaweed and Shellfish Farm Fauna
+
+1,035 still frames from fixed underwater cameras on two UK seaweed and shellfish farms (turbid, temperate water) with 2,464 bounding boxes on fish and other animals
+
+PEBL CIC (2026). PEBL Seaweed and Shellfish Farm Fauna. LILA BC.
+
+- Data downloadable via https from LILA BC ([download link](https://lilawildlife.blob.core.windows.net/lila-wildlife/community-fish-detection-dataset/pebl_farm_fauna_v1.0.zip))
+- License: N/A
+- Metadata raw format: COCO Camera Traps JSON
+- Categories/species: fish, small bottom fish (gobies, dragonets), flatfish, hermit crabs, crabs, jellyfish, starfish, gastropods (elasmobranch, squid and shrimp categories have no boxes yet)
+  - fish: Fish, Scooter (gobies and dragonets), Flatfish, Elasmobranch
+  - non-fish: Hermit crab, Crab, Jellyfish, Starfish, Gastropod, Squid, Shrimp
+  - discarded: none
+- Vehicle type: fixed underwater cameras (PEBL SubCam), 2020, 2024 and 2026 deployments
+- Image information: 1,035 images (1920x1080 and 1080x1920) from 57 videos at 5 cameras
+- Annotation information: 2,464 bounding boxes (1,307 fish, 1,157 non-fish), drawn by people or detector proposals verified by a person
+- Typical animal size in pixels: N/A
+- Code to render sample annotated image: [pebl_farm_fauna.py](./datasets/pebl_farm_fauna.py)
+
+<img src="./previews/pebl_farm_fauna_sample_image.png" alt="PEBL Seaweed and Shellfish Farm Fauna sample" width="600">
+
+
+
 ### Datasets that were not included in the Community Fish Detection Dataset
 
 - [Fishnet.AI](https://www.fishnet.ai/): ~163k bounding boxes on ~35k images of fish and people on fishing vessels.  Excluded because images are above-water.
