@@ -494,11 +494,14 @@ Boxes on fish and other objects in images from the OBSEA seafloor observatory in
 - Data downloadable via Zenodo ([download link](https://doi.org/10.5281/zenodo.14888328))
 - License: CC BY 4.0
 - Metadata raw format: YOLO
-- Categories/species: 74 source classes
+- Categories/species: 74 source classes (Mediterranean fish species, plus a few other animals, divers and seagrass)
+  - fish: 65 classes (all fish species and their variants, plus unknown and unknown sp)
+  - non-fish: crab (Cranc), Octopus vulgaris, jellyfish (Rhizostoma pulmo, Chrysaora hysoscella), starfish (Asteroidea)
+  - discarded: Diver, Delphinus (dead) (a carcass on the seabed), Posidonia oceanica (seagrass), Gateropodae (small snail shells)
 - Vehicle type: fixed underwater observatory camera
-- Image information: 4,120 images, including 470 zero-fish/background images
-- Annotation information: 34,728 fish/fish-like bounding boxes after filtering
-- Typical animal size in pixels: N/A
+- Image information: 4,120 images, including 413 images with no boxes
+- Annotation information: 34,728 fish and 184 non-fish bounding boxes
+- Typical animal size in pixels: ~65 (median long side of the fish boxes)
 - Code to render sample annotated image: [obsea.py](./datasets/obsea.py)
 
 <img src="./previews/obsea_sample_image.png" alt="OBSEA sample" width="600">
@@ -576,7 +579,6 @@ Datasets that we're aware exist, but that we haven't evaluated or processed yet.
 - [WIO-ReefFish](https://zenodo.org/records/21360120) (~6.8k boxes on 1k images with 24k labeled fish taxa from the Indian Ocean)
 - [Newfoundland Marine Refuge Fish Classification Dataset (N-MARINE)](https://ouvert.canada.ca/data/dataset/2ae46860-f82a-4127-bb1f-b02e36ef6a70) (~24k images of marine fish in Canada, with ~24k boxes)
 - [J-EDI](https://www.godac.jamstec.go.jp/jedi/e/dataset/jedi_organism_detection_dataset.html) (~8k images with 19 deep-sea animal categories)
-- [OBSEA](https://zenodo.org/records/14888328) (~35k boxes on ~4k images from a cabled observatory in the Mediterranean)
 - [DIGI4ECO](https://zenodo.org/records/20701225) (~126k boxes on ~6k video frames from the Adriatic Sea, the Mediterranean Sea, and Galway Bay)
 - [FjordFish](https://zenodo.org/records/17950781) (~6k boxes on ~3k images from a BRUV in the North Atlantic)
 - [SFISHTRACK](https://github.com/JosepSanchezCano/SFISHTRACK) (~24k frames with segmentation masks)
