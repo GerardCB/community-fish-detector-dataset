@@ -570,7 +570,7 @@ González-Villà S, Burns Font D, Aguzzi J, et al. [DIGI4ECO Underwater Fish Tra
   - discarded: none
 - Vehicle type: fixed underwater cameras (OBSEA cabled observatory, SmartBay Observatory, and a camera near an artificial structure offshore Pineto, Adriatic Sea)
 - Image information: 5,849 frames (1920x1080, OBSEA 1912x1080): Ancona 1,200, OBSEA 148, SmartBay1 2,400, SmartBay2 2,101
-- Annotation information: 114,207 fish bounding boxes (491 tracks); the 11,797 boxes flagged as occluded are dropped, as most of them show no visible fish
+- Annotation information: 114,207 fish bounding boxes (491 tracks); the 11,798 boxes flagged as occluded are dropped, as most of them show no visible fish
 - Typical animal size in pixels: ~104 (median long side of the fish boxes)
 - Code to render sample annotated image: [digi4eco.py](./datasets/digi4eco.py)
 
