@@ -555,6 +555,29 @@ Vijayalakshmi M, Sasithradevi A.  [Annotated underwater fish detection dataset f
 
 
 
+#### Newfoundland Marine Refuge Fish Classification Dataset (N-MARINE)
+
+23,936 frames from baited, lit cameras on crab pots at 400-500 m depth in the Northeast Newfoundland Slope Closure (Canada), with 23,890 boxes on 8 groundfish species and whelks
+
+Morris CJ, Ayyagari KD, Porter D, Nguyen QK, Hanlon J, Whidden C. [Newfoundland Marine Refuge Fish Classification Dataset (N-Marine)](https://open.canada.ca/data/en/dataset/2ae46860-f82a-4127-bb1f-b02e36ef6a70). Government of Canada Open Data Portal. 2025.
+
+- Data downloadable via HTTPS from the Government of Canada Open Data Portal ([download link](https://open.canada.ca/data/en/dataset/2ae46860-f82a-4127-bb1f-b02e36ef6a70)): 15 PNG zips (~23 GB) and `nmarine_csv.zip`
+- License: Open Government Licence - Canada
+- Metadata raw format: one CSV per video (pixel corner coordinates and YOLO-style normalised boxes)
+- Categories/species: Atlantic cod, roughhead grenadier, Atlantic halibut, deepwater redfish, thorny skate, striped wolffish, spinytail skate, northern wolffish, whelk
+  - fish: Cod, Roughhead_grenadier, Atlantic_halibut, Redfish_mentella, Thorny_skate, Striped_wolffish, Spinytail_skate, Wolffish (northern wolffish)
+  - non-fish: Whelk (Buccinum undatum)
+  - discarded: none
+- Vehicle type: baited camera with lights on crab pots (4 cameras, 185 five-minute videos)
+- Image information: 23,936 images (1920x1080), including 3,000 background images without animals
+- Annotation information: 23,890 bounding boxes (23,021 fish, 869 non-fish)
+- Typical animal size in pixels: ~390 px (median box long side)
+- Code to render sample annotated image: [n_marine.py](./datasets/n_marine.py)
+
+<img src="./previews/n_marine_sample_image.png" alt="N-MARINE sample" width="600">
+
+
+
 #### WIO-ReefFish
 
 1,000 ultra-high-definition frames from diver-operated video transects on coral reefs in Kenya (2023) and Tanzania (2025), with 6,768 boxes on fish of 24 reef fish families
@@ -621,8 +644,6 @@ González-Villà S, Burns Font D, Aguzzi J, et al. [DIGI4ECO Underwater Fish Tra
 ### Unprocessed datasets
 
 Datasets that we're aware exist, but that we haven't evaluated or processed yet.
-
-- [Newfoundland Marine Refuge Fish Classification Dataset (N-MARINE)](https://ouvert.canada.ca/data/dataset/2ae46860-f82a-4127-bb1f-b02e36ef6a70) (~24k images of marine fish in Canada, with ~24k boxes)
 - [J-EDI](https://www.godac.jamstec.go.jp/jedi/e/dataset/jedi_organism_detection_dataset.html) (~8k images with 19 deep-sea animal categories)
 - [FjordFish](https://zenodo.org/records/17950781) (~6k boxes on ~3k images from a BRUV in the North Atlantic)
 - [SFISHTRACK](https://github.com/JosepSanchezCano/SFISHTRACK) (~24k frames with segmentation masks)
