@@ -163,6 +163,56 @@ Each dataset script in `datasets/` follows a 4-step pattern: Download -> Process
   - discard: none
 - **Split**: The authors' split (`{train,val,test}_fishonly_split.txt`), which is by survey trip: their train -> train (7,290 frames), their val + test -> val (7,200 frames). Each transect and survey trip lies in one split
 
+### fjordfish
+- **Source**: [Zenodo](https://zenodo.org/records/17950781)
+- **Download**: Automatic (`FjordFish.zip`, 6.1 GB)
+- **Annotations**: YOLO TXT -> COCO conversion (28 classes in `data.yaml`; source train/val folders merged, labels matched to images by file stem because `2515.jpg` is in `images/train` but its label is in `labels/val`). Mixed resolutions: BRUV and mesocosm video frames plus diver DSLR photos
+- **Category mapping**:
+  - fish: `ballan`, `cuckoo_female`, `cuckoo_male`, `corkwing_female`, `corkwing_male`, `goldsinny`, `rock_cook`, `labrids_unknown`, `cod`, `cod_yoy`, `haddock`, `pollack`, `poor_cod`, `saithe`, `whiting`, `gadines_unknown`, `spiny_dogfish`, `sharks_unknown` (no boxes), `ling`, `two_spot_goby`, `black_goby`, `sand_goby`
+  - non-fish: `brown_crab`, `green_crab`, `hermit` (hermit crabs), `lobster`, `decapods_unknown` (all crabs on inspection)
+  - discard: `unknown` (no boxes)
+- **Split**: By blocks of 100 consecutive image ids (`<id> // 100`, 31 blocks; sorted, `random_state`). Images are named `1.jpg`...`3002.jpg` in source order, so neighbouring ids are frames of the same video or photos of the same series; no video/site id is published. The authors' train/val folders are a random per-image split and are ignored
+
+### n_marine
+- **Source**: [Government of Canada Open Data Portal](https://open.canada.ca/data/en/dataset/2ae46860-f82a-4127-bb1f-b02e36ef6a70)
+- **Download**: Automatic (15 PNG zips, ~23 GB, plus `nmarine_csv.zip`; resumable). The zips are kept in `data/raw/` and never extracted there: images are read from them straight into `data/processing/` as `<video>_<frame>.png`. The server's firewall rejects range requests near the end of a zip, so a resume that fails there needs the `.part` file deleted
+- **Annotations**: One CSV per video (`img`, `TL_x/TL_y/BR_x/BR_y` in pixels, `marine_class`, `species`) -> COCO conversion. Boxes are clipped to the 1920x1080 frame (some extend up to ~25 px outside). 20,936 annotated frames + 3,000 background frames (frames in the zips with no CSV row), which are kept as images without annotations
+- **Category mapping**:
+  - fish: `Cod` (Gadus morhua), `Roughhead_grenadier` (Macrourus berglax), `Atlantic_halibut` (Hippoglossus hippoglossus), `Redfish_mentella` (Sebastes mentella), `Thorny_skate` (Amblyraja radiata), `Striped_wolffish` (Anarhichas lupus), `Spinytail_skate` (Bathyraja spinicauda), `Wolffish` (Anarhichas denticulatus)
+  - non-fish: `Whelk` (Buccinum undatum, a crawling sea snail; 869 boxes, all from one video)
+  - discard: none
+- **Split**: By camera deployment. Videos are named `<camera>_<YYYYMMDD>_<HHMMSS>` and consecutive 5-minute videos of one deployment film the same pot. 5 deployments: camera 097 on 16-17 Jul (one deployment past midnight), 097 on 19 Jul, 116 on 21 Jul, 130 on 19 Jul, 136 on 19 Jul. Camera 097 on 19 Jul (3,494 annotated frames, ~17%) -> val, the rest -> train
+
+### wio_reef_fish
+- **Source**: [Zenodo](https://zenodo.org/records/21360120)
+- **Download**: Automatic (`WIO-ReefFish_v1.0.0.zip`, 636 MB, resumes an interrupted download, MD5 checked)
+- **Annotations**: YOLO TXT -> COCO conversion (source train/valid/test merged). 1,000 frames at 3840x2160 from 50 diver-operated video transects in Kenya (2023) and Tanzania (2025), 6,768 boxes. Class ids follow `data.yaml`; the per-class box counts are checked against `metadata/annotations_summary.csv`. Only fish of the 24 families are boxed, so fish of other families may be unlabelled
+- **Category mapping**:
+  - fish: all 24 classes (`Acanthuridae`, `Anthiadidae`, `Aulostomidae`, `Balistidae`, `Caesionidae`, `Chaetodontidae`, `Epinephelidae`, `Haemulidae`, `Holocentridae`, `Kyphosidae`, `Labridae`, `Lethrinidae`, `Lutjanidae`, `Microdesmidae`, `Monacanthidae`, `Mullidae`, `Pempheridae`, `Pomacanthidae`, `Pomacentridae`, `Priacanthidae`, `Scarinae`, `Siganidae`, `Tetraodontidae`, `Zanclidae`)
+  - non-fish: none
+  - discard: none
+- **Split**: By location. The video id (filename before `_frame_<n>`) gives the location through the authors' `alternative_splits/transect/VIDEO_ASSIGNMENT.csv` (47 videos, 10 locations). Diani (Kenya) and Mikindani (Tanzania) go to val (223 images, 1,341 boxes); the other 8 locations go to train (777 images, 5,427 boxes). Videos `GX011330`, `GX011332`, `GX011334` (12 images) are missing from the CSV; by GoPro file number they were filmed between the Kunduchi and Kilwa videos, so they go to train and neither location is in val. The source's headline split is random by frame and is not used
+
+### obsea
+- **Source**: [Zenodo](https://doi.org/10.5281/zenodo.14888328) (`obsea_dataset_v4.1.zip`)
+- **Download**: Automatic (3.8 GB, resumes an interrupted download, checked against the Zenodo MD5)
+- **Annotations**: YOLO TXT -> COCO conversion. 4,120 images, 35,840 boxes in 74 classes. The YOLO class ids follow the order of the class names in `obsea_dataset.json`; the box count per class listed there is checked against the labels. Images with no boxes left after mapping (413) are kept
+- **Category mapping**:
+  - fish: all 63 fish species/variant classes (variants: `(back)` = fish far in the background, `(night)`, `(alev.)` = juveniles, `(m)`/`(f)`), plus `unknown` and `unknown sp` (48 crops of each checked: nearly all blurry or distant fish; a few boxes in `unknown sp` are unclear)
+  - non-fish: `Cranc` (crab), `Octopus vulgaris`, `Rhizostoma pulmo` and `Chrysaora hysoscella` (large jellyfish), `Asteroidea` (starfish)
+  - discard: `Diver`, `Delphinus (dead)` (a dolphin carcass on the seabed), `Posidonia oceanica (shot)` (seagrass), `Gateropodae` (small snail shells)
+- **Split**: By camera, from the filename. Cameras `AIPC608UW_10_167` and `C4k0193` -> val (834 images, 20%); the other cameras and the videos/images without a camera id -> train
+
+### digi4eco
+- **Source**: [Zenodo](https://doi.org/10.5281/zenodo.20701225) (`DIGI4ECO_tracking_dataset.zip`)
+- **Download**: Automatic (139 MB, resumes an interrupted download, checked against the Zenodo MD5)
+- **Annotations**: CVAT XML for video 1.1 (multi-object tracks over 4 MP4 videos) -> COCO conversion. Every annotated frame is extracted from the videos with OpenCV, and every box with `outside="0"` and `occluded="0"` becomes a COCO box; track ids are dropped. The visible box count of each XML is checked against its `annotation_stats`. Boxes with `occluded="1"` (11,798, 9.4% of the visible boxes, ~95% of them interpolated by CVAT) are dropped: in 96 random crops (24 per sequence) most showed no fish, only the pillar or rope the fish was behind, open water, or a closer fish hiding it; only about 1 in 5 showed part of the fish. Ancona, SmartBay1 and SmartBay2 decode to exactly their annotated frame count, so CVAT frame k is the k-th decoded frame. The OBSEA video has 148 frames for 150 annotated ones (timestamps on a 1/30 s grid with two gaps), so its frames are matched by timestamp and CVAT frames 1 and 148 (15 non-occluded boxes) are skipped. 5,849 images, 114,207 boxes; every frame keeps at least one box. Each COCO image entry has extra fields to allow dropping consecutive frames later: `video`, `frame_index` and `site`
+- **Category mapping**:
+  - fish: `Fish`, `Apogon sp` (2 tracks in SmartBay1, 62 boxes; cardinalfish, crops checked)
+  - non-fish: none
+  - discard: none
+- **Split**: By site, from the sequence name in the filename. Ancona (Adriatic Sea) -> val (1,200 images, 22,441 boxes, 20%); OBSEA and SmartBay1/SmartBay2 (Galway Bay, two cameras) -> train (4,649 images, 91,766 boxes). The OBSEA clip (camera ANERIS-EMUAS1, July 2025) is not from the cameras that `obsea` puts in val
+
 ## Partial Datasets
 
 These datasets require manual download or have special dependencies.
