@@ -1,119 +1,189 @@
 """
 OBSEA Dataset
+Source: https://doi.org/10.5281/zenodo.14888328 (obsea_dataset_v4.1.zip, YOLO boxes)
+Split logic: By camera. Cameras AIPC608UW_10_167 and C4k0193 go to val; all other
+    cameras and the videos/images without a camera id go to train.
+Category mapping:
+  fish: all fish species, plus "unknown" and "unknown sp" (crops checked: nearly all fish)
+  non-fish: Cranc (crab), Octopus vulgaris, Rhizostoma pulmo, Chrysaora hysoscella,
+    Asteroidea
+  discard: Diver, Delphinus (dead) (a carcass on the seabed), Posidonia oceanica (shot)
+    (seagrass), Gateropodae (small snail shells)
 
-Source: Zenodo record 14888328, obsea_dataset_v4.1.zip
-https://doi.org/10.5281/zenodo.14888328
-
-Expects obsea_dataset_v4.1.zip to be at:
-
-    [repo root]/data/raw/obsea/obsea_dataset_v4.1.zip
-
-The zip file contains a folder called "obsea_dataset_v4.1"; if necessary, this script
-will extract that folder such that the final folder structure looks like:
-
-    [repo root]/data/raw/obsea/obsea_dataset_v4.1/images
-    [repo root]/data/raw/obsea/obsea_dataset_v4.1/labels
-
-* Fish and fish-like source classes are mapped into the repo's single "fish" category.
-* Zero-fish/background images are kept in the COCO images list with no annotations.
-* The validation split is a based on filenames that indicate unique deployments
+The YOLO class ids follow the order of the class names in obsea_dataset.json, which also
+holds the box count per class; the conversion checks those counts. Images with no boxes
+left are kept.
 """
 
+import hashlib
 import json
-import os
 import shutil
 import zipfile
-
-from tqdm import tqdm
+from collections import Counter
 from pathlib import Path
 
 from PIL import Image
+from tqdm import tqdm
 
 from datasets.settings import Settings
-from datasets.utils.images import add_dataset_shortname_prefix_to_image_names
-from datasets.utils.split import split_coco_dataset_into_train_validation
-
+from datasets.utils import (
+    download_file_resumable,
+    map_annotations_to_fish_and_non_fish,
+    save_preview_image,
+    split_coco_dataset_into_train_validation,
+)
 
 DATASET_SHORTNAME = "obsea"
+DATA_URL = "https://zenodo.org/records/14888328/files/obsea_dataset_v4.1.zip?download=1"
 SOURCE_ZIP_NAME = "obsea_dataset_v4.1.zip"
 SOURCE_ZIP_MD5 = "7a2012d7a39fb42d155b29fc67d8753f"
 SOURCE_FOLDER_NAME = "obsea_dataset_v4.1"
 
-IMAGE_EXTENSIONS = {".jpg", ".jpeg", ".png"}
-
-# Clear non-fish source classes in obsea_dataset.json's YOLO class order.
-NON_FISH_CLASS_IDS = {
-    4,  # Asteroidea
-    9,  # Chrysaora hysoscella
-    13,  # Cranc
-    15,  # Delphinus (dead)
-    31,  # Diver
-    34,  # Gateropodae
-    46,  # Octopus vulgaris
-    48,  # Posidonia oceanica (shot)
-    49,  # Rhizostoma pulmo
+FISH_CLASSES = [
+    "Aetomylaeus bovinus",
+    "Apogon imberbis",
+    "Apogon imberbis (night)",
+    "Apogon sp.",
+    "Balistes capriscus",
+    "Chromis chromis",
+    "Chromis chromis (alev.)",
+    "Chromis chromis (back)",
+    "Coris julis",
+    "Coris julis (back)",
+    "Coris julis (m)",
+    "Dactylopterus volitans",
+    "Dentex dentex",
+    "Dentex dentex (back)",
+    "Dentex dentex (night)",
+    "Diplodus annularis",
+    "Diplodus cervinus",
+    "Diplodus cervinus (alev.)",
+    "Diplodus cervinus (back)",
+    "Diplodus cervinus (night)",
+    "Diplodus puntazzo",
+    "Diplodus puntazzo (night)",
+    "Diplodus sargus",
+    "Diplodus sargus (back)",
+    "Diplodus sargus (night)",
+    "Diplodus vulgaris",
+    "Diplodus vulgaris (night)",
+    "Epinephelus costae",
+    "Epinephelus marginatus",
+    "Mola mola",
+    "Mullus surmuletus",
+    "Mullus surmuletus (night)",
+    "Muraena helena",
+    "Muraena helena (alev.)",
+    "Muraena helena (night)",
+    "Myliobatidae",
+    "Myliobatidae (back)",
+    "Oblada melanura",
+    "Oblada melanura (back)",
+    "Oblada melanura (night)",
+    "Parablennius gattorugine",
+    "Sarpa salpa",
+    "Sarpa salpa (night)",
+    "Sciaena umbra",
+    "Sciaena umbra (night)",
+    "Scorpaena sp",
+    "Seriola dumerili",
+    "Seriola dumerili (back)",
+    "Seriola dumerili (night)",
+    "Serranus cabrilla",
+    "Serranus scriba",
+    "Serranus scriba (night)",
+    "Sparidae",
+    "Sparus aurata",
+    "Sparus aurata (back)",
+    "Spondyliosoma cantharus",
+    "Symphodus mediterraneus",
+    "Symphodus mediterraneus (f)",
+    "Symphodus mediterraneus (m)",
+    "Symphodus melanocercus",
+    "Symphodus tinca (m)",
+    "Thalassoma pavo",
+    "Thalassoma pavo (f)",
+    # Crops checked: nearly all fish (a few unclear boxes in "unknown sp")
+    "unknown",
+    "unknown sp",
+]
+NON_FISH_CLASSES = [
+    "Asteroidea",  # starfish
+    "Chrysaora hysoscella",  # compass jellyfish
+    "Cranc",  # crab (Catalan)
+    "Octopus vulgaris",
+    "Rhizostoma pulmo",  # barrel jellyfish
+]
+# Discarded: Diver, Delphinus (dead), Posidonia oceanica (shot), Gateropodae
+CATEGORIES_FILTER = {
+    **{name: "fish" for name in FISH_CLASSES},
+    **{name: "non-fish" for name in NON_FISH_CLASSES},
 }
 
-EXPECTED_NON_FISH_CLASS_NAMES = {
-    4: "Asteroidea",
-    9: "Chrysaora hysoscella",
-    13: "Cranc",
-    15: "Delphinus (dead)",
-    31: "Diver",
-    34: "Gateropodae",
-    46: "Octopus vulgaris",
-    48: "Posidonia oceanica (shot)",
-    49: "Rhizostoma pulmo",
-}
-
-# Deployment IDs assigned to the validation set
+# Cameras assigned to the validation set
 VALIDATION_GROUPS = {"AIPC608UW_10_167", "C4k0193"}
+
+IMAGE_EXTENSIONS = {".jpg", ".jpeg", ".png"}
 
 settings = Settings()
 
+raw_data_dir = settings.raw_dir / DATASET_SHORTNAME
+source_root = raw_data_dir / SOURCE_FOLDER_NAME
+processing_dir = settings.intermediate_dir / DATASET_SHORTNAME
+images_path = processing_dir / settings.images_folder_name
+source_annotations_path = processing_dir / "obsea_source_classes_coco.json"
+mapped_annotations_path = processing_dir / settings.coco_file_name
 
-def load_source_class_names(source_root: Path) -> list[str]:
+
+def md5sum(path: Path) -> str:
+    md5 = hashlib.md5()
+    with open(path, "rb") as f:
+        for chunk in iter(lambda: f.read(1 << 24), b""):
+            md5.update(chunk)
+    return md5.hexdigest()
+
+
+def download_data():
+    """Download (resuming broken downloads), check and extract the zip from Zenodo."""
+    extracted_marker = raw_data_dir / f".{SOURCE_FOLDER_NAME}_extracted"
+    if extracted_marker.exists():
+        print(f"Dataset already extracted at {source_root}")
+        return
+
+    raw_data_dir.mkdir(parents=True, exist_ok=True)
+    zip_path = raw_data_dir / SOURCE_ZIP_NAME
+    download_file_resumable(DATA_URL, zip_path)
+
+    print(f"Checking MD5 of {zip_path}...")
+    actual_md5 = md5sum(zip_path)
+    if actual_md5 != SOURCE_ZIP_MD5:
+        raise ValueError(
+            f"MD5 mismatch for {zip_path}: expected {SOURCE_ZIP_MD5}, got {actual_md5}. "
+            "Delete it and rerun."
+        )
+
+    print(f"Extracting {zip_path}...")
+    with zipfile.ZipFile(zip_path) as zipf:
+        zipf.extractall(raw_data_dir)
+    extracted_marker.touch()
+
+
+def load_source_class_names() -> tuple[list[str], dict[str, int]]:
     """
-    Load the list of class names from obsea_dataset.json
+    Class names from obsea_dataset.json, in YOLO class id order, and the number of
+    boxes per class that the file lists.
     """
-    metadata_path = source_root / "obsea_dataset.json"
-    with open(metadata_path, "r") as f:
-        metadata = json.load(f)
-
-    if not isinstance(metadata, dict):
-        raise ValueError(f"Expected {metadata_path} to contain class-name counts")
-
-    class_names = list(metadata.keys())
-    for class_id, expected_name in EXPECTED_NON_FISH_CLASS_NAMES.items():
-        actual_name = class_names[class_id]
-        if actual_name != expected_name:
-            raise ValueError(
-                f"Unexpected OBSEA class mapping for class {class_id}: "
-                f"expected {expected_name!r}, found {actual_name!r}"
-            )
-
-    return class_names
+    with open(source_root / "obsea_dataset.json") as f:
+        box_counts = json.load(f)
+    return list(box_counts), box_counts
 
 
-def list_images(source_root: Path) -> dict[str, Path]:
-    """
-    Return all images in [source_root] (non-recursive).
-    """
-    images = {}
-    for image_path in sorted((source_root / "images").iterdir()):
-        if image_path.is_file() and image_path.suffix.lower() in IMAGE_EXTENSIONS:
-            images[image_path.stem] = image_path
-    return images
-
-
-def list_labels(source_root: Path) -> dict[str, Path]:
-    """
-    Return all .txt files in [source_root] (non-recursive).
-    """
+def list_files(folder: Path, extensions: set[str]) -> dict[str, Path]:
+    """Return {stem: path} for the files in folder with one of the given extensions."""
     return {
-        label_path.stem: label_path
-        for label_path in sorted((source_root / "labels").glob("*.txt"))
-        if label_path.is_file()
+        path.stem: path
+        for path in sorted(folder.iterdir())
+        if path.is_file() and path.suffix.lower() in extensions
     }
 
 
@@ -179,7 +249,8 @@ def yolo_box_to_coco_box(
     image_height: int,
 ) -> list[float]:
     """
-    Convert a YOLO box (x,y,w,h) to COCO format (x1,y2,x2,y2)
+    Convert a YOLO box (normalized x_center, y_center, w, h) to COCO (x_min, y_min, w, h)
+    in pixels, clipped to the image.
     """
     x_min = (x_center - box_width / 2) * image_width
     y_min = (y_center - box_height / 2) * image_height
@@ -196,8 +267,8 @@ def yolo_box_to_coco_box(
 
 def get_source_group(image_stem_or_filename: str) -> str:
     """
-    Extract an OBSEA deployment ID from a filename, returns
-    "unknown" if it can't find a known deployment ID.
+    Extract an OBSEA camera id from a filename, returns
+    "unknown" if it can't find a known camera id.
     """
     stem = Path(image_stem_or_filename).stem
     if stem.startswith(f"{DATASET_SHORTNAME}_"):
@@ -220,38 +291,22 @@ def get_source_group(image_stem_or_filename: str) -> str:
     return "unknown"
 
 
-def copy_source_images_to_processing(
-    source_images: dict[str, Path],
-    coco_images_path: Path,
-) -> None:
+def convert_obsea_to_coco():
     """
-    Copy all the files in the list [source_images] to the
-    folder [coco_images_path].
+    Convert the YOLO labels to COCO with the source classes as categories (id = YOLO
+    class id + 1), copying the images with the dataset prefix.
     """
-    coco_images_path.mkdir(parents=True, exist_ok=True)
-    source_image_filenames = list(source_images.values())
-    print('Copying {} files to {}'.format(
-        len(source_image_filenames), str(coco_images_path)))
-    for image_path in tqdm(source_image_filenames):
-        shutil.copy2(image_path, coco_images_path / image_path.name)
+    if source_annotations_path.exists():
+        print(f"Source-class COCO file already exists: {source_annotations_path}")
+        return
 
-
-def convert_obsea_to_coco(
-    source_root: Path,
-    coco_images_path: Path,
-    coco_annotations_path: Path,
-) -> dict:
-    """
-    The main function in this module, converts the entire OBSEA dataset from YOLO
-    to COCO.
-    """
-    class_names = load_source_class_names(source_root)
-    source_images = list_images(source_root)
-    source_labels = list_labels(source_root)
-
-    print("Read {} class names, enumerated {} images, enumerated {} labels".format(
-        len(class_names),len(source_images),len(source_labels)))
-    assert (len(class_names) > 0) and (len(source_images) > 0) and (len(source_labels) > 0)
+    class_names, expected_box_counts = load_source_class_names()
+    source_images = list_files(source_root / "images", IMAGE_EXTENSIONS)
+    source_labels = list_files(source_root / "labels", {".txt"})
+    print(
+        f"Read {len(class_names)} class names, {len(source_images)} images, "
+        f"{len(source_labels)} label files"
+    )
 
     missing_labels = sorted(set(source_images) - set(source_labels))
     missing_images = sorted(set(source_labels) - set(source_images))
@@ -262,171 +317,82 @@ def convert_obsea_to_coco(
             f"Labels without images: {len(missing_images)}."
         )
 
-    copy_source_images_to_processing(source_images, coco_images_path)
-
+    images_path.mkdir(parents=True, exist_ok=True)
     coco_data = {
         "images": [],
         "annotations": [],
-        "categories": Settings.coco_categories,
+        "categories": [
+            {"id": class_id + 1, "name": name} for class_id, name in enumerate(class_names)
+        ],
     }
+    box_counts = Counter()
 
-    source_yolo_rows = 0
-    filtered_rows = 0
-    kept_rows = 0
-    zero_fish_images = 0
-    image_id_by_stem = {}
-
-    annotation_id = 1
-
-    print("Converting data from YOLO to COCO")
-
-    for image_id, (image_stem, source_image_path) in tqdm(enumerate(
-        source_images.items(), start=1), total=len(source_images)):
+    for image_id, (image_stem, source_image_path) in tqdm(
+        enumerate(source_images.items(), start=1),
+        total=len(source_images),
+        desc="Converting YOLO to COCO",
+    ):
         with Image.open(source_image_path) as image:
             image_width, image_height = image.size
 
-        image_id_by_stem[image_stem] = image_id
+        file_name = f"{DATASET_SHORTNAME}_{source_image_path.name}"
+        shutil.copy2(source_image_path, images_path / file_name)
         coco_data["images"].append(
             {
                 "id": image_id,
-                "file_name": source_image_path.name,
+                "file_name": file_name,
                 "width": image_width,
                 "height": image_height,
             }
         )
 
-        label_rows = parse_yolo_label_file(source_labels[image_stem], len(class_names))
-        source_yolo_rows += len(label_rows)
-        image_kept_rows = 0
-
-        for class_id, x_center, y_center, box_width, box_height in label_rows:
-            if class_id in NON_FISH_CLASS_IDS:
-                filtered_rows += 1
-                continue
-
+        rows = parse_yolo_label_file(source_labels[image_stem], len(class_names))
+        for class_id, x_center, y_center, box_width, box_height in rows:
             bbox = yolo_box_to_coco_box(
-                x_center,
-                y_center,
-                box_width,
-                box_height,
-                image_width,
-                image_height,
+                x_center, y_center, box_width, box_height, image_width, image_height
             )
             if bbox[2] <= 0 or bbox[3] <= 0:
-                raise ValueError(
-                    f"Kept OBSEA box collapsed to zero area for {source_image_path.name}"
-                )
+                raise ValueError(f"Box collapsed to zero area in {source_image_path.name}")
 
+            box_counts[class_names[class_id]] += 1
             coco_data["annotations"].append(
                 {
-                    "id": annotation_id,
-                    "image_id": image_id_by_stem[image_stem],
-                    "category_id": Settings.fish_category_id,
+                    "id": len(coco_data["annotations"]) + 1,
+                    "image_id": image_id,
+                    "category_id": class_id + 1,
                     "bbox": bbox,
                     "area": bbox[2] * bbox[3],
                     "iscrowd": 0,
                 }
             )
-            annotation_id += 1
-            kept_rows += 1
-            image_kept_rows += 1
 
-        if image_kept_rows == 0:
-            zero_fish_images += 1
-
-    with open(coco_annotations_path, "w") as f:
-        json.dump(coco_data, f, indent=2)
-
-    return {
-        "source_image_count": len(source_images),
-        "source_label_count": len(source_labels),
-        "source_yolo_rows": source_yolo_rows,
-        "filtered_rows": filtered_rows,
-        "kept_fish_annotations": kept_rows,
-        "zero_fish_images": zero_fish_images,
-        "coco_annotations_path": coco_annotations_path,
+    # The box counts in obsea_dataset.json confirm that the class names are in YOLO id order
+    mismatched = {
+        name: (count, box_counts[name])
+        for name, count in expected_box_counts.items()
+        if box_counts[name] != count
     }
+    if mismatched:
+        raise ValueError(f"Box counts differ from obsea_dataset.json: {mismatched}")
+
+    partial = source_annotations_path.with_name(source_annotations_path.name + ".part")
+    with open(partial, "w") as f:
+        json.dump(coco_data, f)
+    partial.rename(source_annotations_path)
 
 
-def count_images_with_annotations(coco_data: dict) -> int:
-    image_ids_with_annotations = {
-        annotation["image_id"] for annotation in coco_data["annotations"]
-    }
-    return sum(
-        1 for image in coco_data["images"] if image["id"] in image_ids_with_annotations
-    )
-
-
-def load_coco_summary(coco_path: Path) -> dict:
-    with open(coco_path, "r") as f:
-        coco_data = json.load(f)
-    return {
-        "images": len(coco_data["images"]),
-        "images_with_fish_boxes": count_images_with_annotations(coco_data),
-        "annotations": len(coco_data["annotations"]),
-    }
-
-
-def try_save_preview_image(
-    coco_images_path: Path,
-    coco_annotations_path: Path,
-) -> None:
-    try:
-        os.environ.setdefault("MPLBACKEND", "Agg")
-        from datasets.utils.visualization import save_preview_image
-    except ModuleNotFoundError as exc:
-        print(
-            "Skipping only preview image generation because "
-            f"{exc.name} is not installed; dataset conversion will continue."
-        )
-        return
-
-    save_preview_image(coco_images_path, coco_annotations_path, DATASET_SHORTNAME)
-
-
-def main():
-
-    source_root = settings.raw_dir / DATASET_SHORTNAME / SOURCE_FOLDER_NAME
-
-    if (not source_root.is_dir()):
-        print(f"Source folder not found at {source_root}, checking for zipfile")
-        source_zip = settings.raw_dir / DATASET_SHORTNAME / SOURCE_ZIP_NAME
-        if (not source_zip.is_file()):
-            raise ValueError(f"Source zipfile not found at {source_zip}")
-        with zipfile.ZipFile(source_zip, 'r') as zipf:
-            zipf.extractall(settings.raw_dir / DATASET_SHORTNAME)
-        if (not source_root.is_dir()):
-            raise ValueError(f"Extracted zipfile {source_zip}, but folder {source_root} not found")
-
-    print(f"Using OBSEA source folder: {source_root}")
-
-    processing_dir = settings.intermediate_dir / DATASET_SHORTNAME
+def processing():
     processing_dir.mkdir(parents=True, exist_ok=True)
-
-    coco_images_path = processing_dir / settings.images_folder_name
-    coco_annotations_path = processing_dir / settings.coco_file_name
-
-    if coco_images_path.exists():
-        shutil.rmtree(coco_images_path)
-    if coco_annotations_path.exists():
-        coco_annotations_path.unlink()
-
-    summary = convert_obsea_to_coco(
-        source_root=source_root,
-        coco_images_path=coco_images_path,
-        coco_annotations_path=coco_annotations_path,
+    convert_obsea_to_coco()
+    map_annotations_to_fish_and_non_fish(
+        source_annotations_path, CATEGORIES_FILTER, mapped_annotations_path
     )
 
-    add_dataset_shortname_prefix_to_image_names(
-        coco_images_path,
-        coco_annotations_path,
-        DATASET_SHORTNAME,
+
+def dataset_splitting():
+    should_the_image_be_included_in_train_set = (
+        lambda image_path: get_source_group(image_path) not in VALIDATION_GROUPS
     )
-
-    try_save_preview_image(coco_images_path, coco_annotations_path)
-
-    def should_the_image_be_included_in_train_set(image_filename: str) -> bool:
-        return get_source_group(image_filename) not in VALIDATION_GROUPS
 
     train_dataset_path = (
         settings.processed_dir / f"{DATASET_SHORTNAME}{settings.train_dataset_suffix}"
@@ -434,44 +400,30 @@ def main():
     val_dataset_path = (
         settings.processed_dir / f"{DATASET_SHORTNAME}{settings.val_dataset_suffix}"
     )
-
-    if train_dataset_path.exists():
-        shutil.rmtree(train_dataset_path)
-    if val_dataset_path.exists():
-        shutil.rmtree(val_dataset_path)
-
-    train_dataset_path.mkdir(parents=True, exist_ok=True)
-    val_dataset_path.mkdir(parents=True, exist_ok=True)
+    train_dataset_path.mkdir(parents=True)
+    val_dataset_path.mkdir(parents=True)
 
     split_coco_dataset_into_train_validation(
-        coco_images_path,
-        coco_annotations_path,
+        images_path,
+        mapped_annotations_path,
         train_dataset_path,
         val_dataset_path,
         should_the_image_be_included_in_train_set,
     )
 
-    train_summary = load_coco_summary(train_dataset_path / settings.coco_file_name)
-    val_summary = load_coco_summary(val_dataset_path / settings.coco_file_name)
 
-    print("OBSEA source summary:")
-    print(f"  - source images: {summary['source_image_count']}")
-    print(f"  - source labels: {summary['source_label_count']}")
-    print(f"  - original YOLO rows: {summary['source_yolo_rows']}")
-    print(f"  - filtered clear non-fish rows: {summary['filtered_rows']}")
-    print(f"  - kept fish/fish-like annotations: {summary['kept_fish_annotations']}")
-    print(f"  - zero-fish/background images kept: {summary['zero_fish_images']}")
-    print("OBSEA split summary:")
-    print(
-        f"  - training: {train_summary['images']} images, "
-        f"{train_summary['images_with_fish_boxes']} images with fish boxes, "
-        f"{train_summary['annotations']} fish annotations"
-    )
-    print(
-        f"  - validation: {val_summary['images']} images, "
-        f"{val_summary['images_with_fish_boxes']} images with fish boxes, "
-        f"{val_summary['annotations']} fish annotations"
-    )
+def main():
+    # 1. DOWNLOAD
+    download_data()
+
+    # 2. PROCESS
+    processing()
+
+    # 3. PREVIEW
+    save_preview_image(images_path, mapped_annotations_path, DATASET_SHORTNAME)
+
+    # 4. SPLIT
+    dataset_splitting()
 
 
 if __name__ == "__main__":
