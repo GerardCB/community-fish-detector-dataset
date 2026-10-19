@@ -494,11 +494,14 @@ Boxes on fish and other objects in images from the OBSEA seafloor observatory in
 - Data downloadable via Zenodo ([download link](https://doi.org/10.5281/zenodo.14888328))
 - License: CC BY 4.0
 - Metadata raw format: YOLO
-- Categories/species: 74 source classes
+- Categories/species: 74 source classes (Mediterranean fish species, plus a few other animals, divers and seagrass)
+  - fish: 65 classes (all fish species and their variants, plus unknown and unknown sp)
+  - non-fish: crab (Cranc), Octopus vulgaris, jellyfish (Rhizostoma pulmo, Chrysaora hysoscella), starfish (Asteroidea)
+  - discarded: Diver, Delphinus (dead) (a carcass on the seabed), Posidonia oceanica (seagrass), Gateropodae (small snail shells)
 - Vehicle type: fixed underwater observatory camera
-- Image information: 4,120 images, including 470 zero-fish/background images
-- Annotation information: 34,728 fish/fish-like bounding boxes after filtering
-- Typical animal size in pixels: N/A
+- Image information: 4,120 images, including 413 images with no boxes
+- Annotation information: 34,728 fish and 184 non-fish bounding boxes
+- Typical animal size in pixels: ~65 (median long side of the fish boxes)
 - Code to render sample annotated image: [obsea.py](./datasets/obsea.py)
 
 <img src="./previews/obsea_sample_image.png" alt="OBSEA sample" width="600">
@@ -575,6 +578,52 @@ Morris CJ, Ayyagari KD, Porter D, Nguyen QK, Hanlon J, Whidden C. [Newfoundland 
 
 
 
+#### WIO-ReefFish
+
+1,000 ultra-high-definition frames from diver-operated video transects on coral reefs in Kenya (2023) and Tanzania (2025), with 6,768 boxes on fish of 24 reef fish families
+
+Gerard J, Branger L, Huyghe F, Kochzius M, Otwoma L, Bergacker S, op't Roodt L, Rumisha C, Di Bella L (2026). [WIO-ReefFish: A High-Resolution Dataset for Taxon-Aware Coral Reef Fish Detection in the Western Indian Ocean](https://doi.org/10.5281/zenodo.21360120). Zenodo.
+
+- Data downloadable via HTTPS from Zenodo ([download link](https://zenodo.org/records/21360120/files/WIO-ReefFish_v1.0.0.zip?download=1))
+- License: CC BY 4.0
+- Metadata raw format: YOLO TXT
+- Categories/species: 23 reef fish families and the parrotfish subfamily Scarinae (only fish of these families are boxed)
+  - fish: all 24 classes (Acanthuridae, Anthiadidae, Aulostomidae, Balistidae, Caesionidae, Chaetodontidae, Epinephelidae, Haemulidae, Holocentridae, Kyphosidae, Labridae, Lethrinidae, Lutjanidae, Microdesmidae, Monacanthidae, Mullidae, Pempheridae, Pomacanthidae, Pomacentridae, Priacanthidae, Scarinae, Siganidae, Tetraodontidae, Zanclidae)
+  - non-fish: none
+  - discarded: none
+- Vehicle type: diver (GoPro, line-intercept transects)
+- Image information: 1,000 images (3840x2160) from 10 locations
+- Annotation information: 6,768 bounding boxes
+- Typical animal size in pixels: ~90 px (median box long side)
+- Code to render sample annotated image: [wio_reef_fish.py](./datasets/wio_reef_fish.py)
+
+<img src="./previews/wio_reef_fish_sample_image.png" alt="WIO-ReefFish sample" width="600">
+
+
+
+#### DIGI4ECO Underwater Fish Tracking
+
+5,849 frames from 4 underwater videos recorded at three European marine observatory sites (Adriatic Sea, NW Mediterranean, Galway Bay), with 114,207 fish bounding boxes from manually annotated tracks
+
+González-Villà S, Burns Font D, Aguzzi J, et al. [DIGI4ECO Underwater Fish Tracking Dataset](https://doi.org/10.5281/zenodo.20701225). Zenodo, 2026
+
+- Data downloadable via Zenodo ([download link](https://zenodo.org/records/20701225/files/DIGI4ECO_tracking_dataset.zip?download=1))
+- License: CC BY 4.0
+- Metadata raw format: CVAT XML for video 1.1 (multi-object tracks) over MP4 videos
+- Categories/species: Fish (all individuals, no species), plus 2 tracks labelled Apogon sp (cardinalfish)
+  - fish: Fish, Apogon sp
+  - non-fish: none
+  - discarded: none
+- Vehicle type: fixed underwater cameras (OBSEA cabled observatory, SmartBay Observatory, and a camera near an artificial structure offshore Pineto, Adriatic Sea)
+- Image information: 5,849 frames (1920x1080, OBSEA 1912x1080): Ancona 1,200, OBSEA 148, SmartBay1 2,400, SmartBay2 2,101
+- Annotation information: 114,207 fish bounding boxes (491 tracks); the 11,798 boxes flagged as occluded are dropped, as most of them show no visible fish
+- Typical animal size in pixels: ~104 (median long side of the fish boxes)
+- Code to render sample annotated image: [digi4eco.py](./datasets/digi4eco.py)
+
+<img src="./previews/digi4eco_sample_image.png" alt="DIGI4ECO Underwater Fish Tracking sample" width="600">
+
+
+
 ### Datasets that were not included in the Community Fish Detection Dataset
 
 - [Fishnet.AI](https://www.fishnet.ai/): ~163k bounding boxes on ~35k images of fish and people on fishing vessels.  Excluded because images are above-water.
@@ -595,11 +644,7 @@ Morris CJ, Ayyagari KD, Porter D, Nguyen QK, Hanlon J, Whidden C. [Newfoundland 
 ### Unprocessed datasets
 
 Datasets that we're aware exist, but that we haven't evaluated or processed yet.
-
-- [WIO-ReefFish](https://zenodo.org/records/21360120) (~6.8k boxes on 1k images with 24k labeled fish taxa from the Indian Ocean)
 - [J-EDI](https://www.godac.jamstec.go.jp/jedi/e/dataset/jedi_organism_detection_dataset.html) (~8k images with 19 deep-sea animal categories)
-- [OBSEA](https://zenodo.org/records/14888328) (~35k boxes on ~4k images from a cabled observatory in the Mediterranean)
-- [DIGI4ECO](https://zenodo.org/records/20701225) (~126k boxes on ~6k video frames from the Adriatic Sea, the Mediterranean Sea, and Galway Bay)
 - [FjordFish](https://zenodo.org/records/17950781) (~6k boxes on ~3k images from a BRUV in the North Atlantic)
 - [SFISHTRACK](https://github.com/JosepSanchezCano/SFISHTRACK) (~24k frames with segmentation masks)
 - [Caribbean Fish](https://warplab.github.io/corefish/) (~15K images with ~90k bounding boxes collected in 5 different Caribbean coral reefs over 8 years)
