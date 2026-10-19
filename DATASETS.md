@@ -153,6 +153,16 @@ Each dataset script in `datasets/` follows a 4-step pattern: Download -> Process
   - discard: none
 - **Split**: By video (the frame filename without `_frame_<n>`, 1,673 videos; sorted names, `random_state`). The source's own train/valid/test split is also by video
 
+### fjordfish
+- **Source**: [Zenodo](https://zenodo.org/records/17950781)
+- **Download**: Automatic (`FjordFish.zip`, 6.1 GB)
+- **Annotations**: YOLO TXT -> COCO conversion (28 classes in `data.yaml`; source train/val folders merged, labels matched to images by file stem because `2515.jpg` is in `images/train` but its label is in `labels/val`). Mixed resolutions: BRUV and mesocosm video frames plus diver DSLR photos
+- **Category mapping**:
+  - fish: `ballan`, `cuckoo_female`, `cuckoo_male`, `corkwing_female`, `corkwing_male`, `goldsinny`, `rock_cook`, `labrids_unknown`, `cod`, `cod_yoy`, `haddock`, `pollack`, `poor_cod`, `saithe`, `whiting`, `gadines_unknown`, `spiny_dogfish`, `sharks_unknown` (no boxes), `ling`, `two_spot_goby`, `black_goby`, `sand_goby`
+  - non-fish: `brown_crab`, `green_crab`, `hermit` (hermit crabs), `lobster`, `decapods_unknown` (all crabs on inspection)
+  - discard: `unknown` (no boxes)
+- **Split**: By blocks of 100 consecutive image ids (`<id> // 100`, 31 blocks; sorted, `random_state`). Images are named `1.jpg`...`3002.jpg` in source order, so neighbouring ids are frames of the same video or photos of the same series; no video/site id is published. The authors' train/val folders are a random per-image split and are ignored
+
 ### n_marine
 - **Source**: [Government of Canada Open Data Portal](https://open.canada.ca/data/en/dataset/2ae46860-f82a-4127-bb1f-b02e36ef6a70)
 - **Download**: Automatic (15 PNG zips, ~23 GB, plus `nmarine_csv.zip`; resumable). The zips are kept in `data/raw/` and never extracted there: images are read from them straight into `data/processing/` as `<video>_<frame>.png`. The server's firewall rejects range requests near the end of a zip, so a resume that fails there needs the `.part` file deleted
