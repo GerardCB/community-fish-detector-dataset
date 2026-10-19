@@ -153,6 +153,16 @@ Each dataset script in `datasets/` follows a 4-step pattern: Download -> Process
   - discard: none
 - **Split**: By video (the frame filename without `_frame_<n>`, 1,673 videos; sorted names, `random_state`). The source's own train/valid/test split is also by video
 
+### pebl_farm_fauna
+- **Source**: LILA BC ([zip](https://lilawildlife.blob.core.windows.net/lila-wildlife/community-fish-detection-dataset/pebl_farm_fauna_v1.0.zip)); PEBL CIC (2026)
+- **Download**: Automatic (188 MB zip)
+- **Annotations**: COCO Camera Traps JSON (boxes already `[x, y, w, h]` in pixels, string image ids). 1,035 frames (1920x1080 and 1080x1920) from 57 videos at 5 anonymised cameras on 2 UK seaweed/shellfish farms, 2,464 boxes; every frame has at least one box. Frame names repeat across videos (`images/<farm>/<video>/frame_<n>.jpg`), so images are flattened to `<video>_frame_<n>.jpg` and given integer ids; the `location`, `seq_id`, `frame_num` and `datetime` (video start) fields are kept on each image. Boxes were drawn by people or proposed by detectors (PEBL RF-DETR and the CFD) and verified by a person (`source` field); a few animals neither detector proposed may be unboxed
+- **Category mapping**:
+  - fish: `Fish`, `Scooter` (dragonets and gobies), `Flatfish`, `Elasmobranch` (no boxes in v1.0)
+  - non-fish: `Hermit crab`, `Crab`, `Jellyfish` (moon and lion's mane jellies, large), `Starfish`, `Gastropod` (whelk-like sea snails), `Squid` and `Shrimp` (no boxes in v1.0)
+  - discard: none
+- **Split**: By camera location (the image `location` field): `farm_A_sc14` (151 frames) and `farm_A_bed1` (39) → val (190 frames, 293 fish / 249 non-fish boxes); `farm_A_sc11` (780), `farm_A_cam` (33, 2020) and `farm_B_cam` (32) → train (845 frames, 1,014 fish / 908 non-fish boxes). 133 of the 143 jellyfish boxes are at sc14, so they end up in val
+
 ### corefish
 - **Source**: [CoReFish project page](https://warplab.github.io/corefish/) (Google Drive file `corefish_dataset.zip`)
 - **Download**: Automatic, with a manual fallback (40 GB zip from Google Drive). Google Drive often refuses anonymous downloads of this file ("Quota exceeded"); the script then stops and prints how to download it signed in (in a browser, or on the server with the browser's "Copy as cURL" request) to `data/raw/corefish/corefish_dataset.zip`. The zip is kept in `data/raw/` and the frames are extracted straight from it into `data/processing/`; it can be deleted by hand afterwards
