@@ -9,17 +9,19 @@ Writes to <run dir>/export/:
         confidence   high | medium | low (boxes drawn by a model only)
         original_bbox  the box before the review corrected it (box_corrected only)
       and every image has a "vlm" object: status (reviewed, pass1_only if the review failed,
-      human_only if pass 1 failed), unusable (the review found the photo too blurry or dark;
+      human_only if pass 1 failed, damaged_file if the photo file cannot be decoded completely;
+      such photos are also unusable), unusable (the review found the photo too blurry or dark;
       its human boxes are then kept as they are and nothing is added), crowded (reviewed in
       tiles), check_priority and box counts.
-  rejected_candidates.json  {file name: [boxes]}: low-confidence pass-1 boxes the review removed.
-      About half of them are real fish in the pilot, so they are kept here for the annotators.
+  rejected_candidates.json  {file name: [boxes]}: boxes the review removed, kept here for the
+      annotators: low-confidence pass-1 boxes (about half of them were real fish in the pilot)
+      and the rare human boxes removed on a high-confidence verdict.
   review_queue.csv  photos sorted by check_priority, highest first.
   summary.json  totals.
 
 check_priority estimates how much a photo is likely to need a human: one point per uncertain
-box (low-confidence model boxes, medium-confidence boxes added by the review, rejected
-candidates), plus 3 if crowded (crowded photos still miss the most fish) and 5 if the photo is
+box (low-confidence model boxes, medium-confidence boxes added by the review, non-fish boxes,
+rejected candidates), plus 3 if crowded (crowded photos still miss the most fish) and 5 if the photo is
 unusable or was not reviewed. A photo at 0 has only human boxes (unchanged or tightened) and
 model boxes of high or medium confidence.
 
@@ -53,13 +55,15 @@ def load(path: Path) -> dict | None:
     return None if "error" in record else record
 
 
-def photo_boxes(photo: dict) -> tuple[list[dict], list[dict], dict]:
+def photo_boxes(photo: dict, damaged: bool = False) -> tuple[list[dict], list[dict], dict]:
     """Final boxes, rejected candidates and image-level info of one photo."""
     file_name = photo["file_name"]
     review = load(second_pass.raw_path(REVIEWER, file_name))
     human = [{"box": b, "class": "fish", "source": "existing", "status": "kept", "confidence": None}
              for b in pilot.existing_boxes_by_file().get(file_name, [])]
-    info = {"status": "human_only", "unusable": False, "crowded": False}
+    info = {"status": "damaged_file" if damaged else "human_only", "unusable": damaged, "crowded": False}
+    if damaged:
+        return human, [], info
     if review is not None:
         info.update(status="reviewed", unusable=bool(review.get("unusable")), crowded=review["mode"] == "tiled")
         if info["unusable"]:
@@ -90,8 +94,10 @@ def export(run_dir: Path, photos: list[dict]):
     images, annotations, rejected_all, queue = [], [], {}, []
     totals = Counter()
 
+    state_path = run_dir / "state.json"
+    damaged = set(json.loads(state_path.read_text()).get("damaged", [])) if state_path.exists() else set()
     for photo in photos:
-        boxes, rejected, info = photo_boxes(photo)
+        boxes, rejected, info = photo_boxes(photo, photo["id"] in damaged)
         counts = Counter()
         for b in boxes:
             source = SOURCES[b["source"]]
@@ -112,6 +118,7 @@ def export(run_dir: Path, photos: list[dict]):
             counts[b["class"]] += 1
         uncertain = (sum(1 for b in boxes if b["confidence"] == "low")
                      + sum(1 for b in boxes if b["source"] == "review" and b["confidence"] == "medium")
+                     + sum(1 for b in boxes if b["class"] == "non-fish" and b["confidence"] != "low")
                      + len(rejected))
         priority = uncertain + 3 * info["crowded"] + 5 * (info["unusable"] or info["status"] != "reviewed")
         image = {k: photo[k] for k in ("id", "file_name", "width", "height") if k in photo}
@@ -119,8 +126,8 @@ def export(run_dir: Path, photos: list[dict]):
         image["vlm"] = {**info, "check_priority": priority, "counts": dict(counts), "rejected_candidates": len(rejected)}
         images.append(image)
         if rejected:
-            rejected_all[photo["file_name"]] = [{"bbox": xywh(r["box"]), "class": r["class"], "confidence": r["confidence"]}
-                                                for r in rejected]
+            rejected_all[photo["file_name"]] = [{"bbox": xywh(r["box"]), "class": r["class"], "source": r["source"],
+                                                 "confidence": r["confidence"]} for r in rejected]
         queue.append((priority, photo["file_name"], photo["id"], info, counts, len(rejected)))
         totals.update(counts)
         totals[f"images {info['status']}"] += 1

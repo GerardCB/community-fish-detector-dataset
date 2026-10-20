@@ -1,0 +1,22 @@
+{
+ "images": 14952,
+ "annotations": 141028,
+ "fish": 140729,
+ "human box_corrected": 21600,
+ "human unchanged": 47804,
+ "images crowded": 2116,
+ "images damaged_file": 2,
+ "images reviewed": 14950,
+ "images unusable": 60,
+ "non-fish": 299,
+ "rejected candidates": 24853,
+ "vlm_pass1 added high": 20883,
+ "vlm_pass1 added low": 14593,
+ "vlm_pass1 added medium": 30370,
+ "vlm_review added high": 159,
+ "vlm_review added low": 4850,
+ "vlm_review added medium": 769,
+ "check_priority_0": 3903,
+ "check_priority_1_to_4": 7132,
+ "check_priority_5_plus": 3917
+}

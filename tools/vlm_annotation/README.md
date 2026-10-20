@@ -20,9 +20,11 @@ candidate boxes and marks how sure it is about each one.
    class, unusable photo). For each box it answers keep, fix (new box and/or class) or remove,
    then lists the animals still missing. Photos with more than 20 boxes are reviewed in the same
    4 tiles (3x).
-3. **Merge** (`second_pass.final_annotation`, policy `protect`): human boxes stay fish and are only
-   removed on a high-confidence verdict (never happened in the test photos); the review may
-   remove a pass-1 box only if pass 1 gave it low confidence (see the 50-photo test below).
+3. **Merge** (`second_pass.final_annotation`, policy `protect`): a box the review keeps stays
+   exactly as it was; human boxes stay fish and are only removed on a high-confidence verdict
+   (once in the 62 test photos, on what looks like a white filament); the review may remove a
+   pass-1 box only if pass 1 gave it low confidence (see the 50-photo test below). Every removed
+   box is listed in `rejected_candidates.json`.
 4. **Export** (`export.py`): COCO for the annotators, see [Outputs](#outputs).
 
 `batch_run.py` runs pass 1, pass 2 and the export on the Message Batches API at half price.
@@ -84,6 +86,32 @@ What went wrong, and what changed because of it:
 
 ![Boxes on white filaments, the most common false box](pilot_results/figures/random50_before_after_filaments.jpg)
 
+## Full run (2026-10-20)
+
+Both passes on all 14,952 photos with the Batch API, in about 1.5 hours: 59,800 pass-1 and 21,389
+pass-2 requests (91 of them asked again), **0 failed**. The 2 truncated photos were skipped.
+Results are in `full_run_results/` (the export gzipped; `export.py` writes the same files to
+`data/vlm_annotation/obsea_2013_2014/export/`).
+
+| | boxes |
+|---|---|
+| human boxes, unchanged | 47,804 |
+| human boxes, tightened by the review | 21,600 |
+| added by pass 1 (high / medium / low confidence) | 65,846 (20,883 / 30,370 / 14,593) |
+| added by the review (high / medium / low) | 5,778 (159 / 769 / 4,850) |
+| **total** (fish / non-fish) | **141,028** (140,729 / 299) |
+| left out: rejected candidates (pass-1 / human) | 24,853 (24,606 / 247) |
+
+- The human boxes double: 69,651 become 141,028. 31% of the human boxes are tightened, and
+  247 (0.35%) are removed on a high-confidence verdict (kept in `rejected_candidates.json`).
+- 60 photos are marked unusable by the review (their human boxes are kept as they are).
+- **Non-fish boxes are unreliable**: in a random sample of 18, most were fish (sea breams in
+  schools, damselfish) or white filaments, and only one or two looked like a free-moving
+  non-fish animal. There are only 299, and each counts towards `check_priority`.
+- Review queue: 3,903 photos (26%) at check priority 0, 7,132 (48%) at 1-4, 3,917 (26%) at 5 or more.
+- Measured cost: **$22.24** (pass 1 $12.32, pass 2 $9.93), $0.00149 per photo, as estimated.
+  With the pilot ($2.43) the whole effort cost about $24.70.
+
 ## Cost analysis
 
 Prices (USD per million input / output tokens): Claude Haiku 5.5 $0.10 / $0.50, Sonnet 5.5
@@ -125,6 +153,12 @@ venv-vlm/bin/python tools/vlm_annotation/batch_run.py cost
 than `roboflow` pins. `--images <tsv>` limits a run to some photos and `--run-dir` keeps runs
 apart. A stopped run continues where it left off when started again.
 
+On its first start a run copies the photo list (with ids) and the human boxes into its run dir
+(`photos.json`, `human_boxes.json`) and reads the photos from the raw download, so rebuilding
+`data/processing/obsea_2013_2014` during a run changes nothing. It also skips photos whose file
+cannot be decoded completely: 2 photos of the PANGAEA zip are truncated (most of the picture is
+missing).
+
 ## Outputs
 
 In `data/vlm_annotation/obsea_2013_2014/export/` (git-ignored, like all data):
@@ -133,9 +167,14 @@ In `data/vlm_annotation/obsea_2013_2014/export/` (git-ignored, like all data):
   non-fish = 2. Each annotation has `attributes`: `source` (human, vlm_pass1, vlm_review),
   `change` (unchanged, box_corrected, added), `confidence` (model boxes) and `original_bbox`
   (tightened human boxes). Each image has `vlm`: status, unusable, crowded, check_priority, counts.
-- `rejected_candidates.json`: the low-confidence pass-1 boxes the review removed, per photo.
+- `rejected_candidates.json`: the boxes the review removed, per photo (low-confidence pass-1
+  boxes, and the rare human box removed on a high-confidence verdict).
 - `review_queue.csv`: photos sorted by `check_priority`, highest first.
 - `summary.json`, and `../cost.json` with the measured tokens and cost.
+
+Image ids follow the numbering of the original 14,952-photo `obsea_2013_2014` COCO; the dataset
+script now skips the 2 truncated photos, so join with it on `file_name`. Those 2 photos are in the
+export with status `damaged_file` and should be dropped.
 
 `check_priority` counts the uncertain boxes of a photo (low-confidence model boxes,
 medium-confidence boxes added by the review, rejected candidates), plus 3 if the photo is crowded

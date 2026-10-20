@@ -44,10 +44,23 @@ MAX_ATTEMPTS = 3
 POLL_SECONDS = 60
 BATCH_PRICE_FACTOR = 0.5
 DEFAULT_RUN_DIR = Path("data/vlm_annotation/obsea_2013_2014")
+RAW_IMAGES_DIR = Path("data/raw/obsea_2013_2014/images")  # same files as the processing folder, without the prefix
 
 
 def log(message: str):
     print(time.strftime("%Y-%m-%d %H:%M:%S"), message, flush=True)
+
+
+def with_retries(what: str, fn, attempts: int = 30):
+    """Call fn(), waiting and retrying on rate limits, connection problems and server errors."""
+    for attempt in range(1, attempts + 1):
+        try:
+            return fn()
+        except (anthropic.RateLimitError, anthropic.APIConnectionError, anthropic.InternalServerError) as e:
+            wait = min(600, 30 * attempt)
+            log(f"{what}: {type(e).__name__} ({e}); retrying in {wait} s ({attempt}/{attempts})")
+            time.sleep(wait)
+    return fn()
 
 
 class Run:
@@ -62,8 +75,7 @@ class Run:
         wanted = self.state["images"]
         if image_list and wanted != str(image_list):
             raise SystemExit(f"{run_dir} was started with --images {wanted}; use another --run-dir")
-        coco = json.loads(pilot.ANNOTATIONS_PATH.read_text())
-        photos = sorted(coco["images"], key=lambda i: i["file_name"])
+        photos = self.frozen_inputs()
         if wanted != "all":
             lines = Path(wanted).read_text().splitlines()
             column = lines[0].split("\t").index("file_name")
@@ -71,6 +83,42 @@ class Run:
             photos = [p for p in photos if p["file_name"] in names]
         self.photos = photos
         self.photo_by_id = {p["id"]: p for p in photos}
+        if "damaged" not in self.state:
+            self.state["damaged"] = self.find_damaged()
+            self.save()
+        self.damaged = set(self.state["damaged"])
+
+    def frozen_inputs(self) -> list[dict]:
+        """
+        The photo list (with ids) and the human boxes of the run, copied into the run dir on its
+        first start, so that rebuilding data/processing/obsea_2013_2014 during a run (which can
+        renumber the photos) changes nothing. Photos are read from the raw download when present.
+        """
+        photos_path, boxes_path = self.dir / "photos.json", self.dir / "human_boxes.json"
+        if not photos_path.exists() or not boxes_path.exists():
+            coco = json.loads(pilot.ANNOTATIONS_PATH.read_text())
+            photos_path.write_text(json.dumps(sorted(coco["images"], key=lambda i: i["file_name"])))
+            boxes_path.write_text(json.dumps(pilot.existing_boxes_by_file()))
+        human_boxes = json.loads(boxes_path.read_text())
+        pilot.existing_boxes_by_file = lambda: human_boxes
+        return json.loads(photos_path.read_text())
+
+    @staticmethod
+    def image_path(file_name: str) -> Path:
+        raw = RAW_IMAGES_DIR / file_name.removeprefix("obsea_2013_2014_")
+        return raw if raw.exists() else pilot.IMAGES_DIR / file_name
+
+    def find_damaged(self) -> list[int]:
+        """Photos whose file cannot be decoded completely (2 truncated files in the PANGAEA zip)."""
+        damaged = []
+        for photo in self.photos:
+            try:
+                with Image.open(self.image_path(photo["file_name"])) as image:
+                    image.load()
+            except OSError as e:
+                log(f"damaged photo, skipped: {photo['file_name']} ({e})")
+                damaged.append(photo["id"])
+        return damaged
 
     def save(self):
         partial = self.state_path.with_name("state.json.part")
@@ -114,7 +162,7 @@ class Run:
 
     def stage_photos(self, stage: str) -> list[dict]:
         if stage == "pass1":
-            return self.photos
+            return [p for p in self.photos if p["id"] not in self.damaged]
         # Pass 2 reviews the photos whose pass-1 record is complete
         ok = []
         for photo in self.photos:
@@ -158,7 +206,8 @@ class Run:
             nonlocal chunk, size
             if not chunk:
                 return
-            batch = client.with_options(timeout=1800, max_retries=5).messages.batches.create(requests=chunk)
+            batch = with_retries("create batch", lambda: client.with_options(timeout=1800, max_retries=2)
+                                 .messages.batches.create(requests=chunk))
             self.state["stages"][stage]["batches"].append(
                 {"id": batch.id, "created": time.strftime("%Y-%m-%d %H:%M:%S"), "bytes": size,
                  "custom_ids": [r["custom_id"] for r in chunk], "collected": False})
@@ -172,7 +221,7 @@ class Run:
         for image_id, items in by_photo.items():
             photo = self.photo_by_id[image_id]
             jobs, boxes = self.jobs(stage, photo)
-            with Image.open(pilot.IMAGES_DIR / photo["file_name"]) as image:
+            with Image.open(self.image_path(photo["file_name"])) as image:
                 image = image.convert("RGB")
                 for j, attempt in items:
                     if stage == "pass1":
@@ -194,10 +243,12 @@ class Run:
             if not waiting:
                 return
             for batch in waiting:
-                info = client.messages.batches.retrieve(batch["id"])
+                info = with_retries("retrieve batch", lambda: client.messages.batches.retrieve(batch["id"]))
                 if info.processing_status != "ended":
                     continue
-                with open(self.results_path(stage), "a") as out:
+
+                def download():
+                    rows = []
                     for result in client.messages.batches.results(batch["id"]):
                         _, image_id, j, attempt = result.custom_id.split("-")
                         row = {"custom_id": result.custom_id, "batch_id": batch["id"], "image_id": int(image_id),
@@ -207,13 +258,18 @@ class Run:
                         elif result.result.type == "errored":
                             error = getattr(result.result.error, "error", result.result.error)
                             row["error"] = f"{getattr(error, 'type', 'error')}: {getattr(error, 'message', error)}"
-                        out.write(json.dumps(row) + "\n")
+                        rows.append(row)
+                    return rows
+
+                rows = with_retries("download results", download)  # all rows first, so a broken download writes nothing
+                with open(self.results_path(stage), "a") as out:
+                    out.writelines(json.dumps(row) + "\n" for row in rows)
                 batch["collected"] = True
                 batch["counts"] = info.request_counts.to_dict()
                 self.save()
                 log(f"{stage}: collected batch {batch['id']}: {batch['counts']}")
             if any(not b.get("collected") for b in self.state["stages"][stage]["batches"]):
-                counts = [client.messages.batches.retrieve(b["id"]).request_counts
+                counts = [with_retries("retrieve batch", lambda b=b: client.messages.batches.retrieve(b["id"])).request_counts
                           for b in self.state["stages"][stage]["batches"] if not b.get("collected")]
                 log(f"{stage}: waiting for {len(counts)} batches "
                     f"({sum(c.processing for c in counts)} requests processing)")

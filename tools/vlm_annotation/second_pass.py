@@ -430,7 +430,9 @@ def final_annotation(record: dict, policy: str = "protect") -> list[dict]:
                 r = {**r, "verdict": "keep", "box": b["box"], "class": b["class"]}
             if source == "existing" and r["class"] != "fish":
                 r = {**r, "class": "fish"}
-        if r is None:
+        if r is None or r["verdict"] == "keep":
+            # A kept box stays exactly as it was (the review's repeated coordinates are approximate,
+            # and cut at the tile edge in tiled reviews)
             boxes.append({"box": b["box"], "class": b["class"], "source": source, "status": "kept", "confidence": confidence})
         elif r["verdict"] != "remove":
             status = "fixed" if r["verdict"] == "fix" else "kept"
@@ -442,18 +444,22 @@ def final_annotation(record: dict, policy: str = "protect") -> list[dict]:
 
 
 def rejected_candidates(record: dict, policy: str = "protect") -> list[dict]:
-    """First-pass boxes that final_annotation leaves out because the review removed them."""
+    """Boxes that final_annotation leaves out because the review removed them (human or first pass)."""
     if record.get("unusable"):
         return []
     reviews = {r["id"]: r for r in record["reviews"]}
     rejected = []
     for n, b in enumerate(record["input_boxes"], 1):
         r = reviews.get(n)
-        if b["source"] == "existing" or r is None or r["verdict"] != "remove":
+        if r is None or r["verdict"] != "remove":
+            continue
+        if b["source"] == "existing":
+            rejected.append({"box": b["box"], "class": b["class"], "source": "human", "confidence": None,
+                             "review_confidence": r.get("confidence")})
             continue
         confidence = b["source"].split("(")[1][:-1]
         if policy == "review" or confidence == "low":
-            rejected.append({"box": b["box"], "class": b["class"], "confidence": confidence,
+            rejected.append({"box": b["box"], "class": b["class"], "source": "vlm_pass1", "confidence": confidence,
                              "review_confidence": r.get("confidence")})
     return rejected
 
