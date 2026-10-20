@@ -13,3 +13,4 @@ test.ipynb
 venv/
 data_legacy
 .claude/worktrees
+venv-vlm/

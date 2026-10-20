@@ -1,0 +1,139 @@
+{
+ "what": "10 random NEW boxes (no existing box there) per model and confidence, judged by eye on new_boxes_<model>.jpg: good = on one fish and well placed, partial = on a fish but offset, cutting it or covering two fish, no = not a fish",
+ "claude-haiku-5-5": {
+  "high": {
+   "good": 7,
+   "partial": 3,
+   "no": 0
+  },
+  "medium": {
+   "good": 4,
+   "partial": 5,
+   "no": 1
+  },
+  "low": {
+   "good": 0,
+   "partial": 3,
+   "no": 7
+  }
+ },
+ "claude-sonnet-5-5": {
+  "high": {
+   "good": 8,
+   "partial": 2,
+   "no": 0
+  },
+  "medium": {
+   "good": 7,
+   "partial": 2,
+   "no": 1
+  },
+  "low": {
+   "good": 2,
+   "partial": 1,
+   "no": 7
+  }
+ },
+ "claude-opus-5-5": {
+  "high": {
+   "good": 7,
+   "partial": 3,
+   "no": 0
+  },
+  "medium": {
+   "good": 5,
+   "partial": 4,
+   "no": 1
+  },
+  "low": {
+   "good": 2,
+   "partial": 0,
+   "no": 8
+  }
+ },
+ "claude-haiku-5-5_tiled": {
+  "high": {
+   "good": 8,
+   "partial": 2,
+   "no": 0
+  },
+  "medium": {
+   "good": 5,
+   "partial": 5,
+   "no": 0
+  },
+  "low": {
+   "good": 0,
+   "partial": 5,
+   "no": 5
+  }
+ },
+ "claude-haiku-5-5_tiled_high": {
+  "high": {
+   "good": 7,
+   "partial": 3,
+   "no": 0
+  },
+  "medium": {
+   "good": 4,
+   "partial": 5,
+   "no": 1
+  },
+  "low": {
+   "good": 1,
+   "partial": 4,
+   "no": 5
+  }
+ },
+ "claude-haiku-5-5_max": {
+  "high": {
+   "good": 8,
+   "partial": 2,
+   "no": 0
+  },
+  "medium": {
+   "good": 4,
+   "partial": 5,
+   "no": 1
+  },
+  "low": {
+   "good": 1,
+   "partial": 1,
+   "no": 8
+  }
+ },
+ "claude-opus-5-5_high": {
+  "high": {
+   "good": 8,
+   "partial": 2,
+   "no": 0
+  },
+  "medium": {
+   "good": 4,
+   "partial": 6,
+   "no": 0
+  },
+  "low": {
+   "good": 2,
+   "partial": 2,
+   "no": 6
+  }
+ },
+ "claude-haiku-5-5_tiled_v2": {
+  "high": {
+   "good": 10,
+   "partial": 0,
+   "no": 0
+  },
+  "medium": {
+   "good": 6,
+   "partial": 4,
+   "no": 0
+  },
+  "low": {
+   "good": 0,
+   "partial": 8,
+   "no": 2
+  }
+ }
+}
