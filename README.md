@@ -557,7 +557,7 @@ Vijayalakshmi M, Sasithradevi A.  [Annotated underwater fish detection dataset f
 
 #### OBSEA 2013-2014 (PANGAEA)
 
-14,952 photos from the OBSEA seafloor observatory (NW Mediterranean, 20 m depth), taken about every 30 minutes, day and night, in 2013-2014, with 69,651 fish bounding boxes in 30 classes
+14,950 photos from the OBSEA seafloor observatory (NW Mediterranean, 20 m depth), taken about every 30 minutes, day and night, in 2013-2014, with 69,649 fish bounding boxes in 30 classes
 
 Francescangeli M, Aguzzi J, Marini S, et al. [Underwater camera photos with manual tagging of fish species at OBSEA seafloor observatory from 2013 to 2014](https://doi.org/10.1594/PANGAEA.946149). PANGAEA, 2022
 
@@ -569,8 +569,8 @@ Francescangeli M, Aguzzi J, Marini S, et al. [Underwater camera photos with manu
   - non-fish: none
   - discarded: none
 - Vehicle type: fixed underwater observatory camera (Sony SNC-RZ25N, then Axis P1346-E)
-- Image information: 14,952 images (14,691 at 640x480, 261 at 2048x1536)
-- Annotation information: 69,651 fish bounding boxes; the annotations are incomplete: about 60% of the visible fish have no box, mostly in schools (manual count on 40 random images, see [DATASETS.md](DATASETS.md))
+- Image information: 14,950 images (14,692 at 640x480, 258 at 2048x1536)
+- Annotation information: 69,649 fish bounding boxes; the annotations are incomplete: about 60% of the visible fish have no box, mostly in schools (manual count on 40 random images, see [DATASETS.md](DATASETS.md))
 - Typical animal size in pixels: ~66 at 640x480, ~140 at 2048x1536 (median long side of the fish boxes)
 - Code to render sample annotated image: [obsea_2013_2014.py](./datasets/obsea_2013_2014.py)
 

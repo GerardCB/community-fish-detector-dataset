@@ -19,7 +19,9 @@ rectangle, clipped to the image: fish are roughly elliptical, and the box around
 of a rectangle rotated by 30-45 degrees is 1.6-2x larger than the fish. For unrotated boxes
 both are the same. Boxes listed twice (164, mostly once with a species and once as "Unknown
 fish") are kept once, and boxes that are 1 pixel or less wide or high after clipping (102)
-are dropped.
+are dropped. Photos whose JPEG cannot be fully decoded are skipped with their boxes: 2 photos
+of the zip are truncated (20131025_013028z and 20131121_070025z, 360 and 408 of their 480 rows
+blank), leaving 14,950 images and 69,649 boxes.
 
 Known issue: the annotations are incomplete. A manual count on 40 random images found 176
 boxes and 251 clearly visible fish without a box (plus 98 possible ones): about 60% of the
@@ -208,15 +210,22 @@ def convert_obsea_2013_2014_to_coco():
     dropped = Counter()
     images_path.mkdir(parents=True, exist_ok=True)
 
-    for image_id, (image_name, image_rows) in tqdm(
-        enumerate(sorted(rows_by_image.items()), start=1),
-        total=len(rows_by_image),
-        desc="Converting to COCO",
+    for image_name, image_rows in tqdm(
+        sorted(rows_by_image.items()), total=len(rows_by_image), desc="Converting to COCO"
     ):
         source_image_path = source_images_dir / image_name
         with Image.open(source_image_path) as image:
             image_width, image_height = image.size
+            # 2 JPEGs of the zip are truncated (most rows blank); they are skipped with their boxes
+            try:
+                image.load()
+            except OSError as error:
+                print(f"Skipping {image_name}: {error}")
+                dropped["images that cannot be decoded"] += 1
+                dropped["boxes on images that cannot be decoded"] += len(image_rows)
+                continue
 
+        image_id = len(coco_data["images"]) + 1
         file_name = f"{DATASET_SHORTNAME}_{image_name}"
         shutil.copy2(source_image_path, images_path / file_name)
         coco_data["images"].append(
