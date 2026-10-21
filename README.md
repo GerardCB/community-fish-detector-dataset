@@ -696,7 +696,7 @@ González-Villà S, Burns Font D, Aguzzi J, et al. [DIGI4ECO Underwater Fish Tra
 
 #### RUOD-R (re-annotated Real-world Underwater Object Detection)
 
-13,112 underwater photos from many sources (seabed-harvesting videos, diving videos, aquariums, web photos) with 104,291 fish and 67,848 non-fish boxes, from the RUOD-R re-annotation of the RUOD benchmark (about 3.5x the boxes of the original annotations, mostly small objects and fish in schools)
+13,112 underwater photos from many sources (seabed-harvesting videos, diving videos, aquariums, web photos) with 104,202 fish and 67,937 non-fish boxes, from the RUOD-R re-annotation of the RUOD benchmark (about 3.5x the boxes of the original annotations, mostly small objects and fish in schools)
 
 Awad A, Saleem A, Aljnadi Y, Lucas E, Paheding S, Havens TC. [RUOD-R: A High-Fidelity Re-Annotated Benchmark for Underwater Object Detection](https://doi.org/10.1109/ACCESS.2026.3685121). IEEE Access, 2026. Images from Fu C, Liu R, Fan X, Chen P, Fu H, Yuan W, Zhu M, Luo Z. [Rethinking general underwater object detection: Datasets, challenges, and solutions](https://doi.org/10.1016/j.neucom.2022.10.039). Neurocomputing 517, 2023
 
@@ -704,12 +704,12 @@ Awad A, Saleem A, Aljnadi Y, Lucas E, Paheding S, Havens TC. [RUOD-R: A High-Fid
 - License: N/A (none stated by either repository)
 - Metadata raw format: COCO JSON
 - Categories/species: 10 classes
-  - fish: fish
-  - non-fish: echinus (sea urchin), holothurian (sea cucumber), starfish, cuttlefish, turtle, jellyfish
+  - fish: fish (except 89 boxes on dolphins)
+  - non-fish: echinus (sea urchin), holothurian (sea cucumber), starfish, cuttlefish, turtle, jellyfish, and the 89 "fish" boxes on dolphins
   - discarded: scallop, corals, diver
 - Vehicle type: mixed (divers, ROV/seabed-harvesting cameras, aquariums, web photos)
 - Image information: 13,112 images at 3,048 different sizes (225 to 8,088 px wide); of the 14,000 RUOD photos, 887 byte-identical copies and 1 misannotated photo are dropped
-- Annotation information: 104,291 fish and 67,848 non-fish bounding boxes; 296 photos have more than 100 boxes (up to 1,667 fish in one school)
+- Annotation information: 104,202 fish and 67,937 non-fish bounding boxes; 296 photos have more than 100 boxes (up to 1,667 fish in one school)
 - Typical animal size in pixels: ~25 (median long side of the fish boxes)
 - Code to render sample annotated image: [ruod_r.py](./datasets/ruod_r.py)
 

@@ -9,9 +9,9 @@ Split logic: By source group, not the authors' train/test split. Photos are numb
     size, >= 0.98 at different sizes) or byte-identical. Whole groups are shuffled (random_state)
     and moved to val until val holds 20% of the photos.
 Category mapping:
-  fish: fish
+  fish: fish (except the 89 boxes on dolphins, see ruod_r_dolphins.json)
   non-fish: echinus (sea urchin), holothurian (sea cucumber), starfish, cuttlefish, turtle,
-    jellyfish
+    jellyfish, and dolphin (fish boxes relabelled by this script)
   discard: scallop (a shell), corals, diver
 
 The 14,000 RUOD photos come from many sources (seabed-harvesting video frames, diving videos,
@@ -65,9 +65,14 @@ CATEGORIES_FILTER = {
     "cuttlefish": "non-fish",
     "turtle": "non-fish",
     "jellyfish": "non-fish",
+    "dolphin": "non-fish",  # added by this script: RUOD-R labels the dolphins "fish"
 }
 # Discarded: scallop (a shell, does not count as free-moving), corals, diver
 
+# The 89 "fish" boxes that are bottlenose dolphins ({file name: [[x, y, w, h], ...]}, boxes
+# after clipping), found by checking every fish box at least 10% of the image in the diving videos
+# with dolphins, and every grey fish box at least 15% of the image in the whole dataset
+DOLPHINS_PATH = Path(__file__).with_name("ruod_r_dolphins.json")
 DROPPED_PHOTOS = {"008431.jpg"}  # stored rotated; none of its boxes fits any orientation
 KEEP_ONE_COPY_OF_IDENTICAL_PHOTOS = True
 SAME_SIZE_THRESHOLD = 0.95
@@ -193,6 +198,14 @@ def find_source_groups(photos: list[dict]) -> tuple[dict[str, int], dict[str, st
     return groups, md5s
 
 
+def box_iou(a: list[float], b: list[float]) -> float:
+    """IoU of two [x, y, w, h] boxes."""
+    ix = max(0.0, min(a[0] + a[2], b[0] + b[2]) - max(a[0], b[0]))
+    iy = max(0.0, min(a[1] + a[3], b[1] + b[3]) - max(a[1], b[1]))
+    union = a[2] * a[3] + b[2] * b[3] - ix * iy
+    return ix * iy / union if union > 0 else 0.0
+
+
 def clip_box(bbox: list[float], width: int, height: int) -> list[float] | None:
     x, y, w, h = bbox
     x0, y0 = max(0.0, x), max(0.0, y)
@@ -229,10 +242,14 @@ def convert_ruod_r_to_coco():
     kept.sort(key=lambda p: p["file_name"])
 
     images_path.mkdir(parents=True, exist_ok=True)
+    if len(names) != 10 or min(names) != 1:
+        raise ValueError(f"Unexpected categories: {names}")
     category_ids = {name: cid for cid, name in names.items()}
+    category_ids["dolphin"] = max(names) + 1  # fish boxes on dolphins, relabelled
     coco = {"images": [], "annotations": [],
-            "categories": [{"id": cid, "name": name} for cid, name in sorted(names.items())]}
-    dropped_boxes = Counter()
+            "categories": [{"id": cid, "name": name} for name, cid in sorted(category_ids.items(), key=lambda kv: kv[1])]}
+    dolphins = json.loads(DOLPHINS_PATH.read_text())
+    dropped_boxes, relabelled = Counter(), 0
     for image_id, photo in enumerate(tqdm(kept, desc="Copying photos"), start=1):
         file_name = f"{DATASET_SHORTNAME}_{photo['file_name']}"
         shutil.copy2(photo_path(photo), images_path / file_name)
@@ -245,17 +262,21 @@ def convert_ruod_r_to_coco():
             if bbox is None:
                 dropped_boxes[names[a["category_id"]]] += 1
                 continue
+            name = names[a["category_id"]]
+            if name == "fish" and any(box_iou(bbox, d) >= 0.95 for d in dolphins.get(photo["file_name"], [])):
+                name, relabelled = "dolphin", relabelled + 1
             coco["annotations"].append({
                 "id": len(coco["annotations"]) + 1, "image_id": image_id,
-                "category_id": category_ids[names[a["category_id"]]], "bbox": bbox,
+                "category_id": category_ids[name], "bbox": bbox,
                 "area": bbox[2] * bbox[3], "iscrowd": 0,
             })
-    if len(category_ids) != 10 or min(category_ids.values()) != 1:
-        raise ValueError(f"Unexpected categories: {names}")
+    expected = sum(len(v) for k, v in dolphins.items() if k in {p["file_name"] for p in kept})
+    if relabelled != expected:
+        raise ValueError(f"Relabelled {relabelled} dolphin boxes, expected {expected}")
 
     print(f"Photos: {len(coco['images'])} kept ({dropped_copies} identical copies and "
           f"{len(DROPPED_PHOTOS)} misannotated photo dropped), boxes: {len(coco['annotations'])}, "
-          f"boxes dropped as too small: {dict(dropped_boxes)}")
+          f"boxes dropped as too small: {dict(dropped_boxes)}, fish boxes relabelled as dolphin: {relabelled}")
     groups_path.write_text(json.dumps({f"{DATASET_SHORTNAME}_{k}": v for k, v in groups.items()}))
     partial = source_annotations_path.with_name(source_annotations_path.name + ".part")
     partial.write_text(json.dumps(coco))
