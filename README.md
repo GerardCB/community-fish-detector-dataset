@@ -337,19 +337,20 @@ Joly A, Goeau H, Glotin H, Spampinato C, Bonnet P, Vellinga W-P, Planquè R, Rau
 
 
 
-#### VIAME FishTrack
+#### VIAME FishTrack (FishTrack23)
 
-Several thousand BRUV images with bounding boxes on fish and bait
+~308,000 frames from 576 underwater videos and image sequences with fish tracks, from NOAA SEFSC (SEAMAP reef fish video survey, Gulf of Mexico), NOAA PIFSC (MOUSS, Hawaii), Ifremer (baited DropCam and Game of Trawls, Bay of Biscay) and CDFW (LakeCam, California reservoir)
 
+- Paper: Dawkins et al., "FishTrack23: An Ensemble Underwater Dataset for Multi-Object Tracking", WACV 2024 ([paper](https://openaccess.thecvf.com/content/WACV2024/papers/Dawkins_FishTrack23_An_Ensemble_Underwater_Dataset_for_Multi-Object_Tracking_WACV_2024_paper.pdf))
 - Data downloadable from Viame ([download link](https://viame.kitware.com/#/collection/65a140e8a4c218785d408b42))
-- Metadata raw format: N/A
-- Categories/species: General Fish, Fish Species, Bait and Algae
-  - fish: `micropterus_salmoides`, `unspecified_fish`, `etelis_coruscans`, `hyporthodus_quernus`, `pristipomoides_zonatus`, `pristipomoides_auricilla`, `seriola`, `caranx_melampygus`
-  - non-fish: `non_fish_animal`
-  - discarded: `non_fish_bait`, `non_fish_plant`
-- Vehicle type: BRUV
-- Image information: ~20,000
-- Annotation information: bounding boxes
+- Metadata raw format: VIAME CSV (tracks)
+- Categories/species: 155 labels, mostly fish species (148 fish species/genera/families, unspecified fish, crabs, other animals, bait and plants)
+  - fish: all fish species, genus and family labels (e.g. `lutjanus_campechanus`, `micropterus_salmoides`, `etelis_coruscans`) and `unspecified_fish`
+  - non-fish: `anomura` (squat/hermit crabs), `stenocionops_spinimana` (spider crab), `non_fish_animal`
+  - discarded: `non_fish_bait`, `non_fish_bait_apparatus`, `non_fish_plant`
+- Vehicle type: Baited and unbaited stationary cameras (BRUV, camera arrays, drop cameras), trawl camera
+- Image information: ~308,000 frames with fish or non-fish boxes (1280x720 to 1920x1200, part greyscale), annotated at 5-30 Hz (consecutive frames are near-duplicates)
+- Annotation information: ~725,000 bounding boxes in ~19,000 tracks
 - Code to render sample annotated image: [viame_fishtrack.py](./datasets/viame_fishtrack.py)
 
 <img src="./previews/viame_fishtrack_sample_image.png" alt="VIAME FishTrack sample" width="600">
