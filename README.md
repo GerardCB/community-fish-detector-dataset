@@ -692,6 +692,27 @@ González-Villà S, Burns Font D, Aguzzi J, et al. [DIGI4ECO Underwater Fish Tra
 
 <img src="./previews/digi4eco_sample_image.png" alt="DIGI4ECO Underwater Fish Tracking sample" width="600">
 
+#### UIIS10K (Underwater Image Instance Segmentation)
+
+9,498 underwater photos (reefs, open water, aquariums, deep-sea ROV video, murky lakes) gathered from the web and other public datasets (UIIS, TrashCan, USOD10K, USIS10K), with 19,937 fish and 1,399 non-fish boxes from instance segmentation masks. Its 10 classes do not follow ours, so 2,928 boxes are relabelled after review (marine mammals, penguins and crocodiles labelled "fish", a "mollusk" class mixing starfish, sea urchins and octopus with clams, anemones and rays)
+
+Li H, Lian S, Li Z, Cong R, Li C, Yang LT, Zhang W, Kwong S. [Advancing Marine Research: UWSAM Framework and UIIS10K Dataset for Precise Underwater Instance Segmentation](https://arxiv.org/abs/2505.15581). arXiv:2505.15581, 2025. Extends UIIS from Lian S, Li H, Cong R, Li S, Zhang W, Kwong S. WaterMask: Instance Segmentation for Underwater Imagery. ICCV 2023
+
+- Data downloadable via Hugging Face ([download link](https://huggingface.co/datasets/LiamLian0727/UIIS10K/resolve/5c4316368a8e420db754d1ab37c205a42985ba47/UIIS10K.zip))
+- License: Apache-2.0
+- Metadata raw format: COCO JSON with instance polygons (train and test files)
+- Categories/species: fish, reptiles, arthropoda, mollusk, corals, plants, ruins, garbage, robots, human; boxes in the wrong class are relabelled first (see [DATASETS.md](./DATASETS.md#uiis10k))
+  - fish: fish, plus the rays, eels and other fish found in the other classes
+  - non-fish: reptiles (sea turtles, sea snakes), arthropoda (crabs, shrimp, lobsters), and the relabelled marine mammals, penguins, crocodiles and iguanas, octopus/squid/cuttlefish, crustaceans, starfish, sea urchins, sea cucumbers and jellyfish
+  - discarded: corals, plants, ruins, garbage, robots, human, and the relabelled shells and clams, anemones, corals and sponges, nudibranchs and unidentifiable boxes
+- Vehicle type: mixed (diver photos, ROV and towed deep-sea cameras, aquarium photos, web images)
+- Image information: 9,498 images at 156 different sizes (256 to 2,048 px wide, 8,032 at 640x480); of the 10,048 UIIS10K photos, 359 that are also in RUOD and 191 copies of other UIIS10K photos are dropped. 3,285 photos keep no box (corals, divers, wrecks or trash only)
+- Annotation information: 19,937 fish and 1,399 non-fish bounding boxes
+- Typical animal size in pixels: ~50 (median long side of the fish boxes)
+- Code to render sample annotated image: [uiis10k.py](./datasets/uiis10k.py)
+
+<img src="./previews/uiis10k_sample_image.png" alt="UIIS10K sample" width="600">
+
 
 
 ### Datasets that were not included in the Community Fish Detection Dataset
