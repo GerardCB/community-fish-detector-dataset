@@ -52,7 +52,7 @@ Take them from `datasets/settings.py`
 
 ## Datasets
 
-**Complete datasets**: brackish, coralscapes_v2, corefish, deep_vision, deepfish, digi4eco, f4k, fathomnet, fishclef, fjordfish, kakadu, marine_detect, mit_river_herring, n_marine, noaa_puget, orange_chromide, pebl_farm_fauna, pomerfish, project_natick, roboflow_fish, torsi, viame_fishtrack, wio_reef_fish, zebrafish.
+**Complete datasets**: brackish, coralscapes_v2, corefish, deep_vision, deepecomar, deepfish, digi4eco, f4k, fathomnet, fishclef, fjordfish, kakadu, marine_detect, mit_river_herring, n_marine, noaa_puget, orange_chromide, pebl_farm_fauna, pomerfish, project_natick, roboflow_fish, torsi, viame_fishtrack, wio_reef_fish, zebrafish.
 
 See [DATASETS.md](DATASETS.md) for per-dataset processing details including source URLs, download instructions, annotation formats, category filters, and split logic.
 

@@ -695,6 +695,29 @@ González-Villà S, Burns Font D, Aguzzi J, et al. [DIGI4ECO Underwater Fish Tra
 
 
 
+#### Labelled Mediterranean Fish Dataset (DEEPECOMAR)
+
+1,516 underwater images of Mediterranean coastal fish (Balearic Islands, DEEPECOMAR project) from a fixed time-lapse camera on an underwater structure, diver videos and a stereo video, with 17,157 fish bounding boxes in 20 species plus unidentified and very small fish
+
+Catalán I, Alvarez-Ellacuria A. [Labelled Mediterranean Fish Dataset](https://doi.org/10.5281/zenodo.7534425). Zenodo, 2023
+
+- Data downloadable via https from Zenodo ([download link](https://zenodo.org/records/7534425/files/DEEPECOMAR_DATASET_YOLO.zip?download=1))
+- License: CC BY 4.0
+- Metadata raw format: YOLO TXT (Roboflow YOLOv5 export)
+- Categories/species: 20 Mediterranean species (e.g. Chromis chromis, Diplodus sargus, Oblada melanura, Seriola dumerilii, Coris julis), genus-level and unidentified fish, very small fish, lens stains (25 classes)
+  - fish: Afish poly (unidentified fish), Chromis chromis, Coris julis, Dentex dentex, Diplodus annularis, Diplodus puntazzo, Diplodus sargus, Diplodus sp-, Diplodus vulgaris, Epinephelus marginatus, Lithognathus mormyrus, Mugilidae prob Chelon, Mullus sp-, Oblada melanura, Pomatous salator, Sarpa salpa, Seriola dumerilii, Serranus cabrilla, Serranus scriba, Sparus aurata, Sphyraena sp-, Symphodus sp-, labrid unid-, small (fish < ~100 px²)
+  - non-fish: none
+  - discarded: taca (lens stain)
+- Vehicle type: fixed time-lapse camera, diver video, stereo camera
+- Image information: 1,516 images (1920x1080, 1280x720 and 1920x1440); 74 duplicated frames in the source are dropped
+- Annotation information: 17,157 fish bounding boxes
+- Typical animal size in pixels: ~62 (median long side of the fish boxes)
+- Code to render sample annotated image: [deepecomar.py](./datasets/deepecomar.py)
+
+<img src="./previews/deepecomar_sample_image.png" alt="Labelled Mediterranean Fish Dataset sample" width="600">
+
+
+
 ### Datasets that were not included in the Community Fish Detection Dataset
 
 - [Fishnet.AI](https://www.fishnet.ai/): ~163k bounding boxes on ~35k images of fish and people on fishing vessels.  Excluded because images are above-water.
