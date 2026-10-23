@@ -3,7 +3,8 @@
 Many datasets box only some of the animals in their photos. These scripts ask Claude models to propose the
 missing boxes, review the dataset's boxes, and check the added ones, so that a person only has to accept or
 reject them. The [`/pre-annotate`](../../.claude/skills/pre-annotate/SKILL.md) Claude Code skill walks
-through a whole run, with a cost check before every step that calls the API.
+through a whole run: it runs a pilot first, estimates the cost of the whole dataset for each option (pass 1
+only, with the review, with the Opus check) and asks before running anything at full scale.
 
 The pipeline was built on OBSEA 2013-2014 (fixed camera, about 60% of the fish unboxed) and then used on
 KSO Mussel Farm BRUV. The pilots, figures and full results of those runs are on the
@@ -45,18 +46,27 @@ python -m venv venv-vlm && venv-vlm/bin/pip install -r tools/vlm_annotation/requ
 
 1. Write `configs/<name>.json` for the processed dataset `data/processing/<name>/` (fields:
    [configs/README.md](configs/README.md); examples: `obsea_2013_2014.json`, `kso_mussel_bruv.json`).
-2. Pilot on about 20 photos (a TSV with a `file_name` column), then look at the sheets:
+2. Pilot on about 25 random photos (a TSV with a `file_name` column; a few cents), look at the sheets, and
+   estimate the cost of the whole dataset:
    ```
    VLM_DATASET=<name> venv-vlm/bin/python tools/vlm_annotation/batch_run.py run --images pilot.tsv --run-dir data/vlm_annotation/<name>_pilot
+   VLM_DATASET=<name> venv-vlm/bin/python tools/vlm_annotation/verify_added.py static --run-dir data/vlm_annotation/<name>_pilot
+   VLM_DATASET=<name> venv-vlm/bin/python tools/vlm_annotation/verify_added.py test -n 5 --run-dir data/vlm_annotation/<name>_pilot
    VLM_DATASET=<name> venv-vlm/bin/python tools/vlm_annotation/sheets.py frames --images pilot.tsv --run-dir data/vlm_annotation/<name>_pilot
-   VLM_DATASET=<name> venv-vlm/bin/python tools/vlm_annotation/batch_run.py cost --run-dir data/vlm_annotation/<name>_pilot
+   VLM_DATASET=<name> venv-vlm/bin/python tools/vlm_annotation/batch_run.py estimate --run-dir data/vlm_annotation/<name>_pilot
    ```
-3. Full run (in tmux; rerun the same command to resume): `VLM_DATASET=<name> venv-vlm/bin/python tools/vlm_annotation/batch_run.py run`
-4. Cleaning, writing the visual decisions to a `decisions.json` (format in `verify_added.py`):
+   `estimate` extrapolates the pilot's measured cost per photo of each pass, and the Opus cost per box that
+   `test` measured on 5 of its medium / low boxes, to the whole dataset, for each option: pass 1 only, pass 1
+   + review, and either one + the Opus check of the medium / low boxes. On the two past runs it gives back their
+   measured costs (KSO: passes $0.89, Opus check 993 boxes, $5.36 against $5.33 measured); for OBSEA the Opus
+   check, never run, would have added about $273 for 50,582 boxes. Choose the option before going on.
+3. Full run of the chosen option (in tmux; rerun the same command to resume):
+   `VLM_DATASET=<name> venv-vlm/bin/python tools/vlm_annotation/batch_run.py run` (add `--stage pass1` for pass 1 only)
+4. Cleaning, writing the visual decisions to a `decisions.json` (format in `verify_added.py`); `submit` and
+   `collect` only with the Opus check (without it, only the high-confidence boxes are kept):
    ```
    VLM_DATASET=<name> venv-vlm/bin/python tools/vlm_annotation/verify_added.py static
    VLM_DATASET=<name> venv-vlm/bin/python tools/vlm_annotation/sheets.py static
-   VLM_DATASET=<name> venv-vlm/bin/python tools/vlm_annotation/verify_added.py test -n 3
    VLM_DATASET=<name> venv-vlm/bin/python tools/vlm_annotation/verify_added.py submit
    VLM_DATASET=<name> venv-vlm/bin/python tools/vlm_annotation/verify_added.py collect
    VLM_DATASET=<name> venv-vlm/bin/python tools/vlm_annotation/sheets.py crops --confidence high
@@ -107,7 +117,7 @@ too (the Opus prompt was KSO's for every dataset before; it now comes from each 
 
 - `pilot.py`: pass 1, the config loading (`VLM_DATASET`), box matching and the model-comparison pilot
 - `second_pass.py`: pass 2 and the merge
-- `batch_run.py`: both passes on the Batch API, resumable; `status` and `cost`
+- `batch_run.py`: both passes on the Batch API, resumable; `status`, `cost`, and `estimate` (full-dataset cost per option, from a pilot)
 - `export.py`: the COCO export for review
 - `verify_added.py`: cleaning of the added boxes (static groups, Opus check, selection)
 - `sheets.py`: review sheets (frames, crops, static groups)

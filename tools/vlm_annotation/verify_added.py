@@ -12,12 +12,14 @@ photos for the check (see configs/README.md).
 2. submit / collect: every added box of medium or low confidence (static or not) is checked by
    Claude Opus 5.5 on the Message Batches API. Each request shows an enlarged crop with the box drawn
    and the whole frame with the box marked, and asks what is inside the box: fish, non-fish or no
-   animal, with what it is and how sure the model is. `test` sends a few of them directly first.
+   animal, with what it is and how sure the model is. `test -n N` first sends N random ones directly,
+   prints their verdicts and the cost per box, and saves their tokens in verify/test_usage.json for
+   batch_run.py estimate (run it on the pilot run dir).
 3. select: the boxes to add to the dataset, from the verdicts and a decisions file written after
    the visual checks: boxes on an animal that already has a human box, boxes in static groups judged
    to be objects and boxes in excluded videos are dropped; high-confidence boxes are kept (with class
    fixes); medium and low confidence boxes are kept if Opus called them fish or non-fish with high or
-   medium confidence, with Opus's class. Decisions file:
+   medium confidence, with Opus's class (without the Opus check, only the high-confidence ones). Decisions file:
      {"object_groups": [indices in static_groups.json judged to be objects],
       "animal_groups": [indices judged to be animals (not used, for the record)],
       "excluded_groups": [file-name parts, e.g. video names, whose added boxes are all dropped],
@@ -37,6 +39,7 @@ import argparse
 import base64
 import io
 import json
+import random
 import re
 import sys
 import time
@@ -148,7 +151,9 @@ def select(run_dir: Path, decisions_path: Path, out_path: Path):
     """The added boxes to keep, as {file name: [{bbox, class, source, confidence, verified}]}."""
     decisions = json.loads(decisions_path.read_text())
     groups = json.loads((run_dir / "verify" / "static_groups.json").read_text())
-    verdicts = json.loads((run_dir / "verify" / "verdicts.json").read_text())
+    verdicts_path = run_dir / "verify" / "verdicts.json"
+    # without the Opus check, medium and low confidence boxes are not confirmed and stay out
+    verdicts = json.loads(verdicts_path.read_text()) if verdicts_path.exists() else {}
     objects = {b["key"] for i in decisions["object_groups"] for b in groups[i]}
     coco = json.loads((run_dir / "export" / f"{pilot.DATASET}_vlm_coco.json").read_text())
     human = defaultdict(list)
@@ -254,17 +259,29 @@ def main():
         return
 
     boxes = added_boxes(args.run_dir)
-    static = {b["key"] for g in json.loads((out / "static_groups.json").read_text()) for b in g}
+    static_path = out / "static_groups.json"
+    static = {b["key"] for g in json.loads(static_path.read_text()) for b in g} if static_path.exists() else set()
     # Static boxes are checked too: crabs and gobies also sit still for minutes (see the visual check)
     jobs = [{**b, "static": b["key"] in static} for b in boxes if b["confidence"] in ("medium", "low")]
     client = anthropic.Anthropic()
     state_path = out / "state.json"
 
     if args.command == "test":
-        for box in jobs[: args.n]:
+        # a random sample, sent directly (standard price); its tokens give batch_run.py estimate the cost per box
+        usage_path = out / "test_usage.json"
+        usage = json.loads(usage_path.read_text()) if usage_path.exists() else {"requests": 0, "input_tokens": 0,
+                                                                                 "output_tokens": 0}
+        for box in random.Random(usage["requests"]).sample(jobs, min(args.n, len(jobs))):
             m = client.messages.create(**params(box))
             text = next(c.text for c in m.content if c.type == "text")
             print(box["file_name"], box["class"], box["confidence"], text, m.usage.input_tokens, m.usage.output_tokens)
+            usage["requests"] += 1
+            usage["input_tokens"] += m.usage.input_tokens
+            usage["output_tokens"] += m.usage.output_tokens
+        usage_path.write_text(json.dumps(usage, indent=1))
+        per_box = (usage["input_tokens"] * PRICE_IN + usage["output_tokens"] * PRICE_OUT) / 1e6 / max(1, usage["requests"])
+        print(f"{usage['requests']} boxes tested: ${per_box:.4f} per box (${per_box / 2:.4f} on the Batch API), "
+              f"{len(jobs)} medium / low boxes in this run: ${per_box / 2 * len(jobs):.2f} on the Batch API")
         return
 
     if args.command == "submit":

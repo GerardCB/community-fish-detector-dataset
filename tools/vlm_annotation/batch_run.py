@@ -17,6 +17,10 @@ Usage (from the repo root, with ANTHROPIC_API_KEY in .env):
   VLM_DATASET=<name> venv-vlm/bin/python tools/vlm_annotation/batch_run.py run       # pass 1, pass 2 and the export
   VLM_DATASET=<name> venv-vlm/bin/python tools/vlm_annotation/batch_run.py status
   VLM_DATASET=<name> venv-vlm/bin/python tools/vlm_annotation/batch_run.py cost
+  VLM_DATASET=<name> venv-vlm/bin/python tools/vlm_annotation/batch_run.py estimate --run-dir <pilot run dir>
+`estimate` extrapolates a pilot run to the whole dataset, for each way of running the pipeline (pass 1 only,
+with the review, with the Opus check of verify_added.py). `--stage pass1` runs pass 1 only; the export then
+holds pass 1's boxes.
 Options: --run-dir (default data/vlm_annotation/<name>), --images <tsv with a file_name
 column> to process only those photos. `run` waits for each batch (up to 24 hours each); start it in
 tmux or nohup.
@@ -44,6 +48,10 @@ MAX_BATCH_REQUESTS = 50_000  # the API limit is 100,000
 MAX_ATTEMPTS = 3
 POLL_SECONDS = 60
 BATCH_PRICE_FACTOR = 0.5
+# Opus check of one added box on the Batch API (verify_added.py), measured on KSO: $5.33 for 993 boxes. Used by
+# `estimate` until `verify_added.py test` has measured it on the run
+OPUS_USD_PER_BOX = 0.0054
+PRICE_OPUS = pilot.PRICES["claude-opus-5-5"]  # USD per million tokens, standard
 DEFAULT_RUN_DIR = Path("data/vlm_annotation") / pilot.DATASET
 RAW_IMAGES_DIR = Path(pilot.DATASET_CONFIG["raw_images_dir"] or pilot.DATASET_CONFIG["images_dir"])
 
@@ -345,16 +353,79 @@ class Run:
         (self.dir / "cost.json").write_text(json.dumps(report, indent=1))
         return report
 
+    def estimate(self) -> tuple[dict, str]:
+        """
+        Cost of pre-annotating the whole dataset, for each way of running the pipeline, extrapolated from
+        this (pilot) run: its measured pass-1 and pass-2 cost per photo, and its medium / low confidence model
+        boxes per photo, which the Opus check of verify_added.py looks at (high-confidence boxes are checked
+        by eye). Opus costs per box what `verify_added.py test` measured on this run, else OPUS_USD_PER_BOX.
+        """
+        import export
+
+        report = self.cost()
+        done = self.stage_photos("pass2")  # photos with a complete pass-1 record
+        dataset = pilot.dataset_image_count()
+        pass1 = report["stages"]["pass1"]["usd"] / max(1, len(done))
+        reviewed = report["stages"]["pass2"]["requests"] > 0
+        pass2 = report["stages"]["pass2"]["usd"] / max(1, len(done)) if reviewed else None
+        pass1_boxes = review_boxes = 0
+        for photo in done:
+            pass1_boxes += sum(1 for b in second_pass.input_boxes(photo["file_name"])
+                               if b["source"] != "existing" and not b["source"].endswith("(high)"))
+            record = export.load(second_pass.raw_path(REVIEWER, photo["file_name"]))
+            if record is not None:
+                review_boxes += sum(1 for b in second_pass.final_annotation(record, export.POLICY)
+                                    if b["source"] != "existing" and b["confidence"] in ("medium", "low"))
+        test_path = self.dir / "verify" / "test_usage.json"
+        if test_path.exists():
+            test = json.loads(test_path.read_text())
+            opus = ((test["input_tokens"] * PRICE_OPUS[0] + test["output_tokens"] * PRICE_OPUS[1]) / 1e6
+                    / max(1, test["requests"]) * BATCH_PRICE_FACTOR)
+            opus_source = f"measured on {test['requests']} boxes of this run"
+        else:
+            opus, opus_source = OPUS_USD_PER_BOX, "measured on KSO (run verify_added.py test to measure it here)"
+        n = max(1, len(done))
+        options = [("pass 1 only", pass1, 0.0),
+                   ("pass 1 + Opus check of its medium / low boxes", pass1, pass1_boxes / n)]
+        if reviewed:
+            options += [("pass 1 + review (pass 2)", pass1 + pass2, 0.0),
+                        ("pass 1 + review + Opus check of the medium / low boxes", pass1 + pass2, review_boxes / n)]
+        rows = []
+        for name, passes, boxes_per_photo in options:
+            per_photo = passes + boxes_per_photo * opus
+            rows.append({"option": name, "usd_per_photo_batch": round(per_photo, 6),
+                         "opus_boxes": round(boxes_per_photo * dataset),
+                         "usd_batch": round(per_photo * dataset, 2),
+                         "usd_standard": round(per_photo * dataset / BATCH_PRICE_FACTOR, 2)})
+        result = {"pilot_photos": len(done), "dataset_photos": dataset, "pilot_cost_usd": report["usd_total"],
+                  "pass1_usd_per_photo": round(pass1, 6), "pass2_usd_per_photo": round(pass2, 6) if reviewed else None,
+                  "opus_usd_per_box": round(opus, 5), "opus_cost_source": opus_source, "options": rows}
+        (self.dir / "estimate.json").write_text(json.dumps(result, indent=1))
+        lines = [f"Estimate for all {dataset:,} photos, from {len(done):,} pilot photos (pilot cost ${report['usd_total']:.3f}).",
+                 f"Opus check: ${opus:.4f} per box, {opus_source}.", "",
+                 "| option | boxes for Opus | Batch API | standard API |", "|---|---|---|---|"]
+        lines += [f"| {r['option']} | {r['opus_boxes']:,} | ${r['usd_batch']:,.2f} | ${r['usd_standard']:,.2f} |" for r in rows]
+        if not reviewed:
+            lines.append("\nThe pilot ran pass 1 only: run it with both passes to estimate the review.")
+        lines.append("\nThe pilot photos must be a random sample for this to hold; crowded photos cost more.")
+        return result, "\n".join(lines)
+
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    parser.add_argument("command", choices=["run", "status", "cost"])
+    parser.add_argument("command", choices=["run", "status", "cost", "estimate"])
     parser.add_argument("--run-dir", type=Path, default=DEFAULT_RUN_DIR)
     parser.add_argument("--images", type=Path, help="TSV with a file_name column (default: all photos)")
     parser.add_argument("--stage", choices=["pass1", "pass2", "all"], default="all")
     args = parser.parse_args()
     pilot.load_env_file()
     run = Run(args.run_dir, args.images)
+    if args.command == "cost":
+        print(json.dumps(run.cost(), indent=1))
+        return
+    if args.command == "estimate":
+        print(run.estimate()[1])
+        return
     client = anthropic.Anthropic()
 
     if args.command == "status":
@@ -366,19 +437,15 @@ def main():
                     info = client.messages.batches.retrieve(b["id"])
                     log(f"  {b['id']}: {info.processing_status} {info.request_counts.to_dict()}")
         return
-    if args.command == "cost":
-        print(json.dumps(run.cost(), indent=1))
-        return
 
     log(f"{len(run.photos)} photos, run dir {run.dir}")
     for stage in (["pass1", "pass2"] if args.stage == "all" else [args.stage]):
         run.run_stage(client, stage)
     report = run.cost()
     log(f"cost: ${report['usd_total']:.2f} (${report['usd_per_photo']:.5f} per photo)")
-    if args.stage in ("all", "pass2"):
-        import export
+    import export
 
-        export.export(run.dir, run.photos)
+    export.export(run.dir, run.photos)  # after pass 1 only, the added boxes are pass 1's (status pass1_only)
 
 
 if __name__ == "__main__":
