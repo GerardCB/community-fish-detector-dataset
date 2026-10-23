@@ -298,6 +298,16 @@ Each dataset script in `datasets/` follows a 4-step pattern: Download -> Process
   - discard: none
 - **Split**: By site, from the filename prefix: Voith Hydro (`Voith_*`/`voith_*`, tidal turbine, Scotland, grayscale) -> val (15,918 frames, 20,914 boxes, 23%), from both the authors' train and test folders; Wells Dam (`WellsDam_*`, 24,000 frames, 23,496 boxes) and Igiugig/ORPC (`<YYYYMMDD>_<HHMMSS>*`/`orpc_*`, 30,277 frames, 1,242 boxes) -> train (54,277 frames, 24,738 boxes). The authors' split (about 80/20 per site) is ignored because, for Voith and Wells, it puts later 30 s segments of the same recording in test
 
+### seaclear
+- **Source**: [4TU.ResearchData, Seaclear Marine Debris Detection & Segmentation Dataset](https://doi.org/10.4121/4f1dff25-e157-4399-a5d4-478055461689) (paper: https://doi.org/10.1038/s41597-024-03759-2)
+- **Download**: Automatic from the [Kaggle mirror](https://www.kaggle.com/datasets/jocelyndumlao/seaclear-marine-debris-detection-and-segmentation) via kagglehub (1.6 GB zip, no login). 4TU serves a single .rar and refused connections when the script was written
+- **Annotations**: One COCO file (`dataset.json`, instance polygons, 0-indexed image/annotation ids, 1-indexed categories) -> COCO boxes only (the source `bbox`), ids renumbered from 1. Images sit in `<site>/<camera>/` folders while COCO file names have no folder; names are unique across folders, so the site is recovered by file name. 8,610 images, 31,555 instances in 40 classes. Marseille (3,441 images) has no animal labels; a sample showed no unlabelled fish, so those images are kept as background. Fish are labelled in only 81 images
+- **Category mapping**:
+  - fish: `animal_fish` (985)
+  - non-fish: `animal_urchin` (6,462), `animal_etc` (3,749; ~50 crops from all sites were sea cucumbers, with a few unclear blobs at Jakljan), `animal_starfish` (17)
+  - discard: `animal_shells` (empty shells, oysters, snails), `animal_sponge` (sessile), `plant`, `unknown_instance` (crops are debris and rubble), the 32 debris classes (`can_metal`, `bottle_glass`, `tire_rubber`, ...) and robot parts (`rov_cable`, `rov_tortuga`, `rov_vehicle_leg`, `rov_bluerov`)
+- **Split**: By site. 950 of the 985 fish are at Lokrum, so Lokrum stays in train. Val = Jakljan + Slano (545 images, 26 fish, 77 non-fish); train = Bistrina, Lokrum, Marseille (8,065 images, 959 fish, 10,151 non-fish). Many images are frames from the same ROV video, so neighbours are near-duplicates
+
 ## Partial Datasets
 
 These datasets require manual download or have special dependencies.
