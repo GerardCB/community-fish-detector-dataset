@@ -253,6 +253,16 @@ Each dataset script in `datasets/` follows a 4-step pattern: Download -> Process
   - discard: `Giant_clam`, `Sea_anemone`, `Sponges` (sessile); `Homo_Sapiens`, `Human_object`, `Waste`, `Trample`, `Useless`; all coral (`Acropora_*`, `Non-acropora_*`, `Living_coral`, `Dead_coral`, `Bleached_coral`, `Soft_coral`, `Gorgonian`), algae (`Algal_Assemblage`, `Algae_*`), seagrass (`Syringodium_isoetifolium`) and substrate (`Sand`, `Rubble`, `Rock`) classes
 - **Split**: By site, from the second token of the file name (`<date>_<site>_<vehicle>_...`). Mayotte (`MYT`) -> val (322 images, 3,356 fish, 33 non-fish); Reunion (`REU-Hermitage`), Europa Island (`ATF-Europa`) and Mauritius (`MUS-*`) -> train (877 images, 5,138 fish, 1,191 non-fish). Frames from the same session are often consecutive video frames, so many are near-duplicates
 
+### roboflow_aquarium
+- **Source**: [Roboflow Universe, Aquarium Combined](https://universe.roboflow.com/brad-dwyer/aquarium-combined) (also https://public.roboflow.com/object-detection/aquarium)
+- **Download**: Automatic, via `kagglehub` from the Kaggle mirror [slavkoprytula/aquarium-data-cots](https://www.kaggle.com/datasets/slavkoprytula/aquarium-data-cots) (67 MB, no login). Roboflow Universe blocks scripted access (403) and its API needs a key
+- **Annotations**: YOLO TXT (Roboflow YOLOv5 export, 7 classes in `data.yaml`) -> COCO conversion, source train/valid/test merged (638 images, no duplicates). Roboflow renames files to `<name>_jpeg_jpg.rf.<hash>.jpg`; the suffix is stripped. Photos taken through tank glass at two US aquariums, resized to fit 1024x1024. Two cameras, told apart by filename: `IMG_2xxx`-`IMG_3xxx` (437 images, the only ones with penguins and starfish) and `IMG_83xx`-`IMG_85xx` (201 images, stills and `MOV-<n>` video frames)
+- **Category mapping**:
+  - fish: `fish`, `shark`, `stingray`
+  - non-fish: `jellyfish` (large sea nettles and spotted jellies), `starfish`
+  - discard: `penguin`, `puffin` (birds, almost always photographed on rocks out of the water, crops checked). The 136 images that contain only birds are kept without boxes
+- **Split**: By camera. Train = `IMG_2xxx`-`IMG_3xxx` (437 images, 1,842 fish + 433 non-fish boxes); val = `IMG_83xx`-`IMG_85xx` (201 images, 1,365 fish + 377 non-fish boxes, ~32%; no starfish). The provided train/valid/test split is random per image and is ignored
+
 ## Partial Datasets
 
 These datasets require manual download or have special dependencies.

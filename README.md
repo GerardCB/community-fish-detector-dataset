@@ -764,6 +764,29 @@ Wilson KC, Lurbur M, Yochum N (2025). [Automated fish detection in videos to sup
 
 
 
+#### Roboflow Aquarium Dataset
+
+638 photos taken through the glass of tanks at two US aquariums (Henry Doorly Zoo, Omaha and National Aquarium, Baltimore) in late 2020, with 4,817 bounding boxes on fish, sharks, stingrays, jellyfish, starfish, penguins and puffins
+
+Dwyer B. [Aquarium Combined](https://universe.roboflow.com/brad-dwyer/aquarium-combined). Roboflow Universe, 2020
+
+- Data downloadable via https from a Kaggle mirror of the Roboflow export ([download link](https://www.kaggle.com/datasets/slavkoprytula/aquarium-data-cots)); Roboflow Universe needs an API key
+- License: CC BY 4.0
+- Metadata raw format: YOLO TXT (Roboflow YOLOv5 export)
+- Categories/species: fish, shark, stingray, jellyfish, starfish, penguin, puffin (7 classes)
+  - fish: fish, shark, stingray
+  - non-fish: jellyfish, starfish
+  - discarded: penguin, puffin (birds, mostly photographed out of the water)
+- Vehicle type: handheld camera/phone at public aquariums (through tank glass)
+- Image information: 638 images (1024x768 and 1024x576, portrait or landscape, resized by Roboflow); 136 contain only birds and are kept as background
+- Annotation information: 4,017 bounding boxes (3,207 fish, 810 non-fish); 800 bird boxes discarded
+- Typical animal size in pixels: ~96 (median long side of the fish boxes)
+- Code to render sample annotated image: [roboflow_aquarium.py](./datasets/roboflow_aquarium.py)
+
+<img src="./previews/roboflow_aquarium_sample_image.png" alt="Roboflow Aquarium Dataset sample" width="600">
+
+
+
 ### Datasets that were not included in the Community Fish Detection Dataset
 
 - [Fishnet.AI](https://www.fishnet.ai/): ~163k bounding boxes on ~35k images of fish and people on fishing vessels.  Excluded because images are above-water.
