@@ -808,6 +808,29 @@ Ditria EM, Connolly RM, Jinks EL, Lopez-Marcano S (2021). [Annotated Video Foota
 
 
 
+#### Mediterranean Fish Census (autoUC)
+
+13,044 frames from diver-operated GoPro transect videos at 8 sites (1-37 m) on the French Riviera, Mediterranean Sea, with 68,590 boxes on 40 fish taxa, plus jellyfish and sea urchins. Only the training/test frames (`Data_T`) are used; the experimental transects (`Data_E`) have model detections, not annotations.
+
+Bürgi K, Bouveyron C, Lingrand D, Derijard B, Precioso F, Sabourault C (2025). [Towards a fully automated underwater census for fish assemblages in the Mediterranean Sea](https://doi.org/10.1016/j.ecoinf.2024.102959). Ecological Informatics 85, 102959. Data: [Dryad, doi:10.5061/dryad.f7m0cfz6f](https://datadryad.org/dataset/doi:10.5061/dryad.f7m0cfz6f)
+
+- Data downloadable via the Dryad API (needs a free Dryad API account) or manually from Dryad ([dataset page](https://datadryad.org/dataset/doi:10.5061/dryad.f7m0cfz6f)): `autoUC_Data.zip` is 121.7 GB, but only `Data_T` (4.4 GB) is read from it with HTTP Range requests
+- License: CC0 1.0
+- Metadata raw format: YOLO TXT (two label sets: `labels_allSpecies`, 46 classes, and `labels_Reduced`, 19 species + Other)
+- Categories/species: 40 Mediterranean fish taxa (e.g. Chromis chromis, Sarpa salpa, Anthias anthias, Coris julis, Diplodus vulgaris), jellyfish, sea urchins, background, diver
+  - fish: all 40 species classes (Chromis_chromis, Diplodus_vulgaris, Coris_julis, Symphodus_tinca, Spicara_smaris, Diplodus_sargus, Symphodus_roissali, Mugilidae, Antherina, Seriola, Boops_boops, Thalassoma_pavo, Oblada_melanura, Labrus_merula, Labrus_mixtus, Mullus_surmuletus, Sarpa_salpa, Labrus_viridis, Apogon_imberbis, Epinephelus_marginatus, Muraena_helena, Gobidae, Serranus_scriba, Scorpoeana_scrofa, Anthias_anthias, Symphodus_rostratus, Serranus_cabrilla, Sciaena_umbra, Sparus aurata, Trachurus sp., Dicentrachus labrax, Symphodus_mediterraneus, Sphyraena sphyraena, Spondyliosoma_cantharus, Blennidae, Symphodus_melanocercus, Spicara_maena, Phycis_phycis, Conger_conger, Diplodus_anularis), Other (rare species grouped together)
+  - non-fish: jellyfish (Pelagia noctiluca), seaurchin
+  - discarded: background (hard negatives: rocks, seagrass, wreck parts), diver, drone (no boxes), fish (its 4 boxes are seagrass leaves)
+- Vehicle type: diver-operated camera (GoPro HERO 9), frames extracted at 1 fps
+- Image information: 13,044 images (12,421 at 1920x1080, 609 at 2704x1520, 14 at 1280x960) from 166 videos, including 2,233 frames without fish or non-fish kept as background; 63 frames duplicated across the authors' train and test sets are kept once
+- Annotation information: 68,791 bounding boxes (68,590 fish, 201 non-fish)
+- Typical animal size in pixels: ~60 (median long side of the fish boxes)
+- Code to render sample annotated image: [med_fish_census.py](./datasets/med_fish_census.py)
+
+<img src="./previews/med_fish_census_sample_image.png" alt="Mediterranean Fish Census sample" width="600">
+
+
+
 ### Datasets that were not included in the Community Fish Detection Dataset
 
 - [Fishnet.AI](https://www.fishnet.ai/): ~163k bounding boxes on ~35k images of fish and people on fishing vessels.  Excluded because images are above-water.

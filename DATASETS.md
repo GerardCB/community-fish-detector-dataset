@@ -278,6 +278,16 @@ Each dataset script in `datasets/` follows a 4-step pattern: Download -> Process
   - discard: none
 - **Split**: By estuary, from the `dataset` column of `dataset_images.csv`. Val = Tallebudgera Creek (the authors' "novel test" site, deployments 16-18; 764 images, 1,066 boxes); train = Jack Evans Boat Harbour (the authors' "Jack Evans A" train and "Jack Evans B" test subsets, deployments 1-15; 3,516 images, 8,363 boxes). A and B are not used as separate splits because they share deployments and one video (`2205_Luderick_25`)
 
+### med_fish_census
+- **Source**: [Dryad, doi:10.5061/dryad.f7m0cfz6f](https://datadryad.org/dataset/doi:10.5061/dryad.f7m0cfz6f) (paper: https://doi.org/10.1016/j.ecoinf.2024.102959)
+- **Download**: Automatic with Dryad API credentials (`DRYAD_CLIENT_ID` + `DRYAD_CLIENT_SECRET`, or `DRYAD_TOKEN`, in the environment or `.env`; create them under My account > API on datadryad.org). The token resolves the download to a signed S3 URL and only `Data_T` (4.4 GB, 39.6k files) plus the class lists are read from `autoUC_Data.zip` (121.7 GB) with HTTP Range requests (`HttpRangeFile`). Without credentials, download the zip manually to `data/raw/med_fish_census/autoUC_Data.zip`; the script picks it up and extracts `Data_T` from it. `datadryad.org/downloads/file_stream/...` sits behind a browser bot check and cannot be scripted
+- **Annotations**: YOLO TXT -> COCO. `Data_T/{trainSet,testSet}/images` with two label sets of identical fish boxes: `labels_allSpecies` (46 classes, used) and `labels_Reduced` (19 species + Other; used for the 118 train images without a `labels_allSpecies` file). 387 `labels_allSpecies` files without an image are ignored. 63 frames (videos GH010143_1, GH010149, GH010211_2) are byte-identical in both splits with the same labels and are kept once. Frames are `<video>_<frame>.jpg` (12,421 at 1920x1080, 609 at 2704x1520, 14 at 1280x960). Frames without kept boxes (2,233, mostly background/diver-only) are kept as background. 6 fish boxes with zero width or height in the source are dropped
+- **Category mapping**:
+  - fish: the 40 species classes (`Chromis_chromis` ... `Diplodus_anularis`, see `FISH_SPECIES` in the script) and `Other` (rare species grouped)
+  - non-fish: `jellyfish` (127, Pelagia noctiluca, crops checked), `seaurchin` (78)
+  - discard: `background` (6,685; hard negatives such as rocks, seagrass, wreck parts, crops checked), `diver` (2,061), `drone` (no boxes), `fish` (4 boxes, all seagrass leaves)
+- **Split**: The authors' split by video (testSet -> val, trainSet -> train), except that GoPro recordings with clips in both of their splits (GH010003, GH010004, GH010049, GH010144, e.g. GH010003 in test and GH010003_2 in train) go entirely to val. No site ids are in the data. Val: 3,994 images, 28,867 fish, 5 non-fish (~30%); train: 9,050 images, 39,723 fish, 196 non-fish
+
 ## Partial Datasets
 
 These datasets require manual download or have special dependencies.
