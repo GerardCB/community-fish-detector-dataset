@@ -693,6 +693,27 @@ González-Villà S, Burns Font D, Aguzzi J, et al. [DIGI4ECO Underwater Fish Tra
 
 <img src="./previews/digi4eco_sample_image.png" alt="DIGI4ECO Underwater Fish Tracking sample" width="600">
 
+#### YOLO-BRUV
+
+2,640 frames from 19 baited remote underwater video (BRUV) recordings on sand and shell seabed at offshore wind farms in the Moray Firth, Scotland (PrePARED project), with 13,070 fish boxes (mostly dab/flounder and haddock) and 2,674 non-fish boxes (mostly hermit crabs and starfish)
+
+Lambrette M. [YOLO-BRUV training data and scripts](https://doi.org/10.5281/zenodo.19594599). Zenodo, 2026. Footage from Bicknell AW, Gierhart S, Witt MJ. [Site and species dependent effects of offshore windfarms on fish populations](https://doi.org/10.1016/j.marenvres.2025.106977). Marine Environmental Research 205, 2025
+
+- Data downloadable via Zenodo ([download link](https://zenodo.org/records/19594599/files/YOLO-BRUV_data.zip?download=1))
+- License: CC BY 4.0
+- Metadata raw format: EventMeasure point exports (tab-separated text, one row per animal with a box), JPEG frames
+- Categories/species: 21 species-level labels and an empty-frame marker
+  - fish: dab/flounder, haddock, unidentified flatfish, gobies, short-spined sea scorpion, grey gurnard, small-spotted catshark, plaice, dragonet, cod, ling, whiting, flapper skate, dab, poor cod
+  - non-fish: hermit crab, common starfish, edible crab, brittle star, common whelk, squid
+  - discarded: the marker used to export empty frames ("Botryllus spp")
+- Vehicle type: BRUV (GoPro on a baited frame, one camera)
+- Image information: 2,640 frames (1920x1080) from 19 recordings; 455 of them have no animal (kept as background). Of the 2,708 exported frames, 68 annotated with points instead of boxes are dropped, and 12 frames exported twice are kept once
+- Annotation information: 13,070 fish and 2,674 non-fish bounding boxes
+- Typical animal size in pixels: ~124 (median long side of the fish boxes)
+- Code to render sample annotated image: [yolo_bruv.py](./datasets/yolo_bruv.py)
+
+<img src="./previews/yolo_bruv_sample_image.png" alt="YOLO-BRUV sample" width="600">
+
 
 
 #### Labelled Mediterranean Fish Dataset (DEEPECOMAR)
