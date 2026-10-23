@@ -110,7 +110,9 @@ pip install -r requirements.txt -r requirements-dedup.txt
 python -m datasets.deduplicate --review 16
 ```
 
-The outputs go to `data/dedup`: `report.md`, `pairs.csv` (every candidate pair), `clusters.json` (duplicate groups) and `review/` (sample pairs per similarity band). Descriptors are cached, so a rerun only processes new images.
+The outputs go to `data/dedup`: `report.md`, `pairs.csv` (every candidate pair), `clusters.json` (duplicate groups), `near_identical_frames.csv` and `review/` (sample pairs per similarity band). Descriptors are cached, so a rerun only processes new images.
+
+Near-identical consecutive frames inside one split (similarity >= 0.995: frames a video repeats, or with fish moved by a few pixels) are not duplicates: they stay in the dataset and are listed in `near_identical_frames.csv`, to be subsampled when training. Results of a first run on 7 datasets are in [dedup_results/](./dedup_results/).
 
 ## Fish datasets
 
