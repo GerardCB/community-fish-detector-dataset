@@ -17,10 +17,12 @@ duplicates, and files with the same SHA-1 are exact copies. Calibration on 7 pro
 
 For every image, three neighbour searches are made, so that near-identical frames of its own dataset cannot
 hide a copy elsewhere: the --k nearest images in the other datasets, in the other split of its own dataset,
-and in its own split of its own dataset. Pairs inside one split of one dataset can be neighbouring video frames
-rather than copies, so they are counted apart, and only kept from --threshold up. Images are counted by their
-best match in each other dataset, and duplicate groups only link images that are each other's best match, so a
-copy of one video frame does not pull in all the neighbouring frames of its original.
+and in its own split of its own dataset. Pairs inside one split of one dataset are mostly consecutive frames of
+a video or a fixed camera (0.99-0.997 when fish have moved a little), so they are counted apart, kept from
+--threshold up, and only count as duplicates from --same-split-threshold (default 0.995: frames repeated by the
+video, or with fish moved by a few pixels, which add almost nothing to training) or when the files are identical. Images are counted by their best match in
+each other dataset, and duplicate groups only link images that are each other's best match, so a copy of one
+video frame does not pull in all the neighbouring frames of its original.
 
 Run on a GPU machine for the full dataset:
     pip install -r requirements.txt -r requirements-dedup.txt
@@ -31,7 +33,7 @@ Descriptors are cached per dataset split in <out-dir>/descriptors, so a rerun on
 Outputs in <out-dir> (default data/dedup):
     pairs.csv       every pair with similarity >= --min-similarity (>= --threshold inside one split of one
                     dataset), with datasets, splits, box counts and whether the two are each other's best match
-    clusters.json   duplicate groups (cross-dataset and train-val pairs of mutual best matches, identical files)
+    clusters.json   duplicate groups (mutual best matches over the thresholds, identical files)
     report.md       images with a match in each other dataset and in the other split, by similarity band, and
                     how many images "keep one image per group" would drop
     review/         side-by-side sample pairs per similarity band (with --review N)
@@ -238,7 +240,7 @@ def union_find_groups(n: int, pairs: np.ndarray) -> list[list[int]]:
 def write_review(pairs: pd.DataFrame, images: pd.DataFrame, review_dir: Path, per_band: int):
     """For each similarity band, a sheet of random sample pairs (left / right) to judge the threshold by eye."""
     review_dir.mkdir(parents=True, exist_ok=True)
-    pairs = pairs[pairs["mutual"]]
+    pairs = pairs[pairs["mutual"] & (pairs["kind"] != KINDS[2])]
     for lo, hi in zip(BANDS[:-1], BANDS[1:]):
         band = pairs[(pairs["similarity"] >= lo) & ((pairs["similarity"] < hi) | (hi == BANDS[-1]))]
         if band.empty:
@@ -265,24 +267,34 @@ def write_review(pairs: pd.DataFrame, images: pd.DataFrame, review_dir: Path, pe
 
 def mark_best_matches(pairs: pd.DataFrame) -> pd.DataFrame:
     """
-    best_for_a: b is a's most similar image in b's dataset (cross-dataset pairs) or in the other split (train-val
-    pairs); best_for_b likewise; mutual: both. A copy of one frame of a video then links to its original only,
-    not to every neighbouring frame of it.
+    best_for_a: b is a's most similar image in b's dataset (cross-dataset pairs), in the other split (train-val
+    pairs) or in its own split (same-split pairs); best_for_b likewise; mutual: both. A copy of one frame of a
+    video then links to its original only, not to every neighbouring frame of it.
     """
     pairs = pairs.copy()
-    for side, other in (("a", "b"), ("b", "a")):
-        target = pairs[f"dataset_{other}"] + np.where(pairs["kind"] == KINDS[1], "/" + pairs[f"split_{other}"], "")
-        best = pairs.assign(target=target).groupby([f"index_{side}", "target"])["similarity"].transform("max")
-        pairs[f"best_for_{side}"] = (pairs["similarity"] >= best) & (pairs["kind"] != KINDS[2])
+    # every pair seen from both of its images, as each image appears as index_a in some pairs and index_b in others
+    directed = pd.concat([
+        pd.DataFrame({"pair": pairs.index, "side": side, "image": pairs[f"index_{side}"], "match": pairs[f"index_{other}"],
+                      "target": pairs[f"dataset_{other}"] + np.where(pairs["kind"] != KINDS[0],
+                                                                     "/" + pairs[f"split_{other}"], ""),
+                      "similarity": pairs["similarity"]})
+        for side, other in (("a", "b"), ("b", "a"))])
+    # exactly one best match per image and target: similarities tie often (half-precision descriptors), and ties
+    # would chain consecutive frames into one group
+    best = directed.sort_values(["similarity", "match"], ascending=[False, True]).drop_duplicates(["image", "target"])
+    for side in ("a", "b"):
+        pairs[f"best_for_{side}"] = pairs.index.isin(best.loc[best["side"] == side, "pair"])
     pairs["mutual"] = pairs["best_for_a"] & pairs["best_for_b"]
     return pairs
 
 
-def report(images: pd.DataFrame, pairs: pd.DataFrame, threshold: float) -> tuple[str, list[list[int]]]:
+def report(images: pd.DataFrame, pairs: pd.DataFrame, threshold: float, same_split_threshold: float
+           ) -> tuple[str, list[list[int]]]:
     dup = pairs[pairs["similarity"] >= threshold]
     lines = ["# Duplicate report", "",
              f"{len(images):,} images in {images['dataset'].nunique()} datasets. A duplicate is a pair with SSCD "
-             f"cosine similarity >= {threshold}, or identical files (SHA-1).", ""]
+             f"cosine similarity >= {threshold} ({same_split_threshold} inside one split of one dataset), or identical "
+             "files (SHA-1).", ""]
 
     # Each image counted once per other dataset (or other split), by its best match there
     directed = pd.concat([
@@ -317,14 +329,20 @@ def report(images: pd.DataFrame, pairs: pd.DataFrame, threshold: float) -> tuple
 
     same = dup[dup["kind"] == KINDS[2]]
     lines += ["## Pairs inside one split of a dataset (copies or neighbouring video frames)", "",
-              "| dataset | split | pairs | images involved | identical files |", "|---|---|---|---|---|"]
+              f"Only pairs from {same_split_threshold} up (or identical files) count as duplicates: below it, these are "
+              "mostly consecutive frames of a video or a fixed camera.", "",
+              f"| dataset | split | pairs >= {threshold} | images involved | pairs >= {same_split_threshold} | "
+              "identical files |", "|---|---|---|---|---|---|"]
     for (dataset, split), sel in same.groupby(["dataset_a", "split_a"]):
         involved = len(np.unique(sel[["index_a", "index_b"]].to_numpy()))
-        lines.append(f"| {dataset} | {split} | {len(sel):,} | {involved:,} | {int(sel['identical_file'].sum()):,} |")
+        strict = int((sel["similarity"] >= same_split_threshold).sum())
+        lines.append(f"| {dataset} | {split} | {len(sel):,} | {involved:,} | {strict:,} | "
+                     f"{int(sel['identical_file'].sum()):,} |")
     lines.append("")
 
     # Keep one image per group (a val image if any, then the one with most boxes): how many would be dropped
-    links = dup[dup["mutual"] | (dup["identical_file"] & (dup["kind"] != KINDS[2]))]
+    strict = (dup["kind"] != KINDS[2]) | (dup["similarity"] >= same_split_threshold)
+    links = dup[(dup["mutual"] & strict) | dup["identical_file"]]
     groups = union_find_groups(len(images), links[["index_a", "index_b"]].to_numpy())
     dropped = []
     for group in groups:
@@ -332,9 +350,10 @@ def report(images: pd.DataFrame, pairs: pd.DataFrame, threshold: float) -> tuple
         dropped += [i for i in group if i != keep]
     drops = images.loc[dropped].groupby(["dataset", "split"]).size()
     lines += ["## If one image per duplicate group were kept", "",
-              f"{len(groups):,} groups, linked by cross-dataset and train-val pairs at >= {threshold} where each image is "
-              "the other's best match (or the files are identical). Keeping one image per group (a val image if there "
-              "is one, else the one with most boxes) would drop:", "",
+              f"{len(groups):,} groups, linked by pairs where each image is the other's best match: cross-dataset and "
+              f"train-val pairs at >= {threshold}, pairs inside one split at >= {same_split_threshold}, and identical "
+              "files. Keeping one image per group (a val image if there is one, else the one with most boxes) would "
+              "drop:", "",
               "| dataset | train images dropped | val images dropped | share of its images |", "|---|---|---|---|"]
     totals = images.groupby("dataset").size()
     for dataset in sorted({d for d, _ in drops.index}):
@@ -350,6 +369,8 @@ def main():
     parser.add_argument("--out-dir", type=Path, default=settings.base_dir / "dedup")
     parser.add_argument("--datasets", nargs="*", help="only these dataset shortnames (default: all)")
     parser.add_argument("--threshold", type=float, default=0.9, help="SSCD similarity of a duplicate")
+    parser.add_argument("--same-split-threshold", type=float, default=0.995,
+                        help="SSCD similarity of a duplicate inside one split of one dataset")
     parser.add_argument("--min-similarity", type=float, default=0.6,
                         help="lowest similarity of cross-dataset and train-val pairs written to pairs.csv")
     parser.add_argument("--k", type=int, default=10, help="neighbours kept per image in each search")
@@ -403,7 +424,7 @@ def main():
     columns = ["similarity", "identical_file", "kind", "mutual"] + [f"{c}_{s}" for s in ("a", "b")
                                                                     for c in ("dataset", "split", "file_name", "boxes")]
     pairs[columns].to_csv(args.out_dir / "pairs.csv", index=False, float_format="%.4f")
-    text, groups = report(images, pairs, args.threshold)
+    text, groups = report(images, pairs, args.threshold, args.same_split_threshold)
     (args.out_dir / "report.md").write_text(text)
     with open(args.out_dir / "clusters.json", "w") as f:
         names = (images["dataset"] + "_" + images["split"] + "/" + images["file_name"]).to_numpy()
