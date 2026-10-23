@@ -1,0 +1,62 @@
+{
+ "note": "Visual checks of the KSO run (2026-10-23). object_groups: indices into verify/static_groups.json judged to be objects (algae, debris, the mat clip, snails); the other groups are real animals that sat still or gobies overlapping by chance. excluded_recordings: the 17 Apr recordings, where only small snails (no box) appear. class_fixes: high-confidence boxes with the wrong class (annotation keys of the export).",
+ "object_groups": [
+  0,
+  1,
+  5,
+  13,
+  17,
+  18,
+  19,
+  20,
+  21,
+  22,
+  23,
+  24,
+  25,
+  26,
+  27,
+  28,
+  29,
+  30,
+  31,
+  32,
+  33,
+  35,
+  36,
+  38,
+  39,
+  40,
+  41,
+  43,
+  44,
+  45,
+  46
+ ],
+ "animal_groups": [
+  2,
+  3,
+  4,
+  6,
+  7,
+  8,
+  9,
+  10,
+  11,
+  12,
+  14,
+  15,
+  16,
+  34,
+  37,
+  42,
+  47
+ ],
+ "excluded_recordings": [
+  "control_17_4",
+  "farm_17_4"
+ ],
+ "class_fixes": {
+  "a1998": "fish"
+ }
+}

@@ -1,0 +1,4967 @@
+{
+ "a1644": {
+  "label": "fish",
+  "what": "small pale elongated fish (likely a small goby) at the mat edge, head right, tail tapering left",
+  "confidence": "medium"
+ },
+ "a148": {
+  "label": "no animal",
+  "what": "tiny pale blob at the bottom frame edge on the mat, likely a debris particle or small snail",
+  "confidence": "medium"
+ },
+ "a2872": {
+  "label": "fish",
+  "what": "small elongated pale goby-like fish swimming above the mat, similar to other gobies in frame",
+  "confidence": "high"
+ },
+ "a60": {
+  "label": "fish",
+  "what": "faint elongated yellowish shape above the bait box, possibly a blurry small goby; could also be a piece of algae",
+  "confidence": "low"
+ },
+ "a597": {
+  "label": "fish",
+  "what": "pale elongated goby-like shape cut by the top frame edge, similar in color and size to the other gobies on the mat",
+  "confidence": "medium"
+ },
+ "a2514": {
+  "label": "fish",
+  "what": "pale, elongated, slightly curved goby-like body lying at the mat edge, similar in size and colour to the other gobies in the frame",
+  "confidence": "medium"
+ },
+ "a193": {
+  "label": "fish",
+  "what": "small elongated pale fish, likely a goby, at the top-left edge over the algae",
+  "confidence": "medium"
+ },
+ "a21": {
+  "label": "no animal",
+  "what": "tiny pale blob at the bottom frame edge, likely a particle or debris",
+  "confidence": "medium"
+ },
+ "a2202": {
+  "label": "no animal",
+  "what": "faint, uniform pale vertical streak at the top frame edge, likely a rope or cable; no fish shape visible",
+  "confidence": "medium"
+ },
+ "a2123": {
+  "label": "no animal",
+  "what": "small pale elongated blob, much smaller than the nearby gobies; likely a small snail or debris",
+  "confidence": "low"
+ },
+ "a2164": {
+  "label": "fish",
+  "what": "pale elongated goby-like body at the lower-left edge of the mat, head up and tail tapering down",
+  "confidence": "medium"
+ },
+ "a1467": {
+  "label": "fish",
+  "what": "small elongated pale goby-like shape on the algae at the top-right edge, cut by the frame edge",
+  "confidence": "medium"
+ },
+ "a1374": {
+  "label": "fish",
+  "what": "elongated pale body cut by the top frame edge, likely a goby entering the frame, though it could be an algae fragment",
+  "confidence": "medium"
+ },
+ "a1052": {
+  "label": "fish",
+  "what": "faint elongated pale goby-like shape lying horizontally near the right edge of the mat, similar in size and color to the other gobies",
+  "confidence": "medium"
+ },
+ "a2858": {
+  "label": "fish",
+  "what": "faint pale elongated goby-like shape on the green seabed off the mat's lower-left edge, similar to the gobies on the mat",
+  "confidence": "medium"
+ },
+ "a2533": {
+  "label": "fish",
+  "what": "faint elongated pale shape on the algae at the bottom-left edge, likely a goby",
+  "confidence": "low"
+ },
+ "a1195": {
+  "label": "fish",
+  "what": "faint, blurry elongated pale shape the size and orientation of the nearby gobies, likely a goby",
+  "confidence": "medium"
+ },
+ "a1257": {
+  "label": "fish",
+  "what": "faint elongated pale goby-shaped body, similar to the other gobies on the mat",
+  "confidence": "medium"
+ },
+ "a1744": {
+  "label": "no animal",
+  "what": "small pale fuzzy object on the bait box side, likely a small snail or debris, similar to other pale blobs in the frame",
+  "confidence": "medium"
+ },
+ "a1543": {
+  "label": "fish",
+  "what": "slender pale goby at the right edge of the mat, elongated body with tail toward the right",
+  "confidence": "medium"
+ },
+ "a2413": {
+  "label": "no animal",
+  "what": "Blurry pale curved shape at the mat's corner edge, most likely algae or a curled mat edge, though it could be a blurred goby",
+  "confidence": "low"
+ },
+ "a2524": {
+  "label": "fish",
+  "what": "faint, small, elongated spindle-shaped pale object on the mat; possibly a small or juvenile goby, but much smaller than the other gobies and could be debris",
+  "confidence": "low"
+ },
+ "a1349": {
+  "label": "fish",
+  "what": "faint elongated goby-like shape lying diagonally on the green sand beside the mat, similar in size to the goby on the mat",
+  "confidence": "medium"
+ },
+ "a1576": {
+  "label": "unclear",
+  "what": "faint pale curved blob near the mat edge; could be a small goby turning or a small snail or debris",
+  "confidence": "low"
+ },
+ "a2047": {
+  "label": "fish",
+  "what": "faint, small elongated pale shape like a small goby, next to a larger fish at top right",
+  "confidence": "low"
+ },
+ "a430": {
+  "label": "fish",
+  "what": "faint, elongated pale shape at the mat edge, about goby size and shape, probably a blurry goby",
+  "confidence": "low"
+ },
+ "a1690": {
+  "label": "fish",
+  "what": "small pale elongated body tapering to a thin tail, likely a goby on the mat",
+  "confidence": "medium"
+ },
+ "a1952": {
+  "label": "no animal",
+  "what": "thin pale elongated object at the frame edge, likely a piece of algae or debris (possibly a crab leg); no fish shape visible",
+  "confidence": "low"
+ },
+ "a353": {
+  "label": "fish",
+  "what": "faint elongated pale shape resembling a blurry goby near the right edge of the mat",
+  "confidence": "low"
+ },
+ "a2672": {
+  "label": "unclear",
+  "what": "faint pale elongated streak on the green area by the mat corner; could be a blurry goby or a piece of algae",
+  "confidence": "low"
+ },
+ "a2681": {
+  "label": "fish",
+  "what": "faint pale elongated tapering shape on the green seabed just below the mat edge, likely a blurry goby",
+  "confidence": "low"
+ },
+ "a2267": {
+  "label": "fish",
+  "what": "faint small elongated pale shape on the mat, possibly a small goby, but it could also be an algae fragment",
+  "confidence": "low"
+ },
+ "a1782": {
+  "label": "non-fish",
+  "what": "pale pinkish elongated animal with thin antenna-like lines at one end beside the bait box, most likely a shrimp",
+  "confidence": "low"
+ },
+ "a2378": {
+  "label": "fish",
+  "what": "faint, pale, elongated goby-like shape at the right edge of the mat, about the same size as the other gobies",
+  "confidence": "low"
+ },
+ "a2720": {
+  "label": "fish",
+  "what": "faint, small, elongated pale shape, possibly a small or blurred goby swimming above the mat",
+  "confidence": "low"
+ },
+ "a2332": {
+  "label": "no animal",
+  "what": "faint small elongated pale speck on the mat, much smaller than the gobies nearby; likely debris or a particle",
+  "confidence": "medium"
+ },
+ "a1380": {
+  "label": "no animal",
+  "what": "small pale irregular blob near the mat edge, likely debris, algae or a small snail; no clear fish shape",
+  "confidence": "low"
+ },
+ "a2507": {
+  "label": "no animal",
+  "what": "faint small pale streak on the mat, likely debris or a particle; much smaller and fainter than the gobies nearby",
+  "confidence": "medium"
+ },
+ "a796": {
+  "label": "fish",
+  "what": "small pale goby-like shape with bright head and tapering tail, right next to the bait box",
+  "confidence": "medium"
+ },
+ "a1789": {
+  "label": "unclear",
+  "what": "faint pale elongated blur on the mat below the bait box; could be an out-of-focus goby or a floating particle or debris",
+  "confidence": "low"
+ },
+ "a1601": {
+  "label": "no animal",
+  "what": "small pale blurry blob near the mat edge, too small and compact for a goby; likely a small snail or debris",
+  "confidence": "low"
+ },
+ "a553": {
+  "label": "fish",
+  "what": "faint, blurry elongated pale shape at the top frame edge, likely a goby swimming out of focus",
+  "confidence": "medium"
+ },
+ "a2928": {
+  "label": "fish",
+  "what": "elongated pale goby-shaped fish swimming over the mat, similar to other gobies nearby",
+  "confidence": "medium"
+ },
+ "a344": {
+  "label": "fish",
+  "what": "faint pale elongated tapered shape, likely a blurry goby at the top of the mat",
+  "confidence": "low"
+ },
+ "a714": {
+  "label": "fish",
+  "what": "elongated pale goby-shaped body swimming above the mat, similar to the other gobies in the frame",
+  "confidence": "medium"
+ },
+ "a2399": {
+  "label": "fish",
+  "what": "elongated pale goby-shaped body near the top edge of the mat, matching the other gobies in the frame",
+  "confidence": "medium"
+ },
+ "a1723": {
+  "label": "no animal",
+  "what": "small pale teardrop-shaped object about 2 cm long, most likely a small snail near the bait box",
+  "confidence": "medium"
+ },
+ "a2031": {
+  "label": "fish",
+  "what": "slender pale goby-like fish lying diagonally at the top edge of the sand patch, similar to the other gobies in the frame",
+  "confidence": "medium"
+ },
+ "a1155": {
+  "label": "fish",
+  "what": "faint elongated pale goby-like shape at the top frame edge, similar to the other gobies over the mat",
+  "confidence": "medium"
+ },
+ "a135": {
+  "label": "no animal",
+  "what": "pale elongated stick-like debris (algae stalk or straw) at bottom edge of frame",
+  "confidence": "medium"
+ },
+ "a2602": {
+  "label": "fish",
+  "what": "faint, blurry elongated pale shape, possibly a small goby or fish just above the mat",
+  "confidence": "low"
+ },
+ "a1524": {
+  "label": "fish",
+  "what": "pale elongated goby partially cut by bottom frame edge, similar to other gobies nearby",
+  "confidence": "medium"
+ },
+ "a2576": {
+  "label": "fish",
+  "what": "slender pale goby-like fish swimming diagonally near the bait box, similar to the other fish nearby",
+  "confidence": "medium"
+ },
+ "a1780": {
+  "label": "fish",
+  "what": "pale, teardrop-shaped body tapering to a tail next to the bait box, likely a goby seen from above",
+  "confidence": "low"
+ },
+ "a2722": {
+  "label": "fish",
+  "what": "pale, elongated, slightly curved goby-like body at the mat edge, similar in size and shape to the gobies on the mat",
+  "confidence": "medium"
+ },
+ "a964": {
+  "label": "fish",
+  "what": "faint, blurry elongated goby-shaped body near the right edge of the mat, head up and tail down-left, similar to the other gobies in the frame",
+  "confidence": "medium"
+ },
+ "a1617": {
+  "label": "fish",
+  "what": "faint elongated, goby-like shape lying on the green bottom just right of the mat edge",
+  "confidence": "low"
+ },
+ "a946": {
+  "label": "fish",
+  "what": "elongated pale goby-shaped body lying horizontally across the left edge of the mat, similar in size to the other gobies",
+  "confidence": "medium"
+ },
+ "a1740": {
+  "label": "unclear",
+  "what": "small pale blob on the bait box edge; could be a small crab, a snail or a goby, too blurry to tell",
+  "confidence": "low"
+ },
+ "a2558": {
+  "label": "fish",
+  "what": "faint small elongated pale shape on the mat, possibly a small goby, but it could be debris",
+  "confidence": "low"
+ },
+ "a2515": {
+  "label": "fish",
+  "what": "faint, blurry elongated pale body, likely a goby similar in size and shape to the others on the mat",
+  "confidence": "medium"
+ },
+ "a1103": {
+  "label": "unclear",
+  "what": "very faint, small elongated pale streak; could be a tiny fish or a drifting particle/fiber, too blurry to tell",
+  "confidence": "low"
+ },
+ "a2755": {
+  "label": "fish",
+  "what": "pale elongated goby-shaped body lying vertically along the left edge of the mat, similar in size and color to the other gobies",
+  "confidence": "medium"
+ },
+ "a1752": {
+  "label": "no animal",
+  "what": "small pale oval object on the bait box, likely a small snail like the others nearby",
+  "confidence": "medium"
+ },
+ "a579": {
+  "label": "no animal",
+  "what": "thin dark diagonal strand on the sediment beside the mat, most likely an algae fragment or twig; no fish body shape is visible",
+  "confidence": "medium"
+ },
+ "a2746": {
+  "label": "fish",
+  "what": "pale elongated curved goby-like shape lying on the green area next to the mat edge",
+  "confidence": "medium"
+ },
+ "a68": {
+  "label": "no animal",
+  "what": "thin pale elongated strand, likely a piece of algae or debris on the mat",
+  "confidence": "medium"
+ },
+ "a1575": {
+  "label": "fish",
+  "what": "elongated pale goby-like fish lying at the right edge of the mat",
+  "confidence": "medium"
+ },
+ "a2623": {
+  "label": "fish",
+  "what": "elongated pale goby-shaped body lying along the mat edge, similar in size and shape to the other gobies in the frame",
+  "confidence": "medium"
+ },
+ "a1845": {
+  "label": "fish",
+  "what": "elongated pale goby-shaped body lying diagonally near the crab, similar to the other gobies in the frame",
+  "confidence": "medium"
+ },
+ "a2437": {
+  "label": "fish",
+  "what": "elongated pale goby-like shape, cut by the top frame edge, similar to the other gobies on the mat",
+  "confidence": "medium"
+ },
+ "a2369": {
+  "label": "fish",
+  "what": "faint, small elongated pale shape, likely a blurry goby lying diagonally on the mat",
+  "confidence": "low"
+ },
+ "a2805": {
+  "label": "no animal",
+  "what": "curved pale segmented object lying along the mat edge, likely an algae fragment or debris; could possibly be a curled goby or shrimp",
+  "confidence": "low"
+ },
+ "a2489": {
+  "label": "fish",
+  "what": "faint pale elongated tapered shape on the green area off the mat edge, possibly a blurry goby",
+  "confidence": "low"
+ },
+ "a1717": {
+  "label": "no animal",
+  "what": "small pale oval object, likely a small snail or a piece of debris on the mat",
+  "confidence": "medium"
+ },
+ "a1447": {
+  "label": "no animal",
+  "what": "small pale rounded blob near the mat edge, much smaller than the gobies; likely a small snail or debris",
+  "confidence": "medium"
+ },
+ "a1712": {
+  "label": "fish",
+  "what": "small pale goby-like shape on the mat near the bait box: rounded head with a body tapering to a tail",
+  "confidence": "medium"
+ },
+ "a2734": {
+  "label": "fish",
+  "what": "elongated pale goby-like body lying vertically along the left edge of the mat, similar in size and colour to the gobies on the mat",
+  "confidence": "medium"
+ },
+ "a223": {
+  "label": "unclear",
+  "what": "faint pale elongated smear on the mat, roughly goby-sized but too blurry to tell fish from debris",
+  "confidence": "low"
+ },
+ "a2600": {
+  "label": "fish",
+  "what": "blurry pale elongated shape at the mat's bottom-left corner, likely a goby",
+  "confidence": "low"
+ },
+ "a616": {
+  "label": "fish",
+  "what": "faint, blurry elongated pale shape lying diagonally, similar in size and shape to the gobies nearby; probably a goby that is out of focus",
+  "confidence": "low"
+ },
+ "a2010": {
+  "label": "no animal",
+  "what": "small pale elongated streak, much smaller than the gobies in the frame; likely a bit of debris or algae fragment",
+  "confidence": "medium"
+ },
+ "a2635": {
+  "label": "no animal",
+  "what": "thin pale elongated streak, much smaller than the gobies nearby; likely a debris particle or algae fragment",
+  "confidence": "medium"
+ },
+ "a2542": {
+  "label": "fish",
+  "what": "faint pale elongated diagonal shape on the green area right of the mat, likely a blurry goby",
+  "confidence": "low"
+ },
+ "a1766": {
+  "label": "no animal",
+  "what": "small round pale blob next to the bait box, with no visible tail or fish shape; most likely a small snail or debris",
+  "confidence": "low"
+ },
+ "a2612": {
+  "label": "fish",
+  "what": "blurry pale elongated goby-like fish at the top edge of the frame, similar in shape and color to the other gobies on the mat",
+  "confidence": "medium"
+ },
+ "a2937": {
+  "label": "fish",
+  "what": "faint, blurry elongated pale shape about the size of the other gobies, likely a goby on the mat's upper right",
+  "confidence": "low"
+ },
+ "a2852": {
+  "label": "fish",
+  "what": "pale, elongated, slightly curved goby-like body at the lower-left edge of the mat, similar in size and shape to the other gobies in the frame",
+  "confidence": "medium"
+ },
+ "a2786": {
+  "label": "fish",
+  "what": "blurry pale elongated goby-like body at the bottom-left edge of the mat",
+  "confidence": "medium"
+ },
+ "a2292": {
+  "label": "fish",
+  "what": "pale, curved, elongated goby-like body lying along the left edge of the mat, similar in size and color to the other gobies",
+  "confidence": "medium"
+ },
+ "a1746": {
+  "label": "no animal",
+  "what": "small pale fragment (likely algae/debris or small snail) on the bait box, similar to other debris pieces on the mat",
+  "confidence": "medium"
+ },
+ "a94": {
+  "label": "fish",
+  "what": "pale curved body of a goby cut off by the bottom frame edge, similar in color to the other gobies in the frame",
+  "confidence": "medium"
+ },
+ "a1026": {
+  "label": "fish",
+  "what": "faint elongated goby-shaped fish near the mat edge, similar to the other gobies in the frame",
+  "confidence": "medium"
+ },
+ "a2109": {
+  "label": "no animal",
+  "what": "small pale oval blob at the frame edge, likely a small snail or pebble rather than an elongated goby",
+  "confidence": "low"
+ },
+ "a1476": {
+  "label": "fish",
+  "what": "small elongated goby-like shape with pale head and tapering tail near the mat edge",
+  "confidence": "medium"
+ },
+ "a355": {
+  "label": "no animal",
+  "what": "small pale blob, likely a floating particle or debris, much smaller than the nearby gobies",
+  "confidence": "medium"
+ },
+ "a2606": {
+  "label": "fish",
+  "what": "tiny pale elongated shape with a brighter head end and tapering tail, possibly a small juvenile fish, but could be a drifting particle",
+  "confidence": "low"
+ },
+ "a1209": {
+  "label": "fish",
+  "what": "faint, blurry elongated pale shape, likely a goby on the mat (head at top, curved body)",
+  "confidence": "medium"
+ },
+ "a1364": {
+  "label": "fish",
+  "what": "faint pale elongated shape near the mat edge, possibly a blurry goby",
+  "confidence": "low"
+ },
+ "a2688": {
+  "label": "unclear",
+  "what": "faint pale elongated blur on the green sand beside the mat corner; it could be a goby or just algae or light, too indistinct to tell",
+  "confidence": "low"
+ },
+ "a1867": {
+  "label": "fish",
+  "what": "faint, elongated pale goby-shaped body just above the crab, partly hidden in a sediment cloud",
+  "confidence": "low"
+ },
+ "a2391": {
+  "label": "fish",
+  "what": "pale elongated goby-like body lying along the left edge of the mat, similar in size and colour to the other gobies",
+  "confidence": "medium"
+ },
+ "a1719": {
+  "label": "unclear",
+  "what": "small pale elongated blob with two thin projections at one end; could be a goby, a shrimp or a snail",
+  "confidence": "low"
+ },
+ "a572": {
+  "label": "unclear",
+  "what": "very faint pale elongated streak at the top frame edge; could be part of a goby cut by the edge, or just a blur or particle",
+  "confidence": "low"
+ },
+ "a119": {
+  "label": "no animal",
+  "what": "thin pale streak, likely a piece of debris or algae fiber on the mat",
+  "confidence": "medium"
+ },
+ "a2938": {
+  "label": "no animal",
+  "what": "thin, straight pale filament of uniform width with no visible head, eyes or fins; most likely drifting algae, a thread or debris (a pipefish is less likely)",
+  "confidence": "medium"
+ },
+ "a2645": {
+  "label": "fish",
+  "what": "blurry pale elongated goby-like shape at the mat's lower-left edge",
+  "confidence": "medium"
+ },
+ "a2478": {
+  "label": "fish",
+  "what": "pale elongated goby-shaped body with tapering tail, lying at the left edge of the mat",
+  "confidence": "medium"
+ },
+ "a2004": {
+  "label": "fish",
+  "what": "likely a goby seen from above, elongated pale body pointing up at the algae edge, similar in size to the other gobies in the frame",
+  "confidence": "medium"
+ },
+ "a1706": {
+  "label": "fish",
+  "what": "small pale goby-shaped fish with tapering tail swimming over the mat near the bait box",
+  "confidence": "medium"
+ },
+ "a1726": {
+  "label": "fish",
+  "what": "pale, elongated goby-like shape with a rounded head and tapering tail, lying on top of the bait box",
+  "confidence": "medium"
+ },
+ "a136": {
+  "label": "no animal",
+  "what": "thin pale elongated streak, likely a strand of debris or algae lying on the mat, like the many similar particles around it",
+  "confidence": "medium"
+ },
+ "a2238": {
+  "label": "fish",
+  "what": "pale elongated goby-like body lying along the edge of the mat",
+  "confidence": "medium"
+ },
+ "a1629": {
+  "label": "no animal",
+  "what": "small pale blob near the mat edge, much smaller than the gobies; likely a small snail or a piece of debris",
+  "confidence": "medium"
+ },
+ "a1725": {
+  "label": "no animal",
+  "what": "Pale blob on the top edge of the bait box, next to a similar blob; it looks like bait or debris (possibly a small pale snail), not a goby",
+  "confidence": "low"
+ },
+ "a1424": {
+  "label": "fish",
+  "what": "blurry elongated goby-like shape on the green sand/algae at the right edge, similar to other gobies nearby",
+  "confidence": "low"
+ },
+ "a2929": {
+  "label": "fish",
+  "what": "faint dark elongated goby-shaped streak lying diagonally on the green sand beside the mat edge; could also be a shadow or algae",
+  "confidence": "low"
+ },
+ "a1336": {
+  "label": "fish",
+  "what": "small elongated, slightly curved pale body with a tapering tail, likely a goby in the top-left corner over the algae",
+  "confidence": "medium"
+ },
+ "a2832": {
+  "label": "fish",
+  "what": "pale, elongated, slightly curved goby-like body lying at the mat edge, similar in size and colour to the other gobies in the frame",
+  "confidence": "medium"
+ },
+ "a2601": {
+  "label": "no animal",
+  "what": "faint thin dark diagonal streak on the green area beside the mat, likely an algae blade or debris; no fish shape visible",
+  "confidence": "medium"
+ },
+ "a2567": {
+  "label": "fish",
+  "what": "faint, thin, elongated pale shape on the mat, possibly a small, blurry goby, though it could also be debris",
+  "confidence": "low"
+ },
+ "a1215": {
+  "label": "fish",
+  "what": "faint elongated pale goby-like shape, similar to the other gobies near the bait box",
+  "confidence": "medium"
+ },
+ "a1645": {
+  "label": "fish",
+  "what": "pale elongated goby-like body at the bottom frame edge, partly cut off",
+  "confidence": "medium"
+ },
+ "a1567": {
+  "label": "fish",
+  "what": "small elongated pale goby-shaped body at the right edge of the mat",
+  "confidence": "medium"
+ },
+ "a1713": {
+  "label": "fish",
+  "what": "blurry pale oval shape on the mat, possibly a goby seen from above; could also be a small snail",
+  "confidence": "low"
+ },
+ "a629": {
+  "label": "fish",
+  "what": "faint elongated pale shape, likely a blurry goby swimming horizontally above the mat",
+  "confidence": "low"
+ },
+ "a2400": {
+  "label": "fish",
+  "what": "slender pale goby-shaped body next to the bait box, similar to other gobies in frame",
+  "confidence": "medium"
+ },
+ "a36": {
+  "label": "fish",
+  "what": "blurry elongated pale goby-shaped body on the mat near the left edge, similar in size and shape to the goby at the top of the frame",
+  "confidence": "medium"
+ },
+ "a1792": {
+  "label": "no animal",
+  "what": "small pale flake of debris or algae on the mat near its top edge, similar to other debris on the mat",
+  "confidence": "low"
+ },
+ "a2719": {
+  "label": "fish",
+  "what": "pale, curved, elongated body at the mat's lower-left edge, likely a bending goby",
+  "confidence": "low"
+ },
+ "a2561": {
+  "label": "no animal",
+  "what": "green, leaf-like algae fragment lying on the mat edge, same colour as the surrounding algae, no fish features",
+  "confidence": "medium"
+ },
+ "a1698": {
+  "label": "no animal",
+  "what": "small pale blob with a thin extension, most likely a small pale snail (possibly a shrimp) on the mat",
+  "confidence": "low"
+ },
+ "a2923": {
+  "label": "fish",
+  "what": "faint elongated pale goby-shaped body on the sand just off the mat corner, similar in size and shape to the other gobies in the frame",
+  "confidence": "medium"
+ },
+ "a1164": {
+  "label": "fish",
+  "what": "small pale elongated goby-like fish seen from above on the mat, similar in shape to the other gobies in the frame",
+  "confidence": "medium"
+ },
+ "a2712": {
+  "label": "fish",
+  "what": "elongated, pale, mottled goby-like body lying along the left edge of the mat, similar in size and shape to the other gobies",
+  "confidence": "medium"
+ },
+ "a2829": {
+  "label": "fish",
+  "what": "small slender fish (likely a goby) with pale head and tapering body, swimming diagonally over the mat",
+  "confidence": "medium"
+ },
+ "a2920": {
+  "label": "fish",
+  "what": "pale, elongated, slightly curved goby-sized shape at the left edge of the mat, possibly a blurry goby",
+  "confidence": "low"
+ },
+ "a580": {
+  "label": "no animal",
+  "what": "small faint elongated pale streak, likely a floating particle or debris, much smaller than the nearby gobies",
+  "confidence": "low"
+ },
+ "a2425": {
+  "label": "fish",
+  "what": "pale elongated goby-like body lying at the lower-left edge of the mat",
+  "confidence": "medium"
+ },
+ "a1515": {
+  "label": "fish",
+  "what": "blurry elongated pale goby-shaped body on the green area right of the mat, similar in size and shape to the gobies on the mat",
+  "confidence": "medium"
+ },
+ "a1783": {
+  "label": "no animal",
+  "what": "small pale rounded blob on the mat, likely a small snail or debris; too small and round for a goby",
+  "confidence": "low"
+ },
+ "a2966": {
+  "label": "fish",
+  "what": "faint pale elongated blob at the top frame edge, possibly a goby partly cut off by the edge",
+  "confidence": "low"
+ },
+ "a640": {
+  "label": "fish",
+  "what": "pale elongated blurry shape at the top edge of the mat, matching the other gobies in the frame; likely a goby partly cut by the frame",
+  "confidence": "medium"
+ },
+ "a2289": {
+  "label": "fish",
+  "what": "elongated pale goby at top edge of mat, similar to other gobies around bait box",
+  "confidence": "medium"
+ },
+ "a343": {
+  "label": "fish",
+  "what": "faint, blurry elongated pale shape near the right mat edge, likely a goby similar to the others in the frame",
+  "confidence": "medium"
+ },
+ "a2342": {
+  "label": "fish",
+  "what": "faint, blurry, elongated pale goby lying horizontally on the mat near its top edge, similar in size and shape to the nearby gobies",
+  "confidence": "medium"
+ },
+ "a2676": {
+  "label": "fish",
+  "what": "pale elongated blurry shape at the mat edge, thicker at one end, likely a goby",
+  "confidence": "low"
+ },
+ "a2494": {
+  "label": "fish",
+  "what": "pale elongated goby-shaped body near the mat's left edge, similar to other gobies in frame",
+  "confidence": "medium"
+ },
+ "a845": {
+  "label": "fish",
+  "what": "faint elongated pale goby-shaped body, head down, tapering tail up, similar to the other gobies on the mat",
+  "confidence": "medium"
+ },
+ "a2495": {
+  "label": "fish",
+  "what": "pale elongated goby-like body lying at the lower-left edge of the mat, similar in shape and color to the other gobies in the frame",
+  "confidence": "medium"
+ },
+ "a564": {
+  "label": "fish",
+  "what": "faint, blurry elongated pale shape on the mat, likely a goby",
+  "confidence": "low"
+ },
+ "a2803": {
+  "label": "unclear",
+  "what": "faint pale elongated streak on the green algae beside the mat; could be a blurry goby or just an algae blade",
+  "confidence": "low"
+ },
+ "a762": {
+  "label": "unclear",
+  "what": "faint thin pale diagonal streak next to a goby; could be a small blurry fish or a floating particle or debris",
+  "confidence": "low"
+ },
+ "a1150": {
+  "label": "unclear",
+  "what": "small pale elongated blur, much smaller than the gobies; could be a tiny fish or a drifting particle",
+  "confidence": "low"
+ },
+ "a2551": {
+  "label": "fish",
+  "what": "faint, thin elongated pale streak, possibly a small, blurry fish swimming above the mat; could also be debris",
+  "confidence": "low"
+ },
+ "a1749": {
+  "label": "no animal",
+  "what": "small pale snail or debris on the side of the bait box",
+  "confidence": "medium"
+ },
+ "a1": {
+  "label": "no animal",
+  "what": "small pale elongated particle, likely suspended debris like the many others in the frame",
+  "confidence": "medium"
+ },
+ "a2504": {
+  "label": "fish",
+  "what": "pale elongated goby-shaped body lying at the left edge of the mat, similar in size and colour to the gobies on the mat",
+  "confidence": "medium"
+ },
+ "a655": {
+  "label": "unclear",
+  "what": "Faint pale vertical smudge at the top edge of the frame. It could be part of a fish cut by the edge or just a particle or turbidity.",
+  "confidence": "low"
+ },
+ "a1891": {
+  "label": "no animal",
+  "what": "blurry green background with a faint pale streak at the top frame edge, no distinct animal shape",
+  "confidence": "low"
+ },
+ "a566": {
+  "label": "no animal",
+  "what": "faint small pale streak, much smaller than the nearby gobies; likely a particle or debris",
+  "confidence": "medium"
+ },
+ "a23": {
+  "label": "no animal",
+  "what": "thin pale elongated strand, likely a piece of algae or debris on the mat, similar to other strands nearby",
+  "confidence": "medium"
+ },
+ "a2352": {
+  "label": "no animal",
+  "what": "thin faint curved pale strand above the bait box, likely a thread or algae filament rather than a fish body",
+  "confidence": "low"
+ },
+ "a2220": {
+  "label": "fish",
+  "what": "pale elongated goby-like body with a rounded head, lying at the lower-left edge of the mat",
+  "confidence": "medium"
+ },
+ "a2067": {
+  "label": "fish",
+  "what": "small pale elongated blurry shape, possibly a goby, though it could be an algae fragment",
+  "confidence": "low"
+ },
+ "a194": {
+  "label": "fish",
+  "what": "faint, blurry elongated dark-greenish shape, possibly a goby swimming above the mat, but it could be a drifting piece of algae",
+  "confidence": "low"
+ },
+ "a2188": {
+  "label": "fish",
+  "what": "pale, blurry elongated curved shape at the mat edge; goby-sized, possibly a goby but could be an algae blade",
+  "confidence": "low"
+ },
+ "a2366": {
+  "label": "fish",
+  "what": "faint elongated pale goby-shaped body on the green sediment near the mat edge",
+  "confidence": "medium"
+ },
+ "a846": {
+  "label": "unclear",
+  "what": "faint thin dark diagonal streak on the sand off the mat; could be a blurry goby or a strand of algae or debris",
+  "confidence": "low"
+ },
+ "a2422": {
+  "label": "fish",
+  "what": "faint elongated pale shape at the top edge of the mat, similar to the nearby gobies; likely a goby cut off by the frame edge",
+  "confidence": "low"
+ },
+ "a2255": {
+  "label": "fish",
+  "what": "faint pale elongated tapering shape on the sand off the mat, resembling a blurry goby",
+  "confidence": "low"
+ },
+ "a2150": {
+  "label": "no animal",
+  "what": "pale curved piece of algae lying at the edge of the mat, not fish-shaped and larger than the gobies",
+  "confidence": "medium"
+ },
+ "a1397": {
+  "label": "fish",
+  "what": "elongated pale tapering body, likely a goby cut off by the top frame edge",
+  "confidence": "medium"
+ },
+ "a2377": {
+  "label": "fish",
+  "what": "pale elongated shape at the mat's lower-left edge, size and shape like a blurry goby, though it could be a piece of algae",
+  "confidence": "low"
+ },
+ "a381": {
+  "label": "fish",
+  "what": "faint pale elongated fish-like shape at the top frame edge, similar to the nearby gobies",
+  "confidence": "medium"
+ },
+ "a1612": {
+  "label": "unclear",
+  "what": "small faint pale curved blob near the mat edge; could be a small goby seen end-on or a small snail or debris",
+  "confidence": "low"
+ },
+ "a1302": {
+  "label": "fish",
+  "what": "elongated pale fish-shaped body (likely a goby) lying diagonally on the algae beside the mat",
+  "confidence": "medium"
+ },
+ "a1237": {
+  "label": "no animal",
+  "what": "faint pale elongated streak on the mat, likely a drifting particle or debris; much smaller than the gobies in the frame",
+  "confidence": "low"
+ },
+ "a2544": {
+  "label": "fish",
+  "what": "faint pale elongated shape on the green algae near the mat edge, possibly a blurry goby",
+  "confidence": "low"
+ },
+ "a243": {
+  "label": "non-fish",
+  "what": "spindly animal with long thin legs/antennae on the sand at the mat edge, likely a spider crab or shrimp",
+  "confidence": "medium"
+ },
+ "a2280": {
+  "label": "fish",
+  "what": "faint elongated pale goby-like shape at the top frame edge, similar in size and color to the other gobies on the mat",
+  "confidence": "medium"
+ },
+ "a943": {
+  "label": "fish",
+  "what": "faint slender goby-shaped body lying diagonally on the sand beside the mat edge, similar in size and shape to the gobies on the mat",
+  "confidence": "medium"
+ },
+ "a2200": {
+  "label": "fish",
+  "what": "faint elongated pale goby-shaped body lying across the left edge of the mat",
+  "confidence": "medium"
+ },
+ "a1757": {
+  "label": "no animal",
+  "what": "small pale oval blob on the mat, most likely a small snail; there is no visible tail or fins, though a goby seen end-on cannot be ruled out",
+  "confidence": "low"
+ },
+ "a2470": {
+  "label": "fish",
+  "what": "faint, small elongated pale shape, likely a small or blurred goby on the mat",
+  "confidence": "low"
+ },
+ "a1797": {
+  "label": "fish",
+  "what": "pale elongated, tapering body near the mat edge, resembling the goby on the right of the frame",
+  "confidence": "medium"
+ },
+ "a2906": {
+  "label": "no animal",
+  "what": "pale green elongated blade at the mat edge, most likely a piece of algae (sea lettuce) and not a fish",
+  "confidence": "medium"
+ },
+ "a78": {
+  "label": "no animal",
+  "what": "thin curved pale strand on the mat, looks like a piece of algae or debris similar to the many other particles, much smaller than the visible goby",
+  "confidence": "medium"
+ },
+ "a2108": {
+  "label": "fish",
+  "what": "small pale elongated shape, possibly a small goby, though it could also be a small snail or debris",
+  "confidence": "low"
+ },
+ "a2199": {
+  "label": "fish",
+  "what": "faint, elongated pale goby next to the bait box, similar in shape to the other gobies in the frame",
+  "confidence": "medium"
+ },
+ "a878": {
+  "label": "fish",
+  "what": "pale elongated goby-shaped body near the mat's left edge, similar to other gobies in frame",
+  "confidence": "medium"
+ },
+ "a2487": {
+  "label": "fish",
+  "what": "blurry pale elongated goby-shaped body at the lower-left edge of the mat, similar in size and color to the other gobies in the frame",
+  "confidence": "medium"
+ },
+ "a1235": {
+  "label": "fish",
+  "what": "faint elongated pale shape with a tapering tail on the mat, resembling the other gobies in the frame; likely a blurry goby",
+  "confidence": "medium"
+ },
+ "a2739": {
+  "label": "fish",
+  "what": "pale curved elongated shape at the mat's lower-left edge, goby-sized and possibly a bent goby, though it could be an algae fragment",
+  "confidence": "low"
+ },
+ "a2824": {
+  "label": "fish",
+  "what": "small pale goby-like shape with a bright head and a faint tapering body, on the green area at the right edge of the frame",
+  "confidence": "medium"
+ },
+ "a2171": {
+  "label": "fish",
+  "what": "faint pale elongated shape on the green sand near the mat corner, possibly a blurry goby",
+  "confidence": "low"
+ },
+ "a1652": {
+  "label": "fish",
+  "what": "faint elongated, goby-like shape on the green seabed at the right frame edge",
+  "confidence": "low"
+ },
+ "a1658": {
+  "label": "no animal",
+  "what": "thin, curved, yellowish strip at the bottom edge of the frame; it looks more like a blade of algae or eelgrass than a goby, but could be a fish cut off by the edge",
+  "confidence": "low"
+ },
+ "a1708": {
+  "label": "fish",
+  "what": "small pale fish, probably a goby seen from above, with a broad head and tapering tail; could also be a pale snail",
+  "confidence": "low"
+ },
+ "a2666": {
+  "label": "fish",
+  "what": "pale elongated goby-shaped body with a slightly wider head end, lying near the mat edge on the green algae",
+  "confidence": "medium"
+ },
+ "a954": {
+  "label": "no animal",
+  "what": "edge of the black mat against the sandy seabed, with a faint pale smudge and no recognizable animal shape",
+  "confidence": "medium"
+ },
+ "a598": {
+  "label": "fish",
+  "what": "faint elongated pale goby at the left edge of the mat, similar in shape and orientation to the other gobies in the frame",
+  "confidence": "medium"
+ },
+ "a1270": {
+  "label": "fish",
+  "what": "small blurry elongated pale body on the sand beside the mat edge, likely a goby",
+  "confidence": "low"
+ },
+ "a1595": {
+  "label": "no animal",
+  "what": "small pale blurry blob near the mat edge, likely debris or a small snail, no fish shape visible",
+  "confidence": "low"
+ },
+ "a1135": {
+  "label": "no animal",
+  "what": "faint pale horizontal streak on the dark mat beside a goby; the goby itself lies outside the box, and the streak looks like a blur or artifact rather than an animal",
+  "confidence": "low"
+ },
+ "a112": {
+  "label": "no animal",
+  "what": "two tiny pale specks at the mat/algae edge, likely debris or a small snail, much smaller than the goby near the bait box",
+  "confidence": "low"
+ },
+ "a1477": {
+  "label": "fish",
+  "what": "elongated, goby-shaped body lying on the green sand right of the mat, similar in size to the gobies on the mat",
+  "confidence": "medium"
+ },
+ "a1840": {
+  "label": "fish",
+  "what": "elongated pale body cut by the top frame edge, likely part of a goby similar to the one nearby",
+  "confidence": "medium"
+ },
+ "a1688": {
+  "label": "fish",
+  "what": "pale elongated shape cut by the bottom frame edge at the mat border, likely part of a goby",
+  "confidence": "low"
+ },
+ "a2771": {
+  "label": "fish",
+  "what": "small pale elongated shape with brighter head and tapering tail on the mat, likely a small goby",
+  "confidence": "low"
+ },
+ "a1264": {
+  "label": "no animal",
+  "what": "small pale elongated streak on the mat, most likely a debris particle or drifting speck rather than a fish",
+  "confidence": "low"
+ },
+ "a857": {
+  "label": "fish",
+  "what": "very faint, elongated pale shape near the right mat edge; about goby-sized and shaped, likely a blurred goby",
+  "confidence": "low"
+ },
+ "a1633": {
+  "label": "no animal",
+  "what": "small pale blob near the mat edge, likely a small snail or debris; too small and shapeless for a goby",
+  "confidence": "medium"
+ },
+ "a1711": {
+  "label": "fish",
+  "what": "pale blob cut by the top frame edge, similar in colour and size to the goby near the bait box; possibly a partly visible goby, but it could be debris",
+  "confidence": "low"
+ },
+ "a827": {
+  "label": "fish",
+  "what": "faint elongated pale goby oriented vertically, similar to the other gobies in the frame",
+  "confidence": "medium"
+ },
+ "a2740": {
+  "label": "fish",
+  "what": "pale elongated curved body at the mat edge, goby-sized and similar in color to the other gobies in the frame",
+  "confidence": "medium"
+ },
+ "a1053": {
+  "label": "fish",
+  "what": "very faint, elongated pale streak near other swimming fish; possibly a small, blurry fish, but could be a particle",
+  "confidence": "low"
+ },
+ "a1966": {
+  "label": "fish",
+  "what": "small elongated pale shape resembling a small goby on the mat, very blurry",
+  "confidence": "low"
+ },
+ "a2897": {
+  "label": "fish",
+  "what": "pale elongated goby-shaped body lying along the left edge of the mat",
+  "confidence": "medium"
+ },
+ "a216": {
+  "label": "non-fish",
+  "what": "crab with fuzzy/decorated body on the right edge of the mat, legs visible just below the box",
+  "confidence": "medium"
+ },
+ "a2650": {
+  "label": "no animal",
+  "what": "faint thin pale diagonal streak on the mat, likely a strand of debris or algae, no clear fish shape",
+  "confidence": "low"
+ },
+ "a1837": {
+  "label": "non-fish",
+  "what": "long thin jointed legs of a crab (likely a spider crab) at the top edge of the frame",
+  "confidence": "medium"
+ },
+ "a908": {
+  "label": "fish",
+  "what": "faint elongated pale goby-shaped body, similar in size, colour and orientation to the other gobies on the mat",
+  "confidence": "medium"
+ },
+ "a822": {
+  "label": "fish",
+  "what": "pale elongated blurry goby-like shape at the left edge of the mat, similar in size and shape to the other gobies in the frame",
+  "confidence": "medium"
+ },
+ "a2468": {
+  "label": "fish",
+  "what": "pale elongated goby-shaped body lying at the mat edge, similar in size and colour to the other gobies on the mat",
+  "confidence": "medium"
+ },
+ "a2700": {
+  "label": "fish",
+  "what": "pale curved elongated body at the bottom-left mat edge, likely a goby",
+  "confidence": "medium"
+ },
+ "a794": {
+  "label": "fish",
+  "what": "faint elongated goby-shaped fish swimming, similar to the other gobies in the frame",
+  "confidence": "medium"
+ },
+ "a1961": {
+  "label": "non-fish",
+  "what": "thin pale jointed limb, likely the leg of a spider crab cut by the frame edge",
+  "confidence": "medium"
+ },
+ "a2295": {
+  "label": "fish",
+  "what": "faint pale elongated tapered shape on the green area beside the mat edge, possibly a blurry goby",
+  "confidence": "low"
+ },
+ "a2340": {
+  "label": "fish",
+  "what": "pale elongated curved goby-like shape at the lower-left edge of the mat, similar in size and colour to the other gobies",
+  "confidence": "medium"
+ },
+ "a1117": {
+  "label": "fish",
+  "what": "faint, blurry elongated pale shape at the mat edge, likely a goby with its head at the lower right",
+  "confidence": "low"
+ },
+ "a761": {
+  "label": "fish",
+  "what": "faint elongated pale shape resembling a blurry goby near the right edge of the mat",
+  "confidence": "low"
+ },
+ "a715": {
+  "label": "fish",
+  "what": "faint elongated pale body with wider head and tapering tail, likely a goby seen from above, similar to other gobies in the frame",
+  "confidence": "medium"
+ },
+ "a1736": {
+  "label": "unclear",
+  "what": "pale curved object on the bait box edge; could be a shrimp, a small goby or a piece of bait/debris",
+  "confidence": "low"
+ },
+ "a55": {
+  "label": "fish",
+  "what": "pale elongated body cut by the top frame edge, same colour and size as the nearby goby; likely a goby partly out of frame",
+  "confidence": "medium"
+ },
+ "a2873": {
+  "label": "fish",
+  "what": "blurry pale elongated shape at the mat edge, likely a goby resting with a curved body",
+  "confidence": "low"
+ },
+ "a2": {
+  "label": "no animal",
+  "what": "tiny pale blurry spot at the bottom edge of the frame, likely a particle or debris",
+  "confidence": "medium"
+ },
+ "a2264": {
+  "label": "fish",
+  "what": "pale curved elongated goby-like shape at the lower-left edge of the mat, similar to the other gobies",
+  "confidence": "medium"
+ },
+ "a1755": {
+  "label": "fish",
+  "what": "pale, elongated goby-like body resting on top of the bait box",
+  "confidence": "medium"
+ },
+ "a992": {
+  "label": "fish",
+  "what": "faint elongated pale goby-shaped body, similar to the other gobies on the mat, slightly blurred",
+  "confidence": "medium"
+ },
+ "a2694": {
+  "label": "unclear",
+  "what": "faint pale diagonal streak on the green bottom off the mat; could be an algae blade or a blurry goby",
+  "confidence": "low"
+ },
+ "a2705": {
+  "label": "fish",
+  "what": "pale elongated, curved shape at the mat edge, possibly a goby, but it could also be a piece of algae",
+  "confidence": "low"
+ },
+ "a2968": {
+  "label": "fish",
+  "what": "small pale elongated, curved blob with a thicker head end and tapering tail, possibly a small goby; much smaller than the other fish nearby",
+  "confidence": "low"
+ },
+ "a1672": {
+  "label": "fish",
+  "what": "small goby at the right edge of the mat, head left and tapering tail right, similar in shape and color to the other gobies",
+  "confidence": "medium"
+ },
+ "a2922": {
+  "label": "fish",
+  "what": "faint, blurry elongated pale shape at the top frame edge, likely a goby cut by the edge",
+  "confidence": "low"
+ },
+ "a2393": {
+  "label": "fish",
+  "what": "faint pale elongated shape on the green algae near the mat edge, possibly a blurry goby",
+  "confidence": "low"
+ },
+ "a2658": {
+  "label": "fish",
+  "what": "faint elongated pale goby-shaped body lying diagonally near the right edge of the mat, similar to the other gobies in the frame",
+  "confidence": "medium"
+ },
+ "a2344": {
+  "label": "no animal",
+  "what": "very faint thin curved pale streak on the mat, likely a thread or debris; no visible head or body shape of a goby",
+  "confidence": "low"
+ },
+ "a1004": {
+  "label": "fish",
+  "what": "faint, blurry, elongated pale shape near the top edge of the mat, possibly a small goby, but it could also be a particle",
+  "confidence": "low"
+ },
+ "a554": {
+  "label": "fish",
+  "what": "faint, elongated, tapering shape on the sand off the mat, likely a camouflaged goby",
+  "confidence": "low"
+ },
+ "a2381": {
+  "label": "no animal",
+  "what": "faint pale blotches near the mat's top-right edge, likely debris or particles rather than a fish",
+  "confidence": "low"
+ },
+ "a456": {
+  "label": "fish",
+  "what": "faint elongated pale goby-shaped body lying diagonally near the bottom edge of the mat, similar in size and shape to the other gobies",
+  "confidence": "medium"
+ },
+ "a1569": {
+  "label": "unclear",
+  "what": "faint pale elongated smudge on the green sand/algae beside the mat; could be a blurry goby or just a sediment patch",
+  "confidence": "low"
+ },
+ "a2169": {
+  "label": "fish",
+  "what": "elongated pale goby-like body at the top edge of the frame, similar in shape to the other gobies on the mat",
+  "confidence": "medium"
+ },
+ "a2884": {
+  "label": "fish",
+  "what": "blurry pale goby-shaped body with a bright head and a tapering tail, like the other gobies on the mat",
+  "confidence": "medium"
+ },
+ "a1732": {
+  "label": "no animal",
+  "what": "small pale rounded blob at the edge of the bait box, most likely a small snail; possibly the head of a goby",
+  "confidence": "low"
+ },
+ "a150": {
+  "label": "non-fish",
+  "what": "spider crab with long thin legs on the bait box",
+  "confidence": "high"
+ },
+ "a2772": {
+  "label": "fish",
+  "what": "small pale blurry shape at the mat's right edge with a faint elongated trail, possibly a goby",
+  "confidence": "low"
+ },
+ "a2613": {
+  "label": "unclear",
+  "what": "faint pale elongated blur on the green algae off the mat; could be a goby or just algae or debris",
+  "confidence": "low"
+ },
+ "a947": {
+  "label": "no animal",
+  "what": "faint thin pale streak on the mat, likely a debris fragment or particle; too small and blurry to show fish features",
+  "confidence": "low"
+ },
+ "a1699": {
+  "label": "no animal",
+  "what": "small pale object on the mat, likely debris or a bait/shell fragment (possibly a tiny crustacean); too small and not fish-shaped",
+  "confidence": "low"
+ },
+ "a1678": {
+  "label": "fish",
+  "what": "small elongated pale fish-like shape (likely a small goby) on the algae left of the mat",
+  "confidence": "medium"
+ },
+ "a2172": {
+  "label": "fish",
+  "what": "faint, small elongated pale shape on the mat, possibly a small blurry goby, though it could be debris",
+  "confidence": "low"
+ },
+ "a587": {
+  "label": "fish",
+  "what": "faint, elongated goby-shaped body at the right edge of the mat, similar in size to the other gobies",
+  "confidence": "medium"
+ },
+ "a2560": {
+  "label": "no animal",
+  "what": "faint pale-green blurry blade shape off the mat corner, most likely a piece of algae rather than a fish",
+  "confidence": "low"
+ },
+ "a61": {
+  "label": "unclear",
+  "what": "small pale yellowish blob cut by the bottom frame edge; could be the tip of a fish entering the frame or just a debris particle",
+  "confidence": "low"
+ },
+ "a2677": {
+  "label": "fish",
+  "what": "pale elongated goby-like body lying at the mat edge, similar in size and shape to other gobies in the frame",
+  "confidence": "medium"
+ },
+ "a2682": {
+  "label": "fish",
+  "what": "small elongated pale fish (likely goby) seen from above, head toward lower left, tail upper right",
+  "confidence": "high"
+ },
+ "a2477": {
+  "label": "fish",
+  "what": "blurry pale elongated goby-like body curved at the lower-left edge of the mat",
+  "confidence": "medium"
+ },
+ "a2661": {
+  "label": "no animal",
+  "what": "faint pale particles above a goby; the fish itself lies just below the box",
+  "confidence": "medium"
+ },
+ "a1315": {
+  "label": "fish",
+  "what": "elongated pale goby-shaped body on the green algae/sand right of the mat, similar to the goby on the mat nearby",
+  "confidence": "medium"
+ },
+ "a457": {
+  "label": "fish",
+  "what": "very faint, blurry elongated pale shape near the mat's right edge, likely a goby out of focus",
+  "confidence": "low"
+ },
+ "a2595": {
+  "label": "fish",
+  "what": "faint pale elongated shape on the algae off the mat, possibly a blurry goby",
+  "confidence": "low"
+ },
+ "a2141": {
+  "label": "fish",
+  "what": "pale elongated goby-like fish, partly cut by the right frame edge, matching the other gobies in the frame",
+  "confidence": "medium"
+ },
+ "a2144": {
+  "label": "fish",
+  "what": "pale elongated goby-like body with a tapering tail, cut off by the right frame edge, similar to the other gobies in the frame",
+  "confidence": "medium"
+ },
+ "a542": {
+  "label": "fish",
+  "what": "faint, blurry goby on the mat, similar in size and color to the other gobies in the frame",
+  "confidence": "medium"
+ },
+ "a70": {
+  "label": "no animal",
+  "what": "thin pale elongated streak, likely a twig or debris piece on the mat; too small and featureless to be a goby",
+  "confidence": "low"
+ },
+ "a2028": {
+  "label": "fish",
+  "what": "small pale elongated shape on the mat, possibly a small goby seen from above, but very blurry",
+  "confidence": "low"
+ },
+ "a241": {
+  "label": "non-fish",
+  "what": "pale, thin-legged crustacean (likely a small spider crab or shrimp) at the mat edge on the sand",
+  "confidence": "medium"
+ },
+ "a1385": {
+  "label": "fish",
+  "what": "faint elongated goby-like shape lying on the green sand at the right edge of the mat",
+  "confidence": "low"
+ },
+ "a2506": {
+  "label": "fish",
+  "what": "faint pale elongated shape on the green algae beside the mat corner, possibly a blurry goby",
+  "confidence": "low"
+ },
+ "a2115": {
+  "label": "unclear",
+  "what": "small pale oval blurry blob on the sand at the frame edge; could be a small snail or a blurred goby",
+  "confidence": "low"
+ },
+ "a1116": {
+  "label": "fish",
+  "what": "dark elongated shape crossing the mat edge at the bottom of the frame, with two pale eye-like dots at the top; possibly a goby cut off by the frame edge, but it could also be a rope or debris",
+  "confidence": "low"
+ },
+ "a1786": {
+  "label": "no animal",
+  "what": "small pale oval object beside the bait box, likely a small snail (similar to the one on the other side of the box)",
+  "confidence": "medium"
+ },
+ "a2878": {
+  "label": "fish",
+  "what": "elongated pale tapered body, likely a small goby seen from above on the mat",
+  "confidence": "medium"
+ },
+ "a228": {
+  "label": "fish",
+  "what": "faint translucent elongated shape, likely a small blurred fish swimming above the mat",
+  "confidence": "low"
+ },
+ "a255": {
+  "label": "fish",
+  "what": "pale elongated goby-like body at the mat edge, similar to the goby above, blurry",
+  "confidence": "medium"
+ },
+ "a2559": {
+  "label": "no animal",
+  "what": "pale greenish curved fragment at the mat edge, likely a piece of algae or debris, same tone as the surrounding green water",
+  "confidence": "medium"
+ },
+ "a1753": {
+  "label": "no animal",
+  "what": "small pale teardrop-shaped object next to the bait box, most likely a small snail rather than a fish",
+  "confidence": "medium"
+ },
+ "a1716": {
+  "label": "no animal",
+  "what": "small pale blunt rectangular object, likely a small snail (similar object near bait box), no fish-like tail or taper",
+  "confidence": "low"
+ },
+ "a1566": {
+  "label": "fish",
+  "what": "thin elongated pale shape with a brighter head end, possibly a small fish swimming above the mat, but it could also be a drifting strand of debris",
+  "confidence": "low"
+ },
+ "a1187": {
+  "label": "unclear",
+  "what": "very faint pale vertical streak at the right edge of the mat; possibly a blurry goby, but it could also be mat-edge shading",
+  "confidence": "low"
+ },
+ "a1102": {
+  "label": "fish",
+  "what": "pale elongated goby-like shape at the top-right frame edge, partly cut off, similar to the other gobies over the mat",
+  "confidence": "medium"
+ },
+ "a2818": {
+  "label": "fish",
+  "what": "faint pale elongated shape just off the mat edge with a thicker head end tapering to a tail, likely a goby on the algae",
+  "confidence": "low"
+ },
+ "a1727": {
+  "label": "fish",
+  "what": "pale goby resting on the bait box edge, body with a thin tail extending to the right",
+  "confidence": "medium"
+ },
+ "a1784": {
+  "label": "unclear",
+  "what": "small pale blob beside the bait box; could be a goby seen end-on or a small pale snail, too blurry to tell",
+  "confidence": "low"
+ },
+ "a2256": {
+  "label": "no animal",
+  "what": "very faint diagonal pale streak on the mat, likely a debris or particle streak, with no clear fish shape",
+  "confidence": "medium"
+ },
+ "a1768": {
+  "label": "unclear",
+  "what": "small pale blurry blob with irregular edges on the mat; could be a small crab, a shrimp or debris",
+  "confidence": "low"
+ },
+ "a1332": {
+  "label": "fish",
+  "what": "goby on the black mat, elongated pale body with head at upper right, cut by the bottom frame edge",
+  "confidence": "high"
+ },
+ "a2368": {
+  "label": "unclear",
+  "what": "small faint pale elongated blob at the bottom edge of the mat, much smaller than the gobies; could be a tiny fish or debris/particle",
+  "confidence": "low"
+ },
+ "a314": {
+  "label": "non-fish",
+  "what": "thin jointed legs of a crab (likely a spider crab) partly visible at the right frame edge",
+  "confidence": "medium"
+ },
+ "a2438": {
+  "label": "fish",
+  "what": "pale, elongated, slightly curved goby-shaped body lying at the left edge of the mat, similar in size and colour to the other gobies",
+  "confidence": "medium"
+ },
+ "a2222": {
+  "label": "fish",
+  "what": "faint pale elongated shape on the algae next to the mat edge, possibly a goby, but it could also be an algae blade",
+  "confidence": "low"
+ },
+ "a1005": {
+  "label": "fish",
+  "what": "faint elongated pale goby-like shape, blurry, near the top edge of the mat, similar to the nearby gobies",
+  "confidence": "medium"
+ },
+ "a1143": {
+  "label": "no animal",
+  "what": "small faint elongated pale speck, much smaller than the nearby gobies; likely a suspended particle or debris",
+  "confidence": "medium"
+ },
+ "a2634": {
+  "label": "fish",
+  "what": "faint pale elongated goby-like shape on the green sediment just off the mat edge",
+  "confidence": "low"
+ },
+ "a1692": {
+  "label": "fish",
+  "what": "pale, elongated goby-like body tapering to a tail, seen from above on the mat",
+  "confidence": "medium"
+ },
+ "a2327": {
+  "label": "fish",
+  "what": "elongated pale goby at the mat edge, curved body similar to other gobies in frame",
+  "confidence": "medium"
+ },
+ "a2793": {
+  "label": "fish",
+  "what": "pale, blurry curved elongated shape at the mat corner, possibly a goby with a bent body, though it could be a piece of algae",
+  "confidence": "low"
+ },
+ "a2241": {
+  "label": "no animal",
+  "what": "pale greenish elongated blob at the mat edge, likely a piece of algae or debris; no clear fish features",
+  "confidence": "low"
+ },
+ "a2170": {
+  "label": "fish",
+  "what": "thin pale elongated shape with a brighter head end and tapering tail, possibly a small slender fish, though it could also be a drifting strand of debris",
+  "confidence": "low"
+ },
+ "a2223": {
+  "label": "fish",
+  "what": "faint elongated pale shape cut by the top frame edge, likely a goby partly out of frame",
+  "confidence": "low"
+ },
+ "a120": {
+  "label": "no animal",
+  "what": "thin pale streak of debris or an algae fragment on the mat, like the many other particles scattered around",
+  "confidence": "medium"
+ },
+ "a1271": {
+  "label": "unclear",
+  "what": "small blurry brownish blob at the right frame edge on the algae; could be a partly cut-off goby or just a patch of algae",
+  "confidence": "low"
+ },
+ "a215": {
+  "label": "non-fish",
+  "what": "orange jointed legs/claws of a crab partly hidden under a fuzzy algae clump at the mat edge",
+  "confidence": "medium"
+ },
+ "a2364": {
+  "label": "fish",
+  "what": "faint, blurry elongated goby-like shape lying diagonally near the top-right of the mat, matching the other gobies in the frame",
+  "confidence": "medium"
+ },
+ "a2570": {
+  "label": "no animal",
+  "what": "pale greenish curved blob at the mat edge, most likely a piece of algae, though a blurry goby can't be ruled out",
+  "confidence": "low"
+ },
+ "a1565": {
+  "label": "fish",
+  "what": "small pale elongated goby-like fish on the sand just right of the mat edge",
+  "confidence": "medium"
+ },
+ "a1201": {
+  "label": "fish",
+  "what": "faint, blurry elongated pale shape matching the size and form of the gobies elsewhere on the mat; probably a goby",
+  "confidence": "medium"
+ },
+ "a2043": {
+  "label": "fish",
+  "what": "faint elongated pale shape at the frame edge, likely a small goby partly cut off",
+  "confidence": "low"
+ },
+ "a1637": {
+  "label": "no animal",
+  "what": "small pale irregular blob near the mat edge, likely debris or a small snail, not elongated like a goby",
+  "confidence": "medium"
+ },
+ "a2915": {
+  "label": "fish",
+  "what": "blurry pale elongated goby-like shape near the top edge of the mat, similar to the other gobies in the frame",
+  "confidence": "medium"
+ },
+ "a2959": {
+  "label": "fish",
+  "what": "faint elongated pale goby-shaped body near top edge of mat, similar to the other gobies in the frame",
+  "confidence": "medium"
+ },
+ "a1327": {
+  "label": "fish",
+  "what": "small pale elongated goby-like shape on the green sand beside the mat, blurry",
+  "confidence": "low"
+ },
+ "a1800": {
+  "label": "fish",
+  "what": "small pale elongated fish (likely goby) with tapering tail, resembling the one near the bait box",
+  "confidence": "medium"
+ },
+ "a2652": {
+  "label": "fish",
+  "what": "faint, slender, pale diagonal spindle shape that looks like a small blurry goby, though it could be a debris streak",
+  "confidence": "low"
+ },
+ "a856": {
+  "label": "fish",
+  "what": "faint elongated goby-shaped body, similar to the other gobies on the mat, slightly blurred",
+  "confidence": "medium"
+ },
+ "a2281": {
+  "label": "fish",
+  "what": "pale curved elongated body at the mat's lower-left edge, likely a goby with its head at the lower right",
+  "confidence": "medium"
+ },
+ "a1162": {
+  "label": "fish",
+  "what": "faint elongated goby-shaped fish, similar to other gobies swimming over the mat",
+  "confidence": "medium"
+ },
+ "a2588": {
+  "label": "fish",
+  "what": "faint pale elongated shape on the green area beside the mat edge, likely a blurry goby",
+  "confidence": "low"
+ },
+ "a1427": {
+  "label": "unclear",
+  "what": "small pale blurry object cut by the bottom frame edge; could be a goby's head entering the frame or a small snail",
+  "confidence": "low"
+ },
+ "a2318": {
+  "label": "fish",
+  "what": "faint, small elongated pale shape on the mat, possibly a small goby, though it could also be debris",
+  "confidence": "low"
+ },
+ "a955": {
+  "label": "no animal",
+  "what": "small faint elongated pale streak, much smaller than the gobies on the mat; likely a drifting particle or debris",
+  "confidence": "low"
+ },
+ "a2201": {
+  "label": "fish",
+  "what": "faint pale elongated shape off the mat on the green background, likely a blurry goby similar to those on the mat",
+  "confidence": "low"
+ },
+ "a654": {
+  "label": "fish",
+  "what": "faint, blurry elongated pale shape near the mat's right edge, consistent with a goby lying horizontally",
+  "confidence": "low"
+ },
+ "a2462": {
+  "label": "no animal",
+  "what": "faint pale blurry speck, likely a particle or debris on the dark mat; no fish shape",
+  "confidence": "medium"
+ },
+ "a1259": {
+  "label": "no animal",
+  "what": "small pale curved debris/particle strand on the mat near its left edge, much smaller than the goby elsewhere in the frame",
+  "confidence": "medium"
+ },
+ "a334": {
+  "label": "unclear",
+  "what": "thin pale tapering streak at the mat edge; could be an algae blade or a partly hidden goby or shrimp",
+  "confidence": "low"
+ },
+ "a1504": {
+  "label": "unclear",
+  "what": "faint, irregular pale blob just below a goby's tail; it could be a blurry goby or debris",
+  "confidence": "low"
+ },
+ "a2777": {
+  "label": "fish",
+  "what": "pale, curved, elongated goby-like shape at the lower-left edge of the mat, with the head at the lower right",
+  "confidence": "medium"
+ },
+ "a225": {
+  "label": "no animal",
+  "what": "small pale object about 2 cm long, likely a small snail or tiny crustacean, below the size threshold",
+  "confidence": "low"
+ },
+ "a1709": {
+  "label": "no animal",
+  "what": "small pale rounded blob at the top edge of the mat, most likely a small snail or a piece of debris, with no fish shape visible",
+  "confidence": "medium"
+ },
+ "a2160": {
+  "label": "fish",
+  "what": "pale elongated goby-like body cut by the top frame edge, similar to nearby gobies on the mat",
+  "confidence": "medium"
+ },
+ "a226": {
+  "label": "non-fish",
+  "what": "small pale translucent animal next to the bait box; the thin line extending from it looks like shrimp antennae, though a pale goby or snail is possible",
+  "confidence": "low"
+ },
+ "a2636": {
+  "label": "unclear",
+  "what": "faint pale chevron-shaped blur on the mat; could be a small bent goby or a piece of debris",
+  "confidence": "low"
+ },
+ "a1722": {
+  "label": "fish",
+  "what": "small pale elongated shape with a thin tapering tail next to the bait box, likely a goby seen from above (could also be a shrimp)",
+  "confidence": "low"
+ },
+ "a2907": {
+  "label": "unclear",
+  "what": "faint, thin, elongated greenish shape; could be a blurry small fish swimming above the mat or a drifting algae or eelgrass fragment",
+  "confidence": "low"
+ },
+ "a2406": {
+  "label": "fish",
+  "what": "small pale goby at the right edge of the mat, bright head and tapering body like the other gobies in the frame",
+  "confidence": "medium"
+ },
+ "a2869": {
+  "label": "fish",
+  "what": "pale, blurry goby-shaped body at the lower-left edge of the mat, wider head at right and tapering tail to the left",
+  "confidence": "medium"
+ },
+ "a2021": {
+  "label": "fish",
+  "what": "likely the tapering rear body/tail of a goby entering from the right frame edge; could also be a strand of algae",
+  "confidence": "low"
+ },
+ "a1777": {
+  "label": "no animal",
+  "what": "small pale blob beside the bait box, most likely a small pale snail or a piece of debris, with no fish shape",
+  "confidence": "medium"
+ },
+ "a220": {
+  "label": "non-fish",
+  "what": "partly hidden crab at the mat edge, orange legs/claws visible",
+  "confidence": "medium"
+ },
+ "a1971": {
+  "label": "non-fish",
+  "what": "pale curved leg tip of the spider crab, cut by the bottom frame edge",
+  "confidence": "medium"
+ },
+ "a974": {
+  "label": "fish",
+  "what": "faint, blurry elongated pale shape matching the size and shape of the other gobies on the mat, likely a goby",
+  "confidence": "medium"
+ },
+ "a205": {
+  "label": "non-fish",
+  "what": "crab with long legs (likely swimming or shore crab) on the left edge beside the mat",
+  "confidence": "high"
+ },
+ "a806": {
+  "label": "fish",
+  "what": "small pale elongated blob with brighter head end and faint tapering tail, possibly a small goby seen foreshortened; could also be a particle",
+  "confidence": "low"
+ },
+ "a2353": {
+  "label": "no animal",
+  "what": "a few faint pale particles/specks on the dark mat, no fish or crab shape",
+  "confidence": "medium"
+ },
+ "a164": {
+  "label": "fish",
+  "what": "small elongated pale shape over the algae edge, likely a small goby swimming, but very blurry",
+  "confidence": "low"
+ },
+ "a1558": {
+  "label": "fish",
+  "what": "elongated goby-shaped fish near top edge of mat, similar to other gobies in frame",
+  "confidence": "medium"
+ },
+ "a2237": {
+  "label": "fish",
+  "what": "faint, elongated pale shape about goby size, likely a blurry goby on the mat edge",
+  "confidence": "low"
+ },
+ "a2614": {
+  "label": "no animal",
+  "what": "faint small elongated pale streak on the mat, much smaller than the nearby gobies; likely a debris particle or bit of algae",
+  "confidence": "low"
+ },
+ "a1620": {
+  "label": "fish",
+  "what": "pale elongated shape entering from the bottom frame edge, likely the head of a goby",
+  "confidence": "low"
+ },
+ "a2564": {
+  "label": "fish",
+  "what": "faint elongated pale goby-shaped body lying diagonally on the mat near its right edge, similar to other gobies in the frame",
+  "confidence": "medium"
+ },
+ "a496": {
+  "label": "no animal",
+  "what": "Faint horizontal streak on the greenish sand/algae area next to the mat edge, with no fish shape visible",
+  "confidence": "medium"
+ },
+ "a2365": {
+  "label": "fish",
+  "what": "pale, elongated, slightly curved goby-like body lying at the mat's lower-left edge",
+  "confidence": "medium"
+ },
+ "a1773": {
+  "label": "no animal",
+  "what": "small pale oval object beside the bait box, likely a small snail (another one sits just below it)",
+  "confidence": "medium"
+ },
+ "a2792": {
+  "label": "fish",
+  "what": "faint elongated pale goby-shaped body, similar to the other gobies on the mat, blurred",
+  "confidence": "medium"
+ },
+ "a2680": {
+  "label": "fish",
+  "what": "pale elongated curved body at the mat's lower-left corner, similar in size and colour to the other gobies on the mat; likely a goby",
+  "confidence": "medium"
+ },
+ "a2707": {
+  "label": "fish",
+  "what": "faint, thin, elongated pale shape, possibly a small blurry fish swimming above the mat near a goby",
+  "confidence": "low"
+ },
+ "a1263": {
+  "label": "fish",
+  "what": "elongated pale goby-shaped body with a lighter head end, resting on the green substrate right of the mat",
+  "confidence": "medium"
+ },
+ "a1898": {
+  "label": "fish",
+  "what": "elongated pale goby lying on sandy patch, similar to the two nearby gobies",
+  "confidence": "medium"
+ },
+ "a2781": {
+  "label": "fish",
+  "what": "blurry pale elongated goby-like shape lying at the lower-left edge of the mat",
+  "confidence": "medium"
+ },
+ "a1704": {
+  "label": "fish",
+  "what": "small pale elongated animal, likely a sand goby seen from above with a tapering tail; could also be a shrimp",
+  "confidence": "low"
+ },
+ "a2239": {
+  "label": "fish",
+  "what": "faint pale elongated shape on the green area off the mat edge, likely a small goby",
+  "confidence": "low"
+ },
+ "a270": {
+  "label": "non-fish",
+  "what": "spider crab with long thin pale legs at top edge of frame",
+  "confidence": "high"
+ },
+ "a1776": {
+  "label": "unclear",
+  "what": "small pale blob with a thin trailing tail, about 3 cm; could be a small shrimp, a pale snail or debris, but does not look like a goby",
+  "confidence": "low"
+ },
+ "a1419": {
+  "label": "no animal",
+  "what": "small pale irregular blob near the mat edge, likely a piece of debris or algae (possibly a small snail); far smaller than the nearby gobies and showing no fish shape",
+  "confidence": "medium"
+ },
+ "a2754": {
+  "label": "fish",
+  "what": "blurry pale elongated goby-like shape lying at the lower-left edge of the mat, similar in size and tone to the other gobies",
+  "confidence": "medium"
+ },
+ "a1693": {
+  "label": "no animal",
+  "what": "small pale blob, likely a piece of debris/algae or a small snail on the mat",
+  "confidence": "low"
+ },
+ "a596": {
+  "label": "fish",
+  "what": "faint elongated pale goby-shaped body lying vertically on the mat near its lower edge, similar to the other gobies in the frame",
+  "confidence": "medium"
+ },
+ "a1779": {
+  "label": "unclear",
+  "what": "small pale blob with a thin tail-like end; could be debris, such as a mussel fragment, or a tiny fish or shrimp",
+  "confidence": "low"
+ },
+ "a1525": {
+  "label": "fish",
+  "what": "pale elongated goby-like body at the top frame edge, partly cut off",
+  "confidence": "medium"
+ },
+ "a2211": {
+  "label": "fish",
+  "what": "pale elongated, tapering goby-like body at the top frame edge, oriented vertically, similar to the nearby gobies",
+  "confidence": "medium"
+ },
+ "a2027": {
+  "label": "fish",
+  "what": "pale elongated goby-like body lying diagonally on the sand patch, with a possible eye at the upper-left end; similar to the other gobies in the frame",
+  "confidence": "medium"
+ },
+ "a1256": {
+  "label": "fish",
+  "what": "faint elongated pale goby-shaped body on the mat near its lower-left edge, similar in shape and size to the other gobies in the frame",
+  "confidence": "medium"
+ },
+ "a577": {
+  "label": "fish",
+  "what": "elongated pale fish (goby-like) swimming over the mat, with a tapering tail, similar to the other fish in the frame",
+  "confidence": "high"
+ },
+ "a1735": {
+  "label": "no animal",
+  "what": "small pale oval object on the bait box lid, likely a small snail or a bait piece, not fish-shaped",
+  "confidence": "medium"
+ },
+ "a356": {
+  "label": "unclear",
+  "what": "faint thin pale streak next to a goby; could be a tiny blurred fish or a floating particle",
+  "confidence": "low"
+ },
+ "a689": {
+  "label": "fish",
+  "what": "faint elongated pale goby-shaped body near the top edge of the mat, similar to the other gobies in the frame",
+  "confidence": "medium"
+ },
+ "a1221": {
+  "label": "fish",
+  "what": "pale elongated goby-like fish at top edge of frame, partly cut off, similar to other gobies nearby",
+  "confidence": "medium"
+ },
+ "a108": {
+  "label": "no animal",
+  "what": "small pale elongated particle/debris on the mat, similar to many other specks; too small to be a goby",
+  "confidence": "medium"
+ },
+ "a1756": {
+  "label": "fish",
+  "what": "small pale goby seen from above at the edge of the bait box, broad head and thin tapering tail",
+  "confidence": "medium"
+ },
+ "a1568": {
+  "label": "no animal",
+  "what": "thin pale curved strand at the bottom edge of the mat, likely an algae fragment or debris",
+  "confidence": "low"
+ },
+ "a2728": {
+  "label": "fish",
+  "what": "blurry pale elongated goby-shaped body at the mat's lower-left edge, head at lower right",
+  "confidence": "medium"
+ },
+ "a623": {
+  "label": "fish",
+  "what": "faint elongated pale goby-like body oriented vertically, similar in size and shape to the other gobies on the mat",
+  "confidence": "medium"
+ },
+ "a1660": {
+  "label": "fish",
+  "what": "faint pale elongated goby-shaped body lying diagonally on the algae beside the mat, similar in size and shape to the gobies on the mat",
+  "confidence": "medium"
+ },
+ "a2891": {
+  "label": "fish",
+  "what": "faint pale elongated shape on the algae near the mat corner, possibly a goby",
+  "confidence": "low"
+ },
+ "a2794": {
+  "label": "no animal",
+  "what": "faint thin diagonal pale streak, likely a drifting algae fragment or debris; no fish head or body shape visible",
+  "confidence": "medium"
+ },
+ "a1823": {
+  "label": "fish",
+  "what": "pale elongated, fish-like shape inside a sediment cloud beside the bait box, possibly a goby stirring up particles",
+  "confidence": "low"
+ },
+ "a1014": {
+  "label": "fish",
+  "what": "faint, pale, elongated tapering shape at the mat edge, similar in size and shape to the nearby gobies; possibly a blurred goby, though it could be an algae strand",
+  "confidence": "low"
+ },
+ "a588": {
+  "label": "fish",
+  "what": "pale elongated goby-like shape at the top frame edge, partly cut off",
+  "confidence": "medium"
+ },
+ "a2844": {
+  "label": "fish",
+  "what": "blurry elongated pale goby-shaped body with a thicker head end, similar to the other gobies on the mat",
+  "confidence": "medium"
+ },
+ "a2447": {
+  "label": "fish",
+  "what": "elongated pale goby-like fish on the mat near its left edge, similar to other gobies in the frame",
+  "confidence": "medium"
+ },
+ "a1248": {
+  "label": "fish",
+  "what": "faint elongated pale goby-shaped body lying diagonally on the mat near its right edge, similar to the other gobies in the frame",
+  "confidence": "medium"
+ },
+ "a73": {
+  "label": "fish",
+  "what": "faint elongated translucent shape with a bright head end over the sand, likely a small blurred goby",
+  "confidence": "low"
+ },
+ "a1785": {
+  "label": "no animal",
+  "what": "small pale blob at the bait box corner, likely a small snail or a piece of debris, not a fish",
+  "confidence": "medium"
+ },
+ "a524": {
+  "label": "fish",
+  "what": "faint, blurry elongated pale shape about the size of the other gobies, with a thicker left end tapering to the right; likely a goby",
+  "confidence": "low"
+ },
+ "a2328": {
+  "label": "unclear",
+  "what": "faint thin pale streak on the mat edge; could be a blurred goby or a thread of algae/debris",
+  "confidence": "low"
+ },
+ "a712": {
+  "label": "fish",
+  "what": "pale elongated goby-like shape cut by the top frame edge, matching the other gobies on the mat",
+  "confidence": "medium"
+ },
+ "a2121": {
+  "label": "fish",
+  "what": "pale elongated goby seen from above, head at top, similar to the other gobies nearby",
+  "confidence": "medium"
+ },
+ "a608": {
+  "label": "fish",
+  "what": "likely a pale goby at the top edge of the frame, bright head with a faint body extending upward, cut by the frame edge",
+  "confidence": "medium"
+ },
+ "a488": {
+  "label": "no animal",
+  "what": "faint pale blurry blob at the top edge of the mat, likely a particle or debris with no visible fish shape",
+  "confidence": "low"
+ },
+ "a664": {
+  "label": "no animal",
+  "what": "small pale blurry blob near the mat edge, likely a particle or small snail/debris; no fish shape",
+  "confidence": "medium"
+ },
+ "a2077": {
+  "label": "fish",
+  "what": "small pale elongated goby-like shape tapering to a tail, similar in color to the nearby gobies but blurrier",
+  "confidence": "medium"
+ },
+ "a829": {
+  "label": "fish",
+  "what": "pale elongated goby-like shape at the top edge of the frame, similar to the other gobies over the mat",
+  "confidence": "medium"
+ },
+ "a121": {
+  "label": "unclear",
+  "what": "small pale blurry blob cut by the bottom frame edge; could be a small snail, debris, or part of an animal entering",
+  "confidence": "low"
+ },
+ "a1748": {
+  "label": "no animal",
+  "what": "small pale oval object on the bait box, likely a small snail or bait/shell debris",
+  "confidence": "medium"
+ },
+ "a1093": {
+  "label": "no animal",
+  "what": "Thin pale diagonal streak, likely a drifting debris strand or algae filament rather than a goby; it lacks a fish body shape",
+  "confidence": "low"
+ },
+ "a507": {
+  "label": "fish",
+  "what": "faint pale elongated goby-like shape at the right edge of the mat, similar in size to the other gobies",
+  "confidence": "low"
+ },
+ "a1269": {
+  "label": "fish",
+  "what": "curved, elongated pale goby at the mat edge, similar to the nearby goby",
+  "confidence": "medium"
+ },
+ "a2512": {
+  "label": "fish",
+  "what": "pale elongated goby-like shape at the lower-left edge of the mat, similar to the other gobies in the frame",
+  "confidence": "medium"
+ },
+ "a2266": {
+  "label": "no animal",
+  "what": "small pale blob, much smaller than the nearby gobies, most likely a small snail or debris on the mat",
+  "confidence": "low"
+ },
+ "a1774": {
+  "label": "no animal",
+  "what": "small pale rounded object at the bait box corner, likely a small snail just below another pale blob",
+  "confidence": "low"
+ },
+ "a2451": {
+  "label": "fish",
+  "what": "faint, blurry, curved pale elongated body, likely a goby bending as it swims over the mat",
+  "confidence": "medium"
+ },
+ "a2153": {
+  "label": "fish",
+  "what": "faint, small elongated pale shape with a brighter head end and a tapering tail, similar to the gobies on the mat but smaller and blurrier",
+  "confidence": "low"
+ },
+ "a2158": {
+  "label": "unclear",
+  "what": "Pale, blurry, elongated curved shape at the left edge of the mat. It could be a goby, but its greenish colour matches the seabed, so it may be a gap or fold in the mat edge.",
+  "confidence": "low"
+ },
+ "a1386": {
+  "label": "fish",
+  "what": "elongated pale tapering body cut by the top frame edge, likely a goby's rear body and tail",
+  "confidence": "medium"
+ },
+ "a2729": {
+  "label": "fish",
+  "what": "pale, curved, elongated goby-shaped body lying at the mat edge, similar in size to the other gobies in the frame",
+  "confidence": "medium"
+ },
+ "a2265": {
+  "label": "fish",
+  "what": "faint pale elongated goby-shaped body lying diagonally at the left edge of the mat, similar in size and shape to the other gobies",
+  "confidence": "medium"
+ },
+ "a104": {
+  "label": "no animal",
+  "what": "Straight, evenly tapering pale streak at the top frame edge with no fins or tail; looks like a rope, line or light artifact rather than a fish",
+  "confidence": "low"
+ },
+ "a229": {
+  "label": "no animal",
+  "what": "thin pale filament/thread or algae strand lying on the mat, too thin for a fish",
+  "confidence": "medium"
+ },
+ "a1305": {
+  "label": "fish",
+  "what": "elongated dark shape with a pale dorsal edge on the sand at the right frame edge, likely a goby cut off by the frame",
+  "confidence": "low"
+ },
+ "a2835": {
+  "label": "fish",
+  "what": "faint elongated pale goby-shaped body swimming above the mat near the top edge",
+  "confidence": "medium"
+ },
+ "a622": {
+  "label": "fish",
+  "what": "pale elongated goby swimming near top edge of mat, similar in shape and color to other gobies in frame",
+  "confidence": "medium"
+ },
+ "a261": {
+  "label": "non-fish",
+  "what": "long thin pale legs of a spider crab entering from the top edge of the frame",
+  "confidence": "medium"
+ },
+ "a2900": {
+  "label": "no animal",
+  "what": "Pale, uniform, crescent-shaped blob on the mat edge. It is probably a piece of algae or debris; no fish features are visible.",
+  "confidence": "low"
+ },
+ "a2864": {
+  "label": "fish",
+  "what": "faint pale elongated goby-like shape over green algae near the mat's bottom-left corner",
+  "confidence": "low"
+ },
+ "a2801": {
+  "label": "fish",
+  "what": "blurry pale elongated goby-like shape at the mat's lower-left corner, similar in size and shape to the gobies on the mat",
+  "confidence": "medium"
+ },
+ "a1623": {
+  "label": "no animal",
+  "what": "small pale blob near the mat edge, likely a small snail or debris; no clear fish shape",
+  "confidence": "low"
+ },
+ "a1671": {
+  "label": "fish",
+  "what": "small elongated pale goby on the mat edge, head toward bottom, tapering tail upward",
+  "confidence": "medium"
+ },
+ "a1788": {
+  "label": "no animal",
+  "what": "small pale snail with tentacles visible on the mat",
+  "confidence": "medium"
+ },
+ "a2802": {
+  "label": "fish",
+  "what": "faint elongated pale shape on the upper mat; probably a small goby, but too blurry to rule out debris",
+  "confidence": "low"
+ },
+ "a2819": {
+  "label": "fish",
+  "what": "faint small elongated pale shape, possibly a small goby, but could be debris",
+  "confidence": "low"
+ },
+ "a2868": {
+  "label": "fish",
+  "what": "pale elongated, slightly curved goby-shaped body lying along the mat edge, similar in size and color to the gobies on the mat",
+  "confidence": "medium"
+ },
+ "a2902": {
+  "label": "fish",
+  "what": "pale, curved, goby-shaped body lying at the left edge of the mat",
+  "confidence": "medium"
+ },
+ "a1149": {
+  "label": "fish",
+  "what": "Very faint, elongated pale blur near the right edge of the mat, about the size of the gobies; possibly a goby out of focus, but it could be a particle or debris.",
+  "confidence": "low"
+ },
+ "a2181": {
+  "label": "fish",
+  "what": "pale elongated, slightly curved goby-shaped body lying along the mat edge",
+  "confidence": "medium"
+ },
+ "a662": {
+  "label": "fish",
+  "what": "pale elongated goby-like fish, blurry, similar to the other gobies swimming above the mat",
+  "confidence": "medium"
+ },
+ "a1363": {
+  "label": "fish",
+  "what": "faint elongated goby-shaped body with a pale head and tapering tail on the green sand beside the mat",
+  "confidence": "medium"
+ },
+ "a909": {
+  "label": "fish",
+  "what": "faint, slender pale elongated shape near the lower mat edge, similar in size and color to the surrounding gobies; likely a blurry goby",
+  "confidence": "low"
+ },
+ "a1739": {
+  "label": "no animal",
+  "what": "small round pale blob on the bait box edge, most likely a small snail",
+  "confidence": "medium"
+ },
+ "a2572": {
+  "label": "fish",
+  "what": "faint elongated tapered pale shape on the green algae near the mat edge, likely a blurry goby",
+  "confidence": "low"
+ },
+ "a1564": {
+  "label": "fish",
+  "what": "rear part of a goby (tapering body and tail) entering from the top frame edge",
+  "confidence": "medium"
+ },
+ "a1705": {
+  "label": "fish",
+  "what": "small pale goby on the mat, tapered body with a thin tail to the right",
+  "confidence": "medium"
+ },
+ "a2452": {
+  "label": "fish",
+  "what": "faint elongated pale shape on the sand off the mat, likely a goby cut by the bottom frame edge",
+  "confidence": "low"
+ },
+ "a1771": {
+  "label": "no animal",
+  "what": "small pale oval object with a thin siphon-like projection, most likely a small snail (e.g. a Nassarius-type whelk) near the other pale snails on the mat",
+  "confidence": "medium"
+ },
+ "a1478": {
+  "label": "fish",
+  "what": "pale, slender, tapering shape cut by the bottom frame edge, likely the tail end of a goby entering the frame",
+  "confidence": "low"
+ },
+ "a1294": {
+  "label": "fish",
+  "what": "faint elongated goby-shaped body lying diagonally on the green sand beside the mat",
+  "confidence": "medium"
+ },
+ "a956": {
+  "label": "fish",
+  "what": "probable goby lying across the bottom edge of the mat, cut by the frame edge; a rope or debris cannot be ruled out",
+  "confidence": "low"
+ },
+ "a1169": {
+  "label": "fish",
+  "what": "pale elongated goby-like body cut by the top frame edge, similar in tone and shape to the other gobies over the mat",
+  "confidence": "medium"
+ },
+ "a2958": {
+  "label": "no animal",
+  "what": "greenish curved blade, likely a piece of algae lying on the mat edge; it is green like the surrounding algae, not pale like the gobies",
+  "confidence": "medium"
+ },
+ "a814": {
+  "label": "no animal",
+  "what": "dark triangular protrusion at the bottom edge of the mat, likely a fold, strap or rope attachment rather than an animal",
+  "confidence": "medium"
+ },
+ "a847": {
+  "label": "fish",
+  "what": "faint, small elongated pale shape, likely a small blurry goby swimming above the mat",
+  "confidence": "low"
+ },
+ "a1978": {
+  "label": "non-fish",
+  "what": "long curved pale legs of a crab (likely a spider crab) whose body is cut off by the bottom frame edge",
+  "confidence": "medium"
+ },
+ "a2081": {
+  "label": "fish",
+  "what": "elongated pale, tapered body lying diagonally, similar in shape and size to the gobies elsewhere in the frame; likely a blurry goby",
+  "confidence": "medium"
+ },
+ "a100": {
+  "label": "fish",
+  "what": "faint pale blurry elongated blob, possibly a goby swimming up toward the camera, out of focus",
+  "confidence": "low"
+ },
+ "a1769": {
+  "label": "no animal",
+  "what": "small pale rounded object on the bait box edge, likely a small snail (another one just below it)",
+  "confidence": "medium"
+ },
+ "a1715": {
+  "label": "fish",
+  "what": "small pale goby seen from above, body with thin tail angled to the lower right",
+  "confidence": "low"
+ },
+ "a2293": {
+  "label": "fish",
+  "what": "slender pale goby swimming diagonally above the mat, similar to the other gobies nearby",
+  "confidence": "high"
+ },
+ "a2711": {
+  "label": "fish",
+  "what": "elongated pale goby on the black mat, head lower right, tail tapering upper left",
+  "confidence": "medium"
+ },
+ "a1651": {
+  "label": "unclear",
+  "what": "faint pale diagonal streak on the algae beside the mat edge; could be a blurry goby or a blade of algae",
+  "confidence": "low"
+ },
+ "a2161": {
+  "label": "no animal",
+  "what": "thin pale diagonal streak at the top frame edge, likely a thread or algae filament rather than a fish",
+  "confidence": "low"
+ },
+ "a2828": {
+  "label": "fish",
+  "what": "elongated pale tapering body like the other gobies on the mat, likely a goby swimming near the top edge",
+  "confidence": "medium"
+ },
+ "a693": {
+  "label": "fish",
+  "what": "elongated pale goby-like fish swimming over the dark mat, similar to other gobies in frame",
+  "confidence": "medium"
+ },
+ "a820": {
+  "label": "fish",
+  "what": "pale elongated goby with tapering tail, similar to the other gobies on the mat",
+  "confidence": "high"
+ },
+ "a1707": {
+  "label": "no animal",
+  "what": "small pale blob with a thin projection, likely debris or a small pale snail; not clearly a fish",
+  "confidence": "low"
+ },
+ "a983": {
+  "label": "fish",
+  "what": "pale elongated goby-like body partly cut off by the top frame edge, matching the other gobies on the mat",
+  "confidence": "medium"
+ },
+ "a666": {
+  "label": "unclear",
+  "what": "very faint, blurry elongated smudge on the dark mat near the top-right edge; it could be a distant goby, but it is too indistinct to tell",
+  "confidence": "low"
+ },
+ "a1060": {
+  "label": "fish",
+  "what": "faint, curved pale elongated body, likely a blurry goby bending its body near other gobies",
+  "confidence": "medium"
+ },
+ "a209": {
+  "label": "non-fish",
+  "what": "thin jointed legs of a crab (likely a spider or swimming crab) at the left frame edge",
+  "confidence": "medium"
+ },
+ "a2100": {
+  "label": "no animal",
+  "what": "pale blurry oval blob near the frame edge, likely a small snail or debris, with no fish shape or tail visible",
+  "confidence": "low"
+ },
+ "a403": {
+  "label": "fish",
+  "what": "very faint, blurry elongated pale shape about the size of a goby, possibly a goby out of focus; could also be a suspended particle",
+  "confidence": "low"
+ },
+ "a1062": {
+  "label": "fish",
+  "what": "faint, blurry elongated pale shape near the right mat edge, likely a goby similar to the others in the frame",
+  "confidence": "medium"
+ },
+ "a2649": {
+  "label": "no animal",
+  "what": "a few small pale particles/debris specks on the dark mat, no fish shape",
+  "confidence": "medium"
+ },
+ "a1761": {
+  "label": "unclear",
+  "what": "faint blurry pale elongated blob on the mat; could be a blurred goby or a suspended particle",
+  "confidence": "low"
+ },
+ "a2607": {
+  "label": "unclear",
+  "what": "faint pale elongated blur on the green area just off the mat corner; it could be a goby or a piece of algae or debris",
+  "confidence": "low"
+ },
+ "a2130": {
+  "label": "fish",
+  "what": "blurry pale elongated goby-like body near the frame edge, next to other gobies",
+  "confidence": "medium"
+ },
+ "a1126": {
+  "label": "unclear",
+  "what": "very faint pale elongated smudge at the top frame edge; possibly a blurred fish cut by the edge, but too indistinct to tell",
+  "confidence": "low"
+ },
+ "a607": {
+  "label": "fish",
+  "what": "faint elongated pale shape at the top frame edge, likely a goby partly cut off, similar to the other gobies on the mat",
+  "confidence": "medium"
+ },
+ "a2273": {
+  "label": "fish",
+  "what": "pale elongated goby-shaped body, vertically oriented at the mat's left edge, similar to other gobies in frame",
+  "confidence": "medium"
+ },
+ "a99": {
+  "label": "fish",
+  "what": "pale goby partly visible, cut by the bottom frame edge",
+  "confidence": "medium"
+ },
+ "a695": {
+  "label": "unclear",
+  "what": "faint elongated streak with a small pale blob; could be a blurry, translucent fish or just suspended particles",
+  "confidence": "low"
+ },
+ "a1697": {
+  "label": "fish",
+  "what": "faint pale elongated shape on the sand beside the mat edge, likely a camouflaged goby",
+  "confidence": "low"
+ },
+ "a369": {
+  "label": "fish",
+  "what": "faint, pale, elongated goby-like shape lying diagonally near the right edge of the mat, blurred like the other gobies",
+  "confidence": "low"
+ },
+ "a1778": {
+  "label": "fish",
+  "what": "Pale, elongated, tapered body on the mat, probably a small goby seen from above; it could also be debris attached to a thin strand",
+  "confidence": "low"
+ },
+ "a1858": {
+  "label": "fish",
+  "what": "small, faint, elongated pale shape near other swimming gobies; possibly a small goby, but could be a drifting particle",
+  "confidence": "low"
+ },
+ "a2182": {
+  "label": "unclear",
+  "what": "faint, small pale elongated streak on the mat; could be a tiny blurred goby or a piece of debris",
+  "confidence": "low"
+ },
+ "a2727": {
+  "label": "no animal",
+  "what": "faint pale smudge at top edge of frame, likely a particle or water haze, no discernible animal shape",
+  "confidence": "medium"
+ },
+ "a937": {
+  "label": "no animal",
+  "what": "small pale elongated speck, likely a drifting particle or debris, much smaller than the gobies nearby",
+  "confidence": "medium"
+ },
+ "a1638": {
+  "label": "fish",
+  "what": "faint pale elongated shape on the sandy area right of the mat, similar in size and shape to the gobies on the mat; likely a camouflaged goby",
+  "confidence": "low"
+ },
+ "a1079": {
+  "label": "fish",
+  "what": "faint, blurry elongated pale shape the size and shape of a goby, likely a fish swimming slightly off the mat",
+  "confidence": "low"
+ },
+ "a1668": {
+  "label": "fish",
+  "what": "pale slender curved shape cut by the bottom frame edge, likely part of a goby similar to the others on the mat",
+  "confidence": "low"
+ },
+ "a2762": {
+  "label": "fish",
+  "what": "pale blurry goby-shaped body at the lower-left edge of the mat, head toward lower right",
+  "confidence": "medium"
+ },
+ "a2566": {
+  "label": "fish",
+  "what": "faint pale elongated shape on the green algae near the mat corner, possibly a small blurry goby",
+  "confidence": "low"
+ },
+ "a2019": {
+  "label": "fish",
+  "what": "small pale elongated, tapering shape on the mat, possibly a small goby seen from above, but too blurry to rule out debris",
+  "confidence": "low"
+ },
+ "a2916": {
+  "label": "fish",
+  "what": "faint pale elongated goby-like shape on the sand off the mat edge",
+  "confidence": "medium"
+ },
+ "a1488": {
+  "label": "no animal",
+  "what": "thin pale elongated streak on the mat, much smaller than the nearby gobies; likely a piece of debris or algae",
+  "confidence": "medium"
+ },
+ "a1607": {
+  "label": "no animal",
+  "what": "small pale blurry blob on the mat edge, far smaller than the nearby gobies; likely a small snail or debris",
+  "confidence": "medium"
+ },
+ "a6": {
+  "label": "no animal",
+  "what": "small pale elongated particle/debris fragment on the mat, similar to the many other floating particles in the frame",
+  "confidence": "medium"
+ },
+ "a2317": {
+  "label": "fish",
+  "what": "pale, curved, elongated goby-like body at the lower-left edge of the mat, similar to the other gobies in the frame",
+  "confidence": "medium"
+ },
+ "a1229": {
+  "label": "no animal",
+  "what": "small pale V-shaped speck of debris on the mat, much smaller than the gobies nearby",
+  "confidence": "medium"
+ },
+ "a2420": {
+  "label": "fish",
+  "what": "pale elongated goby-like body lying at the lower-left edge of the mat, similar to the other gobies in the frame",
+  "confidence": "medium"
+ },
+ "a2166": {
+  "label": "fish",
+  "what": "pale, mottled, elongated goby-like body lying curved along the left edge of the mat",
+  "confidence": "medium"
+ },
+ "a1414": {
+  "label": "fish",
+  "what": "pale elongated goby near the top-right edge of the mat, similar in shape and size to the other gobies in the frame",
+  "confidence": "medium"
+ },
+ "a2124": {
+  "label": "fish",
+  "what": "pale elongated blob cut by the right frame edge, likely part of a goby near others",
+  "confidence": "low"
+ },
+ "a2458": {
+  "label": "fish",
+  "what": "pale elongated goby-shaped body lying vertically along the left edge of the mat, similar in size and color to the other gobies",
+  "confidence": "medium"
+ },
+ "a2876": {
+  "label": "no animal",
+  "what": "pale green leaf-shaped piece of algae lying at the mat edge, no fish features visible",
+  "confidence": "medium"
+ },
+ "a586": {
+  "label": "fish",
+  "what": "pale elongated goby with tapered tail, near the crab at the top of the mat",
+  "confidence": "high"
+ },
+ "a2167": {
+  "label": "fish",
+  "what": "faint elongated pale goby-shaped body near the top edge of the mat, similar to the other gobies in the frame",
+  "confidence": "medium"
+ },
+ "a2857": {
+  "label": "fish",
+  "what": "elongated pale goby-like fish over the mat, similar to the other gobies in the frame",
+  "confidence": "medium"
+ },
+ "a1770": {
+  "label": "no animal",
+  "what": "small pale round object at the bait box edge, most likely a small snail",
+  "confidence": "medium"
+ },
+ "a1027": {
+  "label": "no animal",
+  "what": "small faint pale streak, much smaller than the nearby gobies; likely a suspended particle or debris",
+  "confidence": "medium"
+ },
+ "a2949": {
+  "label": "fish",
+  "what": "pale, elongated, tapered shape on the green sand off the mat's lower-left corner, matching the gobies on the mat in shape and size",
+  "confidence": "medium"
+ },
+ "a1656": {
+  "label": "fish",
+  "what": "elongated pale goby-like body at the bottom frame edge, similar in shape and colour to the goby on the left of the mat",
+  "confidence": "medium"
+ },
+ "a2647": {
+  "label": "fish",
+  "what": "faint pale elongated diagonal shape on the green area near the mat edge, possibly a blurry goby",
+  "confidence": "low"
+ },
+ "a1347": {
+  "label": "no animal",
+  "what": "small faint pale blob near the mat edge, likely debris or a small snail, not fish-shaped",
+  "confidence": "medium"
+ },
+ "a2827": {
+  "label": "unclear",
+  "what": "pale, blurry curved shape at the mat corner; could be a goby or a pale algae frond (a similar shape lies just below)",
+  "confidence": "low"
+ },
+ "a752": {
+  "label": "unclear",
+  "what": "very faint, pale elongated smear near the top-right of the mat; could be a motion-blurred goby or just a light streak",
+  "confidence": "low"
+ },
+ "a1890": {
+  "label": "fish",
+  "what": "elongated goby-shaped fish with head at lower left, similar to the goby visible at top right of frame",
+  "confidence": "medium"
+ },
+ "a1296": {
+  "label": "fish",
+  "what": "small pale elongated goby-like shape with a brighter head and tapering tail, smaller than the goby on the right",
+  "confidence": "medium"
+ },
+ "a2490": {
+  "label": "no animal",
+  "what": "faint small pale elongated streak, likely a debris particle or algae fragment on the mat, much smaller than the nearby gobies",
+  "confidence": "medium"
+ },
+ "a2291": {
+  "label": "fish",
+  "what": "blurry pale elongated goby-like shape at the mat's lower-left edge, similar to the other gobies in the frame",
+  "confidence": "medium"
+ },
+ "a2460": {
+  "label": "fish",
+  "what": "pale, curved elongated body at the mat's bottom-left corner, likely a goby bending its body",
+  "confidence": "low"
+ },
+ "a2330": {
+  "label": "fish",
+  "what": "pale elongated, slightly curved shape at the mat's lower-left corner; likely a goby, about the same size and colour as the gobies on the mat, but blurry",
+  "confidence": "low"
+ },
+ "a1731": {
+  "label": "non-fish",
+  "what": "pale shrimp with long antennae on the bait box",
+  "confidence": "medium"
+ },
+ "a2129": {
+  "label": "fish",
+  "what": "pale elongated goby-like body at the right frame edge, similar to the nearby gobies",
+  "confidence": "medium"
+ },
+ "a2479": {
+  "label": "fish",
+  "what": "faint elongated goby-like shape lying across the mat edge, very blurry",
+  "confidence": "low"
+ },
+ "a22": {
+  "label": "no animal",
+  "what": "tiny pale blob at the bottom frame edge, likely a particle or debris on the mat",
+  "confidence": "medium"
+ },
+ "a66": {
+  "label": "no animal",
+  "what": "thin curved pale strand of debris or algae fiber on the mat, like many others in the frame",
+  "confidence": "medium"
+ },
+ "a2795": {
+  "label": "fish",
+  "what": "faint pale elongated tapered shape on the green algae beside the mat edge, possibly a small goby but could be a piece of algae",
+  "confidence": "low"
+ },
+ "a2009": {
+  "label": "unclear",
+  "what": "dark curved elongated shape cut by the top frame edge over the algae; could be part of a fish or an algae strand",
+  "confidence": "low"
+ },
+ "a1344": {
+  "label": "no animal",
+  "what": "thin pale curved strand (algae filament/debris) under the bait box edge, similar to other strands scattered on the mat",
+  "confidence": "medium"
+ },
+ "a2282": {
+  "label": "fish",
+  "what": "pale, elongated, slightly curved goby-shaped body lying along the left edge of the mat, similar in size and shape to the other gobies in the frame",
+  "confidence": "medium"
+ },
+ "a2571": {
+  "label": "fish",
+  "what": "pale, elongated, slightly curved goby-like body at the edge of the mat, similar in size and shape to the gobies on the mat",
+  "confidence": "medium"
+ },
+ "a1787": {
+  "label": "fish",
+  "what": "small pale elongated shape with a tapering tail-like extension above the mat, possibly a small goby; could also be a shrimp or debris",
+  "confidence": "low"
+ },
+ "a95": {
+  "label": "fish",
+  "what": "pale elongated shape cut by the bottom frame edge, possibly part of a goby, though it could be debris",
+  "confidence": "low"
+ },
+ "a1142": {
+  "label": "fish",
+  "what": "faint, blurred elongated goby-like shape near the right edge of the mat, similar in size and shape to the other gobies in the frame",
+  "confidence": "medium"
+ },
+ "a2646": {
+  "label": "fish",
+  "what": "faint elongated pale goby-like shape at the right edge of the mat, head up-right and tail tapering down-left, similar to the other gobies in the frame",
+  "confidence": "medium"
+ },
+ "a230": {
+  "label": "no animal",
+  "what": "blurry yellowish blob, likely a particle or algae fragment drifting in the water; no fish shape visible",
+  "confidence": "low"
+ },
+ "a573": {
+  "label": "no animal",
+  "what": "small faint pale streak, much smaller than the gobies; likely a drifting particle or debris",
+  "confidence": "medium"
+ },
+ "a222": {
+  "label": "non-fish",
+  "what": "orange crab legs/claws of a crab partly hidden at the sandy edge beside the mat",
+  "confidence": "medium"
+ },
+ "a1391": {
+  "label": "fish",
+  "what": "faint, pale, elongated goby-shaped body on the green area to the right of the mat, similar in size to the nearby gobies",
+  "confidence": "medium"
+ },
+ "a1834": {
+  "label": "fish",
+  "what": "elongated, tapered fish-like body (likely a goby) cut by the right frame edge",
+  "confidence": "medium"
+ },
+ "a837": {
+  "label": "fish",
+  "what": "faint elongated goby seen from above, pale body with tapering tail, near top of mat like the other gobies",
+  "confidence": "medium"
+ },
+ "a259": {
+  "label": "fish",
+  "what": "Pale, tapering, slightly curved body entering from the top edge. It looks like the rear half of a goby, matching the colour and taper of the goby on the left, but it could be an algae blade.",
+  "confidence": "low"
+ },
+ "a2669": {
+  "label": "fish",
+  "what": "pale elongated goby-like shape at the mat's lower-left corner, rounded head end and tapering tail",
+  "confidence": "medium"
+ },
+ "a945": {
+  "label": "fish",
+  "what": "faint, blurry pale elongated shape near the right mat edge, likely a goby lying vertically",
+  "confidence": "low"
+ },
+ "a2684": {
+  "label": "fish",
+  "what": "faint, elongated pale shape on the sand off the mat's lower-left corner, likely a blurry goby",
+  "confidence": "low"
+ },
+ "a965": {
+  "label": "no animal",
+  "what": "faint lighter patch on the dark mat at the top edge, no visible animal shape",
+  "confidence": "medium"
+ },
+ "a2159": {
+  "label": "fish",
+  "what": "pale elongated, slightly curved goby-like body lying at the left edge of the mat, similar in size and shape to the other gobies in the frame",
+  "confidence": "medium"
+ },
+ "a431": {
+  "label": "fish",
+  "what": "faint elongated goby-like shape on the sand left of the mat, blurry and low contrast",
+  "confidence": "low"
+ },
+ "a1682": {
+  "label": "fish",
+  "what": "faint elongated slender body on the sand right of the mat, likely a goby",
+  "confidence": "medium"
+ },
+ "a2440": {
+  "label": "no animal",
+  "what": "small pale elongated particle/debris on the mat, far smaller than the gobies in the frame",
+  "confidence": "medium"
+ },
+ "a2701": {
+  "label": "fish",
+  "what": "pale elongated, slightly curved shape at the mat edge; possibly a goby, but it could also be a piece of algae",
+  "confidence": "low"
+ },
+ "a877": {
+  "label": "fish",
+  "what": "faint, blurry elongated pale goby-shaped body, similar to the other gobies over the mat",
+  "confidence": "medium"
+ },
+ "a2895": {
+  "label": "fish",
+  "what": "elongated pale goby-shaped fish swimming diagonally, similar to other gobies in frame",
+  "confidence": "medium"
+ },
+ "a1308": {
+  "label": "non-fish",
+  "what": "crab with long pale legs (likely a spider crab or hermit crab) at the edge of the mat",
+  "confidence": "high"
+ },
+ "a1762": {
+  "label": "fish",
+  "what": "pale, blurry, elongated goby-shaped body with a tapering tail on the mat, similar to a second one nearby",
+  "confidence": "medium"
+ },
+ "a2380": {
+  "label": "no animal",
+  "what": "faint small elongated pale streak, much smaller than the gobies nearby; likely a particle or debris",
+  "confidence": "low"
+ },
+ "a1765": {
+  "label": "fish",
+  "what": "Small pale teardrop-shaped object beside the bait box, possibly a goby seen from above, though it could also be a snail or debris",
+  "confidence": "low"
+ },
+ "a1108": {
+  "label": "fish",
+  "what": "faint, blurry elongated goby shape with a pale head and a tapering tail, similar to the other gobies in the frame",
+  "confidence": "medium"
+ },
+ "a703": {
+  "label": "no animal",
+  "what": "faint small pale elongated streak, much smaller than the gobies in the frame; likely a drifting particle or debris on the mat",
+  "confidence": "medium"
+ },
+ "a541": {
+  "label": "fish",
+  "what": "faint elongated pale goby-shaped body, similar to other gobies on the mat",
+  "confidence": "medium"
+ },
+ "a2660": {
+  "label": "fish",
+  "what": "faint elongated pale goby-like shape at the top frame edge, similar to the other gobies on the mat",
+  "confidence": "medium"
+ },
+ "a726": {
+  "label": "fish",
+  "what": "faint pale elongated shape at the top edge of the frame, likely a goby partly cut off by the frame edge",
+  "confidence": "low"
+ },
+ "a1409": {
+  "label": "fish",
+  "what": "blurry elongated pale goby-shaped body near top edge of mat, similar to other gobies in frame",
+  "confidence": "medium"
+ },
+ "a133": {
+  "label": "no animal",
+  "what": "thin pale elongated streak with an orange spot, likely a drifting piece of debris or algae strand in the water column",
+  "confidence": "low"
+ },
+ "a227": {
+  "label": "fish",
+  "what": "faint pale elongated diagonal shape beside the bait box, possibly a translucent goby, blurred by motion",
+  "confidence": "low"
+ },
+ "a416": {
+  "label": "fish",
+  "what": "faint, blurry elongated pale shape at the mat's lower edge, likely a goby in motion",
+  "confidence": "low"
+ },
+ "a153": {
+  "label": "no animal",
+  "what": "small pale curved fleck of debris/algae on the mat, similar to the other scattered particles",
+  "confidence": "medium"
+ },
+ "a2763": {
+  "label": "fish",
+  "what": "faint pale elongated shape on the green area near the mat edge, possibly a blurry goby",
+  "confidence": "low"
+ },
+ "a2131": {
+  "label": "fish",
+  "what": "elongated pale goby-like body cut off by the bottom frame edge, similar in shape and colour to the other gobies in the frame",
+  "confidence": "medium"
+ },
+ "a2836": {
+  "label": "fish",
+  "what": "faint pale elongated shape on the green sand off the mat; looks like a goby, similar to the others in the frame",
+  "confidence": "low"
+ },
+ "a1487": {
+  "label": "fish",
+  "what": "pale elongated goby partly visible, cut by the bottom frame edge",
+  "confidence": "medium"
+ },
+ "a2769": {
+  "label": "fish",
+  "what": "pale, blurry, elongated goby-shaped body at the lower-left edge of the mat, similar to the other gobies in the frame",
+  "confidence": "medium"
+ },
+ "a555": {
+  "label": "no animal",
+  "what": "faint pale diagonal streak on the mat, much smaller than the nearby gobies; likely a particle or debris",
+  "confidence": "low"
+ },
+ "a2638": {
+  "label": "fish",
+  "what": "pale, elongated, slightly curved goby-like body lying at the mat edge, similar in size and color to the other gobies",
+  "confidence": "medium"
+ },
+ "a533": {
+  "label": "fish",
+  "what": "faint elongated pale goby-shaped body, similar to other gobies on the mat, near top edge",
+  "confidence": "medium"
+ },
+ "a81": {
+  "label": "fish",
+  "what": "pale elongated goby-like body cut off by the bottom frame edge, same colour as the other gobies",
+  "confidence": "medium"
+ },
+ "a2589": {
+  "label": "fish",
+  "what": "faint elongated dark goby-shaped body lying on the green seabed left of the mat, similar in size to the gobies on the mat",
+  "confidence": "low"
+ },
+ "a2496": {
+  "label": "fish",
+  "what": "faint, elongated pale goby-like shape with a brighter head end on the dark mat, similar to the other gobies in the frame",
+  "confidence": "medium"
+ },
+ "a2240": {
+  "label": "fish",
+  "what": "faint, small elongated pale shape with a dark eye-like dot, possibly a small juvenile fish over the mat",
+  "confidence": "low"
+ },
+ "a599": {
+  "label": "unclear",
+  "what": "faint, small, elongated pale streak; could be a blurred small fish or just a drifting particle",
+  "confidence": "low"
+ },
+ "a1737": {
+  "label": "no animal",
+  "what": "pale branched fragment at the top edge of the mat, most likely a piece of algae or debris",
+  "confidence": "medium"
+ },
+ "a1960": {
+  "label": "non-fish",
+  "what": "pale elongated limb entering from the top edge, most likely a spider crab leg",
+  "confidence": "low"
+ },
+ "a2812": {
+  "label": "fish",
+  "what": "pale elongated goby-like shape lying at the bottom-left corner of the mat, similar in size to the other gobies; could also be a fold at the mat edge",
+  "confidence": "low"
+ },
+ "a342": {
+  "label": "fish",
+  "what": "faint elongated pale diagonal shape on the mat near the top-right edge, consistent with a blurry goby similar to the others in the frame",
+  "confidence": "medium"
+ },
+ "a2947": {
+  "label": "fish",
+  "what": "pale elongated shape at the mat's bottom-left corner, possibly a blurry goby seen from above; its greenish colour could also mean algae",
+  "confidence": "low"
+ },
+ "a2427": {
+  "label": "fish",
+  "what": "blurry elongated pale goby-like body swimming over the mat near the top edge, similar to other gobies in the frame",
+  "confidence": "medium"
+ },
+ "a684": {
+  "label": "fish",
+  "what": "elongated pale goby on the mat near its lower-left edge, similar in shape to the other gobies in the frame",
+  "confidence": "medium"
+ },
+ "a2015": {
+  "label": "fish",
+  "what": "elongated pale goby-like body lying near the mat edge at the top-left, similar in size and color to the other gobies",
+  "confidence": "medium"
+ },
+ "a103": {
+  "label": "unclear",
+  "what": "small pale elongated streak at the bottom frame edge; could be part of a goby or a piece of debris",
+  "confidence": "low"
+ },
+ "a1659": {
+  "label": "no animal",
+  "what": "edge of the black mat against the algae; the pale object just above lies outside the box",
+  "confidence": "medium"
+ },
+ "a1544": {
+  "label": "fish",
+  "what": "small pale blurry elongated shape near the mat edge, possibly a goby seen foreshortened, though it could also be a snail or debris",
+  "confidence": "low"
+ },
+ "a1758": {
+  "label": "no animal",
+  "what": "small pale teardrop-shaped object, most likely a small snail like the others on the mat",
+  "confidence": "medium"
+ },
+ "a858": {
+  "label": "no animal",
+  "what": "small pale elongated blob, much smaller than the gobies nearby; likely a particle or small snail on the mat",
+  "confidence": "low"
+ },
+ "a944": {
+  "label": "fish",
+  "what": "faint pale elongated shape, likely a small goby swimming diagonally, blurred",
+  "confidence": "medium"
+ },
+ "a807": {
+  "label": "fish",
+  "what": "pale blob at the end of a goby-shaped body, probably the goby's broad head seen from above",
+  "confidence": "medium"
+ },
+ "a1109": {
+  "label": "fish",
+  "what": "pale elongated goby swimming diagonally near top edge of frame, similar to other gobies in scene",
+  "confidence": "medium"
+ },
+ "a76": {
+  "label": "no animal",
+  "what": "thin curved pale strand of debris/algae fiber on the mat, like the many other particles around",
+  "confidence": "medium"
+ },
+ "a2448": {
+  "label": "fish",
+  "what": "faint thin dark elongated diagonal shape on the green area left of the mat, possibly a blurry goby but it could also be an algae strand or shadow",
+  "confidence": "low"
+ },
+ "a1536": {
+  "label": "fish",
+  "what": "pale goby partly visible at the bottom frame edge, with a dorsal-fin-like spike",
+  "confidence": "medium"
+ },
+ "a2653": {
+  "label": "fish",
+  "what": "pale, curved, elongated goby-like body lying at the edge of the mat, similar in size and color to the other gobies in the frame",
+  "confidence": "medium"
+ },
+ "a1125": {
+  "label": "fish",
+  "what": "small elongated pale fish (goby) seen from above, similar to the other gobies swimming around the bait box",
+  "confidence": "medium"
+ },
+ "a2761": {
+  "label": "fish",
+  "what": "pale elongated goby lying vertically along the left edge of the mat, similar in shape and color to the other gobies",
+  "confidence": "medium"
+ },
+ "a700": {
+  "label": "fish",
+  "what": "elongated pale goby seen from above, head up and tail tapering down, like the other gobies on the mat",
+  "confidence": "medium"
+ },
+ "a1972": {
+  "label": "unclear",
+  "what": "tiny pale elongated blob, about half the size of the nearby goby; could be a small fish or a piece of debris",
+  "confidence": "low"
+ },
+ "a1760": {
+  "label": "fish",
+  "what": "small pale goby-like shape with a wide head end and a thin tapering tail on the mat, next to a similar one",
+  "confidence": "low"
+ },
+ "a1730": {
+  "label": "no animal",
+  "what": "small roundish pale blob at the bait box edge, likely a small snail or debris, not fish-shaped",
+  "confidence": "medium"
+ },
+ "a2367": {
+  "label": "fish",
+  "what": "faint, blurry pale elongated shape, possibly a goby swimming above the mat and out of focus",
+  "confidence": "low"
+ },
+ "a2402": {
+  "label": "unclear",
+  "what": "very faint thin pale diagonal streak; could be a blurred translucent small fish or a piece of floating debris",
+  "confidence": "low"
+ },
+ "a2856": {
+  "label": "fish",
+  "what": "slender pale goby seen from above, similar to the other gobies on the mat",
+  "confidence": "high"
+ },
+ "a1228": {
+  "label": "unclear",
+  "what": "faint pale diffuse blob at the top frame edge; could be part of a goby cut by the edge or a particle, too blurry to tell",
+  "confidence": "low"
+ },
+ "a2721": {
+  "label": "no animal",
+  "what": "faint thin pale diagonal streak, likely a strand of debris or algae; no fish shape such as a head or tail is visible",
+  "confidence": "low"
+ },
+ "a2881": {
+  "label": "fish",
+  "what": "faint elongated pale shape, likely a small goby lying diagonally on the mat, though it could be a thin piece of debris",
+  "confidence": "low"
+ },
+ "a1479": {
+  "label": "no animal",
+  "what": "tiny pale particle/debris fleck on the mat, far too small to be a fish or crab",
+  "confidence": "high"
+ },
+ "a2747": {
+  "label": "fish",
+  "what": "blurry pale elongated shape, likely a goby swimming above the mat (motion-blurred)",
+  "confidence": "low"
+ },
+ "a1836": {
+  "label": "fish",
+  "what": "elongated pale goby-like body tapering to a tail, partly cut off by the right frame edge",
+  "confidence": "medium"
+ },
+ "a1977": {
+  "label": "non-fish",
+  "what": "spider crab with long thin legs and a fuzzy, algae-covered body at the bottom edge of the frame",
+  "confidence": "medium"
+ },
+ "a367": {
+  "label": "fish",
+  "what": "very faint, pale, elongated blur at the top edge of the mat, about the size and shape of the nearby gobies; possibly a goby, but too indistinct to be sure",
+  "confidence": "low"
+ },
+ "a1300": {
+  "label": "fish",
+  "what": "small slender goby-like fish with a pale head and tapering body, near the mat edge",
+  "confidence": "medium"
+ },
+ "a508": {
+  "label": "fish",
+  "what": "elongated pale goby-shaped body at top edge of mat, similar to other gobies in frame",
+  "confidence": "medium"
+ },
+ "a1301": {
+  "label": "no animal",
+  "what": "thin pale filament of debris/algae on the mat, like the other white streaks scattered around",
+  "confidence": "medium"
+ },
+ "a1822": {
+  "label": "unclear",
+  "what": "faint pale curved streak at the top frame edge; could be part of a goby or a piece of algae, too blurry to tell",
+  "confidence": "low"
+ },
+ "a1236": {
+  "label": "fish",
+  "what": "slender pale fish (likely a goby) seen from above, wider head tapering to a thin tail, just below the bait box",
+  "confidence": "medium"
+ },
+ "a1304": {
+  "label": "fish",
+  "what": "small blurry elongated shape over the algae, possibly a small fish swimming; could also be drifting debris",
+  "confidence": "low"
+ },
+ "a2331": {
+  "label": "no animal",
+  "what": "a few faint pale specks/particles on the dark mat, no clear animal shape",
+  "confidence": "medium"
+ },
+ "a2687": {
+  "label": "fish",
+  "what": "elongated pale goby-shaped fish near top edge of mat, similar to the goby lower in frame",
+  "confidence": "medium"
+ },
+ "a1718": {
+  "label": "no animal",
+  "what": "small pale object about 3 cm with a pointed tip, most likely a small pale snail shell or debris on the mat",
+  "confidence": "low"
+ },
+ "a2304": {
+  "label": "fish",
+  "what": "pale, mottled, elongated goby-like body lying vertically along the mat edge",
+  "confidence": "medium"
+ },
+ "a1046": {
+  "label": "fish",
+  "what": "slender pale elongated goby-like body, matching the other gobies on the mat, blurry",
+  "confidence": "medium"
+ },
+ "a1911": {
+  "label": "fish",
+  "what": "pale elongated goby-like shape lying on the sand beside the mat edge, similar to the goby at the top right",
+  "confidence": "medium"
+ },
+ "a753": {
+  "label": "fish",
+  "what": "pale elongated goby-like shape on the mat, similar to the other gobies in the frame but blurrier",
+  "confidence": "medium"
+ },
+ "a2550": {
+  "label": "fish",
+  "what": "faint, pale elongated shape near the mat edge, likely a blurry goby",
+  "confidence": "low"
+ },
+ "a1392": {
+  "label": "fish",
+  "what": "pale elongated goby-like body at the top frame edge, tapering downward with a possible eye spot, similar to the other gobies on the mat",
+  "confidence": "medium"
+ },
+ "a1791": {
+  "label": "no animal",
+  "what": "small pale object about 2-3 cm, likely a small snail or debris on the mat",
+  "confidence": "low"
+ },
+ "a2341": {
+  "label": "fish",
+  "what": "faint pale elongated shape at the top edge of the mat, likely a blurry goby lying horizontally",
+  "confidence": "low"
+ },
+ "a1163": {
+  "label": "fish",
+  "what": "slender pale goby-like fish swimming above the mat near the bait box, similar to other fish in the frame",
+  "confidence": "high"
+ },
+ "a1160": {
+  "label": "fish",
+  "what": "small pale slender fish (likely a juvenile goby) seen from above, thicker head end tapering to a thin tail",
+  "confidence": "low"
+ },
+ "a1459": {
+  "label": "fish",
+  "what": "faint slender goby at the right edge of the mat, casting a shadow on the sand below",
+  "confidence": "medium"
+ },
+ "a2517": {
+  "label": "unclear",
+  "what": "faint pale elongated diagonal smudge on the green area below the mat edge; could be a blurry goby or just a light patch",
+  "confidence": "low"
+ },
+ "a2714": {
+  "label": "fish",
+  "what": "faint pale elongated goby-like shape on the sand beside the mat, blurry",
+  "confidence": "medium"
+ },
+ "a543": {
+  "label": "fish",
+  "what": "faint, blurry elongated goby-shaped body lying across the left edge of the mat, similar in size to the nearby gobies",
+  "confidence": "low"
+ },
+ "a1764": {
+  "label": "unclear",
+  "what": "small faint pale V-shaped blob between two gobies; could be a small goby seen end-on or just debris/particles",
+  "confidence": "low"
+ },
+ "a2622": {
+  "label": "fish",
+  "what": "slender pale goby-like fish lying diagonally just above the bait box, similar in shape to the other gobies in the frame",
+  "confidence": "medium"
+ },
+ "a2926": {
+  "label": "no animal",
+  "what": "pale green kidney-shaped blob at the mat edge, likely a piece of algae (sea lettuce); it has no visible fins, eyes or tail",
+  "confidence": "medium"
+ },
+ "a2894": {
+  "label": "fish",
+  "what": "faint, dark, elongated diagonal shape on the green sand beside the mat, about goby-sized; possibly a blurry goby, but very low contrast",
+  "confidence": "low"
+ },
+ "a313": {
+  "label": "non-fish",
+  "what": "thin-legged pale animal at the mat edge, likely a spider crab (long spindly legs, pointed rostrum)",
+  "confidence": "medium"
+ },
+ "a2820": {
+  "label": "unclear",
+  "what": "faint pale smudge at the top frame edge; possibly part of a goby cut off by the edge, but too blurry to tell",
+  "confidence": "low"
+ },
+ "a1513": {
+  "label": "fish",
+  "what": "pale elongated goby partly cut off by the bottom frame edge, matching the other gobies on the mat",
+  "confidence": "medium"
+ },
+ "a1853": {
+  "label": "no animal",
+  "what": "small pale elongated speck, much smaller than the nearby gobies; likely a debris or algae fragment",
+  "confidence": "low"
+ },
+ "a2535": {
+  "label": "fish",
+  "what": "faint, elongated, tapered pale shape on the mat, likely a small goby; smaller and blurrier than the other fish",
+  "confidence": "low"
+ },
+ "a2756": {
+  "label": "fish",
+  "what": "faint pale elongated shape on the algae at the frame's bottom-left edge; possibly a goby, but it could be an algae fragment",
+  "confidence": "low"
+ },
+ "a1724": {
+  "label": "fish",
+  "what": "small pale goby seen from above on the bait box edge, tapered tail visible",
+  "confidence": "medium"
+ },
+ "a1596": {
+  "label": "unclear",
+  "what": "faint blurry pale streaks on the algae left of the mat; possibly the legs of a small crab, or just algae texture",
+  "confidence": "low"
+ },
+ "a869": {
+  "label": "fish",
+  "what": "faint, blurry elongated pale shape matching the size and shape of the nearby gobies, likely a goby in motion",
+  "confidence": "medium"
+ },
+ "a812": {
+  "label": "fish",
+  "what": "faint pale elongated shape crossing the mat edge, likely a blurry goby swimming",
+  "confidence": "low"
+ },
+ "a1751": {
+  "label": "no animal",
+  "what": "small pale triangular blob on the side of the bait box, about 2-3 cm; most likely a small snail or debris, with no fish shape visible",
+  "confidence": "medium"
+ },
+ "a152": {
+  "label": "no animal",
+  "what": "small pale curled debris/algae fragment on the mat, similar to the surrounding particles",
+  "confidence": "medium"
+ },
+ "a2235": {
+  "label": "fish",
+  "what": "pale goby at the lower-left edge of the mat, elongated body with a fin, similar to other gobies in the frame",
+  "confidence": "medium"
+ },
+ "a1552": {
+  "label": "no animal",
+  "what": "small pale rounded blob near the mat edge, likely a small snail or debris rather than a goby",
+  "confidence": "low"
+ },
+ "a1767": {
+  "label": "no animal",
+  "what": "likely a small pale snail with extended siphon, not a fish",
+  "confidence": "low"
+ },
+ "a2565": {
+  "label": "fish",
+  "what": "pale, elongated, slightly curved blurry shape at the mat's lower-left edge; likely a goby",
+  "confidence": "low"
+ },
+ "a2648": {
+  "label": "fish",
+  "what": "faint, blurred elongated goby-shaped body angled diagonally near the top edge of the mat",
+  "confidence": "medium"
+ },
+ "a2305": {
+  "label": "fish",
+  "what": "faint elongated goby-shaped body near the left edge of the mat, similar in size and shape to the other gobies",
+  "confidence": "medium"
+ },
+ "a2901": {
+  "label": "fish",
+  "what": "blurry elongated pale goby-shaped body lying diagonally on the mat, similar in size to the other gobies",
+  "confidence": "medium"
+ },
+ "a1418": {
+  "label": "fish",
+  "what": "faint elongated pale shape on the sand beside the mat, likely a camouflaged goby",
+  "confidence": "low"
+ },
+ "a1574": {
+  "label": "fish",
+  "what": "faint, blurry elongated pale goby-shaped body lying diagonally on the sand beside the mat, similar in size to the other gobies",
+  "confidence": "medium"
+ },
+ "a2890": {
+  "label": "fish",
+  "what": "pale, elongated, slightly curved goby-like shape lying at the mat edge, similar in size and colour to the other gobies in the frame",
+  "confidence": "medium"
+ },
+ "a1355": {
+  "label": "fish",
+  "what": "small elongated pale goby-like fish beside the bait box, tapering toward the tail",
+  "confidence": "medium"
+ },
+ "a2307": {
+  "label": "fish",
+  "what": "pale elongated goby-like shape with a curved body at the mat's bottom-left edge, similar in size and colour to the other gobies",
+  "confidence": "low"
+ },
+ "a1040": {
+  "label": "no animal",
+  "what": "small faint pale elongated speck, likely a particle or debris, far smaller than the nearby gobies",
+  "confidence": "low"
+ },
+ "a2415": {
+  "label": "fish",
+  "what": "pale elongated goby-like body with tapering tail, lying at the left edge of the mat",
+  "confidence": "medium"
+ },
+ "a1754": {
+  "label": "fish",
+  "what": "pale elongated goby seen from above on the mat, next to another goby",
+  "confidence": "medium"
+ },
+ "a617": {
+  "label": "fish",
+  "what": "faint pale blob with a dim elongated body trailing below, likely a goby swimming toward the camera and foreshortened",
+  "confidence": "low"
+ },
+ "a2830": {
+  "label": "no animal",
+  "what": "pale oval blob with no tail or fins, likely a small snail or an out-of-focus particle",
+  "confidence": "low"
+ },
+ "a1173": {
+  "label": "fish",
+  "what": "faint, blurry, elongated pale shape on the mat, likely a goby slightly out of focus or higher in the water",
+  "confidence": "low"
+ },
+ "a2414": {
+  "label": "fish",
+  "what": "faint, pale, elongated shape on the mat near its lower-left edge, possibly a small translucent fish but could be debris",
+  "confidence": "low"
+ },
+ "a826": {
+  "label": "fish",
+  "what": "pale elongated goby-shaped fish with head and tapering tail, similar to other gobies swimming over the mat",
+  "confidence": "high"
+ },
+ "a238": {
+  "label": "fish",
+  "what": "elongated pale spindle-shaped body lying at the mat edge, likely a goby",
+  "confidence": "medium"
+ },
+ "a2450": {
+  "label": "fish",
+  "what": "faint slender fish silhouette swimming over the green sand/algae next to the mat edge",
+  "confidence": "medium"
+ },
+ "a2257": {
+  "label": "fish",
+  "what": "faint, blurry elongated pale shape, likely a small or out-of-focus goby, though it could be a debris strand",
+  "confidence": "low"
+ },
+ "a1781": {
+  "label": "no animal",
+  "what": "small pale teardrop-shaped object on the mat, likely a small snail or debris; too small and shapeless for a goby",
+  "confidence": "medium"
+ },
+ "a1181": {
+  "label": "no animal",
+  "what": "small pale elongated speck on the mat, much smaller than the gobies; likely a particle or debris",
+  "confidence": "medium"
+ },
+ "a2553": {
+  "label": "fish",
+  "what": "small, thin, pale elongated shape with a brighter end like a head, possibly a tiny juvenile fish, but it could also be debris",
+  "confidence": "low"
+ },
+ "a47": {
+  "label": "no animal",
+  "what": "thin pale curved strand, likely debris or a bit of algae on the mat; no fish-like head or body shape",
+  "confidence": "medium"
+ },
+ "a1175": {
+  "label": "fish",
+  "what": "faint elongated pale diagonal shape near the right mat edge, likely a blurry goby",
+  "confidence": "low"
+ },
+ "a2782": {
+  "label": "unclear",
+  "what": "faint pale diagonal streak on the green area off the mat; could be a blurry goby or a piece of algae",
+  "confidence": "low"
+ },
+ "a2151": {
+  "label": "fish",
+  "what": "elongated pale goby-like fish near top edge of mat, similar to other gobies in frame",
+  "confidence": "medium"
+ },
+ "a2549": {
+  "label": "fish",
+  "what": "pale, curved elongated body at the mat edge, similar in size and color to the gobies on the mat",
+  "confidence": "low"
+ },
+ "a1653": {
+  "label": "fish",
+  "what": "pale elongated curved shape cut by the bottom frame edge, likely part of a goby, though it could be a pale piece of algae",
+  "confidence": "low"
+ },
+ "a2735": {
+  "label": "unclear",
+  "what": "faint pale diagonal streak on the green algae near the mat edge; could be a blurry goby or just a light patch of algae",
+  "confidence": "low"
+ },
+ "a1677": {
+  "label": "fish",
+  "what": "elongated pale goby with a tapering tail at the mat edge, head toward the sand, similar to the goby lower in the frame",
+  "confidence": "medium"
+ },
+ "a2531": {
+  "label": "fish",
+  "what": "blurry pale elongated goby-shaped body at the lower-left edge of the mat, similar to the other gobies",
+  "confidence": "medium"
+ },
+ "a1551": {
+  "label": "fish",
+  "what": "faint, blurry elongated goby-shaped fish near top-right edge of mat, similar in shape to nearby goby",
+  "confidence": "medium"
+ },
+ "a2581": {
+  "label": "fish",
+  "what": "faint, thin elongated pale shape on the mat, possibly a small goby, but it could also be a piece of debris",
+  "confidence": "low"
+ },
+ "a1720": {
+  "label": "no animal",
+  "what": "small pale object near the bait box, likely a small snail or debris about 2-3 cm; no fish shape",
+  "confidence": "low"
+ },
+ "a888": {
+  "label": "fish",
+  "what": "faint pale elongated blob at the top frame edge, possibly a goby cut off by the edge",
+  "confidence": "low"
+ },
+ "a2008": {
+  "label": "unclear",
+  "what": "faint diagonal elongated streak at the frame edge on the sand/algae; could be an algae blade or a partly visible goby",
+  "confidence": "low"
+ },
+ "a279": {
+  "label": "fish",
+  "what": "faint pale elongated slender shape on the mat, possibly a small goby seen from above, but it could also be debris",
+  "confidence": "low"
+ },
+ "a2513": {
+  "label": "fish",
+  "what": "elongated pale goby-like fish swimming near top edge of mat, similar in shape to other gobies in frame",
+  "confidence": "medium"
+ },
+ "a1323": {
+  "label": "fish",
+  "what": "faint pale elongated shape on the algae/sand right of the mat, possibly a small goby, but blurry and smaller than the gobies on the mat",
+  "confidence": "low"
+ },
+ "a525": {
+  "label": "fish",
+  "what": "faint, blurry pale elongated goby-like shape near the right edge of the mat, matching the other gobies in size and orientation",
+  "confidence": "medium"
+ },
+ "a2713": {
+  "label": "fish",
+  "what": "faint elongated goby-like shape near the top edge of the mat, similar in size and shape to the other gobies in the frame",
+  "confidence": "medium"
+ },
+ "a836": {
+  "label": "fish",
+  "what": "faint pale elongated shape near the top edge of the mat, matching the size and colour of the gobies nearby; likely a blurry goby",
+  "confidence": "medium"
+ },
+ "a1526": {
+  "label": "no animal",
+  "what": "small pale blurry blob near the mat edge, likely a small snail or debris; too small and compact for a goby",
+  "confidence": "low"
+ },
+ "a1775": {
+  "label": "unclear",
+  "what": "small pale elongated object with a thin filament, possibly a small shrimp or a piece of debris; too small and blurry to tell",
+  "confidence": "low"
+ },
+ "a2294": {
+  "label": "fish",
+  "what": "faint, elongated, tapered pale shape like a small goby, blurred and possibly swimming above the mat",
+  "confidence": "medium"
+ },
+ "a2254": {
+  "label": "fish",
+  "what": "pale, blurry, curved elongated body at the mat's lower-left edge, goby-sized and goby-shaped, likely a goby",
+  "confidence": "low"
+ },
+ "a701": {
+  "label": "fish",
+  "what": "faint elongated goby-shaped body, similar to other gobies on the mat, head down",
+  "confidence": "medium"
+ },
+ "a2814": {
+  "label": "fish",
+  "what": "pale, elongated, slightly curved goby-like body with a dark eye spot at the mat edge, matching the size and shape of the other gobies in the frame",
+  "confidence": "medium"
+ },
+ "a668": {
+  "label": "no animal",
+  "what": "faint thin pale streak, likely a floating particle or debris; much smaller and fainter than the fish in the frame",
+  "confidence": "low"
+ },
+ "a1689": {
+  "label": "no animal",
+  "what": "small pale blob at the mat edge, most likely a small snail; a faint streak beside it could be a blurred goby, but it is too small to tell",
+  "confidence": "low"
+ },
+ "a804": {
+  "label": "fish",
+  "what": "faint elongated pale goby-shaped body near the left mat edge, same size and shape as the other gobies",
+  "confidence": "medium"
+ },
+ "a1750": {
+  "label": "no animal",
+  "what": "small pale oval object on the bait box edge, most likely a small snail similar to the other pale blobs nearby",
+  "confidence": "medium"
+ },
+ "a1763": {
+  "label": "fish",
+  "what": "pale, elongated goby-like shape with a rounded body and tapering tail, lying on the mat near its top edge",
+  "confidence": "medium"
+ },
+ "a1298": {
+  "label": "no animal",
+  "what": "small pale V-shaped particle, likely a piece of debris or algae on the mat; far smaller than the nearby goby",
+  "confidence": "medium"
+ },
+ "a552": {
+  "label": "fish",
+  "what": "faint, blurry elongated goby swimming diagonally on the mat, similar in shape to other gobies in frame",
+  "confidence": "medium"
+ },
+ "a1734": {
+  "label": "no animal",
+  "what": "small pale rounded blob on the edge of the bait box, likely a small snail or debris; not elongated like a goby",
+  "confidence": "medium"
+ },
+ "a2162": {
+  "label": "fish",
+  "what": "pale elongated goby-like shape with a wider head and tapering tail at the lower edge of the mat",
+  "confidence": "medium"
+ },
+ "a2272": {
+  "label": "fish",
+  "what": "pale elongated goby-like body cut by the top frame edge, partly visible on the mat",
+  "confidence": "low"
+ },
+ "a805": {
+  "label": "fish",
+  "what": "very faint, blurry pale elongated shape near the right edge of the mat, possibly an out-of-focus goby",
+  "confidence": "low"
+ },
+ "a1649": {
+  "label": "fish",
+  "what": "pale elongated shape at the bottom frame edge, possibly a goby cut off by the edge",
+  "confidence": "low"
+ },
+ "a2534": {
+  "label": "fish",
+  "what": "faint elongated pale goby-like shape at the top edge of the frame, partly cut off",
+  "confidence": "medium"
+ },
+ "a2908": {
+  "label": "fish",
+  "what": "pale, speckled elongated body at the mat edge, likely a goby resting there; could also be a piece of algae",
+  "confidence": "low"
+ },
+ "a2651": {
+  "label": "fish",
+  "what": "faint, elongated pale shape on the dark mat, likely a small blurry goby similar to the other faint fish in the frame",
+  "confidence": "medium"
+ },
+ "a2525": {
+  "label": "fish",
+  "what": "pale, blurry, curved elongated body at the mat edge, likely a goby bending its body",
+  "confidence": "low"
+ },
+ "a2896": {
+  "label": "fish",
+  "what": "faint pale elongated tapering shape on the green sand by the mat corner, likely a goby",
+  "confidence": "low"
+ },
+ "a795": {
+  "label": "fish",
+  "what": "faint goby with pale head and tapering body, similar to the other gobies over the mat",
+  "confidence": "medium"
+ },
+ "a2580": {
+  "label": "fish",
+  "what": "faint, dark, slender tapered shape on the green area left of the mat, likely a blurry goby",
+  "confidence": "low"
+ },
+ "a1094": {
+  "label": "no animal",
+  "what": "faint small pale elongated streak, much smaller than the gobies in the frame; likely a drifting particle or debris",
+  "confidence": "low"
+ },
+ "a2967": {
+  "label": "fish",
+  "what": "faint, elongated pale shape on the mat, likely a small blurry goby",
+  "confidence": "low"
+ },
+ "a2480": {
+  "label": "unclear",
+  "what": "faint pale elongated streak on the mat, much smaller and dimmer than the nearby gobies; could be an algae fragment or a tiny blurry fish",
+  "confidence": "low"
+ },
+ "a2903": {
+  "label": "fish",
+  "what": "faint pale elongated goby-like shape lying diagonally on the green area beside the mat edge",
+  "confidence": "low"
+ },
+ "a1593": {
+  "label": "fish",
+  "what": "faint elongated goby-like body lying diagonally on the sand just off the mat edge",
+  "confidence": "medium"
+ },
+ "a1559": {
+  "label": "no animal",
+  "what": "small pale blurry blob near the mat edge, likely a small snail or debris; too small and indistinct for a goby",
+  "confidence": "low"
+ },
+ "a2692": {
+  "label": "fish",
+  "what": "pale elongated, slightly curved goby-like body at the lower-left edge of the mat",
+  "confidence": "medium"
+ },
+ "a1433": {
+  "label": "no animal",
+  "what": "small pale blob near the mat edge, likely a small snail or debris; no clear fish shape (body/tail)",
+  "confidence": "low"
+ },
+ "a2409": {
+  "label": "fish",
+  "what": "faint pale elongated goby-like shape lying diagonally on the green area near the mat corner",
+  "confidence": "low"
+ },
+ "a2429": {
+  "label": "fish",
+  "what": "faint pale elongated shape on the green seabed off the mat, possibly a blurry goby; could also be a piece of algae",
+  "confidence": "low"
+ },
+ "a2683": {
+  "label": "no animal",
+  "what": "pale elongated blade-like shape at the mat edge, probably a piece of algae; too large and shapeless compared with the goby visible at the top of the frame",
+  "confidence": "low"
+ },
+ "a2706": {
+  "label": "fish",
+  "what": "faint pale elongated shape on the green sand off the mat, possibly a blurry goby",
+  "confidence": "low"
+ },
+ "a2236": {
+  "label": "fish",
+  "what": "pale elongated goby-like shape cut by the top frame edge, similar to the nearby gobies",
+  "confidence": "medium"
+ },
+ "a2488": {
+  "label": "fish",
+  "what": "pale elongated, slightly curved goby-shaped body at the mat's left edge, similar in size and shape to the other gobies",
+  "confidence": "medium"
+ },
+ "a497": {
+  "label": "no animal",
+  "what": "small pale out-of-focus blob, likely a floating particle or debris (not elongated like the gobies nearby)",
+  "confidence": "medium"
+ },
+ "a2168": {
+  "label": "fish",
+  "what": "elongated pale goby-shaped body swimming over the mat, similar to other gobies in frame",
+  "confidence": "medium"
+ },
+ "a716": {
+  "label": "fish",
+  "what": "faint elongated pale shape near the mat edge, likely a blurry goby swimming above the mat",
+  "confidence": "low"
+ },
+ "a1110": {
+  "label": "fish",
+  "what": "Blurry pale elongated shape with a brighter head end, probably a goby swimming above the mat out of focus; could also be a small snail or debris",
+  "confidence": "low"
+ },
+ "a382": {
+  "label": "fish",
+  "what": "faint, blurry pale elongated shape similar to the gobies swimming nearby, likely a small or partly hidden fish",
+  "confidence": "low"
+ },
+ "a685": {
+  "label": "unclear",
+  "what": "faint, blurry pale elongated blob on the mat; could be an out-of-focus fish or a particle",
+  "confidence": "low"
+ },
+ "a2274": {
+  "label": "fish",
+  "what": "pale, elongated, curved goby-like body lying at the lower-left edge of the mat",
+  "confidence": "medium"
+ },
+ "a2154": {
+  "label": "unclear",
+  "what": "Faint, diffuse pale diagonal smear at the corner of the bait box. It could be a motion-blurred goby, glare or turbidity, but there is no clear fish outline.",
+  "confidence": "low"
+ },
+ "a2659": {
+  "label": "fish",
+  "what": "pale, elongated, tapering blurry shape on the green area right of the mat; likely a small goby",
+  "confidence": "medium"
+ },
+ "a161": {
+  "label": "no animal",
+  "what": "thin pale elongated streak, likely a piece of algae or debris near the mat edge",
+  "confidence": "medium"
+ },
+ "a2441": {
+  "label": "fish",
+  "what": "pale, curved, elongated goby-like body at the mat's lower-left corner, matching the size and colour of the other gobies",
+  "confidence": "medium"
+ },
+ "a2845": {
+  "label": "fish",
+  "what": "pale elongated shape, likely a small goby pointing upward next to another fish, though it could be debris",
+  "confidence": "low"
+ },
+ "a2973": {
+  "label": "no animal",
+  "what": "pale greenish elongated blob at the mat's left edge, probably a piece of algae; its colour matches the surrounding algae rather than the tan gobies, but it could be a curved, blurry goby",
+  "confidence": "low"
+ },
+ "a1729": {
+  "label": "no animal",
+  "what": "small pale curled object on the bait box, likely a small snail (shell with siphon), not a fish",
+  "confidence": "medium"
+ },
+ "a445": {
+  "label": "fish",
+  "what": "faint, blurry elongated pale shape, likely a small goby swimming above the mat",
+  "confidence": "low"
+ },
+ "a1956": {
+  "label": "non-fish",
+  "what": "curved pale leg tip of the spider crab at the bottom edge of the frame",
+  "confidence": "medium"
+ },
+ "a2459": {
+  "label": "fish",
+  "what": "faint elongated pale goby-shaped body lying on the mat near its left edge, similar to the other gobies in the frame",
+  "confidence": "medium"
+ },
+ "a2579": {
+  "label": "fish",
+  "what": "faint elongated pale tapered shape on the green area beside the mat, likely a blurry goby",
+  "confidence": "low"
+ },
+ "a1460": {
+  "label": "fish",
+  "what": "faint elongated pale shape on the sand beside the mat, likely a goby similar in size to nearby gobies",
+  "confidence": "medium"
+ },
+ "a673": {
+  "label": "fish",
+  "what": "faint elongated pale shape, likely a goby oriented vertically near the top-right edge of the mat, similar to the nearby gobies",
+  "confidence": "low"
+ },
+ "a2152": {
+  "label": "fish",
+  "what": "faint, pale, elongated mottled shape on the dark mat, possibly a blurry goby oriented vertically",
+  "confidence": "low"
+ },
+ "a2058": {
+  "label": "no animal",
+  "what": "thin pale elongated streak in the algae at the top edge, most likely a seagrass/algae blade rather than a goby",
+  "confidence": "low"
+ },
+ "a1577": {
+  "label": "fish",
+  "what": "faint, elongated pale shape on the green sand beside the mat; looks like a camouflaged goby",
+  "confidence": "low"
+ },
+ "a1092": {
+  "label": "fish",
+  "what": "faint pale elongated goby-like shape lying across the left edge of the mat, similar in size and color to the other gobies",
+  "confidence": "low"
+ },
+ "a8": {
+  "label": "non-fish",
+  "what": "pale curved jointed legs of a crab (likely a spider crab) cut off by the bottom frame edge",
+  "confidence": "medium"
+ },
+ "a2132": {
+  "label": "fish",
+  "what": "small pale elongated blob on the mat near the spider crab, possibly a small goby but could be a snail or debris",
+  "confidence": "low"
+ },
+ "a2815": {
+  "label": "fish",
+  "what": "faint pale elongated tapered shape on the green background, possibly a blurry goby; could also be an algae blade",
+  "confidence": "low"
+ },
+ "a417": {
+  "label": "fish",
+  "what": "very faint, blurry elongated pale shape near the mat edge, possibly an out-of-focus goby",
+  "confidence": "low"
+ },
+ "a1015": {
+  "label": "fish",
+  "what": "faint, blurred goby-shaped body with a darker head on the left and a tapering tail to the right, likely a goby swimming above the mat",
+  "confidence": "medium"
+ },
+ "a2412": {
+  "label": "fish",
+  "what": "likely a pale goby seen from above: bright head, faint spread pectoral fins and a faint body/tail extending downward",
+  "confidence": "low"
+ },
+ "a1039": {
+  "label": "fish",
+  "what": "faint, blurry elongated pale shape across the mat's right edge, likely a goby similar in size to the others",
+  "confidence": "low"
+ },
+ "a1728": {
+  "label": "fish",
+  "what": "pale elongated blurry shape at the lower edge of the bait box, likely a goby",
+  "confidence": "low"
+ },
+ "a2039": {
+  "label": "no animal",
+  "what": "small pale tapered object on the mat, about half the size of the goby at right; likely a small snail shell or debris rather than a fish",
+  "confidence": "low"
+ },
+ "a2516": {
+  "label": "fish",
+  "what": "faint, blurry elongated pale shape at the mat edge, likely a goby swimming diagonally",
+  "confidence": "low"
+ },
+ "a2863": {
+  "label": "fish",
+  "what": "blurry pale elongated goby-like fish at the mat edge, similar in shape and size to the other gobies in the frame",
+  "confidence": "medium"
+ },
+ "a2020": {
+  "label": "fish",
+  "what": "pale elongated goby-shaped body with a tapering tail, lying diagonally on the mat near the bait box",
+  "confidence": "medium"
+ },
+ "a2813": {
+  "label": "fish",
+  "what": "faint, blurry pale elongated shape near the right mat edge, likely an out-of-focus goby",
+  "confidence": "low"
+ },
+ "a2408": {
+  "label": "fish",
+  "what": "elongated pale goby-shaped fish at top edge of frame, similar to other gobies on the mat",
+  "confidence": "medium"
+ },
+ "a368": {
+  "label": "unclear",
+  "what": "very faint, elongated pale smear on the dark mat; possibly a blurred fish but too indistinct to tell",
+  "confidence": "low"
+ },
+ "a1174": {
+  "label": "no animal",
+  "what": "faint lighter patch on greenish sediment/algae beside mat edge, no animal shape",
+  "confidence": "medium"
+ },
+ "a134": {
+  "label": "fish",
+  "what": "small blurry elongated pale-orange shape over the dark mat, possibly a small goby swimming",
+  "confidence": "low"
+ },
+ "a2379": {
+  "label": "fish",
+  "what": "pale elongated goby-shaped body lying along the mat edge, similar in size and colour to the other gobies",
+  "confidence": "medium"
+ },
+ "a1967": {
+  "label": "fish",
+  "what": "elongated pale slender shape resembling a goby near the mat edge, blurry",
+  "confidence": "medium"
+ },
+ "a2398": {
+  "label": "fish",
+  "what": "faint elongated pale goby swimming over the mat near top edge, similar to other gobies in frame",
+  "confidence": "medium"
+ },
+ "a1747": {
+  "label": "fish",
+  "what": "pale, curved, elongated body with a rounded head and tapering tail, likely a sand goby on the mat",
+  "confidence": "low"
+ },
+ "a2405": {
+  "label": "fish",
+  "what": "pale, blurry, elongated curved body at the mat edge, resembling the gobies elsewhere in the frame",
+  "confidence": "medium"
+ },
+ "a1641": {
+  "label": "fish",
+  "what": "faint, slender pale shape with a brighter head and thin tapering body on the mat, likely a small fish seen from above, though it could be a thin piece of debris",
+  "confidence": "low"
+ },
+ "a1733": {
+  "label": "fish",
+  "what": "pale goby-shaped body with a tail fin, resting on top of the bait box",
+  "confidence": "medium"
+ },
+ "a2392": {
+  "label": "fish",
+  "what": "pale, elongated goby-shaped body at the mat's left edge, similar in size and colour to the other gobies in the frame",
+  "confidence": "medium"
+ },
+ "a1368": {
+  "label": "fish",
+  "what": "elongated pale goby, partly cut off by the top frame edge, tail pointing down",
+  "confidence": "medium"
+ },
+ "a7": {
+  "label": "no animal",
+  "what": "small pale curved filament of debris/algae, like the many other particles scattered on the mat",
+  "confidence": "high"
+ },
+ "a475": {
+  "label": "fish",
+  "what": "pale elongated goby-like shape crossing the bottom edge of the mat, partly cut by the frame edge",
+  "confidence": "low"
+ },
+ "a1661": {
+  "label": "no animal",
+  "what": "thin pale streak with a bright end, most likely a filament or debris particle on the mat rather than a fish body",
+  "confidence": "low"
+ },
+ "a1694": {
+  "label": "fish",
+  "what": "small pale goby seen from above on the mat, head up and tail tapering down",
+  "confidence": "medium"
+ },
+ "a2673": {
+  "label": "fish",
+  "what": "pale elongated mottled body at the left mat edge, likely a goby seen from above",
+  "confidence": "medium"
+ },
+ "a1675": {
+  "label": "fish",
+  "what": "faint, thin elongated pale shape near the mat edge, possibly a small blurry goby, though it could be debris",
+  "confidence": "low"
+ },
+ "a2974": {
+  "label": "fish",
+  "what": "faint pale elongated shape on the green bottom beside the mat, possibly a blurry goby",
+  "confidence": "low"
+ },
+ "a1721": {
+  "label": "fish",
+  "what": "small pale goby-like shape with spread fins and a thin tail, seen from above next to the bait box",
+  "confidence": "low"
+ },
+ "a1759": {
+  "label": "fish",
+  "what": "pale goby seen from above with tail, next to another goby on the mat",
+  "confidence": "medium"
+ },
+ "a2122": {
+  "label": "no animal",
+  "what": "small pale oval blob near the frame edge, more likely a small snail or debris than a goby",
+  "confidence": "low"
+ },
+ "a2189": {
+  "label": "no animal",
+  "what": "small pale blob at the mat edge, much smaller than the gobies; likely a small snail or debris",
+  "confidence": "medium"
+ },
+ "a2686": {
+  "label": "fish",
+  "what": "blurry pale elongated goby-like shape at the mat's lower-left edge, wider head end with a tapering body",
+  "confidence": "medium"
+ },
+ "a844": {
+  "label": "fish",
+  "what": "faint, blurry elongated pale shape matching the size and shape of the nearby gobies, likely a goby swimming above the mat",
+  "confidence": "medium"
+ },
+ "a2449": {
+  "label": "no animal",
+  "what": "small pale elongated speck, likely debris or a floating particle; much smaller than the gobies in the frame and lacking fish shape",
+  "confidence": "medium"
+ },
+ "a1695": {
+  "label": "no animal",
+  "what": "small pale irregular fragment on the mat, likely debris (shell or algae piece) or a small snail",
+  "confidence": "medium"
+ },
+ "a1379": {
+  "label": "fish",
+  "what": "elongated pale goby-like shape at the top frame edge, partly cut off",
+  "confidence": "medium"
+ },
+ "a1901": {
+  "label": "fish",
+  "what": "elongated pale goby-like shape at the top frame edge, partly cut off; could be an algae blade",
+  "confidence": "low"
+ },
+ "a2426": {
+  "label": "fish",
+  "what": "pale elongated goby-shaped body lying at the left edge of the mat, similar to the other gobies in the frame",
+  "confidence": "medium"
+ },
+ "a1703": {
+  "label": "fish",
+  "what": "pale elongated body with a thin tail-like tip, likely a goby on the mat; could also be a pale snail shell",
+  "confidence": "low"
+ },
+ "a1584": {
+  "label": "unclear",
+  "what": "small faint pale curved blob near the mat edge, much smaller than the nearby gobies; could be debris, a snail or a small translucent animal",
+  "confidence": "low"
+ },
+ "a1425": {
+  "label": "fish",
+  "what": "blurry elongated goby-shaped dark form on the green sand just right of the mat edge, similar to other gobies nearby",
+  "confidence": "medium"
+ },
+ "a1795": {
+  "label": "no animal",
+  "what": "thin pale greenish elongated streak at the frame edge, most likely a blade or strand of algae; could possibly be a slender fish entering the frame",
+  "confidence": "low"
+ },
+ "a2439": {
+  "label": "fish",
+  "what": "pale elongated, fish-like body cut by the bottom frame edge, likely a goby partly visible; could also be an algae blade",
+  "confidence": "low"
+ },
+ "a936": {
+  "label": "fish",
+  "what": "faint elongated pale goby-shaped body near the lower mat edge, similar to the other gobies in the frame",
+  "confidence": "medium"
+ },
+ "a1592": {
+  "label": "fish",
+  "what": "faint, pale, elongated goby-like shape lying diagonally on the green sand/algae beside the mat, similar to the visible gobies",
+  "confidence": "medium"
+ },
+ "a2319": {
+  "label": "fish",
+  "what": "faint pale elongated shape on the green algae next to the mat edge, possibly a goby partly cut off by the bottom of the frame",
+  "confidence": "low"
+ },
+ "a1225": {
+  "label": "fish",
+  "what": "faint, pale, elongated slender body near the bait box, similar in size and tone to the other gobies in the frame",
+  "confidence": "medium"
+ },
+ "a2817": {
+  "label": "no animal",
+  "what": "faint diagonal streak on the dark mat, likely a particle or debris with no recognizable animal shape",
+  "confidence": "medium"
+ },
+ "a1423": {
+  "label": "fish",
+  "what": "elongated pale, goby-like shape with a shadow on the sand beside the mat; probably a camouflaged goby, but it could be a sand ripple",
+  "confidence": "low"
+ },
+ "a2343": {
+  "label": "fish",
+  "what": "faint, small elongated pale shape lying diagonally, likely a small or blurred goby next to the larger goby on the right",
+  "confidence": "low"
+ },
+ "a1929": {
+  "label": "non-fish",
+  "what": "pale translucent elongated animal near the top edge, likely a shrimp given its segmented look and leg-like appendages, though it could be a pale goby",
+  "confidence": "low"
+ },
+ "a2290": {
+  "label": "fish",
+  "what": "faint elongated goby-shaped body near the mat's left edge, similar in size and shape to the other gobies",
+  "confidence": "medium"
+ },
+ "a1742": {
+  "label": "unclear",
+  "what": "pale blurry blob on the side of the bait box, possibly a small crab or a goby, shape not resolvable",
+  "confidence": "low"
+ },
+ "a1992": {
+  "label": "non-fish",
+  "what": "legs and lower body of a pale spider crab on the mat",
+  "confidence": "high"
+ },
+ "a993": {
+  "label": "fish",
+  "what": "faint elongated pale goby-shaped body on the mat, similar in size and shape to the other gobies",
+  "confidence": "medium"
+ },
+ "a2788": {
+  "label": "fish",
+  "what": "faint pale elongated shape on the green bottom off the mat, possibly a blurry goby",
+  "confidence": "low"
+ },
+ "a1085": {
+  "label": "fish",
+  "what": "faint, pale, elongated goby-like shape near the right edge of the mat, matching the other gobies in the frame",
+  "confidence": "medium"
+ },
+ "a1745": {
+  "label": "no animal",
+  "what": "pale irregular fragment (likely algae piece or small snail) on the bait box edge, matching other debris on the mat",
+  "confidence": "medium"
+ },
+ "a2670": {
+  "label": "fish",
+  "what": "faint, elongated pale fish (likely a goby) swimming above the mat, eye-like spot visible",
+  "confidence": "medium"
+ },
+ "a2165": {
+  "label": "fish",
+  "what": "elongated pale goby lying just above the bait box, similar in shape to the other gobies on the mat",
+  "confidence": "high"
+ },
+ "a2960": {
+  "label": "fish",
+  "what": "very faint pale elongated shape on the mat, possibly a blurry goby, but it could be particles",
+  "confidence": "low"
+ },
+ "a1700": {
+  "label": "no animal",
+  "what": "small pale conical object with ridges, likely a small snail shell on the mat",
+  "confidence": "medium"
+ },
+ "a1973": {
+  "label": "fish",
+  "what": "small elongated pale goby-like fish at the mat edge, similar in shape to the other gobies in the frame",
+  "confidence": "medium"
+ },
+ "a870": {
+  "label": "no animal",
+  "what": "small pale blurry blob on the sand/algae beyond the mat edge, likely a particle, debris or small snail",
+  "confidence": "medium"
+ },
+ "a1907": {
+  "label": "fish",
+  "what": "small pale elongated fish-like shape, possibly a juvenile goby, much smaller than the other gobies; could also be debris",
+  "confidence": "low"
+ },
+ "a2723": {
+  "label": "fish",
+  "what": "faint pale elongated shape on the green sand off the mat, possibly a blurry goby",
+  "confidence": "low"
+ },
+ "a58": {
+  "label": "no animal",
+  "what": "thin elongated pale strand on the mat, likely a piece of algae or debris rather than a fish",
+  "confidence": "medium"
+ },
+ "a784": {
+  "label": "no animal",
+  "what": "small faint pale streak, much smaller than the nearby gobies; likely a particle or debris on the mat",
+  "confidence": "medium"
+ },
+ "a1159": {
+  "label": "no animal",
+  "what": "faint thin pale filament (algae strand or thread) crossing the mat edge, no fish body or head visible",
+  "confidence": "medium"
+ },
+ "a2283": {
+  "label": "fish",
+  "what": "faint elongated pale shape on the green area near the mat corner, likely a goby",
+  "confidence": "low"
+ },
+ "a2837": {
+  "label": "no animal",
+  "what": "thin straight pale strip at the top edge of the bait box, likely a label or tape on the box, not an animal",
+  "confidence": "high"
+ },
+ "a663": {
+  "label": "fish",
+  "what": "faint elongated, tapered dark shape on the sand left of the mat; likely a goby",
+  "confidence": "medium"
+ },
+ "a565": {
+  "label": "fish",
+  "what": "faint elongated goby-shaped shape over the sand left of the mat, similar in size to the gobies on the mat",
+  "confidence": "low"
+ },
+ "a2693": {
+  "label": "fish",
+  "what": "pale, curved elongated body at the mat edge, possibly a blurry goby; could also be a shrimp",
+  "confidence": "low"
+ },
+ "a953": {
+  "label": "fish",
+  "what": "faint, blurry elongated pale shape near the top edge of the mat, similar in form to the nearby gobies, possibly a goby swimming out of focus",
+  "confidence": "low"
+ },
+ "a2665": {
+  "label": "fish",
+  "what": "slender pale elongated fish shape, likely a goby swimming above the mat, with a thicker head end tapering to a tail",
+  "confidence": "medium"
+ },
+ "a1662": {
+  "label": "unclear",
+  "what": "small pale yellowish blob cut by the bottom frame edge; too little visible to tell if it is a fish, a snail or debris",
+  "confidence": "low"
+ },
+ "a1458": {
+  "label": "unclear",
+  "what": "faint pale translucent blob near the mat edge; could be a small snail, a shrimp or a blurry small fish",
+  "confidence": "low"
+ },
+ "a1472": {
+  "label": "no animal",
+  "what": "small pale blurry blob on the mat near its edge, smaller than the gobies; likely debris or a small snail",
+  "confidence": "low"
+ },
+ "a2306": {
+  "label": "fish",
+  "what": "faint elongated tapered shape near the mat edge, possibly a blurry goby on the green background",
+  "confidence": "low"
+ },
+ "a732": {
+  "label": "fish",
+  "what": "pale elongated goby body cut by the top frame edge, near another goby",
+  "confidence": "medium"
+ },
+ "a2787": {
+  "label": "unclear",
+  "what": "small pale tadpole-shaped object, bright round head with thin tail, much smaller than the gobies; could be a tiny juvenile fish or drifting debris",
+  "confidence": "low"
+ },
+ "a2637": {
+  "label": "unclear",
+  "what": "small pale blurry blob on the green algae at the right frame edge; could be part of a goby cut by the edge or just a pale particle",
+  "confidence": "low"
+ },
+ "a803": {
+  "label": "fish",
+  "what": "pale elongated goby-shaped body oriented vertically near the lower mat edge, similar to the other gobies in the frame",
+  "confidence": "medium"
+ },
+ "a2350": {
+  "label": "fish",
+  "what": "pale elongated goby-like body lying along the left edge of the mat, similar in shape and color to the other gobies",
+  "confidence": "medium"
+ },
+ "a1696": {
+  "label": "no animal",
+  "what": "small pale snail-like object with tentacles on the mat, about 2-3 cm",
+  "confidence": "medium"
+ },
+ "a1255": {
+  "label": "fish",
+  "what": "faint elongated pale goby-shaped body, similar to the other gobies on the mat",
+  "confidence": "medium"
+ },
+ "a2407": {
+  "label": "fish",
+  "what": "pale elongated goby seen from above next to the bait box, head pointing up",
+  "confidence": "medium"
+ },
+ "a2523": {
+  "label": "fish",
+  "what": "faint slender pale goby lying diagonally across the left edge of the mat, similar in shape to the other gobies",
+  "confidence": "medium"
+ },
+ "a1426": {
+  "label": "no animal",
+  "what": "small pale compact blob on the mat near its edge, likely debris or a small snail, not elongated like the gobies",
+  "confidence": "medium"
+ },
+ "a2605": {
+  "label": "fish",
+  "what": "pale, curved, elongated body at the mat's lower-left edge, goby-sized and shaped like a bending goby, though it could be an algae frond",
+  "confidence": "low"
+ },
+ "a2927": {
+  "label": "fish",
+  "what": "pale, elongated, slightly curved goby-like shape lying along the left edge of the mat, similar in size and colour to the gobies on the mat",
+  "confidence": "low"
+ },
+ "a2921": {
+  "label": "fish",
+  "what": "pale elongated goby lying along the left edge of the mat, similar in shape to the other gobies in the frame",
+  "confidence": "medium"
+ },
+ "a283": {
+  "label": "non-fish",
+  "what": "pale long-legged animal with thin radiating legs, likely a spider crab (or brittle star) at top edge of mat",
+  "confidence": "high"
+ },
+ "a1224": {
+  "label": "fish",
+  "what": "faint elongated pale goby-like fish over the dark mat near its right edge, similar in shape to the other gobies in the frame",
+  "confidence": "medium"
+ },
+ "a2428": {
+  "label": "fish",
+  "what": "elongated pale goby-like shape at the top edge of the frame on the mat, partly cut off",
+  "confidence": "medium"
+ },
+ "a2807": {
+  "label": "no animal",
+  "what": "green patch at the mat's left edge, likely a gap or fold in the mat showing the background, or a piece of algae; no fish features",
+  "confidence": "medium"
+ },
+ "a199": {
+  "label": "non-fish",
+  "what": "pale crustacean (crab-like legs/claws, possibly a shrimp or spider crab) on the sand at the mat edge",
+  "confidence": "medium"
+ },
+ "a2847": {
+  "label": "fish",
+  "what": "faint pale elongated goby-like shape on the green seabed just off the mat edge, though it could be an algae blade",
+  "confidence": "low"
+ },
+ "a2831": {
+  "label": "fish",
+  "what": "faint pale elongated shape on the green area at the bottom-left edge, possibly a blurry goby",
+  "confidence": "low"
+ },
+ "a2575": {
+  "label": "fish",
+  "what": "pale elongated goby-like fish at the lower-left edge of the mat, blurry",
+  "confidence": "medium"
+ },
+ "a624": {
+  "label": "fish",
+  "what": "faint, blurry elongated pale shape about goby-sized near the mat edge, possibly a motion-blurred goby",
+  "confidence": "low"
+ },
+ "a2532": {
+  "label": "fish",
+  "what": "faint elongated, fish-shaped darker shape on the green seabed just left of the mat edge, likely a goby",
+  "confidence": "low"
+ },
+ "a879": {
+  "label": "unclear",
+  "what": "faint pale elongated blob at the top frame edge; could be part of a goby cut off by the edge, or a blurry particle",
+  "confidence": "low"
+ },
+ "a1646": {
+  "label": "unclear",
+  "what": "small blurry yellowish blob cut by the bottom frame edge; possibly part of a goby but too little is visible",
+  "confidence": "low"
+ },
+ "a744": {
+  "label": "fish",
+  "what": "blurry elongated pale shape tapering at one end, resembling the gobies elsewhere in the frame, likely a goby swimming above the mat",
+  "confidence": "medium"
+ },
+ "a2587": {
+  "label": "fish",
+  "what": "pale elongated blurry shape at the mat's lower-left corner, size and shape like the gobies higher up in the frame; could also be a piece of algae",
+  "confidence": "low"
+ },
+ "a2594": {
+  "label": "fish",
+  "what": "pale elongated, slightly curved goby-shaped body at the mat edge, similar in colour and size to the other gobies in the frame",
+  "confidence": "medium"
+ },
+ "a2049": {
+  "label": "fish",
+  "what": "elongated pale fish-shaped body, likely a goby on the sand beside the mat",
+  "confidence": "medium"
+ },
+ "a2796": {
+  "label": "no animal",
+  "what": "small pale elongated streak on the mat, far smaller than the gobies nearby; likely a particle or piece of debris",
+  "confidence": "medium"
+ },
+ "a96": {
+  "label": "unclear",
+  "what": "small pale yellowish blob cut off by the bottom frame edge; possibly part of a goby, but too little is visible to tell",
+  "confidence": "low"
+ },
+ "a1710": {
+  "label": "fish",
+  "what": "small pale elongated body tapering to a tail, likely a goby on the mat",
+  "confidence": "low"
+ },
+ "a167": {
+  "label": "no animal",
+  "what": "thin pale wavy strand on the mat, likely a piece of algae or debris filament",
+  "confidence": "medium"
+ },
+ "a1790": {
+  "label": "no animal",
+  "what": "small pale object, likely a small snail or shell debris (~2-3 cm) at the top edge of the mat",
+  "confidence": "medium"
+ },
+ "a1233": {
+  "label": "unclear",
+  "what": "faint, blurry elongated pale streak; could be a small fish or a drifting particle",
+  "confidence": "low"
+ },
+ "a2624": {
+  "label": "unclear",
+  "what": "faint pale elongated streak on the green area off the mat; could be a blurry goby or a blade of algae",
+  "confidence": "low"
+ },
+ "a2710": {
+  "label": "fish",
+  "what": "pale, curved elongated body at the mat's lower-left edge, likely a goby, though it could be a piece of algae",
+  "confidence": "low"
+ },
+ "a2948": {
+  "label": "fish",
+  "what": "pale elongated, slightly curved goby-shaped body at the mat edge, similar in size and colour to the other gobies in the frame",
+  "confidence": "medium"
+ },
+ "a59": {
+  "label": "fish",
+  "what": "elongated pale body cut by the top frame edge, likely a goby partly out of view",
+  "confidence": "medium"
+ },
+ "a1900": {
+  "label": "fish",
+  "what": "elongated pale goby lying on the sand patch, next to another goby",
+  "confidence": "medium"
+ },
+ "a745": {
+  "label": "no animal",
+  "what": "faint pale blurry blob, likely a suspended particle or debris rather than a fish",
+  "confidence": "low"
+ },
+ "a2221": {
+  "label": "fish",
+  "what": "faint, small elongated pale shape, possibly a small or blurry goby, but it could also be debris",
+  "confidence": "low"
+ },
+ "a1545": {
+  "label": "fish",
+  "what": "pale elongated shape cut by the bottom frame edge near the mat edge, likely part of a goby",
+  "confidence": "low"
+ },
+ "a1602": {
+  "label": "fish",
+  "what": "blurry elongated pale goby-shaped body lying on the sand just beside the mat edge",
+  "confidence": "medium"
+ },
+ "a1441": {
+  "label": "fish",
+  "what": "faint pale curved shape near the mat edge, possibly a goby bending as it turns; could also be debris",
+  "confidence": "low"
+ },
+ "a2421": {
+  "label": "fish",
+  "what": "faint pale elongated tapering shape on the green sand beside the mat, likely a small goby",
+  "confidence": "low"
+ },
+ "a2505": {
+  "label": "fish",
+  "what": "faint elongated goby-like body cut by the top frame edge, similar in shape and color to the other gobies on the mat",
+  "confidence": "medium"
+ },
+ "a1578": {
+  "label": "no animal",
+  "what": "thin straight pale sliver, likely debris or a piece of algae near the mat edge; too small and uniform to be a goby",
+  "confidence": "medium"
+ },
+ "a813": {
+  "label": "fish",
+  "what": "faint elongated pale shape at the top edge of the mat, likely a goby similar in size and shape to the other gobies swimming nearby",
+  "confidence": "low"
+ },
+ "a1743": {
+  "label": "no animal",
+  "what": "small round pale blob at the box edge, most likely a small snail or debris",
+  "confidence": "low"
+ },
+ "a1738": {
+  "label": "no animal",
+  "what": "small pale triangular blob on the bait box edge, likely a small snail or a piece of debris/bait",
+  "confidence": "low"
+ },
+ "a1655": {
+  "label": "fish",
+  "what": "faint elongated diagonal shape on the green sand at the right frame edge, possibly a blurry goby",
+  "confidence": "low"
+ },
+ "a1640": {
+  "label": "fish",
+  "what": "pale elongated, slightly curved body cut by the bottom frame edge, similar in colour and shape to the goby on the mat; could also be an algae strand",
+  "confidence": "low"
+ },
+ "a2874": {
+  "label": "fish",
+  "what": "faint, slender, elongated pale shape, possibly a small blurry goby swimming above the mat; could also be debris",
+  "confidence": "low"
+ },
+ "a2741": {
+  "label": "unclear",
+  "what": "faint pale elongated streak on the green area off the mat; could be a blurry goby or a piece of algae",
+  "confidence": "low"
+ },
+ "a1061": {
+  "label": "unclear",
+  "what": "faint, blurry pale smudge at the mat edge; possibly a faded goby but could be a particle or reflection",
+  "confidence": "low"
+ },
+ "a1410": {
+  "label": "fish",
+  "what": "faint pale elongated shape on the green bottom beside the mat, likely a camouflaged goby",
+  "confidence": "low"
+ },
+ "a667": {
+  "label": "fish",
+  "what": "very faint, thin diagonal streak on the dark mat near its lower-right edge; it may be a motion-blurred goby, but it could also be a mat fold",
+  "confidence": "low"
+ },
+ "a74": {
+  "label": "no animal",
+  "what": "thin, pale, curved strand on the mat, most likely a piece of algae or debris rather than a small fish",
+  "confidence": "low"
+ },
+ "a1591": {
+  "label": "no animal",
+  "what": "small pale blob near the mat edge, much smaller than the gobies nearby; likely a small snail or a piece of debris",
+  "confidence": "low"
+ },
+ "a2461": {
+  "label": "fish",
+  "what": "faint slender pale shape cut by the top frame edge, likely part of a goby; could also be a thin algae strand",
+  "confidence": "low"
+ },
+ "a2543": {
+  "label": "no animal",
+  "what": "thin, straight, pale line running diagonally to the frame edge; looks like a thread or stick of debris rather than a fish body (no head or tail shape)",
+  "confidence": "medium"
+ },
+ "a2016": {
+  "label": "no animal",
+  "what": "thin dark curved streak at the top frame edge, likely an algae strand rather than a fish",
+  "confidence": "low"
+ },
+ "a1974": {
+  "label": "fish",
+  "what": "pale elongated goby-like shape at the mat edge, blurry, similar to the other gobies along the edge",
+  "confidence": "medium"
+ },
+ "a2599": {
+  "label": "fish",
+  "what": "pale goby with its body sharply bent while turning, similar in color and size to the other gobies on the mat",
+  "confidence": "medium"
+ },
+ "a1243": {
+  "label": "fish",
+  "what": "pale elongated goby just above the bait box, blurry but same shape and colour as other gobies in frame",
+  "confidence": "medium"
+ },
+ "a1208": {
+  "label": "fish",
+  "what": "faint elongated pale shape at the top frame edge, likely a goby partly out of frame",
+  "confidence": "low"
+ },
+ "a694": {
+  "label": "fish",
+  "what": "elongated pale goby seen from above, oriented vertically, similar to other gobies on the mat",
+  "confidence": "medium"
+ },
+ "a224": {
+  "label": "fish",
+  "what": "small pale elongated animal, likely a pale goby seen from above (thick head, tapering tail); could also be a shrimp",
+  "confidence": "low"
+ },
+ "a2469": {
+  "label": "fish",
+  "what": "faint, elongated pale shape about the size and shape of the nearby gobies, probably a blurred goby lying horizontally on the mat",
+  "confidence": "low"
+ },
+ "a354": {
+  "label": "no animal",
+  "what": "small whitish blob, much smaller and paler than the nearby gobies; likely a particle, debris or small snail",
+  "confidence": "medium"
+ },
+ "a1003": {
+  "label": "fish",
+  "what": "faint elongated pale goby near the right edge of the mat, diagonal orientation similar to other gobies",
+  "confidence": "medium"
+ },
+ "a444": {
+  "label": "fish",
+  "what": "faint elongated pale goby-like shape at the top-left edge of the mat, similar to the other gobies in the frame",
+  "confidence": "medium"
+ },
+ "a2823": {
+  "label": "fish",
+  "what": "blurry, slender pale elongated shape at the top edge of the mat, similar in size and shape to the other gobies in the frame; likely a goby",
+  "confidence": "medium"
+ },
+ "a2552": {
+  "label": "fish",
+  "what": "faint pale elongated tapered shape on the green area next to the mat edge; possibly a blurry goby, but it could also be a light patch of algae",
+  "confidence": "low"
+ },
+ "a1691": {
+  "label": "unclear",
+  "what": "small pale blob with a thin spike, about 3 cm; could be a small snail, a shrimp or a pale goby",
+  "confidence": "low"
+ },
+ "a2804": {
+  "label": "no animal",
+  "what": "small thin pale streak on the mat, much smaller than the nearby gobies; likely debris or an algae fragment",
+  "confidence": "medium"
+ },
+ "a578": {
+  "label": "fish",
+  "what": "small pale goby swimming above the mat, elongated body with tapering tail, similar to nearby gobies",
+  "confidence": "high"
+ },
+ "a563": {
+  "label": "fish",
+  "what": "faint elongated goby-shaped body, similar in shape and size to the other gobies around the bait box, slightly blurred",
+  "confidence": "medium"
+ },
+ "a2401": {
+  "label": "fish",
+  "what": "faint pale elongated shape on the green sand near the mat corner, likely a goby",
+  "confidence": "low"
+ },
+ "a702": {
+  "label": "fish",
+  "what": "faint elongated pale shape at the top frame edge, likely a goby cut by the edge, similar in size and shape to the other gobies",
+  "confidence": "low"
+ },
+ "a1156": {
+  "label": "no animal",
+  "what": "Dark wedge at the bottom edge of the mat, cut by the frame edge; most likely a mat fold, rope or attachment rather than an animal",
+  "confidence": "low"
+ },
+ "a1514": {
+  "label": "no animal",
+  "what": "small pale blurry blob near the mat edge, likely a drifting algae fragment or debris; it lacks the elongated goby shape",
+  "confidence": "low"
+ },
+ "a91": {
+  "label": "unclear",
+  "what": "small pale blurry blob cut by the bottom frame edge; could be part of a fish or debris",
+  "confidence": "low"
+ },
+ "a2855": {
+  "label": "fish",
+  "what": "pale, curved, elongated goby-like body at the bottom-left edge of the mat, similar to the other gobies in the frame",
+  "confidence": "medium"
+ },
+ "a2503": {
+  "label": "fish",
+  "what": "pale, curved, elongated goby-like body at the lower-left edge of the mat",
+  "confidence": "medium"
+ },
+ "a2577": {
+  "label": "fish",
+  "what": "elongated pale goby-shaped body lying at the mat edge, similar in size and shape to the nearby gobies",
+  "confidence": "medium"
+ },
+ "a2416": {
+  "label": "no animal",
+  "what": "faint small pale diagonal streak, much smaller than the gobies on the mat; likely a particle or debris",
+  "confidence": "low"
+ },
+ "a1216": {
+  "label": "fish",
+  "what": "pale elongated goby at top edge of mat, similar to other gobies nearby",
+  "confidence": "medium"
+ },
+ "a2834": {
+  "label": "fish",
+  "what": "pale elongated, tapered body at the mat's lower-left edge, likely a goby similar to others in the frame",
+  "confidence": "medium"
+ },
+ "a1616": {
+  "label": "no animal",
+  "what": "tiny thin pale streak, likely a floating particle or debris strand near the mat edge",
+  "confidence": "medium"
+ },
+ "a2541": {
+  "label": "fish",
+  "what": "blurry pale goby with a curved body at the lower-left edge of the mat, similar in size and color to the other gobies",
+  "confidence": "medium"
+ },
+ "a2671": {
+  "label": "unclear",
+  "what": "very faint, thin elongated pale streak just inside the mat edge; could be a blurred slender fish or a thread of debris",
+  "confidence": "low"
+ },
+ "a151": {
+  "label": "no animal",
+  "what": "small pale yellowish clump, likely a piece of debris/algae (or small snail) on the mat, similar to other scattered particles",
+  "confidence": "medium"
+ },
+ "a1714": {
+  "label": "no animal",
+  "what": "small pale triangular fragment, likely drifting debris or an algae/shell piece on the mat, similar to other debris in the frame",
+  "confidence": "medium"
+ },
+ "a2351": {
+  "label": "fish",
+  "what": "faint, elongated pale shape with a wider head end, likely a small goby near the mat edge",
+  "confidence": "low"
+ },
+ "a1844": {
+  "label": "fish",
+  "what": "elongated pale goby-like body seen from above, oriented vertically, similar in size and colour to the other gobies in the frame",
+  "confidence": "medium"
+ },
+ "a725": {
+  "label": "fish",
+  "what": "blurry pale elongated goby-like shape lying horizontally near the bottom edge of the mat",
+  "confidence": "medium"
+ },
+ "a2329": {
+  "label": "fish",
+  "what": "faint, elongated pale shape lying diagonally, like a small blurry goby near the top of the mat",
+  "confidence": "low"
+ },
+ "a2950": {
+  "label": "no animal",
+  "what": "small pale oval blob near a goby's tail, likely a small snail or debris rather than a fish",
+  "confidence": "medium"
+ },
+ "a821": {
+  "label": "fish",
+  "what": "faint pale elongated goby-like shape near the top edge of the mat, similar to the other gobies in the frame",
+  "confidence": "medium"
+ },
+ "a2446": {
+  "label": "fish",
+  "what": "pale elongated goby-like fish at the lower-left mat edge, curved body, similar to the other gobies in the frame",
+  "confidence": "medium"
+ },
+ "a2883": {
+  "label": "fish",
+  "what": "small pale goby on the black mat, elongated body with tapering tail, similar to the other goby lower in the frame",
+  "confidence": "high"
+ },
+ "a2072": {
+  "label": "fish",
+  "what": "small pale elongated, tapered shape on the mat, resembling the other gobies in the frame but blurrier",
+  "confidence": "low"
+ },
+ "a2578": {
+  "label": "fish",
+  "what": "elongated pale goby at the top edge of the mat, partly cut by the frame edge, similar to the other gobies nearby",
+  "confidence": "medium"
+ },
+ "a2770": {
+  "label": "fish",
+  "what": "faint pale elongated shape on the sand beside the mat, tapering like a goby's body, partly cut by the frame edge",
+  "confidence": "low"
+ },
+ "a618": {
+  "label": "fish",
+  "what": "blurry pale elongated goby-shaped body on the mat near the top edge, matching the other gobies in the frame",
+  "confidence": "medium"
+ },
+ "a1903": {
+  "label": "fish",
+  "what": "elongated pale goby lying on the mat near the bait box, kicking up a small sand plume, next to another goby",
+  "confidence": "medium"
+ },
+ "a2625": {
+  "label": "no animal",
+  "what": "small pale elongated blob on the green seabed beside the mat, probably a snail or debris; too small and featureless for a goby",
+  "confidence": "low"
+ },
+ "a1497": {
+  "label": "fish",
+  "what": "faint pale elongated goby-shaped body on the sand just off the mat edge, similar in size to the nearby gobies",
+  "confidence": "medium"
+ },
+ "a2748": {
+  "label": "fish",
+  "what": "pale, blurry goby-shaped body curved at the lower-left edge of the mat",
+  "confidence": "medium"
+ },
+ "a2733": {
+  "label": "fish",
+  "what": "pale elongated goby-like body at the mat's lower-left edge, similar to the other gobies in the frame",
+  "confidence": "medium"
+ },
+ "a2889": {
+  "label": "fish",
+  "what": "blurry, pale elongated shape at the mat edge, possibly an out-of-focus goby, though it could also be a piece of algae",
+  "confidence": "low"
+ },
+ "a2846": {
+  "label": "fish",
+  "what": "pale elongated goby-like shape lying at the edge of the mat, similar in size and color to the other gobies in the frame",
+  "confidence": "medium"
+ },
+ "a2936": {
+  "label": "fish",
+  "what": "elongated pale goby-shaped body lying at the left mat edge, similar in size and colour to the other gobies",
+  "confidence": "medium"
+ },
+ "a2749": {
+  "label": "fish",
+  "what": "faint, pale, elongated tapered shape on the green algae beside the mat, possibly a goby, but very blurry",
+  "confidence": "low"
+ },
+ "a2843": {
+  "label": "fish",
+  "what": "pale, elongated, goby-like shape lying at the lower-left edge of the mat, head toward lower right; could also be a pale algae fragment",
+  "confidence": "low"
+ },
+ "a2773": {
+  "label": "fish",
+  "what": "pale, mottled elongated goby-shaped body lying curved at the mat edge on the green substrate, similar in size to the other gobies",
+  "confidence": "medium"
+ },
+ "a828": {
+  "label": "fish",
+  "what": "pale elongated goby-like shape at the mat edge, similar in size and shape to the other gobies in the frame",
+  "confidence": "medium"
+ },
+ "a665": {
+  "label": "fish",
+  "what": "faint pale elongated shape cut by the top frame edge, likely part of a goby swimming among the other fish",
+  "confidence": "low"
+ },
+ "a2116": {
+  "label": "fish",
+  "what": "small pale elongated goby-like shape on the mat, similar to the other gobies in the frame",
+  "confidence": "medium"
+ },
+ "a1583": {
+  "label": "fish",
+  "what": "pale elongated goby at the right edge of the mat, similar to the other gobies in the frame",
+  "confidence": "high"
+ },
+ "a1772": {
+  "label": "no animal",
+  "what": "small pale object with a pointed end and a broad end, most likely a small snail shell; could possibly be a shrimp",
+  "confidence": "low"
+ },
+ "a516": {
+  "label": "fish",
+  "what": "faint elongated pale goby-shaped body near top of mat, similar in size and shape to other gobies but blurry",
+  "confidence": "medium"
+ },
+ "a630": {
+  "label": "fish",
+  "what": "small elongated pale goby swimming over the mat, same shape as the other gobies in the frame",
+  "confidence": "high"
+ },
+ "a2086": {
+  "label": "no animal",
+  "what": "small pale elongated blob on the mat, likely debris or a small snail rather than a goby",
+  "confidence": "low"
+ },
+ "a352": {
+  "label": "fish",
+  "what": "elongated pale goby-like body tapering to a tail, similar to the other gobies on the mat",
+  "confidence": "medium"
+ },
+ "a2816": {
+  "label": "fish",
+  "what": "very faint elongated pale diagonal shape on the mat, possibly a blurry goby",
+  "confidence": "low"
+ },
+ "a1741": {
+  "label": "no animal",
+  "what": "small rounded pale blob at the edge of the bait box, most likely a small pale snail or a piece of debris",
+  "confidence": "low"
+ }
+}

@@ -59,8 +59,10 @@ def photo_boxes(photo: dict, damaged: bool = False) -> tuple[list[dict], list[di
     """Final boxes, rejected candidates and image-level info of one photo."""
     file_name = photo["file_name"]
     review = load(second_pass.raw_path(REVIEWER, file_name))
-    human = [{"box": b, "class": "fish", "source": "existing", "status": "kept", "confidence": None}
-             for b in pilot.existing_boxes_by_file().get(file_name, [])]
+    existing = pilot.existing_boxes_by_file().get(file_name, [])
+    classes = pilot.existing_classes_by_file().get(file_name, ["fish"] * len(existing))
+    human = [{"box": b, "class": c, "source": "existing", "status": "kept", "confidence": None}
+             for b, c in zip(existing, classes)]
     info = {"status": "damaged_file" if damaged else "human_only", "unusable": damaged, "crowded": False}
     if damaged:
         return human, [], info
@@ -138,7 +140,7 @@ def export(run_dir: Path, photos: list[dict]):
     cost_path = run_dir / "cost.json"
     coco = {
         "info": {
-            "description": "obsea_2013_2014 with VLM pre-annotation for human review (tools/vlm_annotation)",
+            "description": f"{pilot.DATASET} with VLM pre-annotation for human review (tools/vlm_annotation)",
             "date_created": time.strftime("%Y-%m-%d"),
             "pass1": {"variant": PASS1, **pilot.VARIANTS[PASS1]},
             "pass2": {"reviewer": REVIEWER, **second_pass.REVIEWERS[REVIEWER]},
@@ -150,7 +152,7 @@ def export(run_dir: Path, photos: list[dict]):
         "annotations": annotations,
         "categories": settings.coco_categories,
     }
-    (out_dir / "obsea_2013_2014_vlm_coco.json").write_text(json.dumps(coco))
+    (out_dir / f"{pilot.DATASET}_vlm_coco.json").write_text(json.dumps(coco))
     (out_dir / "rejected_candidates.json").write_text(json.dumps(rejected_all, indent=1))
     with open(out_dir / "review_queue.csv", "w", newline="") as f:
         writer = csv.writer(f)
@@ -175,7 +177,7 @@ def export(run_dir: Path, photos: list[dict]):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    parser.add_argument("--run-dir", type=Path, default=Path("data/vlm_annotation/obsea_2013_2014"))
+    parser.add_argument("--run-dir", type=Path, default=Path("data/vlm_annotation") / pilot.DATASET)
     args = parser.parse_args()
     import batch_run
 

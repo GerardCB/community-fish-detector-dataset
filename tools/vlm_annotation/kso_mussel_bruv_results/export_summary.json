@@ -1,0 +1,20 @@
+{
+ "images": 910,
+ "annotations": 2974,
+ "fish": 2640,
+ "human box_corrected": 14,
+ "human unchanged": 1649,
+ "images crowded": 0,
+ "images reviewed": 910,
+ "images unusable": 1,
+ "non-fish": 334,
+ "rejected candidates": 446,
+ "vlm_pass1 added high": 318,
+ "vlm_pass1 added low": 388,
+ "vlm_pass1 added medium": 482,
+ "vlm_review added low": 105,
+ "vlm_review added medium": 18,
+ "check_priority_0": 293,
+ "check_priority_1_to_4": 588,
+ "check_priority_5_plus": 29
+}

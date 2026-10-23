@@ -77,18 +77,47 @@ MATCH_MAX_GROWTH = 4  # a model box up to 4x the area of an existing box it cont
 MAX_TOKENS = 32000
 CONFIDENCE_RANK = {"high": 2, "medium": 1, "low": 0}
 
+# Datasets the pipeline knows, chosen with the VLM_DATASET environment variable (default
+# obsea_2013_2014). "setting" describes the photos in the prompts; "human_classes" says whether the
+# human boxes carry fish / non-fish classes (otherwise they are all fish).
+DATASETS = {
+    "obsea_2013_2014": {
+        "images_dir": "data/processing/obsea_2013_2014/JPEGImages",
+        "annotations": "data/processing/obsea_2013_2014/annotations_coco.json",
+        "raw_images_dir": "data/raw/obsea_2013_2014/images",  # same files, without the prefix
+        "prefix": "obsea_2013_2014_",
+        "human_classes": False,
+        "setting": """It comes from a fixed camera on an \
+artificial reef at 20 m depth in the Mediterranean (OBSEA observatory), taken by day or by \
+night with lights.""",
+    },
+    "kso_mussel_bruv": {
+        # built by prepare_kso_mussel_bruv.py from the YOLO export on Zenodo
+        "images_dir": "data/vlm_annotation/kso_mussel_bruv_input/images",
+        "annotations": "data/vlm_annotation/kso_mussel_bruv_input/annotations_coco.json",
+        "raw_images_dir": None,
+        "prefix": "",
+        "human_classes": True,
+        "setting": """It comes from a GoPro looking straight down at a \
+black mat with a bait box in the middle, lying on the seabed at 8-18 m depth at a blue-mussel farm \
+on the Swedish west coast. Gobies, flatfish and crabs (shore and swimming crabs, spider crabs, \
+hermit crabs) come to the bait; animals also appear on the algae and sand around the mat. The \
+photo is small, so a goby is only a few dozen pixels long. Small pale snails (about 2-3 cm) that \
+crawl on the mat get no box, and neither do curled pieces of algae lying on the mat or at its edges.""",
+    },
+}
+DATASET = os.environ.get("VLM_DATASET", "obsea_2013_2014")
+DATASET_CONFIG = DATASETS[DATASET]
 PILOT_DIR = Path("data/vlm_pilot")
-IMAGES_DIR = Path("data/processing/obsea_2013_2014/JPEGImages")
-ANNOTATIONS_PATH = Path("data/processing/obsea_2013_2014/annotations_coco.json")
+IMAGES_DIR = Path(DATASET_CONFIG["images_dir"])
+ANNOTATIONS_PATH = Path(DATASET_CONFIG["annotations"])
 IMAGE_LIST = PILOT_DIR / "pilot_images.tsv"  # set with --images
 
 SYSTEM_PROMPT = (
     "You annotate fish in underwater photos for the training set of a fish detector. "
     "Missing a fish is as harmful as boxing something that is not a fish."
 )
-SETTING = """It comes from a fixed camera on an \
-artificial reef at 20 m depth in the Mediterranean (OBSEA observatory), taken by day or by \
-night with lights."""
+SETTING = DATASET_CONFIG["setting"]
 TASK = """Find every fish visible in the {subject}, including small, distant, blurry, partly \
 hidden and night-time fish. In a school, box each fish separately.{edge}
 Do not box anything that is not a fish: algae, drifting white filaments, particles, bubbles, \
@@ -466,6 +495,20 @@ def existing_boxes_by_file() -> dict[str, list[list[float]]]:
         x, y, w, h = a["bbox"]
         boxes.setdefault(names[a["image_id"]], []).append([x, y, x + w, y + h])
     return boxes
+
+
+def existing_classes_by_file() -> dict[str, list[str]]:
+    """The class ("fish" / "non-fish") of each existing box, in the order of existing_boxes_by_file."""
+    if not DATASET_CONFIG["human_classes"]:
+        # all fish; existing_boxes_by_file may be the frozen copy of a batch run
+        return {name: ["fish"] * len(boxes) for name, boxes in existing_boxes_by_file().items()}
+    coco = json.loads(ANNOTATIONS_PATH.read_text())
+    names = {image["id"]: image["file_name"] for image in coco["images"]}
+    categories = {c["id"]: c["name"] for c in coco["categories"]}
+    classes = {}
+    for a in coco["annotations"]:
+        classes.setdefault(names[a["image_id"]], []).append(categories[a["category_id"]])
+    return classes
 
 
 def score(args):

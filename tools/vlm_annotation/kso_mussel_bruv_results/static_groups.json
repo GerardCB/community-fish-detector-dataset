@@ -1,0 +1,6762 @@
+[
+ [
+  {
+   "key": "a2",
+   "annotation_id": 2,
+   "file_name": "control_12_4_frame_1018.jpg",
+   "bbox": [
+    299.67,
+    354.67,
+    12.67,
+    5.33
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a21",
+   "annotation_id": 21,
+   "file_name": "control_12_4_frame_14538.jpg",
+   "bbox": [
+    299.33,
+    354.33,
+    13.0,
+    5.67
+   ],
+   "class": "non-fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a22",
+   "annotation_id": 22,
+   "file_name": "control_12_4_frame_15208.jpg",
+   "bbox": [
+    299.33,
+    354.33,
+    11.33,
+    5.67
+   ],
+   "class": "non-fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a61",
+   "annotation_id": 61,
+   "file_name": "control_12_4_frame_24449.jpg",
+   "bbox": [
+    300.0,
+    355.33,
+    10.67,
+    4.67
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a91",
+   "annotation_id": 91,
+   "file_name": "control_12_4_frame_29696.jpg",
+   "bbox": [
+    299.33,
+    355.33,
+    12.67,
+    4.67
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a96",
+   "annotation_id": 96,
+   "file_name": "control_12_4_frame_30227.jpg",
+   "bbox": [
+    299.67,
+    354.33,
+    12.33,
+    5.67
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a121",
+   "annotation_id": 121,
+   "file_name": "control_12_4_frame_364.jpg",
+   "bbox": [
+    299.67,
+    353.67,
+    14.0,
+    6.33
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a148",
+   "annotation_id": 148,
+   "file_name": "control_12_4_frame_4200.jpg",
+   "bbox": [
+    299.67,
+    354.67,
+    13.0,
+    5.33
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  }
+ ],
+ [
+  {
+   "key": "a23",
+   "annotation_id": 23,
+   "file_name": "control_12_4_frame_15364.jpg",
+   "bbox": [
+    338.33,
+    310.67,
+    18.67,
+    6.0
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  },
+  {
+   "key": "a47",
+   "annotation_id": 47,
+   "file_name": "control_12_4_frame_22527.jpg",
+   "bbox": [
+    339.0,
+    310.33,
+    18.0,
+    7.33
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a58",
+   "annotation_id": 58,
+   "file_name": "control_12_4_frame_24449.jpg",
+   "bbox": [
+    336.0,
+    310.67,
+    21.33,
+    7.33
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  },
+  {
+   "key": "a66",
+   "annotation_id": 66,
+   "file_name": "control_12_4_frame_24794.jpg",
+   "bbox": [
+    339.33,
+    310.33,
+    17.67,
+    6.33
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  },
+  {
+   "key": "a68",
+   "annotation_id": 68,
+   "file_name": "control_12_4_frame_24922.jpg",
+   "bbox": [
+    339.0,
+    310.67,
+    18.0,
+    6.67
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  },
+  {
+   "key": "a70",
+   "annotation_id": 70,
+   "file_name": "control_12_4_frame_24949.jpg",
+   "bbox": [
+    339.67,
+    311.0,
+    17.33,
+    5.33
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  },
+  {
+   "key": "a74",
+   "annotation_id": 74,
+   "file_name": "control_12_4_frame_25464.jpg",
+   "bbox": [
+    338.67,
+    311.0,
+    18.33,
+    6.33
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  },
+  {
+   "key": "a76",
+   "annotation_id": 76,
+   "file_name": "control_12_4_frame_27256.jpg",
+   "bbox": [
+    339.33,
+    310.67,
+    17.33,
+    6.67
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  },
+  {
+   "key": "a78",
+   "annotation_id": 78,
+   "file_name": "control_12_4_frame_27471.jpg",
+   "bbox": [
+    339.33,
+    310.67,
+    17.67,
+    6.33
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a136",
+   "annotation_id": 136,
+   "file_name": "control_12_4_frame_38613.jpg",
+   "bbox": [
+    338.67,
+    310.67,
+    19.0,
+    4.33
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  }
+ ],
+ [
+  {
+   "key": "a130",
+   "annotation_id": 130,
+   "file_name": "control_12_4_frame_37779.jpg",
+   "bbox": [
+    248.33,
+    124.33,
+    109.0,
+    91.67
+   ],
+   "class": "non-fish",
+   "source": "vlm_pass1",
+   "confidence": "high"
+  },
+  {
+   "key": "a132",
+   "annotation_id": 132,
+   "file_name": "control_12_4_frame_37844.jpg",
+   "bbox": [
+    251.67,
+    120.0,
+    132.33,
+    96.0
+   ],
+   "class": "non-fish",
+   "source": "vlm_pass1",
+   "confidence": "high"
+  },
+  {
+   "key": "a141",
+   "annotation_id": 141,
+   "file_name": "control_12_4_frame_39415.jpg",
+   "bbox": [
+    230.67,
+    122.33,
+    142.0,
+    93.67
+   ],
+   "class": "non-fish",
+   "source": "vlm_pass1",
+   "confidence": "high"
+  },
+  {
+   "key": "a150",
+   "annotation_id": 150,
+   "file_name": "control_12_4_frame_42958.jpg",
+   "bbox": [
+    160.0,
+    125.0,
+    183.33,
+    91.0
+   ],
+   "class": "non-fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  },
+  {
+   "key": "a155",
+   "annotation_id": 155,
+   "file_name": "control_12_4_frame_43145.jpg",
+   "bbox": [
+    154.0,
+    125.33,
+    145.33,
+    90.67
+   ],
+   "class": "non-fish",
+   "source": "vlm_pass1",
+   "confidence": "high"
+  },
+  {
+   "key": "a157",
+   "annotation_id": 157,
+   "file_name": "control_12_4_frame_43206.jpg",
+   "bbox": [
+    155.0,
+    125.0,
+    190.0,
+    91.0
+   ],
+   "class": "non-fish",
+   "source": "vlm_pass1",
+   "confidence": "high"
+  },
+  {
+   "key": "a160",
+   "annotation_id": 160,
+   "file_name": "control_12_4_frame_43645.jpg",
+   "bbox": [
+    146.67,
+    113.33,
+    170.67,
+    102.67
+   ],
+   "class": "non-fish",
+   "source": "vlm_pass1",
+   "confidence": "high"
+  }
+ ],
+ [
+  {
+   "key": "a203",
+   "annotation_id": 203,
+   "file_name": "control_12_4_frame_7684.jpg",
+   "bbox": [
+    5.0,
+    144.0,
+    53.67,
+    90.67
+   ],
+   "class": "non-fish",
+   "source": "vlm_pass1",
+   "confidence": "high"
+  },
+  {
+   "key": "a205",
+   "annotation_id": 205,
+   "file_name": "control_12_4_frame_7697.jpg",
+   "bbox": [
+    5.0,
+    144.0,
+    53.33,
+    91.67
+   ],
+   "class": "non-fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  },
+  {
+   "key": "a207",
+   "annotation_id": 207,
+   "file_name": "control_12_4_frame_7751.jpg",
+   "bbox": [
+    0,
+    142.0,
+    62.0,
+    89.0
+   ],
+   "class": "non-fish",
+   "source": "vlm_pass1",
+   "confidence": "high"
+  }
+ ],
+ [
+  {
+   "key": "a211",
+   "annotation_id": 211,
+   "file_name": "control_12_4_frame_8430.jpg",
+   "bbox": [
+    0,
+    74.67,
+    87.33,
+    105.33
+   ],
+   "class": "non-fish",
+   "source": "vlm_pass1",
+   "confidence": "high"
+  },
+  {
+   "key": "a213",
+   "annotation_id": 213,
+   "file_name": "control_12_4_frame_8532.jpg",
+   "bbox": [
+    0,
+    71.0,
+    107.33,
+    104.67
+   ],
+   "class": "non-fish",
+   "source": "vlm_pass1",
+   "confidence": "high"
+  },
+  {
+   "key": "a214",
+   "annotation_id": 214,
+   "file_name": "control_12_4_frame_8904.jpg",
+   "bbox": [
+    15.0,
+    70.67,
+    93.67,
+    104.67
+   ],
+   "class": "non-fish",
+   "source": "vlm_pass1",
+   "confidence": "high"
+  }
+ ],
+ [
+  {
+   "key": "a356",
+   "annotation_id": 356,
+   "file_name": "control_6_3_frame_11276.jpg",
+   "bbox": [
+    507.5,
+    161.0,
+    15.0,
+    17.0
+   ],
+   "class": "fish",
+   "source": "vlm_review",
+   "confidence": "low"
+  },
+  {
+   "key": "a445",
+   "annotation_id": 445,
+   "file_name": "control_6_3_frame_14883.jpg",
+   "bbox": [
+    506.0,
+    159.0,
+    15.0,
+    17.0
+   ],
+   "class": "fish",
+   "source": "vlm_review",
+   "confidence": "low"
+  },
+  {
+   "key": "a555",
+   "annotation_id": 555,
+   "file_name": "control_6_3_frame_21756.jpg",
+   "bbox": [
+    507.5,
+    162.5,
+    10.0,
+    15.0
+   ],
+   "class": "fish",
+   "source": "vlm_review",
+   "confidence": "low"
+  },
+  {
+   "key": "a566",
+   "annotation_id": 566,
+   "file_name": "control_6_3_frame_21948.jpg",
+   "bbox": [
+    507.67,
+    162.0,
+    14.0,
+    15.67
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a573",
+   "annotation_id": 573,
+   "file_name": "control_6_3_frame_22498.jpg",
+   "bbox": [
+    507.5,
+    161.0,
+    12.5,
+    15.0
+   ],
+   "class": "fish",
+   "source": "vlm_review",
+   "confidence": "low"
+  },
+  {
+   "key": "a580",
+   "annotation_id": 580,
+   "file_name": "control_6_3_frame_22940.jpg",
+   "bbox": [
+    505.0,
+    160.0,
+    15.0,
+    17.5
+   ],
+   "class": "fish",
+   "source": "vlm_review",
+   "confidence": "low"
+  },
+  {
+   "key": "a599",
+   "annotation_id": 599,
+   "file_name": "control_6_3_frame_25063.jpg",
+   "bbox": [
+    509.33,
+    163.33,
+    11.67,
+    13.33
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a668",
+   "annotation_id": 668,
+   "file_name": "control_6_3_frame_29299.jpg",
+   "bbox": [
+    507.5,
+    161.0,
+    12.5,
+    16.5
+   ],
+   "class": "fish",
+   "source": "vlm_review",
+   "confidence": "low"
+  },
+  {
+   "key": "a703",
+   "annotation_id": 703,
+   "file_name": "control_6_3_frame_32995.jpg",
+   "bbox": [
+    509.0,
+    161.0,
+    9.0,
+    15.0
+   ],
+   "class": "fish",
+   "source": "vlm_review",
+   "confidence": "low"
+  },
+  {
+   "key": "a762",
+   "annotation_id": 762,
+   "file_name": "control_6_3_frame_40051.jpg",
+   "bbox": [
+    506.67,
+    160.67,
+    14.67,
+    19.33
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a784",
+   "annotation_id": 784,
+   "file_name": "control_6_3_frame_40539.jpg",
+   "bbox": [
+    509.0,
+    163.0,
+    9.0,
+    13.0
+   ],
+   "class": "fish",
+   "source": "vlm_review",
+   "confidence": "low"
+  },
+  {
+   "key": "a847",
+   "annotation_id": 847,
+   "file_name": "control_6_3_frame_43872.jpg",
+   "bbox": [
+    506.67,
+    159.33,
+    14.33,
+    17.33
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a937",
+   "annotation_id": 937,
+   "file_name": "control_6_3_frame_46331.jpg",
+   "bbox": [
+    509.0,
+    163.5,
+    11.0,
+    14.5
+   ],
+   "class": "fish",
+   "source": "vlm_review",
+   "confidence": "low"
+  },
+  {
+   "key": "a947",
+   "annotation_id": 947,
+   "file_name": "control_6_3_frame_46575.jpg",
+   "bbox": [
+    507.67,
+    162.67,
+    13.33,
+    14.67
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a955",
+   "annotation_id": 955,
+   "file_name": "control_6_3_frame_48166.jpg",
+   "bbox": [
+    506.67,
+    160.67,
+    13.33,
+    16.67
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a1027",
+   "annotation_id": 1027,
+   "file_name": "control_6_3_frame_50177.jpg",
+   "bbox": [
+    508.67,
+    162.67,
+    12.33,
+    14.0
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a1040",
+   "annotation_id": 1040,
+   "file_name": "control_6_3_frame_50247.jpg",
+   "bbox": [
+    506.67,
+    160.67,
+    14.0,
+    16.67
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a1053",
+   "annotation_id": 1053,
+   "file_name": "control_6_3_frame_52856.jpg",
+   "bbox": [
+    508.0,
+    161.0,
+    11.0,
+    15.0
+   ],
+   "class": "fish",
+   "source": "vlm_review",
+   "confidence": "low"
+  },
+  {
+   "key": "a1094",
+   "annotation_id": 1094,
+   "file_name": "control_6_3_frame_57177.jpg",
+   "bbox": [
+    507.5,
+    161.0,
+    10.5,
+    15.0
+   ],
+   "class": "fish",
+   "source": "vlm_review",
+   "confidence": "low"
+  },
+  {
+   "key": "a1103",
+   "annotation_id": 1103,
+   "file_name": "control_6_3_frame_57197.jpg",
+   "bbox": [
+    507.67,
+    161.67,
+    11.67,
+    15.0
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a1143",
+   "annotation_id": 1143,
+   "file_name": "control_6_3_frame_59243.jpg",
+   "bbox": [
+    507.67,
+    161.33,
+    13.33,
+    16.0
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a1233",
+   "annotation_id": 1233,
+   "file_name": "control_6_3_frame_6999.jpg",
+   "bbox": [
+    506.67,
+    161.33,
+    13.33,
+    14.0
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a1237",
+   "annotation_id": 1237,
+   "file_name": "control_6_3_frame_7107.jpg",
+   "bbox": [
+    509.0,
+    161.0,
+    12.0,
+    17.0
+   ],
+   "class": "fish",
+   "source": "vlm_review",
+   "confidence": "low"
+  }
+ ],
+ [
+  {
+   "key": "a365",
+   "annotation_id": 365,
+   "file_name": "control_6_3_frame_11681.jpg",
+   "bbox": [
+    556.67,
+    99.33,
+    32.67,
+    20.67
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "high"
+  },
+  {
+   "key": "a515",
+   "annotation_id": 515,
+   "file_name": "control_6_3_frame_21183.jpg",
+   "bbox": [
+    555.33,
+    96.0,
+    47.33,
+    23.33
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "high"
+  },
+  {
+   "key": "a525",
+   "annotation_id": 525,
+   "file_name": "control_6_3_frame_21253.jpg",
+   "bbox": [
+    569.33,
+    90.0,
+    33.33,
+    33.33
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  }
+ ],
+ [
+  {
+   "key": "a380",
+   "annotation_id": 380,
+   "file_name": "control_6_3_frame_12173.jpg",
+   "bbox": [
+    561.33,
+    103.33,
+    32.0,
+    34.0
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "high"
+  },
+  {
+   "key": "a722",
+   "annotation_id": 722,
+   "file_name": "control_6_3_frame_36178.jpg",
+   "bbox": [
+    557.67,
+    106.67,
+    27.67,
+    46.0
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "high"
+  },
+  {
+   "key": "a964",
+   "annotation_id": 964,
+   "file_name": "control_6_3_frame_48399.jpg",
+   "bbox": [
+    565.33,
+    107.33,
+    21.33,
+    36.67
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  },
+  {
+   "key": "a1227",
+   "annotation_id": 1227,
+   "file_name": "control_6_3_frame_6653.jpg",
+   "bbox": [
+    555.33,
+    121.33,
+    31.33,
+    42.0
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "high"
+  }
+ ],
+ [
+  {
+   "key": "a505",
+   "annotation_id": 505,
+   "file_name": "control_6_3_frame_20898.jpg",
+   "bbox": [
+    419.33,
+    0,
+    65.33,
+    34.0
+   ],
+   "class": "non-fish",
+   "source": "vlm_pass1",
+   "confidence": "high"
+  },
+  {
+   "key": "a693",
+   "annotation_id": 693,
+   "file_name": "control_6_3_frame_32834.jpg",
+   "bbox": [
+    431.0,
+    10.0,
+    42.33,
+    26.0
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  },
+  {
+   "key": "a732",
+   "annotation_id": 732,
+   "file_name": "control_6_3_frame_38317.jpg",
+   "bbox": [
+    429.33,
+    0,
+    26.67,
+    27.33
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  },
+  {
+   "key": "a1084",
+   "annotation_id": 1084,
+   "file_name": "control_6_3_frame_56615.jpg",
+   "bbox": [
+    427.67,
+    0,
+    34.33,
+    36.67
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "high"
+  }
+ ],
+ [
+  {
+   "key": "a508",
+   "annotation_id": 508,
+   "file_name": "control_6_3_frame_20898.jpg",
+   "bbox": [
+    325.33,
+    0,
+    26.67,
+    18.67
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  },
+  {
+   "key": "a588",
+   "annotation_id": 588,
+   "file_name": "control_6_3_frame_23585.jpg",
+   "bbox": [
+    328.67,
+    0,
+    28.0,
+    14.0
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a819",
+   "annotation_id": 819,
+   "file_name": "control_6_3_frame_42691.jpg",
+   "bbox": [
+    325.67,
+    0,
+    22.33,
+    17.33
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "high"
+  },
+  {
+   "key": "a829",
+   "annotation_id": 829,
+   "file_name": "control_6_3_frame_42742.jpg",
+   "bbox": [
+    325.33,
+    0,
+    24.67,
+    16.67
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  }
+ ],
+ [
+  {
+   "key": "a523",
+   "annotation_id": 523,
+   "file_name": "control_6_3_frame_21253.jpg",
+   "bbox": [
+    461.0,
+    28.33,
+    35.0,
+    25.0
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "high"
+  },
+  {
+   "key": "a731",
+   "annotation_id": 731,
+   "file_name": "control_6_3_frame_38317.jpg",
+   "bbox": [
+    464.33,
+    28.0,
+    37.33,
+    17.67
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "high"
+  },
+  {
+   "key": "a811",
+   "annotation_id": 811,
+   "file_name": "control_6_3_frame_42603.jpg",
+   "bbox": [
+    451.0,
+    31.0,
+    38.33,
+    25.67
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "high"
+  },
+  {
+   "key": "a1050",
+   "annotation_id": 1050,
+   "file_name": "control_6_3_frame_52856.jpg",
+   "bbox": [
+    465.0,
+    21.67,
+    31.67,
+    28.33
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "high"
+  },
+  {
+   "key": "a1060",
+   "annotation_id": 1060,
+   "file_name": "control_6_3_frame_54794.jpg",
+   "bbox": [
+    466.67,
+    28.33,
+    31.0,
+    26.67
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  },
+  {
+   "key": "a1090",
+   "annotation_id": 1090,
+   "file_name": "control_6_3_frame_57177.jpg",
+   "bbox": [
+    466.0,
+    26.0,
+    33.33,
+    22.33
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "high"
+  }
+ ],
+ [
+  {
+   "key": "a542",
+   "annotation_id": 542,
+   "file_name": "control_6_3_frame_21566.jpg",
+   "bbox": [
+    544.33,
+    100.0,
+    24.33,
+    40.67
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  },
+  {
+   "key": "a552",
+   "annotation_id": 552,
+   "file_name": "control_6_3_frame_21756.jpg",
+   "bbox": [
+    527.33,
+    104.0,
+    42.67,
+    25.33
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  },
+  {
+   "key": "a944",
+   "annotation_id": 944,
+   "file_name": "control_6_3_frame_46575.jpg",
+   "bbox": [
+    541.33,
+    102.67,
+    27.33,
+    30.0
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  }
+ ],
+ [
+  {
+   "key": "a813",
+   "annotation_id": 813,
+   "file_name": "control_6_3_frame_42603.jpg",
+   "bbox": [
+    512.0,
+    5.33,
+    31.33,
+    14.0
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  },
+  {
+   "key": "a821",
+   "annotation_id": 821,
+   "file_name": "control_6_3_frame_42691.jpg",
+   "bbox": [
+    514.67,
+    5.33,
+    28.67,
+    14.67
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  },
+  {
+   "key": "a1155",
+   "annotation_id": 1155,
+   "file_name": "control_6_3_frame_60075.jpg",
+   "bbox": [
+    510.0,
+    0,
+    32.67,
+    24.0
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  }
+ ],
+ [
+  {
+   "key": "a814",
+   "annotation_id": 814,
+   "file_name": "control_6_3_frame_42603.jpg",
+   "bbox": [
+    343.33,
+    343.33,
+    16.67,
+    16.67
+   ],
+   "class": "non-fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a956",
+   "annotation_id": 956,
+   "file_name": "control_6_3_frame_4838.jpg",
+   "bbox": [
+    344.0,
+    324.0,
+    16.0,
+    36.0
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a1116",
+   "annotation_id": 1116,
+   "file_name": "control_6_3_frame_57638.jpg",
+   "bbox": [
+    343.33,
+    328.33,
+    16.67,
+    31.67
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  },
+  {
+   "key": "a1156",
+   "annotation_id": 1156,
+   "file_name": "control_6_3_frame_60075.jpg",
+   "bbox": [
+    343.33,
+    343.33,
+    16.67,
+    16.67
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  }
+ ],
+ [
+  {
+   "key": "a820",
+   "annotation_id": 820,
+   "file_name": "control_6_3_frame_42691.jpg",
+   "bbox": [
+    548.0,
+    168.0,
+    38.0,
+    24.67
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  },
+  {
+   "key": "a826",
+   "annotation_id": 826,
+   "file_name": "control_6_3_frame_42742.jpg",
+   "bbox": [
+    549.33,
+    166.67,
+    40.0,
+    30.67
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  },
+  {
+   "key": "a1114",
+   "annotation_id": 1114,
+   "file_name": "control_6_3_frame_57638.jpg",
+   "bbox": [
+    548.67,
+    151.67,
+    30.0,
+    47.0
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "high"
+  }
+ ],
+ [
+  {
+   "key": "a834",
+   "annotation_id": 834,
+   "file_name": "control_6_3_frame_43196.jpg",
+   "bbox": [
+    531.33,
+    103.33,
+    28.67,
+    43.33
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "high"
+  },
+  {
+   "key": "a1125",
+   "annotation_id": 1125,
+   "file_name": "control_6_3_frame_58275.jpg",
+   "bbox": [
+    526.0,
+    115.0,
+    24.0,
+    20.33
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  },
+  {
+   "key": "a1186",
+   "annotation_id": 1186,
+   "file_name": "control_6_3_frame_61828.jpg",
+   "bbox": [
+    524.33,
+    113.33,
+    35.67,
+    26.0
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "high"
+  }
+ ],
+ [
+  {
+   "key": "a1322",
+   "annotation_id": 1322,
+   "file_name": "farm_12_4_frame_27586.jpg",
+   "bbox": [
+    406.67,
+    0,
+    57.67,
+    48.33
+   ],
+   "class": "non-fish",
+   "source": "vlm_pass1",
+   "confidence": "high"
+  },
+  {
+   "key": "a1326",
+   "annotation_id": 1326,
+   "file_name": "farm_12_4_frame_27587.jpg",
+   "bbox": [
+    407.0,
+    0,
+    57.0,
+    48.33
+   ],
+   "class": "non-fish",
+   "source": "vlm_pass1",
+   "confidence": "high"
+  },
+  {
+   "key": "a1331",
+   "annotation_id": 1331,
+   "file_name": "farm_12_4_frame_27850.jpg",
+   "bbox": [
+    407.67,
+    0,
+    56.67,
+    48.67
+   ],
+   "class": "non-fish",
+   "source": "vlm_pass1",
+   "confidence": "high"
+  },
+  {
+   "key": "a1335",
+   "annotation_id": 1335,
+   "file_name": "farm_12_4_frame_29208.jpg",
+   "bbox": [
+    400.33,
+    0,
+    54.33,
+    48.67
+   ],
+   "class": "non-fish",
+   "source": "vlm_pass1",
+   "confidence": "high"
+  },
+  {
+   "key": "a1346",
+   "annotation_id": 1346,
+   "file_name": "farm_12_4_frame_30784.jpg",
+   "bbox": [
+    400.0,
+    0,
+    58.67,
+    48.67
+   ],
+   "class": "non-fish",
+   "source": "vlm_pass1",
+   "confidence": "high"
+  },
+  {
+   "key": "a1351",
+   "annotation_id": 1351,
+   "file_name": "farm_12_4_frame_31305.jpg",
+   "bbox": [
+    400.33,
+    0,
+    55.67,
+    48.67
+   ],
+   "class": "non-fish",
+   "source": "vlm_pass1",
+   "confidence": "high"
+  }
+ ],
+ [
+  {
+   "key": "a1323",
+   "annotation_id": 1323,
+   "file_name": "farm_12_4_frame_27586.jpg",
+   "bbox": [
+    582.0,
+    209.0,
+    21.33,
+    15.67
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  },
+  {
+   "key": "a1327",
+   "annotation_id": 1327,
+   "file_name": "farm_12_4_frame_27587.jpg",
+   "bbox": [
+    581.33,
+    208.0,
+    21.33,
+    18.33
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  },
+  {
+   "key": "a1577",
+   "annotation_id": 1577,
+   "file_name": "farm_12_4_frame_42309.jpg",
+   "bbox": [
+    587.67,
+    204.0,
+    16.67,
+    21.67
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  }
+ ],
+ [
+  {
+   "key": "a1347",
+   "annotation_id": 1347,
+   "file_name": "farm_12_4_frame_30784.jpg",
+   "bbox": [
+    529.33,
+    243.33,
+    14.0,
+    20.0
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a1364",
+   "annotation_id": 1364,
+   "file_name": "farm_12_4_frame_31990.jpg",
+   "bbox": [
+    529.33,
+    243.33,
+    14.0,
+    19.33
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a1380",
+   "annotation_id": 1380,
+   "file_name": "farm_12_4_frame_33560.jpg",
+   "bbox": [
+    528.67,
+    243.33,
+    14.67,
+    19.67
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a1419",
+   "annotation_id": 1419,
+   "file_name": "farm_12_4_frame_34680.jpg",
+   "bbox": [
+    530.0,
+    243.33,
+    13.33,
+    20.67
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a1426",
+   "annotation_id": 1426,
+   "file_name": "farm_12_4_frame_34979.jpg",
+   "bbox": [
+    529.33,
+    243.33,
+    14.0,
+    20.0
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a1433",
+   "annotation_id": 1433,
+   "file_name": "farm_12_4_frame_35825.jpg",
+   "bbox": [
+    531.0,
+    244.67,
+    12.33,
+    16.67
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a1441",
+   "annotation_id": 1441,
+   "file_name": "farm_12_4_frame_36033.jpg",
+   "bbox": [
+    530.67,
+    243.67,
+    13.0,
+    20.0
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  },
+  {
+   "key": "a1447",
+   "annotation_id": 1447,
+   "file_name": "farm_12_4_frame_36358.jpg",
+   "bbox": [
+    531.0,
+    244.67,
+    12.33,
+    17.67
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  },
+  {
+   "key": "a1458",
+   "annotation_id": 1458,
+   "file_name": "farm_12_4_frame_37423.jpg",
+   "bbox": [
+    531.33,
+    244.0,
+    12.0,
+    19.0
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  },
+  {
+   "key": "a1472",
+   "annotation_id": 1472,
+   "file_name": "farm_12_4_frame_38083.jpg",
+   "bbox": [
+    530.67,
+    244.0,
+    13.0,
+    18.0
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a1504",
+   "annotation_id": 1504,
+   "file_name": "farm_12_4_frame_39955.jpg",
+   "bbox": [
+    530.33,
+    244.67,
+    12.33,
+    18.0
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  },
+  {
+   "key": "a1514",
+   "annotation_id": 1514,
+   "file_name": "farm_12_4_frame_40230.jpg",
+   "bbox": [
+    528.67,
+    242.0,
+    16.67,
+    21.0
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  },
+  {
+   "key": "a1526",
+   "annotation_id": 1526,
+   "file_name": "farm_12_4_frame_40373.jpg",
+   "bbox": [
+    530.0,
+    243.33,
+    14.67,
+    19.33
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a1544",
+   "annotation_id": 1544,
+   "file_name": "farm_12_4_frame_41299.jpg",
+   "bbox": [
+    531.33,
+    243.67,
+    12.0,
+    19.67
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  },
+  {
+   "key": "a1552",
+   "annotation_id": 1552,
+   "file_name": "farm_12_4_frame_41326.jpg",
+   "bbox": [
+    530.67,
+    244.0,
+    12.67,
+    17.33
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a1559",
+   "annotation_id": 1559,
+   "file_name": "farm_12_4_frame_41751.jpg",
+   "bbox": [
+    530.0,
+    243.33,
+    13.33,
+    18.67
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  },
+  {
+   "key": "a1576",
+   "annotation_id": 1576,
+   "file_name": "farm_12_4_frame_42309.jpg",
+   "bbox": [
+    530.0,
+    243.33,
+    13.33,
+    19.33
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  },
+  {
+   "key": "a1584",
+   "annotation_id": 1584,
+   "file_name": "farm_12_4_frame_42520.jpg",
+   "bbox": [
+    528.67,
+    243.33,
+    14.67,
+    19.33
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a1591",
+   "annotation_id": 1591,
+   "file_name": "farm_12_4_frame_43627.jpg",
+   "bbox": [
+    529.33,
+    244.0,
+    13.67,
+    18.33
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  },
+  {
+   "key": "a1595",
+   "annotation_id": 1595,
+   "file_name": "farm_12_4_frame_44018.jpg",
+   "bbox": [
+    528.67,
+    244.0,
+    14.67,
+    18.33
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a1601",
+   "annotation_id": 1601,
+   "file_name": "farm_12_4_frame_44375.jpg",
+   "bbox": [
+    528.67,
+    244.0,
+    14.67,
+    19.33
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  },
+  {
+   "key": "a1607",
+   "annotation_id": 1607,
+   "file_name": "farm_12_4_frame_44496.jpg",
+   "bbox": [
+    529.33,
+    244.0,
+    14.0,
+    18.67
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a1612",
+   "annotation_id": 1612,
+   "file_name": "farm_12_4_frame_44500.jpg",
+   "bbox": [
+    530.33,
+    243.67,
+    13.0,
+    19.0
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a1623",
+   "annotation_id": 1623,
+   "file_name": "farm_12_4_frame_45567.jpg",
+   "bbox": [
+    531.33,
+    244.0,
+    12.0,
+    15.33
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  },
+  {
+   "key": "a1629",
+   "annotation_id": 1629,
+   "file_name": "farm_12_4_frame_45984.jpg",
+   "bbox": [
+    530.0,
+    243.0,
+    14.0,
+    15.0
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  },
+  {
+   "key": "a1633",
+   "annotation_id": 1633,
+   "file_name": "farm_12_4_frame_46102.jpg",
+   "bbox": [
+    529.67,
+    243.33,
+    14.0,
+    16.0
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  },
+  {
+   "key": "a1637",
+   "annotation_id": 1637,
+   "file_name": "farm_12_4_frame_46261.jpg",
+   "bbox": [
+    530.33,
+    243.33,
+    13.33,
+    16.67
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  }
+ ],
+ [
+  {
+   "key": "a1379",
+   "annotation_id": 1379,
+   "file_name": "farm_12_4_frame_33560.jpg",
+   "bbox": [
+    522.0,
+    0,
+    14.0,
+    28.67
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a1386",
+   "annotation_id": 1386,
+   "file_name": "farm_12_4_frame_33607.jpg",
+   "bbox": [
+    522.5,
+    0,
+    13.5,
+    28.0
+   ],
+   "class": "fish",
+   "source": "vlm_review",
+   "confidence": "medium"
+  },
+  {
+   "key": "a1392",
+   "annotation_id": 1392,
+   "file_name": "farm_12_4_frame_33667.jpg",
+   "bbox": [
+    522.5,
+    0,
+    13.5,
+    29.0
+   ],
+   "class": "fish",
+   "source": "vlm_review",
+   "confidence": "low"
+  },
+  {
+   "key": "a1397",
+   "annotation_id": 1397,
+   "file_name": "farm_12_4_frame_33889.jpg",
+   "bbox": [
+    522.0,
+    0,
+    14.0,
+    29.0
+   ],
+   "class": "fish",
+   "source": "vlm_review",
+   "confidence": "low"
+  }
+ ],
+ [
+  {
+   "key": "a1645",
+   "annotation_id": 1645,
+   "file_name": "farm_12_4_frame_5180.jpg",
+   "bbox": [
+    215.0,
+    343.33,
+    13.33,
+    16.67
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a1653",
+   "annotation_id": 1653,
+   "file_name": "farm_12_4_frame_5433.jpg",
+   "bbox": [
+    216.67,
+    343.33,
+    10.67,
+    16.67
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a1656",
+   "annotation_id": 1656,
+   "file_name": "farm_12_4_frame_5559.jpg",
+   "bbox": [
+    216.0,
+    342.0,
+    11.0,
+    18.0
+   ],
+   "class": "non-fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a1658",
+   "annotation_id": 1658,
+   "file_name": "farm_12_4_frame_6367.jpg",
+   "bbox": [
+    212.33,
+    334.33,
+    11.33,
+    25.67
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  },
+  {
+   "key": "a1668",
+   "annotation_id": 1668,
+   "file_name": "farm_12_4_frame_7285.jpg",
+   "bbox": [
+    214.33,
+    340.33,
+    10.0,
+    19.67
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  }
+ ],
+ [
+  {
+   "key": "a1692",
+   "annotation_id": 1692,
+   "file_name": "farm_17_4_frame_10892.jpg",
+   "bbox": [
+    256.0,
+    28.0,
+    16.33,
+    27.67
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  },
+  {
+   "key": "a1694",
+   "annotation_id": 1694,
+   "file_name": "farm_17_4_frame_10965.jpg",
+   "bbox": [
+    256.33,
+    29.33,
+    17.67,
+    25.67
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  },
+  {
+   "key": "a1698",
+   "annotation_id": 1698,
+   "file_name": "farm_17_4_frame_11161.jpg",
+   "bbox": [
+    256.67,
+    32.67,
+    24.0,
+    22.0
+   ],
+   "class": "non-fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  }
+ ],
+ [
+  {
+   "key": "a1699",
+   "annotation_id": 1699,
+   "file_name": "farm_17_4_frame_14839.jpg",
+   "bbox": [
+    245.0,
+    27.0,
+    21.0,
+    20.5
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  },
+  {
+   "key": "a1701",
+   "annotation_id": 1701,
+   "file_name": "farm_17_4_frame_15041.jpg",
+   "bbox": [
+    239.33,
+    22.67,
+    25.0,
+    21.33
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "high"
+  },
+  {
+   "key": "a1762",
+   "annotation_id": 1762,
+   "file_name": "farm_17_4_frame_35085.jpg",
+   "bbox": [
+    237.33,
+    30.0,
+    25.67,
+    18.33
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a1767",
+   "annotation_id": 1767,
+   "file_name": "farm_17_4_frame_35441.jpg",
+   "bbox": [
+    242.67,
+    16.67,
+    16.67,
+    29.0
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  },
+  {
+   "key": "a1771",
+   "annotation_id": 1771,
+   "file_name": "farm_17_4_frame_35482.jpg",
+   "bbox": [
+    242.0,
+    18.0,
+    16.67,
+    27.33
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  }
+ ],
+ [
+  {
+   "key": "a1705",
+   "annotation_id": 1705,
+   "file_name": "farm_17_4_frame_16844.jpg",
+   "bbox": [
+    346.0,
+    96.33,
+    25.33,
+    15.0
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  },
+  {
+   "key": "a1706",
+   "annotation_id": 1706,
+   "file_name": "farm_17_4_frame_16893.jpg",
+   "bbox": [
+    346.67,
+    96.67,
+    32.67,
+    15.33
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  },
+  {
+   "key": "a1707",
+   "annotation_id": 1707,
+   "file_name": "farm_17_4_frame_17106.jpg",
+   "bbox": [
+    355.5,
+    99.0,
+    23.5,
+    12.0
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  }
+ ],
+ [
+  {
+   "key": "a1712",
+   "annotation_id": 1712,
+   "file_name": "farm_17_4_frame_18133.jpg",
+   "bbox": [
+    368.0,
+    106.0,
+    14.33,
+    31.33
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  },
+  {
+   "key": "a1714",
+   "annotation_id": 1714,
+   "file_name": "farm_17_4_frame_18319.jpg",
+   "bbox": [
+    371.0,
+    107.67,
+    12.67,
+    30.0
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  },
+  {
+   "key": "a1717",
+   "annotation_id": 1717,
+   "file_name": "farm_17_4_frame_18983.jpg",
+   "bbox": [
+    372.0,
+    118.5,
+    12.0,
+    23.0
+   ],
+   "class": "fish",
+   "source": "vlm_review",
+   "confidence": "medium"
+  }
+ ],
+ [
+  {
+   "key": "a1730",
+   "annotation_id": 1730,
+   "file_name": "farm_17_4_frame_28152.jpg",
+   "bbox": [
+    335.33,
+    134.67,
+    13.0,
+    15.67
+   ],
+   "class": "non-fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  },
+  {
+   "key": "a1732",
+   "annotation_id": 1732,
+   "file_name": "farm_17_4_frame_28694.jpg",
+   "bbox": [
+    334.67,
+    135.0,
+    14.67,
+    14.67
+   ],
+   "class": "non-fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  },
+  {
+   "key": "a1734",
+   "annotation_id": 1734,
+   "file_name": "farm_17_4_frame_28955.jpg",
+   "bbox": [
+    335.0,
+    134.67,
+    14.0,
+    14.67
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a1738",
+   "annotation_id": 1738,
+   "file_name": "farm_17_4_frame_30204.jpg",
+   "bbox": [
+    334.67,
+    135.33,
+    15.0,
+    14.0
+   ],
+   "class": "non-fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a1739",
+   "annotation_id": 1739,
+   "file_name": "farm_17_4_frame_30779.jpg",
+   "bbox": [
+    336.33,
+    135.67,
+    13.33,
+    14.0
+   ],
+   "class": "non-fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  },
+  {
+   "key": "a1741",
+   "annotation_id": 1741,
+   "file_name": "farm_17_4_frame_31340.jpg",
+   "bbox": [
+    334.67,
+    135.67,
+    15.0,
+    13.67
+   ],
+   "class": "non-fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  },
+  {
+   "key": "a1743",
+   "annotation_id": 1743,
+   "file_name": "farm_17_4_frame_31568.jpg",
+   "bbox": [
+    334.67,
+    135.67,
+    14.0,
+    15.0
+   ],
+   "class": "non-fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  }
+ ],
+ [
+  {
+   "key": "a1745",
+   "annotation_id": 1745,
+   "file_name": "farm_17_4_frame_32058.jpg",
+   "bbox": [
+    334.67,
+    136.33,
+    17.0,
+    24.0
+   ],
+   "class": "non-fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a1748",
+   "annotation_id": 1748,
+   "file_name": "farm_17_4_frame_32335.jpg",
+   "bbox": [
+    335.33,
+    144.33,
+    19.33,
+    19.0
+   ],
+   "class": "non-fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a1750",
+   "annotation_id": 1750,
+   "file_name": "farm_17_4_frame_32531.jpg",
+   "bbox": [
+    337.0,
+    144.67,
+    23.67,
+    20.67
+   ],
+   "class": "non-fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  }
+ ],
+ [
+  {
+   "key": "a1746",
+   "annotation_id": 1746,
+   "file_name": "farm_17_4_frame_32058.jpg",
+   "bbox": [
+    375.33,
+    185.67,
+    16.0,
+    22.33
+   ],
+   "class": "non-fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a1749",
+   "annotation_id": 1749,
+   "file_name": "farm_17_4_frame_32335.jpg",
+   "bbox": [
+    377.5,
+    190.0,
+    14.5,
+    19.0
+   ],
+   "class": "fish",
+   "source": "vlm_review",
+   "confidence": "low"
+  },
+  {
+   "key": "a1751",
+   "annotation_id": 1751,
+   "file_name": "farm_17_4_frame_32531.jpg",
+   "bbox": [
+    378.33,
+    190.33,
+    15.33,
+    19.0
+   ],
+   "class": "non-fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  }
+ ],
+ [
+  {
+   "key": "a1753",
+   "annotation_id": 1753,
+   "file_name": "farm_17_4_frame_32999.jpg",
+   "bbox": [
+    383.5,
+    188.5,
+    14.5,
+    22.0
+   ],
+   "class": "non-fish",
+   "source": "vlm_review",
+   "confidence": "low"
+  },
+  {
+   "key": "a1756",
+   "annotation_id": 1756,
+   "file_name": "farm_17_4_frame_33453.jpg",
+   "bbox": [
+    385.5,
+    183.5,
+    11.0,
+    24.0
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a1786",
+   "annotation_id": 1786,
+   "file_name": "farm_17_4_frame_43135.jpg",
+   "bbox": [
+    380.67,
+    186.0,
+    16.0,
+    18.33
+   ],
+   "class": "non-fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  }
+ ],
+ [
+  {
+   "key": "a1754",
+   "annotation_id": 1754,
+   "file_name": "farm_17_4_frame_33453.jpg",
+   "bbox": [
+    265.0,
+    22.0,
+    30.5,
+    13.0
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  },
+  {
+   "key": "a1758",
+   "annotation_id": 1758,
+   "file_name": "farm_17_4_frame_34214.jpg",
+   "bbox": [
+    270.0,
+    23.0,
+    29.0,
+    12.0
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a1759",
+   "annotation_id": 1759,
+   "file_name": "farm_17_4_frame_34323.jpg",
+   "bbox": [
+    270.0,
+    24.0,
+    31.0,
+    11.0
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  }
+ ],
+ [
+  {
+   "key": "a1763",
+   "annotation_id": 1763,
+   "file_name": "farm_17_4_frame_35085.jpg",
+   "bbox": [
+    291.0,
+    23.33,
+    27.33,
+    12.0
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a1768",
+   "annotation_id": 1768,
+   "file_name": "farm_17_4_frame_35441.jpg",
+   "bbox": [
+    298.33,
+    26.0,
+    20.0,
+    12.33
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  },
+  {
+   "key": "a1772",
+   "annotation_id": 1772,
+   "file_name": "farm_17_4_frame_35482.jpg",
+   "bbox": [
+    299.33,
+    27.0,
+    19.33,
+    12.0
+   ],
+   "class": "non-fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  },
+  {
+   "key": "a1787",
+   "annotation_id": 1787,
+   "file_name": "farm_17_4_frame_43135.jpg",
+   "bbox": [
+    297.33,
+    25.0,
+    20.0,
+    14.33
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  }
+ ],
+ [
+  {
+   "key": "a1765",
+   "annotation_id": 1765,
+   "file_name": "farm_17_4_frame_35085.jpg",
+   "bbox": [
+    385.5,
+    159.5,
+    13.0,
+    19.5
+   ],
+   "class": "fish",
+   "source": "vlm_review",
+   "confidence": "low"
+  },
+  {
+   "key": "a1769",
+   "annotation_id": 1769,
+   "file_name": "farm_17_4_frame_35441.jpg",
+   "bbox": [
+    385.5,
+    165.0,
+    13.0,
+    16.0
+   ],
+   "class": "fish",
+   "source": "vlm_review",
+   "confidence": "low"
+  },
+  {
+   "key": "a1773",
+   "annotation_id": 1773,
+   "file_name": "farm_17_4_frame_35482.jpg",
+   "bbox": [
+    387.0,
+    165.5,
+    11.0,
+    15.5
+   ],
+   "class": "fish",
+   "source": "vlm_review",
+   "confidence": "medium"
+  }
+ ],
+ [
+  {
+   "key": "a1766",
+   "annotation_id": 1766,
+   "file_name": "farm_17_4_frame_35085.jpg",
+   "bbox": [
+    385.5,
+    186.0,
+    12.5,
+    11.0
+   ],
+   "class": "fish",
+   "source": "vlm_review",
+   "confidence": "low"
+  },
+  {
+   "key": "a1770",
+   "annotation_id": 1770,
+   "file_name": "farm_17_4_frame_35441.jpg",
+   "bbox": [
+    385.0,
+    185.0,
+    11.5,
+    12.0
+   ],
+   "class": "fish",
+   "source": "vlm_review",
+   "confidence": "low"
+  },
+  {
+   "key": "a1774",
+   "annotation_id": 1774,
+   "file_name": "farm_17_4_frame_35482.jpg",
+   "bbox": [
+    385.0,
+    185.0,
+    11.0,
+    11.5
+   ],
+   "class": "fish",
+   "source": "vlm_review",
+   "confidence": "low"
+  }
+ ],
+ [
+  {
+   "key": "a1776",
+   "annotation_id": 1776,
+   "file_name": "farm_17_4_frame_36081.jpg",
+   "bbox": [
+    307.0,
+    29.5,
+    13.0,
+    23.5
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a1779",
+   "annotation_id": 1779,
+   "file_name": "farm_17_4_frame_36287.jpg",
+   "bbox": [
+    308.0,
+    29.33,
+    11.33,
+    21.0
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  },
+  {
+   "key": "a1781",
+   "annotation_id": 1781,
+   "file_name": "farm_17_4_frame_36850.jpg",
+   "bbox": [
+    308.33,
+    29.0,
+    12.33,
+    21.33
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  }
+ ],
+ [
+  {
+   "key": "a1933",
+   "annotation_id": 1933,
+   "file_name": "farm_4_5_frame_33244.jpg",
+   "bbox": [
+    140.0,
+    144.0,
+    244.0,
+    165.0
+   ],
+   "class": "non-fish",
+   "source": "vlm_pass1",
+   "confidence": "high"
+  },
+  {
+   "key": "a1940",
+   "annotation_id": 1940,
+   "file_name": "farm_4_5_frame_33955.jpg",
+   "bbox": [
+    156.67,
+    144.0,
+    211.67,
+    131.67
+   ],
+   "class": "non-fish",
+   "source": "vlm_pass1",
+   "confidence": "high"
+  },
+  {
+   "key": "a1944",
+   "annotation_id": 1944,
+   "file_name": "farm_4_5_frame_34318.jpg",
+   "bbox": [
+    162.33,
+    144.0,
+    221.67,
+    128.67
+   ],
+   "class": "non-fish",
+   "source": "vlm_pass1",
+   "confidence": "high"
+  },
+  {
+   "key": "a1948",
+   "annotation_id": 1948,
+   "file_name": "farm_4_5_frame_34436.jpg",
+   "bbox": [
+    171.0,
+    144.0,
+    213.0,
+    140.67
+   ],
+   "class": "non-fish",
+   "source": "vlm_pass1",
+   "confidence": "high"
+  }
+ ],
+ [
+  {
+   "key": "a1952",
+   "annotation_id": 1952,
+   "file_name": "farm_4_5_frame_34799.jpg",
+   "bbox": [
+    57.0,
+    12.5,
+    33.0,
+    22.5
+   ],
+   "class": "non-fish",
+   "source": "vlm_review",
+   "confidence": "low"
+  },
+  {
+   "key": "a1961",
+   "annotation_id": 1961,
+   "file_name": "farm_4_5_frame_34986.jpg",
+   "bbox": [
+    57.33,
+    13.33,
+    46.67,
+    29.33
+   ],
+   "class": "non-fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a1967",
+   "annotation_id": 1967,
+   "file_name": "farm_4_5_frame_35494.jpg",
+   "bbox": [
+    57.5,
+    10.0,
+    46.0,
+    32.5
+   ],
+   "class": "non-fish",
+   "source": "vlm_review",
+   "confidence": "medium"
+  },
+  {
+   "key": "a1974",
+   "annotation_id": 1974,
+   "file_name": "farm_4_5_frame_35749.jpg",
+   "bbox": [
+    59.0,
+    15.0,
+    43.5,
+    25.0
+   ],
+   "class": "fish",
+   "source": "vlm_review",
+   "confidence": "low"
+  }
+ ],
+ [
+  {
+   "key": "a2019",
+   "annotation_id": 2019,
+   "file_name": "farm_4_5_frame_41559.jpg",
+   "bbox": [
+    387.0,
+    303.33,
+    16.67,
+    22.33
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a2028",
+   "annotation_id": 2028,
+   "file_name": "farm_4_5_frame_43184.jpg",
+   "bbox": [
+    387.0,
+    304.67,
+    17.67,
+    21.0
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a2039",
+   "annotation_id": 2039,
+   "file_name": "farm_4_5_frame_44364.jpg",
+   "bbox": [
+    387.0,
+    303.33,
+    16.33,
+    22.33
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a2067",
+   "annotation_id": 2067,
+   "file_name": "farm_4_5_frame_50728.jpg",
+   "bbox": [
+    387.67,
+    303.33,
+    17.0,
+    22.33
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  },
+  {
+   "key": "a2072",
+   "annotation_id": 2072,
+   "file_name": "farm_4_5_frame_50850.jpg",
+   "bbox": [
+    387.33,
+    306.67,
+    16.0,
+    19.0
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a2077",
+   "annotation_id": 2077,
+   "file_name": "farm_4_5_frame_51338.jpg",
+   "bbox": [
+    387.0,
+    305.67,
+    17.33,
+    20.0
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a2086",
+   "annotation_id": 2086,
+   "file_name": "farm_4_5_frame_53044.jpg",
+   "bbox": [
+    387.67,
+    303.33,
+    15.67,
+    22.33
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a2108",
+   "annotation_id": 2108,
+   "file_name": "farm_4_5_frame_56765.jpg",
+   "bbox": [
+    388.0,
+    304.0,
+    15.67,
+    21.67
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  },
+  {
+   "key": "a2116",
+   "annotation_id": 2116,
+   "file_name": "farm_4_5_frame_56879.jpg",
+   "bbox": [
+    387.67,
+    306.67,
+    15.0,
+    20.0
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a2123",
+   "annotation_id": 2123,
+   "file_name": "farm_4_5_frame_57001.jpg",
+   "bbox": [
+    387.67,
+    306.33,
+    15.67,
+    20.33
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a2132",
+   "annotation_id": 2132,
+   "file_name": "farm_4_5_frame_57101.jpg",
+   "bbox": [
+    387.67,
+    303.33,
+    16.33,
+    22.67
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  }
+ ],
+ [
+  {
+   "key": "a2083",
+   "annotation_id": 2083,
+   "file_name": "farm_4_5_frame_53026.jpg",
+   "bbox": [
+    326.0,
+    101.67,
+    165.0,
+    114.33
+   ],
+   "class": "non-fish",
+   "source": "vlm_pass1",
+   "confidence": "high"
+  },
+  {
+   "key": "a2085",
+   "annotation_id": 2085,
+   "file_name": "farm_4_5_frame_53044.jpg",
+   "bbox": [
+    307.67,
+    96.0,
+    177.67,
+    120.0
+   ],
+   "class": "non-fish",
+   "source": "vlm_pass1",
+   "confidence": "high"
+  },
+  {
+   "key": "a2096",
+   "annotation_id": 2096,
+   "file_name": "farm_4_5_frame_55195.jpg",
+   "bbox": [
+    332.67,
+    124.0,
+    140.67,
+    92.0
+   ],
+   "class": "non-fish",
+   "source": "vlm_pass1",
+   "confidence": "high"
+  }
+ ],
+ [
+  {
+   "key": "a2100",
+   "annotation_id": 2100,
+   "file_name": "farm_4_5_frame_55390.jpg",
+   "bbox": [
+    555.0,
+    184.0,
+    16.0,
+    28.5
+   ],
+   "class": "fish",
+   "source": "vlm_review",
+   "confidence": "low"
+  },
+  {
+   "key": "a2109",
+   "annotation_id": 2109,
+   "file_name": "farm_4_5_frame_56765.jpg",
+   "bbox": [
+    555.0,
+    186.0,
+    19.0,
+    27.0
+   ],
+   "class": "fish",
+   "source": "vlm_review",
+   "confidence": "low"
+  },
+  {
+   "key": "a2115",
+   "annotation_id": 2115,
+   "file_name": "farm_4_5_frame_56879.jpg",
+   "bbox": [
+    553.67,
+    185.67,
+    19.67,
+    27.67
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a2122",
+   "annotation_id": 2122,
+   "file_name": "farm_4_5_frame_57001.jpg",
+   "bbox": [
+    554.33,
+    185.67,
+    19.0,
+    29.0
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a2130",
+   "annotation_id": 2130,
+   "file_name": "farm_4_5_frame_57101.jpg",
+   "bbox": [
+    553.67,
+    184.0,
+    19.67,
+    28.33
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  }
+ ],
+ [
+  {
+   "key": "a2150",
+   "annotation_id": 2150,
+   "file_name": "farm_6_3_frame_10157.jpg",
+   "bbox": [
+    109.33,
+    270.0,
+    22.0,
+    63.33
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  },
+  {
+   "key": "a2158",
+   "annotation_id": 2158,
+   "file_name": "farm_6_3_frame_10428.jpg",
+   "bbox": [
+    109.33,
+    270.0,
+    22.0,
+    63.33
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  },
+  {
+   "key": "a2164",
+   "annotation_id": 2164,
+   "file_name": "farm_6_3_frame_11082.jpg",
+   "bbox": [
+    111.33,
+    270.67,
+    19.67,
+    62.67
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  },
+  {
+   "key": "a2188",
+   "annotation_id": 2188,
+   "file_name": "farm_6_3_frame_12432.jpg",
+   "bbox": [
+    110.0,
+    270.67,
+    21.67,
+    63.33
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  },
+  {
+   "key": "a2197",
+   "annotation_id": 2197,
+   "file_name": "farm_6_3_frame_14513.jpg",
+   "bbox": [
+    110.0,
+    270.67,
+    20.67,
+    62.0
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "high"
+  },
+  {
+   "key": "a2241",
+   "annotation_id": 2241,
+   "file_name": "farm_6_3_frame_1563.jpg",
+   "bbox": [
+    110.0,
+    275.67,
+    22.0,
+    55.67
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a2559",
+   "annotation_id": 2559,
+   "file_name": "farm_6_3_frame_3574.jpg",
+   "bbox": [
+    110.0,
+    271.33,
+    22.67,
+    62.0
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  },
+  {
+   "key": "a2561",
+   "annotation_id": 2561,
+   "file_name": "farm_6_3_frame_3587.jpg",
+   "bbox": [
+    110.0,
+    270.67,
+    21.0,
+    62.0
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  },
+  {
+   "key": "a2683",
+   "annotation_id": 2683,
+   "file_name": "farm_6_3_frame_4211.jpg",
+   "bbox": [
+    109.33,
+    270.0,
+    22.67,
+    62.67
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a2807",
+   "annotation_id": 2807,
+   "file_name": "farm_6_3_frame_4858.jpg",
+   "bbox": [
+    109.33,
+    269.33,
+    22.67,
+    63.67
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a2876",
+   "annotation_id": 2876,
+   "file_name": "farm_6_3_frame_5556.jpg",
+   "bbox": [
+    110.0,
+    270.0,
+    21.67,
+    63.33
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  },
+  {
+   "key": "a2880",
+   "annotation_id": 2880,
+   "file_name": "farm_6_3_frame_5603.jpg",
+   "bbox": [
+    110.0,
+    270.67,
+    22.0,
+    62.0
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "high"
+  },
+  {
+   "key": "a2889",
+   "annotation_id": 2889,
+   "file_name": "farm_6_3_frame_5761.jpg",
+   "bbox": [
+    110.0,
+    270.67,
+    21.0,
+    62.0
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  },
+  {
+   "key": "a2900",
+   "annotation_id": 2900,
+   "file_name": "farm_6_3_frame_5894.jpg",
+   "bbox": [
+    110.0,
+    271.67,
+    22.0,
+    61.33
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  },
+  {
+   "key": "a2906",
+   "annotation_id": 2906,
+   "file_name": "farm_6_3_frame_6026.jpg",
+   "bbox": [
+    110.0,
+    270.67,
+    22.0,
+    62.0
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  },
+  {
+   "key": "a2913",
+   "annotation_id": 2913,
+   "file_name": "farm_6_3_frame_6395.jpg",
+   "bbox": [
+    110.0,
+    270.67,
+    20.67,
+    62.67
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "high"
+  },
+  {
+   "key": "a2920",
+   "annotation_id": 2920,
+   "file_name": "farm_6_3_frame_6694.jpg",
+   "bbox": [
+    110.0,
+    271.67,
+    21.0,
+    61.67
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  },
+  {
+   "key": "a2926",
+   "annotation_id": 2926,
+   "file_name": "farm_6_3_frame_6926.jpg",
+   "bbox": [
+    109.33,
+    270.0,
+    22.67,
+    63.0
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  },
+  {
+   "key": "a2947",
+   "annotation_id": 2947,
+   "file_name": "farm_6_3_frame_9295.jpg",
+   "bbox": [
+    111.0,
+    270.67,
+    19.67,
+    62.67
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  },
+  {
+   "key": "a2958",
+   "annotation_id": 2958,
+   "file_name": "farm_6_3_frame_9519.jpg",
+   "bbox": [
+    109.33,
+    269.33,
+    22.67,
+    64.67
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  },
+  {
+   "key": "a2973",
+   "annotation_id": 2973,
+   "file_name": "farm_6_3_frame_9865.jpg",
+   "bbox": [
+    110.67,
+    270.0,
+    20.33,
+    62.67
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  }
+ ],
+ [
+  {
+   "key": "a2152",
+   "annotation_id": 2152,
+   "file_name": "farm_6_3_frame_10157.jpg",
+   "bbox": [
+    522.67,
+    100.0,
+    15.0,
+    28.33
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a2331",
+   "annotation_id": 2331,
+   "file_name": "farm_6_3_frame_20637.jpg",
+   "bbox": [
+    522.0,
+    99.33,
+    16.67,
+    30.0
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a2353",
+   "annotation_id": 2353,
+   "file_name": "farm_6_3_frame_22083.jpg",
+   "bbox": [
+    522.5,
+    100.0,
+    15.0,
+    29.0
+   ],
+   "class": "fish",
+   "source": "vlm_review",
+   "confidence": "low"
+  },
+  {
+   "key": "a2649",
+   "annotation_id": 2649,
+   "file_name": "farm_6_3_frame_40314.jpg",
+   "bbox": [
+    522.0,
+    100.0,
+    16.0,
+    28.67
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a2661",
+   "annotation_id": 2661,
+   "file_name": "farm_6_3_frame_40533.jpg",
+   "bbox": [
+    522.67,
+    100.0,
+    16.67,
+    28.33
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a2960",
+   "annotation_id": 2960,
+   "file_name": "farm_6_3_frame_9519.jpg",
+   "bbox": [
+    522.5,
+    95.0,
+    15.0,
+    30.0
+   ],
+   "class": "fish",
+   "source": "vlm_review",
+   "confidence": "low"
+  }
+ ],
+ [
+  {
+   "key": "a2159",
+   "annotation_id": 2159,
+   "file_name": "farm_6_3_frame_10428.jpg",
+   "bbox": [
+    104.33,
+    31.67,
+    15.0,
+    48.33
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  },
+  {
+   "key": "a2166",
+   "annotation_id": 2166,
+   "file_name": "farm_6_3_frame_11082.jpg",
+   "bbox": [
+    104.67,
+    32.0,
+    14.33,
+    48.0
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  },
+  {
+   "key": "a2181",
+   "annotation_id": 2181,
+   "file_name": "farm_6_3_frame_11897.jpg",
+   "bbox": [
+    104.33,
+    31.67,
+    15.0,
+    47.33
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a2238",
+   "annotation_id": 2238,
+   "file_name": "farm_6_3_frame_15445.jpg",
+   "bbox": [
+    104.0,
+    32.33,
+    15.33,
+    46.33
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a2263",
+   "annotation_id": 2263,
+   "file_name": "farm_6_3_frame_17103.jpg",
+   "bbox": [
+    104.0,
+    31.67,
+    15.33,
+    48.33
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "high"
+  },
+  {
+   "key": "a2273",
+   "annotation_id": 2273,
+   "file_name": "farm_6_3_frame_17708.jpg",
+   "bbox": [
+    104.33,
+    31.67,
+    15.0,
+    48.33
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a2282",
+   "annotation_id": 2282,
+   "file_name": "farm_6_3_frame_17735.jpg",
+   "bbox": [
+    104.0,
+    31.0,
+    15.0,
+    49.0
+   ],
+   "class": "fish",
+   "source": "vlm_review",
+   "confidence": "low"
+  },
+  {
+   "key": "a2292",
+   "annotation_id": 2292,
+   "file_name": "farm_6_3_frame_18954.jpg",
+   "bbox": [
+    104.0,
+    31.33,
+    16.0,
+    49.33
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a2304",
+   "annotation_id": 2304,
+   "file_name": "farm_6_3_frame_19082.jpg",
+   "bbox": [
+    104.33,
+    32.0,
+    14.67,
+    48.0
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  },
+  {
+   "key": "a2327",
+   "annotation_id": 2327,
+   "file_name": "farm_6_3_frame_20637.jpg",
+   "bbox": [
+    104.0,
+    31.67,
+    15.33,
+    48.33
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  },
+  {
+   "key": "a2350",
+   "annotation_id": 2350,
+   "file_name": "farm_6_3_frame_22083.jpg",
+   "bbox": [
+    104.33,
+    31.67,
+    15.0,
+    48.33
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  },
+  {
+   "key": "a2379",
+   "annotation_id": 2379,
+   "file_name": "farm_6_3_frame_24313.jpg",
+   "bbox": [
+    104.33,
+    32.33,
+    15.0,
+    47.67
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a2391",
+   "annotation_id": 2391,
+   "file_name": "farm_6_3_frame_24459.jpg",
+   "bbox": [
+    104.33,
+    31.67,
+    15.0,
+    48.33
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  },
+  {
+   "key": "a2415",
+   "annotation_id": 2415,
+   "file_name": "farm_6_3_frame_25942.jpg",
+   "bbox": [
+    104.33,
+    32.33,
+    15.0,
+    47.0
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a2426",
+   "annotation_id": 2426,
+   "file_name": "farm_6_3_frame_26646.jpg",
+   "bbox": [
+    104.33,
+    31.67,
+    14.67,
+    47.33
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  },
+  {
+   "key": "a2438",
+   "annotation_id": 2438,
+   "file_name": "farm_6_3_frame_27354.jpg",
+   "bbox": [
+    104.33,
+    32.67,
+    14.67,
+    46.0
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a2444",
+   "annotation_id": 2444,
+   "file_name": "farm_6_3_frame_27855.jpg",
+   "bbox": [
+    104.0,
+    31.67,
+    16.0,
+    48.33
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "high"
+  },
+  {
+   "key": "a2458",
+   "annotation_id": 2458,
+   "file_name": "farm_6_3_frame_28284.jpg",
+   "bbox": [
+    105.0,
+    32.33,
+    14.33,
+    46.0
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  },
+  {
+   "key": "a2468",
+   "annotation_id": 2468,
+   "file_name": "farm_6_3_frame_29305.jpg",
+   "bbox": [
+    104.33,
+    31.67,
+    14.67,
+    48.33
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  },
+  {
+   "key": "a2478",
+   "annotation_id": 2478,
+   "file_name": "farm_6_3_frame_29517.jpg",
+   "bbox": [
+    104.33,
+    32.33,
+    15.0,
+    46.33
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  },
+  {
+   "key": "a2488",
+   "annotation_id": 2488,
+   "file_name": "farm_6_3_frame_29794.jpg",
+   "bbox": [
+    104.0,
+    31.67,
+    15.33,
+    49.0
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  },
+  {
+   "key": "a2504",
+   "annotation_id": 2504,
+   "file_name": "farm_6_3_frame_31963.jpg",
+   "bbox": [
+    104.33,
+    31.67,
+    14.67,
+    47.33
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  },
+  {
+   "key": "a2514",
+   "annotation_id": 2514,
+   "file_name": "farm_6_3_frame_32531.jpg",
+   "bbox": [
+    104.33,
+    31.67,
+    15.0,
+    48.33
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  },
+  {
+   "key": "a2571",
+   "annotation_id": 2571,
+   "file_name": "farm_6_3_frame_37165.jpg",
+   "bbox": [
+    104.0,
+    32.67,
+    15.33,
+    47.33
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a2577",
+   "annotation_id": 2577,
+   "file_name": "farm_6_3_frame_37511.jpg",
+   "bbox": [
+    104.33,
+    31.67,
+    14.67,
+    48.33
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  },
+  {
+   "key": "a2594",
+   "annotation_id": 2594,
+   "file_name": "farm_6_3_frame_38147.jpg",
+   "bbox": [
+    104.33,
+    32.0,
+    15.0,
+    47.33
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a2623",
+   "annotation_id": 2623,
+   "file_name": "farm_6_3_frame_39853.jpg",
+   "bbox": [
+    105.0,
+    32.33,
+    14.33,
+    47.67
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  },
+  {
+   "key": "a2638",
+   "annotation_id": 2638,
+   "file_name": "farm_6_3_frame_39870.jpg",
+   "bbox": [
+    104.0,
+    31.0,
+    16.0,
+    49.0
+   ],
+   "class": "fish",
+   "source": "vlm_review",
+   "confidence": "low"
+  },
+  {
+   "key": "a2653",
+   "annotation_id": 2653,
+   "file_name": "farm_6_3_frame_40314.jpg",
+   "bbox": [
+    104.0,
+    32.0,
+    16.0,
+    48.0
+   ],
+   "class": "fish",
+   "source": "vlm_review",
+   "confidence": "low"
+  },
+  {
+   "key": "a2666",
+   "annotation_id": 2666,
+   "file_name": "farm_6_3_frame_40715.jpg",
+   "bbox": [
+    104.5,
+    32.5,
+    14.5,
+    47.5
+   ],
+   "class": "fish",
+   "source": "vlm_review",
+   "confidence": "low"
+  },
+  {
+   "key": "a2673",
+   "annotation_id": 2673,
+   "file_name": "farm_6_3_frame_40719.jpg",
+   "bbox": [
+    105.0,
+    32.5,
+    14.0,
+    47.5
+   ],
+   "class": "fish",
+   "source": "vlm_review",
+   "confidence": "low"
+  },
+  {
+   "key": "a2677",
+   "annotation_id": 2677,
+   "file_name": "farm_6_3_frame_41351.jpg",
+   "bbox": [
+    104.0,
+    32.0,
+    15.0,
+    47.0
+   ],
+   "class": "fish",
+   "source": "vlm_review",
+   "confidence": "low"
+  },
+  {
+   "key": "a2693",
+   "annotation_id": 2693,
+   "file_name": "farm_6_3_frame_42413.jpg",
+   "bbox": [
+    104.0,
+    31.67,
+    16.0,
+    49.33
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a2701",
+   "annotation_id": 2701,
+   "file_name": "farm_6_3_frame_43337.jpg",
+   "bbox": [
+    104.5,
+    32.5,
+    14.5,
+    46.5
+   ],
+   "class": "fish",
+   "source": "vlm_review",
+   "confidence": "low"
+  },
+  {
+   "key": "a2712",
+   "annotation_id": 2712,
+   "file_name": "farm_6_3_frame_43946.jpg",
+   "bbox": [
+    104.0,
+    32.33,
+    15.33,
+    47.67
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  },
+  {
+   "key": "a2722",
+   "annotation_id": 2722,
+   "file_name": "farm_6_3_frame_44208.jpg",
+   "bbox": [
+    104.0,
+    32.5,
+    16.0,
+    47.5
+   ],
+   "class": "fish",
+   "source": "vlm_review",
+   "confidence": "low"
+  },
+  {
+   "key": "a2729",
+   "annotation_id": 2729,
+   "file_name": "farm_6_3_frame_44364.jpg",
+   "bbox": [
+    104.0,
+    32.5,
+    15.0,
+    47.5
+   ],
+   "class": "fish",
+   "source": "vlm_review",
+   "confidence": "low"
+  },
+  {
+   "key": "a2734",
+   "annotation_id": 2734,
+   "file_name": "farm_6_3_frame_44447.jpg",
+   "bbox": [
+    104.0,
+    32.0,
+    16.0,
+    48.67
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a2740",
+   "annotation_id": 2740,
+   "file_name": "farm_6_3_frame_44521.jpg",
+   "bbox": [
+    104.0,
+    31.67,
+    15.33,
+    48.33
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  },
+  {
+   "key": "a2746",
+   "annotation_id": 2746,
+   "file_name": "farm_6_3_frame_44760.jpg",
+   "bbox": [
+    104.33,
+    32.67,
+    14.67,
+    46.67
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  },
+  {
+   "key": "a2755",
+   "annotation_id": 2755,
+   "file_name": "farm_6_3_frame_44828.jpg",
+   "bbox": [
+    104.0,
+    32.0,
+    15.33,
+    48.67
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a2761",
+   "annotation_id": 2761,
+   "file_name": "farm_6_3_frame_45069.jpg",
+   "bbox": [
+    104.33,
+    31.67,
+    15.0,
+    49.33
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a2773",
+   "annotation_id": 2773,
+   "file_name": "farm_6_3_frame_45238.jpg",
+   "bbox": [
+    104.0,
+    31.0,
+    15.0,
+    50.0
+   ],
+   "class": "fish",
+   "source": "vlm_review",
+   "confidence": "medium"
+  },
+  {
+   "key": "a2805",
+   "annotation_id": 2805,
+   "file_name": "farm_6_3_frame_47636.jpg",
+   "bbox": [
+    104.5,
+    32.0,
+    14.5,
+    47.0
+   ],
+   "class": "fish",
+   "source": "vlm_review",
+   "confidence": "low"
+  },
+  {
+   "key": "a2814",
+   "annotation_id": 2814,
+   "file_name": "farm_6_3_frame_50749.jpg",
+   "bbox": [
+    103.67,
+    31.33,
+    16.0,
+    49.67
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a2832",
+   "annotation_id": 2832,
+   "file_name": "farm_6_3_frame_52216.jpg",
+   "bbox": [
+    104.0,
+    32.5,
+    16.0,
+    47.5
+   ],
+   "class": "fish",
+   "source": "vlm_review",
+   "confidence": "medium"
+  },
+  {
+   "key": "a2846",
+   "annotation_id": 2846,
+   "file_name": "farm_6_3_frame_53417.jpg",
+   "bbox": [
+    104.0,
+    31.67,
+    15.33,
+    47.67
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a2868",
+   "annotation_id": 2868,
+   "file_name": "farm_6_3_frame_54645.jpg",
+   "bbox": [
+    104.0,
+    31.67,
+    15.33,
+    48.33
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  },
+  {
+   "key": "a2890",
+   "annotation_id": 2890,
+   "file_name": "farm_6_3_frame_5761.jpg",
+   "bbox": [
+    105.0,
+    32.33,
+    14.33,
+    47.0
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a2897",
+   "annotation_id": 2897,
+   "file_name": "farm_6_3_frame_5859.jpg",
+   "bbox": [
+    105.0,
+    32.5,
+    14.0,
+    45.5
+   ],
+   "class": "fish",
+   "source": "vlm_review",
+   "confidence": "low"
+  },
+  {
+   "key": "a2902",
+   "annotation_id": 2902,
+   "file_name": "farm_6_3_frame_5894.jpg",
+   "bbox": [
+    104.67,
+    32.0,
+    14.0,
+    46.67
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a2908",
+   "annotation_id": 2908,
+   "file_name": "farm_6_3_frame_6026.jpg",
+   "bbox": [
+    105.0,
+    32.67,
+    14.0,
+    46.0
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a2921",
+   "annotation_id": 2921,
+   "file_name": "farm_6_3_frame_6694.jpg",
+   "bbox": [
+    104.67,
+    32.0,
+    14.67,
+    48.0
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a2927",
+   "annotation_id": 2927,
+   "file_name": "farm_6_3_frame_6926.jpg",
+   "bbox": [
+    104.33,
+    30.0,
+    18.67,
+    49.0
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  },
+  {
+   "key": "a2936",
+   "annotation_id": 2936,
+   "file_name": "farm_6_3_frame_8214.jpg",
+   "bbox": [
+    105.0,
+    31.67,
+    14.33,
+    47.33
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  },
+  {
+   "key": "a2948",
+   "annotation_id": 2948,
+   "file_name": "farm_6_3_frame_9295.jpg",
+   "bbox": [
+    104.33,
+    31.67,
+    15.67,
+    48.33
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  }
+ ],
+ [
+  {
+   "key": "a2165",
+   "annotation_id": 2165,
+   "file_name": "farm_6_3_frame_11082.jpg",
+   "bbox": [
+    319.33,
+    70.67,
+    48.33,
+    18.67
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  },
+  {
+   "key": "a2622",
+   "annotation_id": 2622,
+   "file_name": "farm_6_3_frame_39853.jpg",
+   "bbox": [
+    319.33,
+    64.67,
+    37.33,
+    22.67
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  },
+  {
+   "key": "a2633",
+   "annotation_id": 2633,
+   "file_name": "farm_6_3_frame_39870.jpg",
+   "bbox": [
+    320.33,
+    64.67,
+    35.67,
+    23.33
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "high"
+  }
+ ],
+ [
+  {
+   "key": "a2171",
+   "annotation_id": 2171,
+   "file_name": "farm_6_3_frame_11082.jpg",
+   "bbox": [
+    74.67,
+    328.33,
+    19.33,
+    25.0
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a2201",
+   "annotation_id": 2201,
+   "file_name": "farm_6_3_frame_14513.jpg",
+   "bbox": [
+    72.67,
+    328.0,
+    21.33,
+    26.67
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a2222",
+   "annotation_id": 2222,
+   "file_name": "farm_6_3_frame_15148.jpg",
+   "bbox": [
+    73.33,
+    328.0,
+    21.33,
+    25.33
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a2239",
+   "annotation_id": 2239,
+   "file_name": "farm_6_3_frame_15445.jpg",
+   "bbox": [
+    72.67,
+    326.67,
+    21.33,
+    26.67
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a2255",
+   "annotation_id": 2255,
+   "file_name": "farm_6_3_frame_16451.jpg",
+   "bbox": [
+    71.67,
+    327.33,
+    22.33,
+    27.33
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a2283",
+   "annotation_id": 2283,
+   "file_name": "farm_6_3_frame_17735.jpg",
+   "bbox": [
+    71.5,
+    327.5,
+    23.5,
+    26.0
+   ],
+   "class": "fish",
+   "source": "vlm_review",
+   "confidence": "low"
+  },
+  {
+   "key": "a2295",
+   "annotation_id": 2295,
+   "file_name": "farm_6_3_frame_18954.jpg",
+   "bbox": [
+    75.0,
+    327.5,
+    20.0,
+    25.0
+   ],
+   "class": "fish",
+   "source": "vlm_review",
+   "confidence": "low"
+  },
+  {
+   "key": "a2319",
+   "annotation_id": 2319,
+   "file_name": "farm_6_3_frame_19192.jpg",
+   "bbox": [
+    71.67,
+    326.67,
+    22.33,
+    27.33
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a2366",
+   "annotation_id": 2366,
+   "file_name": "farm_6_3_frame_23492.jpg",
+   "bbox": [
+    68.33,
+    326.67,
+    25.67,
+    27.33
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a2393",
+   "annotation_id": 2393,
+   "file_name": "farm_6_3_frame_24459.jpg",
+   "bbox": [
+    77.5,
+    327.5,
+    17.5,
+    25.0
+   ],
+   "class": "fish",
+   "source": "vlm_review",
+   "confidence": "low"
+  },
+  {
+   "key": "a2401",
+   "annotation_id": 2401,
+   "file_name": "farm_6_3_frame_25623.jpg",
+   "bbox": [
+    74.0,
+    328.0,
+    20.0,
+    26.0
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a2409",
+   "annotation_id": 2409,
+   "file_name": "farm_6_3_frame_25791.jpg",
+   "bbox": [
+    71.67,
+    326.67,
+    23.33,
+    27.33
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a2421",
+   "annotation_id": 2421,
+   "file_name": "farm_6_3_frame_26119.jpg",
+   "bbox": [
+    74.0,
+    328.0,
+    20.0,
+    26.67
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a2429",
+   "annotation_id": 2429,
+   "file_name": "farm_6_3_frame_26646.jpg",
+   "bbox": [
+    72.5,
+    325.0,
+    22.5,
+    29.0
+   ],
+   "class": "non-fish",
+   "source": "vlm_review",
+   "confidence": "low"
+  },
+  {
+   "key": "a2452",
+   "annotation_id": 2452,
+   "file_name": "farm_6_3_frame_27855.jpg",
+   "bbox": [
+    75.0,
+    327.5,
+    21.0,
+    27.5
+   ],
+   "class": "fish",
+   "source": "vlm_review",
+   "confidence": "low"
+  },
+  {
+   "key": "a2489",
+   "annotation_id": 2489,
+   "file_name": "farm_6_3_frame_29794.jpg",
+   "bbox": [
+    71.67,
+    328.0,
+    23.67,
+    26.67
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a2506",
+   "annotation_id": 2506,
+   "file_name": "farm_6_3_frame_31963.jpg",
+   "bbox": [
+    70.67,
+    325.67,
+    23.33,
+    29.0
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a2517",
+   "annotation_id": 2517,
+   "file_name": "farm_6_3_frame_32531.jpg",
+   "bbox": [
+    74.0,
+    330.0,
+    20.0,
+    25.33
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a2533",
+   "annotation_id": 2533,
+   "file_name": "farm_6_3_frame_32686.jpg",
+   "bbox": [
+    71.33,
+    327.33,
+    22.67,
+    27.67
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a2544",
+   "annotation_id": 2544,
+   "file_name": "farm_6_3_frame_33869.jpg",
+   "bbox": [
+    71.0,
+    327.33,
+    23.0,
+    26.67
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a2552",
+   "annotation_id": 2552,
+   "file_name": "farm_6_3_frame_34155.jpg",
+   "bbox": [
+    73.33,
+    329.0,
+    21.67,
+    25.0
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a2560",
+   "annotation_id": 2560,
+   "file_name": "farm_6_3_frame_3574.jpg",
+   "bbox": [
+    74.0,
+    328.0,
+    22.0,
+    25.33
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a2566",
+   "annotation_id": 2566,
+   "file_name": "farm_6_3_frame_36015.jpg",
+   "bbox": [
+    74.67,
+    329.33,
+    20.67,
+    24.67
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a2572",
+   "annotation_id": 2572,
+   "file_name": "farm_6_3_frame_37165.jpg",
+   "bbox": [
+    72.5,
+    327.5,
+    22.5,
+    26.5
+   ],
+   "class": "fish",
+   "source": "vlm_review",
+   "confidence": "low"
+  },
+  {
+   "key": "a2579",
+   "annotation_id": 2579,
+   "file_name": "farm_6_3_frame_37511.jpg",
+   "bbox": [
+    71.67,
+    328.33,
+    23.33,
+    25.67
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a2588",
+   "annotation_id": 2588,
+   "file_name": "farm_6_3_frame_37621.jpg",
+   "bbox": [
+    70.67,
+    326.67,
+    24.33,
+    28.0
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a2595",
+   "annotation_id": 2595,
+   "file_name": "farm_6_3_frame_38147.jpg",
+   "bbox": [
+    72.5,
+    327.5,
+    22.5,
+    26.5
+   ],
+   "class": "fish",
+   "source": "vlm_review",
+   "confidence": "low"
+  },
+  {
+   "key": "a2607",
+   "annotation_id": 2607,
+   "file_name": "farm_6_3_frame_39220.jpg",
+   "bbox": [
+    74.0,
+    329.33,
+    20.0,
+    25.33
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a2613",
+   "annotation_id": 2613,
+   "file_name": "farm_6_3_frame_39510.jpg",
+   "bbox": [
+    75.0,
+    329.0,
+    19.33,
+    25.0
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a2624",
+   "annotation_id": 2624,
+   "file_name": "farm_6_3_frame_39853.jpg",
+   "bbox": [
+    73.33,
+    328.33,
+    22.0,
+    25.67
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a2634",
+   "annotation_id": 2634,
+   "file_name": "farm_6_3_frame_39870.jpg",
+   "bbox": [
+    72.67,
+    328.33,
+    22.67,
+    26.0
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a2647",
+   "annotation_id": 2647,
+   "file_name": "farm_6_3_frame_40314.jpg",
+   "bbox": [
+    72.67,
+    328.0,
+    22.67,
+    26.0
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a2672",
+   "annotation_id": 2672,
+   "file_name": "farm_6_3_frame_40719.jpg",
+   "bbox": [
+    71.33,
+    328.33,
+    23.0,
+    26.0
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a2681",
+   "annotation_id": 2681,
+   "file_name": "farm_6_3_frame_41361.jpg",
+   "bbox": [
+    76.0,
+    327.5,
+    19.0,
+    26.5
+   ],
+   "class": "fish",
+   "source": "vlm_review",
+   "confidence": "low"
+  },
+  {
+   "key": "a2684",
+   "annotation_id": 2684,
+   "file_name": "farm_6_3_frame_4211.jpg",
+   "bbox": [
+    72.5,
+    327.5,
+    22.5,
+    25.0
+   ],
+   "class": "fish",
+   "source": "vlm_review",
+   "confidence": "low"
+  },
+  {
+   "key": "a2688",
+   "annotation_id": 2688,
+   "file_name": "farm_6_3_frame_42158.jpg",
+   "bbox": [
+    71.67,
+    329.0,
+    22.33,
+    25.0
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a2694",
+   "annotation_id": 2694,
+   "file_name": "farm_6_3_frame_42413.jpg",
+   "bbox": [
+    75.0,
+    327.5,
+    20.0,
+    25.0
+   ],
+   "class": "fish",
+   "source": "vlm_review",
+   "confidence": "low"
+  },
+  {
+   "key": "a2706",
+   "annotation_id": 2706,
+   "file_name": "farm_6_3_frame_43495.jpg",
+   "bbox": [
+    71.67,
+    328.33,
+    22.67,
+    25.0
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a2714",
+   "annotation_id": 2714,
+   "file_name": "farm_6_3_frame_43946.jpg",
+   "bbox": [
+    74.0,
+    329.33,
+    20.0,
+    25.33
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a2723",
+   "annotation_id": 2723,
+   "file_name": "farm_6_3_frame_44208.jpg",
+   "bbox": [
+    75.0,
+    327.5,
+    18.0,
+    25.5
+   ],
+   "class": "fish",
+   "source": "vlm_review",
+   "confidence": "low"
+  },
+  {
+   "key": "a2735",
+   "annotation_id": 2735,
+   "file_name": "farm_6_3_frame_44447.jpg",
+   "bbox": [
+    74.0,
+    329.33,
+    20.0,
+    24.0
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a2741",
+   "annotation_id": 2741,
+   "file_name": "farm_6_3_frame_44521.jpg",
+   "bbox": [
+    72.67,
+    329.0,
+    21.33,
+    25.0
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a2749",
+   "annotation_id": 2749,
+   "file_name": "farm_6_3_frame_44760.jpg",
+   "bbox": [
+    75.0,
+    325.0,
+    20.0,
+    30.0
+   ],
+   "class": "fish",
+   "source": "vlm_review",
+   "confidence": "low"
+  },
+  {
+   "key": "a2756",
+   "annotation_id": 2756,
+   "file_name": "farm_6_3_frame_44828.jpg",
+   "bbox": [
+    71.67,
+    328.0,
+    22.33,
+    26.67
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a2763",
+   "annotation_id": 2763,
+   "file_name": "farm_6_3_frame_45069.jpg",
+   "bbox": [
+    76.0,
+    327.5,
+    17.0,
+    25.0
+   ],
+   "class": "fish",
+   "source": "vlm_review",
+   "confidence": "low"
+  },
+  {
+   "key": "a2770",
+   "annotation_id": 2770,
+   "file_name": "farm_6_3_frame_45238.jpg",
+   "bbox": [
+    70.67,
+    328.0,
+    23.33,
+    26.0
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a2782",
+   "annotation_id": 2782,
+   "file_name": "farm_6_3_frame_45590.jpg",
+   "bbox": [
+    72.67,
+    328.33,
+    21.33,
+    25.67
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a2788",
+   "annotation_id": 2788,
+   "file_name": "farm_6_3_frame_46631.jpg",
+   "bbox": [
+    72.67,
+    328.33,
+    21.0,
+    25.33
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a2795",
+   "annotation_id": 2795,
+   "file_name": "farm_6_3_frame_47114.jpg",
+   "bbox": [
+    74.0,
+    328.67,
+    20.0,
+    25.33
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a2803",
+   "annotation_id": 2803,
+   "file_name": "farm_6_3_frame_47636.jpg",
+   "bbox": [
+    71.67,
+    328.0,
+    22.33,
+    25.33
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a2815",
+   "annotation_id": 2815,
+   "file_name": "farm_6_3_frame_50749.jpg",
+   "bbox": [
+    74.0,
+    329.33,
+    20.0,
+    24.67
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a2831",
+   "annotation_id": 2831,
+   "file_name": "farm_6_3_frame_52216.jpg",
+   "bbox": [
+    71.33,
+    328.33,
+    22.33,
+    25.67
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a2836",
+   "annotation_id": 2836,
+   "file_name": "farm_6_3_frame_52298.jpg",
+   "bbox": [
+    72.0,
+    328.0,
+    22.67,
+    26.67
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a2847",
+   "annotation_id": 2847,
+   "file_name": "farm_6_3_frame_53417.jpg",
+   "bbox": [
+    72.67,
+    326.67,
+    21.33,
+    28.0
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a2858",
+   "annotation_id": 2858,
+   "file_name": "farm_6_3_frame_53680.jpg",
+   "bbox": [
+    75.0,
+    327.5,
+    20.0,
+    27.5
+   ],
+   "class": "fish",
+   "source": "vlm_review",
+   "confidence": "low"
+  },
+  {
+   "key": "a2864",
+   "annotation_id": 2864,
+   "file_name": "farm_6_3_frame_54405.jpg",
+   "bbox": [
+    73.33,
+    328.0,
+    21.0,
+    26.67
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a2891",
+   "annotation_id": 2891,
+   "file_name": "farm_6_3_frame_5761.jpg",
+   "bbox": [
+    73.33,
+    329.0,
+    22.0,
+    25.0
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a2896",
+   "annotation_id": 2896,
+   "file_name": "farm_6_3_frame_5859.jpg",
+   "bbox": [
+    74.0,
+    327.33,
+    22.67,
+    26.67
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a2903",
+   "annotation_id": 2903,
+   "file_name": "farm_6_3_frame_5894.jpg",
+   "bbox": [
+    74.0,
+    326.67,
+    20.0,
+    27.33
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a2916",
+   "annotation_id": 2916,
+   "file_name": "farm_6_3_frame_6395.jpg",
+   "bbox": [
+    71.67,
+    326.67,
+    23.33,
+    27.33
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a2923",
+   "annotation_id": 2923,
+   "file_name": "farm_6_3_frame_6694.jpg",
+   "bbox": [
+    79.0,
+    327.5,
+    16.0,
+    25.0
+   ],
+   "class": "fish",
+   "source": "vlm_review",
+   "confidence": "low"
+  },
+  {
+   "key": "a2949",
+   "annotation_id": 2949,
+   "file_name": "farm_6_3_frame_9295.jpg",
+   "bbox": [
+    74.0,
+    327.33,
+    21.0,
+    26.67
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a2974",
+   "annotation_id": 2974,
+   "file_name": "farm_6_3_frame_9865.jpg",
+   "bbox": [
+    71.67,
+    327.33,
+    24.0,
+    26.0
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  }
+ ],
+ [
+  {
+   "key": "a2172",
+   "annotation_id": 2172,
+   "file_name": "farm_6_3_frame_11082.jpg",
+   "bbox": [
+    486.0,
+    181.0,
+    14.0,
+    15.0
+   ],
+   "class": "fish",
+   "source": "vlm_review",
+   "confidence": "low"
+  },
+  {
+   "key": "a2182",
+   "annotation_id": 2182,
+   "file_name": "farm_6_3_frame_11897.jpg",
+   "bbox": [
+    487.33,
+    180.67,
+    16.0,
+    16.67
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a2221",
+   "annotation_id": 2221,
+   "file_name": "farm_6_3_frame_15148.jpg",
+   "bbox": [
+    487.0,
+    178.33,
+    14.33,
+    19.0
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  },
+  {
+   "key": "a2240",
+   "annotation_id": 2240,
+   "file_name": "farm_6_3_frame_15445.jpg",
+   "bbox": [
+    487.67,
+    180.0,
+    14.33,
+    16.67
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a2257",
+   "annotation_id": 2257,
+   "file_name": "farm_6_3_frame_16451.jpg",
+   "bbox": [
+    485.33,
+    178.67,
+    16.33,
+    17.67
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a2267",
+   "annotation_id": 2267,
+   "file_name": "farm_6_3_frame_17103.jpg",
+   "bbox": [
+    486.67,
+    180.0,
+    14.33,
+    16.67
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a2294",
+   "annotation_id": 2294,
+   "file_name": "farm_6_3_frame_18954.jpg",
+   "bbox": [
+    487.0,
+    179.67,
+    13.67,
+    16.33
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a2318",
+   "annotation_id": 2318,
+   "file_name": "farm_6_3_frame_19192.jpg",
+   "bbox": [
+    486.67,
+    180.67,
+    12.67,
+    14.0
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  },
+  {
+   "key": "a2332",
+   "annotation_id": 2332,
+   "file_name": "farm_6_3_frame_20637.jpg",
+   "bbox": [
+    487.5,
+    181.0,
+    11.0,
+    14.0
+   ],
+   "class": "fish",
+   "source": "vlm_review",
+   "confidence": "low"
+  },
+  {
+   "key": "a2343",
+   "annotation_id": 2343,
+   "file_name": "farm_6_3_frame_21564.jpg",
+   "bbox": [
+    487.67,
+    178.67,
+    14.33,
+    18.67
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  },
+  {
+   "key": "a2369",
+   "annotation_id": 2369,
+   "file_name": "farm_6_3_frame_23492.jpg",
+   "bbox": [
+    486.67,
+    178.0,
+    13.33,
+    18.0
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a2380",
+   "annotation_id": 2380,
+   "file_name": "farm_6_3_frame_24313.jpg",
+   "bbox": [
+    487.67,
+    180.0,
+    15.0,
+    17.33
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a2402",
+   "annotation_id": 2402,
+   "file_name": "farm_6_3_frame_25623.jpg",
+   "bbox": [
+    487.67,
+    182.33,
+    12.33,
+    13.33
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a2416",
+   "annotation_id": 2416,
+   "file_name": "farm_6_3_frame_25942.jpg",
+   "bbox": [
+    487.5,
+    180.0,
+    11.0,
+    16.0
+   ],
+   "class": "fish",
+   "source": "vlm_review",
+   "confidence": "low"
+  },
+  {
+   "key": "a2440",
+   "annotation_id": 2440,
+   "file_name": "farm_6_3_frame_27354.jpg",
+   "bbox": [
+    488.0,
+    181.33,
+    13.33,
+    13.33
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a2470",
+   "annotation_id": 2470,
+   "file_name": "farm_6_3_frame_29305.jpg",
+   "bbox": [
+    486.5,
+    181.0,
+    14.5,
+    16.0
+   ],
+   "class": "fish",
+   "source": "vlm_review",
+   "confidence": "low"
+  },
+  {
+   "key": "a2480",
+   "annotation_id": 2480,
+   "file_name": "farm_6_3_frame_29517.jpg",
+   "bbox": [
+    482.5,
+    180.0,
+    17.5,
+    16.0
+   ],
+   "class": "fish",
+   "source": "vlm_review",
+   "confidence": "low"
+  },
+  {
+   "key": "a2490",
+   "annotation_id": 2490,
+   "file_name": "farm_6_3_frame_29794.jpg",
+   "bbox": [
+    488.0,
+    182.0,
+    12.0,
+    14.0
+   ],
+   "class": "fish",
+   "source": "vlm_review",
+   "confidence": "low"
+  },
+  {
+   "key": "a2507",
+   "annotation_id": 2507,
+   "file_name": "farm_6_3_frame_31963.jpg",
+   "bbox": [
+    487.33,
+    180.0,
+    11.33,
+    14.0
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a2524",
+   "annotation_id": 2524,
+   "file_name": "farm_6_3_frame_32656.jpg",
+   "bbox": [
+    487.33,
+    181.67,
+    12.67,
+    13.0
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  },
+  {
+   "key": "a2535",
+   "annotation_id": 2535,
+   "file_name": "farm_6_3_frame_32686.jpg",
+   "bbox": [
+    486.67,
+    178.0,
+    16.0,
+    19.33
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a2551",
+   "annotation_id": 2551,
+   "file_name": "farm_6_3_frame_34155.jpg",
+   "bbox": [
+    486.33,
+    180.0,
+    16.33,
+    16.33
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  },
+  {
+   "key": "a2558",
+   "annotation_id": 2558,
+   "file_name": "farm_6_3_frame_34839.jpg",
+   "bbox": [
+    486.5,
+    180.0,
+    14.5,
+    17.0
+   ],
+   "class": "fish",
+   "source": "vlm_review",
+   "confidence": "low"
+  },
+  {
+   "key": "a2567",
+   "annotation_id": 2567,
+   "file_name": "farm_6_3_frame_36015.jpg",
+   "bbox": [
+    487.67,
+    179.0,
+    18.33,
+    20.0
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a2581",
+   "annotation_id": 2581,
+   "file_name": "farm_6_3_frame_37511.jpg",
+   "bbox": [
+    486.5,
+    179.0,
+    14.5,
+    17.0
+   ],
+   "class": "fish",
+   "source": "vlm_review",
+   "confidence": "low"
+  },
+  {
+   "key": "a2602",
+   "annotation_id": 2602,
+   "file_name": "farm_6_3_frame_38219.jpg",
+   "bbox": [
+    486.0,
+    180.0,
+    18.33,
+    17.33
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a2614",
+   "annotation_id": 2614,
+   "file_name": "farm_6_3_frame_39510.jpg",
+   "bbox": [
+    488.67,
+    181.67,
+    12.67,
+    14.0
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a2635",
+   "annotation_id": 2635,
+   "file_name": "farm_6_3_frame_39870.jpg",
+   "bbox": [
+    487.33,
+    180.67,
+    15.33,
+    15.0
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a2652",
+   "annotation_id": 2652,
+   "file_name": "farm_6_3_frame_40314.jpg",
+   "bbox": [
+    488.0,
+    181.33,
+    17.33,
+    16.67
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a2707",
+   "annotation_id": 2707,
+   "file_name": "farm_6_3_frame_43495.jpg",
+   "bbox": [
+    488.33,
+    179.0,
+    14.33,
+    17.67
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a2720",
+   "annotation_id": 2720,
+   "file_name": "farm_6_3_frame_44208.jpg",
+   "bbox": [
+    487.0,
+    180.0,
+    13.0,
+    14.67
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  },
+  {
+   "key": "a2796",
+   "annotation_id": 2796,
+   "file_name": "farm_6_3_frame_47114.jpg",
+   "bbox": [
+    487.67,
+    180.67,
+    15.0,
+    15.0
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a2804",
+   "annotation_id": 2804,
+   "file_name": "farm_6_3_frame_47636.jpg",
+   "bbox": [
+    487.67,
+    179.0,
+    13.33,
+    16.67
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a2819",
+   "annotation_id": 2819,
+   "file_name": "farm_6_3_frame_50749.jpg",
+   "bbox": [
+    488.33,
+    180.67,
+    13.67,
+    15.0
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a2874",
+   "annotation_id": 2874,
+   "file_name": "farm_6_3_frame_54684.jpg",
+   "bbox": [
+    486.0,
+    180.0,
+    16.67,
+    17.33
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a2967",
+   "annotation_id": 2967,
+   "file_name": "farm_6_3_frame_9672.jpg",
+   "bbox": [
+    486.0,
+    178.67,
+    16.0,
+    17.33
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  }
+ ],
+ [
+  {
+   "key": "a2220",
+   "annotation_id": 2220,
+   "file_name": "farm_6_3_frame_15148.jpg",
+   "bbox": [
+    96.67,
+    296.33,
+    41.0,
+    32.0
+   ],
+   "class": "non-fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  },
+  {
+   "key": "a2235",
+   "annotation_id": 2235,
+   "file_name": "farm_6_3_frame_15445.jpg",
+   "bbox": [
+    96.67,
+    285.67,
+    40.67,
+    43.33
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  },
+  {
+   "key": "a2254",
+   "annotation_id": 2254,
+   "file_name": "farm_6_3_frame_16451.jpg",
+   "bbox": [
+    96.67,
+    296.67,
+    41.67,
+    32.67
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  },
+  {
+   "key": "a2264",
+   "annotation_id": 2264,
+   "file_name": "farm_6_3_frame_17103.jpg",
+   "bbox": [
+    97.33,
+    296.67,
+    40.67,
+    32.67
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  },
+  {
+   "key": "a2274",
+   "annotation_id": 2274,
+   "file_name": "farm_6_3_frame_17708.jpg",
+   "bbox": [
+    97.5,
+    295.0,
+    40.0,
+    32.5
+   ],
+   "class": "fish",
+   "source": "vlm_review",
+   "confidence": "low"
+  },
+  {
+   "key": "a2281",
+   "annotation_id": 2281,
+   "file_name": "farm_6_3_frame_17735.jpg",
+   "bbox": [
+    96.0,
+    295.67,
+    42.67,
+    33.67
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a2291",
+   "annotation_id": 2291,
+   "file_name": "farm_6_3_frame_18954.jpg",
+   "bbox": [
+    96.67,
+    296.67,
+    40.67,
+    32.33
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a2307",
+   "annotation_id": 2307,
+   "file_name": "farm_6_3_frame_19082.jpg",
+   "bbox": [
+    97.5,
+    296.5,
+    41.0,
+    32.5
+   ],
+   "class": "fish",
+   "source": "vlm_review",
+   "confidence": "low"
+  },
+  {
+   "key": "a2317",
+   "annotation_id": 2317,
+   "file_name": "farm_6_3_frame_19192.jpg",
+   "bbox": [
+    96.67,
+    296.67,
+    41.67,
+    32.33
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  },
+  {
+   "key": "a2330",
+   "annotation_id": 2330,
+   "file_name": "farm_6_3_frame_20637.jpg",
+   "bbox": [
+    96.67,
+    296.67,
+    41.67,
+    32.67
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a2340",
+   "annotation_id": 2340,
+   "file_name": "farm_6_3_frame_21564.jpg",
+   "bbox": [
+    97.67,
+    296.67,
+    40.67,
+    32.67
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  },
+  {
+   "key": "a2365",
+   "annotation_id": 2365,
+   "file_name": "farm_6_3_frame_23492.jpg",
+   "bbox": [
+    96.67,
+    296.67,
+    41.33,
+    32.67
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a2377",
+   "annotation_id": 2377,
+   "file_name": "farm_6_3_frame_24313.jpg",
+   "bbox": [
+    98.67,
+    297.33,
+    38.67,
+    32.0
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  },
+  {
+   "key": "a2392",
+   "annotation_id": 2392,
+   "file_name": "farm_6_3_frame_24459.jpg",
+   "bbox": [
+    96.67,
+    296.67,
+    40.67,
+    32.67
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a2395",
+   "annotation_id": 2395,
+   "file_name": "farm_6_3_frame_25623.jpg",
+   "bbox": [
+    96.0,
+    295.67,
+    42.0,
+    33.67
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "high"
+  },
+  {
+   "key": "a2405",
+   "annotation_id": 2405,
+   "file_name": "farm_6_3_frame_25791.jpg",
+   "bbox": [
+    96.67,
+    296.67,
+    41.67,
+    32.33
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  },
+  {
+   "key": "a2413",
+   "annotation_id": 2413,
+   "file_name": "farm_6_3_frame_25942.jpg",
+   "bbox": [
+    96.67,
+    297.33,
+    41.33,
+    32.0
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  },
+  {
+   "key": "a2420",
+   "annotation_id": 2420,
+   "file_name": "farm_6_3_frame_26119.jpg",
+   "bbox": [
+    96.67,
+    296.67,
+    40.67,
+    32.67
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  },
+  {
+   "key": "a2425",
+   "annotation_id": 2425,
+   "file_name": "farm_6_3_frame_26646.jpg",
+   "bbox": [
+    97.33,
+    296.67,
+    40.0,
+    32.67
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  },
+  {
+   "key": "a2441",
+   "annotation_id": 2441,
+   "file_name": "farm_6_3_frame_27354.jpg",
+   "bbox": [
+    97.5,
+    296.0,
+    41.0,
+    34.0
+   ],
+   "class": "fish",
+   "source": "vlm_review",
+   "confidence": "medium"
+  },
+  {
+   "key": "a2446",
+   "annotation_id": 2446,
+   "file_name": "farm_6_3_frame_27855.jpg",
+   "bbox": [
+    96.67,
+    296.67,
+    42.0,
+    32.67
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  },
+  {
+   "key": "a2460",
+   "annotation_id": 2460,
+   "file_name": "farm_6_3_frame_28284.jpg",
+   "bbox": [
+    96.67,
+    297.33,
+    41.67,
+    31.67
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a2477",
+   "annotation_id": 2477,
+   "file_name": "farm_6_3_frame_29517.jpg",
+   "bbox": [
+    97.33,
+    298.0,
+    40.0,
+    31.33
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  },
+  {
+   "key": "a2487",
+   "annotation_id": 2487,
+   "file_name": "farm_6_3_frame_29794.jpg",
+   "bbox": [
+    98.33,
+    296.67,
+    39.33,
+    32.67
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  },
+  {
+   "key": "a2495",
+   "annotation_id": 2495,
+   "file_name": "farm_6_3_frame_31517.jpg",
+   "bbox": [
+    97.67,
+    296.67,
+    40.33,
+    32.67
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a2503",
+   "annotation_id": 2503,
+   "file_name": "farm_6_3_frame_31963.jpg",
+   "bbox": [
+    97.33,
+    296.67,
+    40.33,
+    32.67
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  },
+  {
+   "key": "a2512",
+   "annotation_id": 2512,
+   "file_name": "farm_6_3_frame_32531.jpg",
+   "bbox": [
+    96.0,
+    296.67,
+    42.33,
+    32.67
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  },
+  {
+   "key": "a2525",
+   "annotation_id": 2525,
+   "file_name": "farm_6_3_frame_32656.jpg",
+   "bbox": [
+    100.0,
+    297.5,
+    37.5,
+    32.5
+   ],
+   "class": "fish",
+   "source": "vlm_review",
+   "confidence": "low"
+  },
+  {
+   "key": "a2531",
+   "annotation_id": 2531,
+   "file_name": "farm_6_3_frame_32686.jpg",
+   "bbox": [
+    96.67,
+    296.67,
+    41.0,
+    33.0
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  },
+  {
+   "key": "a2541",
+   "annotation_id": 2541,
+   "file_name": "farm_6_3_frame_33869.jpg",
+   "bbox": [
+    96.0,
+    296.67,
+    41.33,
+    32.67
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  },
+  {
+   "key": "a2549",
+   "annotation_id": 2549,
+   "file_name": "farm_6_3_frame_34155.jpg",
+   "bbox": [
+    96.67,
+    296.67,
+    41.67,
+    32.33
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  },
+  {
+   "key": "a2565",
+   "annotation_id": 2565,
+   "file_name": "farm_6_3_frame_36015.jpg",
+   "bbox": [
+    96.67,
+    296.67,
+    40.67,
+    32.67
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  },
+  {
+   "key": "a2570",
+   "annotation_id": 2570,
+   "file_name": "farm_6_3_frame_37165.jpg",
+   "bbox": [
+    96.67,
+    296.67,
+    40.67,
+    32.67
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  },
+  {
+   "key": "a2575",
+   "annotation_id": 2575,
+   "file_name": "farm_6_3_frame_37511.jpg",
+   "bbox": [
+    96.67,
+    296.67,
+    42.0,
+    32.67
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  },
+  {
+   "key": "a2587",
+   "annotation_id": 2587,
+   "file_name": "farm_6_3_frame_37621.jpg",
+   "bbox": [
+    96.67,
+    296.67,
+    40.67,
+    32.67
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  },
+  {
+   "key": "a2600",
+   "annotation_id": 2600,
+   "file_name": "farm_6_3_frame_38219.jpg",
+   "bbox": [
+    100.0,
+    298.0,
+    37.33,
+    31.33
+   ],
+   "class": "non-fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a2605",
+   "annotation_id": 2605,
+   "file_name": "farm_6_3_frame_39220.jpg",
+   "bbox": [
+    96.67,
+    296.67,
+    41.33,
+    32.67
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  },
+  {
+   "key": "a2610",
+   "annotation_id": 2610,
+   "file_name": "farm_6_3_frame_39510.jpg",
+   "bbox": [
+    97.67,
+    297.33,
+    40.67,
+    31.67
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "high"
+  },
+  {
+   "key": "a2620",
+   "annotation_id": 2620,
+   "file_name": "farm_6_3_frame_39853.jpg",
+   "bbox": [
+    96.67,
+    297.0,
+    41.0,
+    32.33
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "high"
+  },
+  {
+   "key": "a2631",
+   "annotation_id": 2631,
+   "file_name": "farm_6_3_frame_39870.jpg",
+   "bbox": [
+    99.33,
+    296.67,
+    38.33,
+    32.67
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "high"
+  },
+  {
+   "key": "a2645",
+   "annotation_id": 2645,
+   "file_name": "farm_6_3_frame_40314.jpg",
+   "bbox": [
+    97.33,
+    296.67,
+    41.33,
+    32.67
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  },
+  {
+   "key": "a2657",
+   "annotation_id": 2657,
+   "file_name": "farm_6_3_frame_40533.jpg",
+   "bbox": [
+    96.67,
+    297.33,
+    40.67,
+    32.0
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "high"
+  },
+  {
+   "key": "a2663",
+   "annotation_id": 2663,
+   "file_name": "farm_6_3_frame_40715.jpg",
+   "bbox": [
+    96.67,
+    296.67,
+    41.0,
+    32.67
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "high"
+  },
+  {
+   "key": "a2669",
+   "annotation_id": 2669,
+   "file_name": "farm_6_3_frame_40719.jpg",
+   "bbox": [
+    96.0,
+    296.67,
+    42.0,
+    33.0
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  },
+  {
+   "key": "a2676",
+   "annotation_id": 2676,
+   "file_name": "farm_6_3_frame_41351.jpg",
+   "bbox": [
+    98.0,
+    298.0,
+    40.0,
+    31.0
+   ],
+   "class": "fish",
+   "source": "vlm_review",
+   "confidence": "medium"
+  },
+  {
+   "key": "a2680",
+   "annotation_id": 2680,
+   "file_name": "farm_6_3_frame_41361.jpg",
+   "bbox": [
+    96.67,
+    296.67,
+    40.67,
+    32.67
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a2686",
+   "annotation_id": 2686,
+   "file_name": "farm_6_3_frame_42158.jpg",
+   "bbox": [
+    97.33,
+    296.67,
+    40.0,
+    32.67
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  },
+  {
+   "key": "a2692",
+   "annotation_id": 2692,
+   "file_name": "farm_6_3_frame_42413.jpg",
+   "bbox": [
+    97.33,
+    296.67,
+    41.0,
+    32.67
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a2700",
+   "annotation_id": 2700,
+   "file_name": "farm_6_3_frame_43337.jpg",
+   "bbox": [
+    96.67,
+    297.33,
+    40.67,
+    32.0
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a2705",
+   "annotation_id": 2705,
+   "file_name": "farm_6_3_frame_43495.jpg",
+   "bbox": [
+    96.67,
+    296.67,
+    40.67,
+    32.33
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a2710",
+   "annotation_id": 2710,
+   "file_name": "farm_6_3_frame_43946.jpg",
+   "bbox": [
+    96.67,
+    297.33,
+    40.67,
+    32.0
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  },
+  {
+   "key": "a2719",
+   "annotation_id": 2719,
+   "file_name": "farm_6_3_frame_44208.jpg",
+   "bbox": [
+    98.33,
+    297.33,
+    39.0,
+    32.0
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  },
+  {
+   "key": "a2728",
+   "annotation_id": 2728,
+   "file_name": "farm_6_3_frame_44364.jpg",
+   "bbox": [
+    96.67,
+    296.67,
+    40.67,
+    32.67
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a2733",
+   "annotation_id": 2733,
+   "file_name": "farm_6_3_frame_44447.jpg",
+   "bbox": [
+    96.67,
+    296.67,
+    42.0,
+    32.67
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  },
+  {
+   "key": "a2739",
+   "annotation_id": 2739,
+   "file_name": "farm_6_3_frame_44521.jpg",
+   "bbox": [
+    96.67,
+    297.33,
+    40.67,
+    32.0
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  },
+  {
+   "key": "a2748",
+   "annotation_id": 2748,
+   "file_name": "farm_6_3_frame_44760.jpg",
+   "bbox": [
+    98.5,
+    297.5,
+    39.5,
+    31.5
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a2754",
+   "annotation_id": 2754,
+   "file_name": "farm_6_3_frame_44828.jpg",
+   "bbox": [
+    96.67,
+    296.67,
+    41.0,
+    32.67
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a2762",
+   "annotation_id": 2762,
+   "file_name": "farm_6_3_frame_45069.jpg",
+   "bbox": [
+    97.5,
+    296.0,
+    40.5,
+    33.0
+   ],
+   "class": "fish",
+   "source": "vlm_review",
+   "confidence": "low"
+  },
+  {
+   "key": "a2769",
+   "annotation_id": 2769,
+   "file_name": "farm_6_3_frame_45238.jpg",
+   "bbox": [
+    96.0,
+    296.67,
+    42.33,
+    32.67
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a2777",
+   "annotation_id": 2777,
+   "file_name": "farm_6_3_frame_45524.jpg",
+   "bbox": [
+    97.67,
+    296.67,
+    40.33,
+    32.67
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  },
+  {
+   "key": "a2781",
+   "annotation_id": 2781,
+   "file_name": "farm_6_3_frame_45590.jpg",
+   "bbox": [
+    96.67,
+    296.67,
+    40.67,
+    32.67
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  },
+  {
+   "key": "a2786",
+   "annotation_id": 2786,
+   "file_name": "farm_6_3_frame_46631.jpg",
+   "bbox": [
+    96.0,
+    296.67,
+    41.67,
+    32.67
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  },
+  {
+   "key": "a2793",
+   "annotation_id": 2793,
+   "file_name": "farm_6_3_frame_47114.jpg",
+   "bbox": [
+    96.0,
+    296.67,
+    41.33,
+    32.67
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a2801",
+   "annotation_id": 2801,
+   "file_name": "farm_6_3_frame_47636.jpg",
+   "bbox": [
+    96.67,
+    296.67,
+    40.67,
+    32.67
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  },
+  {
+   "key": "a2812",
+   "annotation_id": 2812,
+   "file_name": "farm_6_3_frame_50749.jpg",
+   "bbox": [
+    97.67,
+    296.67,
+    41.0,
+    32.67
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  },
+  {
+   "key": "a2827",
+   "annotation_id": 2827,
+   "file_name": "farm_6_3_frame_52216.jpg",
+   "bbox": [
+    96.67,
+    296.67,
+    42.0,
+    32.67
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  },
+  {
+   "key": "a2834",
+   "annotation_id": 2834,
+   "file_name": "farm_6_3_frame_52298.jpg",
+   "bbox": [
+    96.33,
+    296.33,
+    41.33,
+    33.33
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  },
+  {
+   "key": "a2843",
+   "annotation_id": 2843,
+   "file_name": "farm_6_3_frame_53417.jpg",
+   "bbox": [
+    96.33,
+    296.67,
+    41.33,
+    31.67
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  },
+  {
+   "key": "a2852",
+   "annotation_id": 2852,
+   "file_name": "farm_6_3_frame_53601.jpg",
+   "bbox": [
+    96.67,
+    298.0,
+    40.67,
+    31.33
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a2855",
+   "annotation_id": 2855,
+   "file_name": "farm_6_3_frame_53680.jpg",
+   "bbox": [
+    96.67,
+    296.67,
+    41.67,
+    32.67
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  },
+  {
+   "key": "a2863",
+   "annotation_id": 2863,
+   "file_name": "farm_6_3_frame_54405.jpg",
+   "bbox": [
+    96.67,
+    296.0,
+    41.0,
+    33.33
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  },
+  {
+   "key": "a2869",
+   "annotation_id": 2869,
+   "file_name": "farm_6_3_frame_54645.jpg",
+   "bbox": [
+    96.0,
+    296.67,
+    43.33,
+    32.67
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a2873",
+   "annotation_id": 2873,
+   "file_name": "farm_6_3_frame_54684.jpg",
+   "bbox": [
+    96.67,
+    297.33,
+    41.67,
+    32.0
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  }
+ ],
+ [
+  {
+   "key": "a2344",
+   "annotation_id": 2344,
+   "file_name": "farm_6_3_frame_21564.jpg",
+   "bbox": [
+    472.67,
+    273.33,
+    23.33,
+    16.0
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a2650",
+   "annotation_id": 2650,
+   "file_name": "farm_6_3_frame_40314.jpg",
+   "bbox": [
+    472.67,
+    274.0,
+    24.0,
+    16.67
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a2721",
+   "annotation_id": 2721,
+   "file_name": "farm_6_3_frame_44208.jpg",
+   "bbox": [
+    474.33,
+    274.0,
+    22.33,
+    16.67
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a2794",
+   "annotation_id": 2794,
+   "file_name": "farm_6_3_frame_47114.jpg",
+   "bbox": [
+    469.33,
+    272.33,
+    28.33,
+    18.33
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  },
+  {
+   "key": "a2816",
+   "annotation_id": 2816,
+   "file_name": "farm_6_3_frame_50749.jpg",
+   "bbox": [
+    474.33,
+    274.0,
+    21.67,
+    15.0
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  }
+ ],
+ [
+  {
+   "key": "a2361",
+   "annotation_id": 2361,
+   "file_name": "farm_6_3_frame_23492.jpg",
+   "bbox": [
+    315.33,
+    6.0,
+    34.67,
+    30.67
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "high"
+  },
+  {
+   "key": "a2886",
+   "annotation_id": 2886,
+   "file_name": "farm_6_3_frame_5761.jpg",
+   "bbox": [
+    320.33,
+    12.0,
+    27.67,
+    24.33
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "high"
+  },
+  {
+   "key": "a2895",
+   "annotation_id": 2895,
+   "file_name": "farm_6_3_frame_5859.jpg",
+   "bbox": [
+    321.0,
+    10.0,
+    30.0,
+    27.33
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "medium"
+  },
+  {
+   "key": "a2901",
+   "annotation_id": 2901,
+   "file_name": "farm_6_3_frame_5894.jpg",
+   "bbox": [
+    320.33,
+    10.0,
+    29.0,
+    26.67
+   ],
+   "class": "fish",
+   "source": "vlm_pass1",
+   "confidence": "low"
+  }
+ ]
+]

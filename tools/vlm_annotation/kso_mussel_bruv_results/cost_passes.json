@@ -1,0 +1,24 @@
+{
+ "price_factor": 0.5,
+ "photos": 910,
+ "stages": {
+  "pass1": {
+   "model": "claude-haiku-5-5",
+   "requests": 3640,
+   "failed": 0,
+   "input_tokens": 8004360,
+   "output_tokens": 848872,
+   "usd": 0.6124
+  },
+  "pass2": {
+   "model": "claude-haiku-5-5",
+   "requests": 910,
+   "failed": 0,
+   "input_tokens": 2896262,
+   "output_tokens": 512056,
+   "usd": 0.2728
+  }
+ },
+ "usd_total": 0.8852,
+ "usd_per_photo": 0.000973
+}

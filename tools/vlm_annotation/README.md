@@ -7,6 +7,12 @@ scripts pre-annotate it with Claude models first, to cut that work. Deleting a w
 than drawing a missing one, and a tightened box only needs a glance, so the pipeline favours adding
 candidate boxes and marks how sure it is about each one.
 
+The same pipeline was then used on [kso_mussel_bruv](../../datasets/kso_mussel_bruv.py) (see
+[KSO Mussel Farm BRUV run](#kso-mussel-farm-bruv-run-2026-10-23)). The dataset is chosen with the
+`VLM_DATASET` environment variable (default `obsea_2013_2014`); `pilot.DATASETS` holds each
+dataset's paths, the scene description used in the prompts, and whether its human boxes have
+fish / non-fish classes (OBSEA's are all fish).
+
 ## Pipeline
 
 1. **Pass 1** (`pilot.py`, variant `claude-haiku-5-5_tiled_v2`): Claude Haiku 5.5 (effort medium)
@@ -112,6 +118,50 @@ Results are in `full_run_results/` (the export gzipped; `export.py` writes the s
 - Measured cost: **$22.24** (pass 1 $12.32, pass 2 $9.93), $0.00149 per photo, as estimated.
   With the pilot ($2.43) the whole effort cost about $24.70.
 
+## KSO Mussel Farm BRUV run (2026-10-23)
+
+[KSO Mussel Farm BRUV](https://doi.org/10.5281/zenodo.14713926): 910 frames (640x360) of a GoPro
+looking down at a black mat with bait at a Swedish mussel farm; the human boxes are gobies,
+flatfish and crabs (`human_classes`: they keep their class). In a hand count on 64 frames
+(`kso_mussel_bruv_results/hand_count_64_frames.tsv`) they miss 29% of the animals over ~3 cm.
+
+- **Input**: `prepare_kso_mussel_bruv.py` writes the frames (Roboflow suffix removed) and the human
+  boxes as fish / non-fish; the small snails (Gastropoda, discarded in the dataset) are left out,
+  and the prompt says they and loose algae get no box.
+- **Both passes** on all 910 frames: 3,640 + 910 requests, 0 failed, **$0.89**. An 18-frame pilot
+  found 31 of 33 animals hand-counted as unboxed.
+- **Cleaning** (`verify_added.py`): the 1,311 added boxes were filtered before going into the dataset.
+  - `static`: 48 groups of boxes at the same spot in 3 or more frames of a recording, each
+    checked by eye: 31 are objects (a curled algae frond and two fragments at the mat edge,
+    pixel-identical for 28 minutes; debris; the mat clip; snails), 17 are animals that sat still
+    or gobies overlapping by chance.
+  - `submit` / `collect`: Claude Opus 5.5 checked every medium and low confidence box on a crop
+    and the whole frame (993 requests, **$5.33**). It is too lenient on single frames (it called
+    most boxes on the static objects "fish"), so it only decides the boxes the static check keeps.
+  - every high-confidence box was checked by eye (about 95% correct; the errors were on the static
+    objects, plus 1 class fix).
+  - `select` with `kso_mussel_bruv_results/decisions.json` drops boxes on a human box (24; pass 1
+    split some spider crabs in two), static objects (410) and the 17 Apr recordings (65, only
+    snails), keeps the high-confidence boxes and the medium / low ones Opus confirmed with high or
+    medium confidence, and writes `datasets/kso_mussel_bruv_added_boxes.json` (on the
+    `gc/kso_mussel_bruv` branch): **572 boxes** (519 fish, 53 non-fish).
+- **Result**: in a random check of 100 of the 572, about 94 are on a fish or crab and none has the
+  wrong class. They recover about two thirds of the ~850 missing boxes estimated from the hand count.
+- **Total cost $6.2** (pilot $0.02, both passes $0.89, Opus $5.33).
+
+Results in `kso_mussel_bruv_results/`: the export (gzipped), the static groups, the Opus verdicts,
+the decisions of the visual checks, the costs and the hand count.
+
+```bash
+VLM_DATASET=kso_mussel_bruv venv-vlm/bin/python tools/vlm_annotation/prepare_kso_mussel_bruv.py
+VLM_DATASET=kso_mussel_bruv venv-vlm/bin/python tools/vlm_annotation/batch_run.py run
+VLM_DATASET=kso_mussel_bruv venv-vlm/bin/python tools/vlm_annotation/verify_added.py static
+VLM_DATASET=kso_mussel_bruv venv-vlm/bin/python tools/vlm_annotation/verify_added.py submit
+VLM_DATASET=kso_mussel_bruv venv-vlm/bin/python tools/vlm_annotation/verify_added.py collect
+VLM_DATASET=kso_mussel_bruv venv-vlm/bin/python tools/vlm_annotation/verify_added.py select \
+    --decisions tools/vlm_annotation/kso_mussel_bruv_results/decisions.json --out added_boxes.json
+```
+
 ## Cost analysis
 
 Prices (USD per million input / output tokens): Claude Haiku 5.5 $0.10 / $0.50, Sonnet 5.5
@@ -186,4 +236,7 @@ and 5 if it is unusable or could not be reviewed.
 - `second_pass.py`: pass 2, the merge policies and the before/after sheets (`run`, `render`, `final`)
 - `batch_run.py`: both passes on the Batch API
 - `export.py`: COCO export for the annotators
+- `prepare_kso_mussel_bruv.py`: the KSO frames and human boxes as pipeline input
+- `verify_added.py`: static-object groups, the Opus check and the selection of added boxes (KSO)
+- `kso_mussel_bruv_results/`: results and decisions of the KSO run
 - `pilot_results/`: photo lists, hand counts, scores, judgments and figures of the pilot

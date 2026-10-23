@@ -146,12 +146,19 @@ def schema(version: int) -> dict:
 def input_boxes(file_name: str) -> list[dict]:
     """Existing dataset boxes, then the first pass's boxes that match no existing box."""
     existing = pilot.existing_boxes_by_file().get(file_name, [])
-    boxes = [{"box": b, "class": "fish", "source": "existing"} for b in existing]
+    classes = pilot.existing_classes_by_file().get(file_name, ["fish"] * len(existing))
+    boxes = [{"box": b, "class": c, "source": "existing"} for b, c in zip(existing, classes)]
     first = json.loads(pilot.raw_path(FIRST_PASS, file_name).read_text())["boxes"]
-    fish = [b for b in first if b.get("class", "fish") == "fish"]
-    matches = pilot.match([b["box"] for b in fish], existing)
-    added = [b for i, b in enumerate(fish) if i not in matches]
-    added += [b for b in first if b.get("class", "fish") == "non-fish"]
+    if pilot.DATASET_CONFIG["human_classes"]:
+        # Human boxes of both classes: a first-pass box on any of them is the same animal
+        matches = pilot.match([b["box"] for b in first], existing)
+        added = [b for i, b in enumerate(first) if i not in matches]
+    else:
+        # The existing boxes are fish only, so only fish boxes are matched against them
+        fish = [b for b in first if b.get("class", "fish") == "fish"]
+        matches = pilot.match([b["box"] for b in fish], existing)
+        added = [b for i, b in enumerate(fish) if i not in matches]
+        added += [b for b in first if b.get("class", "fish") == "non-fish"]
     boxes += [{"box": b["box"], "class": b.get("class", "fish"), "source": f"first pass ({b['confidence']})"}
               for b in added]
     return boxes
@@ -413,9 +420,9 @@ def final_annotation(record: dict, policy: str = "protect") -> list[dict]:
     """
     The photo's boxes after both passes: what the review kept or fixed, plus what it added.
     policy "review": every verdict of the review is applied, as run.
-    policy "protect": the existing (human) boxes stay "fish", and the review may remove a
-        first-pass box only if the first pass gave it low confidence (in the 50-photo test most
-        of the high/medium first-pass boxes the review removed were real fish).
+    policy "protect": the existing (human) boxes keep their class ("fish" in obsea_2013_2014), and
+        the review may remove a first-pass box only if the first pass gave it low confidence (in
+        the 50-photo test most of the high/medium first-pass boxes the review removed were real fish).
     """
     if record.get("unusable"):
         return []
@@ -428,8 +435,8 @@ def final_annotation(record: dict, policy: str = "protect") -> list[dict]:
         if r is not None and policy == "protect":
             if r["verdict"] == "remove" and source == "first pass" and confidence != "low":
                 r = {**r, "verdict": "keep", "box": b["box"], "class": b["class"]}
-            if source == "existing" and r["class"] != "fish":
-                r = {**r, "class": "fish"}
+            if source == "existing" and r["class"] != b["class"]:
+                r = {**r, "class": b["class"]}
         if r is None or r["verdict"] == "keep":
             # A kept box stays exactly as it was (the review's repeated coordinates are approximate,
             # and cut at the tile edge in tiled reviews)

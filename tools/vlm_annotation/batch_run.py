@@ -43,8 +43,8 @@ MAX_BATCH_REQUESTS = 50_000  # the API limit is 100,000
 MAX_ATTEMPTS = 3
 POLL_SECONDS = 60
 BATCH_PRICE_FACTOR = 0.5
-DEFAULT_RUN_DIR = Path("data/vlm_annotation/obsea_2013_2014")
-RAW_IMAGES_DIR = Path("data/raw/obsea_2013_2014/images")  # same files as the processing folder, without the prefix
+DEFAULT_RUN_DIR = Path("data/vlm_annotation") / pilot.DATASET
+RAW_IMAGES_DIR = Path(pilot.DATASET_CONFIG["raw_images_dir"] or pilot.DATASET_CONFIG["images_dir"])
 
 
 def log(message: str):
@@ -95,17 +95,23 @@ class Run:
         renumber the photos) changes nothing. Photos are read from the raw download when present.
         """
         photos_path, boxes_path = self.dir / "photos.json", self.dir / "human_boxes.json"
+        classes_path = self.dir / "human_classes.json"
         if not photos_path.exists() or not boxes_path.exists():
             coco = json.loads(pilot.ANNOTATIONS_PATH.read_text())
             photos_path.write_text(json.dumps(sorted(coco["images"], key=lambda i: i["file_name"])))
             boxes_path.write_text(json.dumps(pilot.existing_boxes_by_file()))
+            if pilot.DATASET_CONFIG["human_classes"]:
+                classes_path.write_text(json.dumps(pilot.existing_classes_by_file()))
         human_boxes = json.loads(boxes_path.read_text())
         pilot.existing_boxes_by_file = lambda: human_boxes
+        if classes_path.exists():
+            human_classes = json.loads(classes_path.read_text())
+            pilot.existing_classes_by_file = lambda: human_classes
         return json.loads(photos_path.read_text())
 
     @staticmethod
     def image_path(file_name: str) -> Path:
-        raw = RAW_IMAGES_DIR / file_name.removeprefix("obsea_2013_2014_")
+        raw = RAW_IMAGES_DIR / file_name.removeprefix(pilot.DATASET_CONFIG["prefix"])
         return raw if raw.exists() else pilot.IMAGES_DIR / file_name
 
     def find_damaged(self) -> list[int]:
