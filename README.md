@@ -785,6 +785,29 @@ Wilson KC, Lurbur M, Yochum N (2025). [Automated fish detection in videos to sup
 
 
 
+#### Griffith Seagrass Fish (Luderick Seagrass)
+
+4,280 frames from remote underwater video in seagrass meadows of two estuaries on the Gold Coast, Queensland, Australia (2019), with 9,429 boxes and segmentation masks on luderick and bream. Frames were extracted from video at 5 fps, so consecutive frames are often near-duplicates.
+
+Ditria EM, Connolly RM, Jinks EL, Lopez-Marcano S (2021). [Annotated Video Footage for Automated Identification and Counting of Fish in Unconstrained Seagrass Habitats](https://doi.org/10.3389/fmars.2021.629485). Frontiers in Marine Science 8:629485. Data: [PANGAEA](https://doi.org/10.1594/PANGAEA.926930)
+
+- Data downloadable via https from PANGAEA ([download link](https://download.pangaea.de/dataset/926930/files/Fish_automated_identification_and_counting.zip))
+- License: CC BY 4.0
+- Metadata raw format: COCO JSON (boxes and polygons), plus a per-image CSV with site, deployment, date and coordinates
+- Categories/species: luderick (Girella tricuspidata), yellowfin bream (Acanthopagrus australis)
+  - fish: luderick, bream
+  - non-fish: none
+  - discarded: none
+- Vehicle type: fixed remote underwater video (Haldex action camera, 1080p) on seagrass beds
+- Image information: 4,280 images (1920x1080); every image has at least one fish
+- Annotation information: 9,429 fish bounding boxes (9,304 luderick, 125 bream)
+- Typical animal size in pixels: ~183 (median long side of the fish boxes)
+- Code to render sample annotated image: [griffith_seagrass.py](./datasets/griffith_seagrass.py)
+
+<img src="./previews/griffith_seagrass_sample_image.png" alt="Griffith Seagrass Fish sample" width="600">
+
+
+
 ### Datasets that were not included in the Community Fish Detection Dataset
 
 - [Fishnet.AI](https://www.fishnet.ai/): ~163k bounding boxes on ~35k images of fish and people on fishing vessels.  Excluded because images are above-water.
