@@ -233,6 +233,16 @@ Each dataset script in `datasets/` follows a 4-step pattern: Download -> Process
   - discard: none
 - **Split**: By site, from the sequence name in the filename. Ancona (Adriatic Sea) -> val (1,200 images, 22,441 boxes, 20%); OBSEA and SmartBay1/SmartBay2 (Galway Bay, two cameras) -> train (4,649 images, 91,766 boxes). The OBSEA clip (camera ANERIS-EMUAS1, July 2025) is not from the cameras that `obsea` puts in val
 
+### seatizen_atlas
+- **Source**: [Zenodo, Seatizen Atlas image dataset v1.1.0](https://zenodo.org/records/13951614) (paper: https://doi.org/10.1038/s41597-024-04267-z). The latest version of the record ([20459523](https://zenodo.org/records/20459523)) has only image-level multilabel CSVs, so v1.1.0 is used
+- **Download**: Automatic. `20241018_segmentation_annotations.json` (351 MB, resumable) is downloaded; `images.zip` (35 GB, 14,493 images) is not: only the 1,200 segmented images (~0.6 GB) are read from it with HTTP Range requests into `data/raw/seatizen_atlas/images/`
+- **Annotations**: COCO instance segmentation (polygons, 0-indexed image/annotation ids, category ids 482-1020) -> COCO boxes only (the source `bbox` of each polygon), ids shifted to 1-indexed. 1,200 images, 34,709 instances in 37 classes. Images with no fish or non-fish (304) are kept as background. No EXIF-rotated images (checked in the script). `20210218_REU-Hermitage_scuba_4_00563.jpg` is dropped: it is 1920x1080 in the zip but annotated as 3840x2160, and its one kept box (a sea cucumber), scaled or not, frames no animal
+- **Category mapping**:
+  - fish: `Fish` (8,494)
+  - non-fish: `Sea_cucumber` (1,186), `Sea_urchin` (27), `Turtle` (7), `Other_starfish` (5)
+  - discard: `Giant_clam`, `Sea_anemone`, `Sponges` (sessile); `Homo_Sapiens`, `Human_object`, `Waste`, `Trample`, `Useless`; all coral (`Acropora_*`, `Non-acropora_*`, `Living_coral`, `Dead_coral`, `Bleached_coral`, `Soft_coral`, `Gorgonian`), algae (`Algal_Assemblage`, `Algae_*`), seagrass (`Syringodium_isoetifolium`) and substrate (`Sand`, `Rubble`, `Rock`) classes
+- **Split**: By site, from the second token of the file name (`<date>_<site>_<vehicle>_...`). Mayotte (`MYT`) -> val (322 images, 3,356 fish, 33 non-fish); Reunion (`REU-Hermitage`), Europa Island (`ATF-Europa`) and Mauritius (`MUS-*`) -> train (877 images, 5,138 fish, 1,191 non-fish). Frames from the same session are often consecutive video frames, so many are near-duplicates
+
 ## Partial Datasets
 
 These datasets require manual download or have special dependencies.

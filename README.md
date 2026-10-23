@@ -695,6 +695,29 @@ González-Villà S, Burns Font D, Aguzzi J, et al. [DIGI4ECO Underwater Fish Tra
 
 
 
+#### Seatizen Atlas (instance segmentation subset)
+
+1,200 coral reef and lagoon images from snorkellers, divers, a paddle board, a kitesurf and a surface robot (ASV) in the western Indian Ocean (Reunion, Mayotte, Europa Island, Mauritius), with instance polygons for fish, sea cucumbers and other reef organisms and habitats
+
+Contini M, Illien V, Julien M, Ravitchandirane M, Russias V, Lazennec A, Chevrier T, Rintz CL, Carpentier L, Gogendeau P, et al. [Seatizen Atlas: a collaborative dataset of underwater and aerial marine imagery](https://doi.org/10.1038/s41597-024-04267-z). Scientific Data 12, 67 (2025). Data: [Seatizen Atlas image dataset v1.1.0](https://doi.org/10.5281/zenodo.13951614)
+
+- Data downloadable via https from Zenodo ([annotations](https://zenodo.org/records/13951614/files/20241018_segmentation_annotations.json?download=1), [images.zip](https://zenodo.org/records/13951614/files/images.zip?download=1), 35 GB, of which only the 1,200 segmented images, ~0.6 GB, are read). The latest version of the record (https://zenodo.org/records/20459523) has only image-level labels
+- License: CC BY 4.0
+- Metadata raw format: COCO JSON (instance segmentation polygons)
+- Categories/species: 37 GCRMN-based classes (fish, sea cucumbers, sea urchins, starfish, turtles, giant clams, sponges, corals, algae, seagrass, substrate, people and debris)
+  - fish: Fish
+  - non-fish: Sea_cucumber, Sea_urchin, Turtle, Other_starfish
+  - discarded: Giant_clam, Sea_anemone, Sponges, Homo_Sapiens, Human_object, Waste, Trample, Useless, and all coral, algae, seagrass and substrate classes
+- Vehicle type: snorkeller/diver, paddle board, kitesurf, autonomous surface vehicle (downward-facing GoPro and compact cameras)
+- Image information: 1,200 images (1920x1080 to 5472x3648); 304 have no fish or non-fish and are kept as background; 1 is dropped because its file size does not match its annotations
+- Annotation information: 9,718 bounding boxes from the instance polygons (8,494 fish, 1,224 non-fish)
+- Typical animal size in pixels: ~56 (median long side of the fish boxes)
+- Code to render sample annotated image: [seatizen_atlas.py](./datasets/seatizen_atlas.py)
+
+<img src="./previews/seatizen_atlas_sample_image.png" alt="Seatizen Atlas sample" width="600">
+
+
+
 #### AFSC Salmon and Pollock Object Detection
 
 16,998 frames from a camera inside a commercial walleye pollock trawl in the eastern Bering Sea (2019-2020), with 84,986 boxes on pollock and Pacific salmon. Frames are consecutive 30 fps video frames from 184 two-second clips, so neighbouring frames are highly redundant
