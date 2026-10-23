@@ -1,0 +1,2 @@
+# Extra dependencies of datasets/deduplicate.py (install on top of requirements.txt; use a CUDA build of torch on GPU machines)
+torch>=2.1

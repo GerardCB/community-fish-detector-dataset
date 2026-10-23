@@ -9,6 +9,7 @@ datasets/                          # Unified dataset processing pipeline
   __init__.py
   settings.py                     # Global settings (paths, split ratio, COCO config)
   merge_all_datasets.py           # Merges all processed datasets
+  deduplicate.py                  # Reports duplicate images across and within datasets (needs requirements-dedup.txt)
   utils/
     __init__.py                   # Re-exports all utilities
     download.py                   # download_file, extract_downloaded_file, download_and_extract
@@ -31,7 +32,7 @@ Each `datasets/<dataset>.py` script follows a single unified 4-step pattern:
 3. **Preview** — saves a sample annotated image to `previews/`
 4. **Split** — splits into train/val by location/source identifier when possible
 
-Final output: COCO-format datasets with two categories ("fish", "non-fish"), merged via `datasets/merge_all_datasets.py`.
+Final output: COCO-format datasets with two categories ("fish", "non-fish"), merged via `datasets/merge_all_datasets.py`. Before merging, `datasets/deduplicate.py` reports images that are the same photo in two datasets or in both splits of one dataset (analytical only; run it on a GPU machine for the full dataset).
 
 ## Class Definitions
 

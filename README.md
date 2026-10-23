@@ -101,6 +101,17 @@ This repo includes a custom [Claude Code](https://docs.anthropic.com/en/docs/cla
 
 This is the fastest way to add a new dataset if you're already familiar with Claude Code.
 
+## Duplicates across datasets
+
+Some datasets are compilations that include images of others (for example, UIIS10K holds 161 TrashCan frames), and some contain the same photo in both train and val. Before merging, [`datasets/deduplicate.py`](./datasets/deduplicate.py) looks for the same photo (exact, re-encoded, resized, stretched, slightly cropped, or with a text overlay) across and within the processed datasets in `data/final`, using an [SSCD](https://github.com/facebookresearch/sscd-copy-detection) copy-detection descriptor per image. It only reports: images with a copy in each other dataset and in the other split, by similarity band, and how many images keeping one image per duplicate group would drop. It does not change the datasets. For the full dataset, run it on a GPU machine:
+
+```
+pip install -r requirements.txt -r requirements-dedup.txt
+python -m datasets.deduplicate --review 16
+```
+
+The outputs go to `data/dedup`: `report.md`, `pairs.csv` (every candidate pair), `clusters.json` (duplicate groups) and `review/` (sample pairs per similarity band). Descriptors are cached, so a rerun only processes new images.
+
 ## Fish datasets
 
 
