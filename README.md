@@ -693,6 +693,27 @@ González-Villà S, Burns Font D, Aguzzi J, et al. [DIGI4ECO Underwater Fish Tra
 
 <img src="./previews/digi4eco_sample_image.png" alt="DIGI4ECO Underwater Fish Tracking sample" width="600">
 
+#### YOLO-BRUV
+
+2,640 frames from 19 baited remote underwater video (BRUV) recordings on sand and shell seabed at offshore wind farms in the Moray Firth, Scotland (PrePARED project), with 13,070 fish boxes (mostly dab/flounder and haddock) and 2,674 non-fish boxes (mostly hermit crabs and starfish)
+
+Lambrette M. [YOLO-BRUV training data and scripts](https://doi.org/10.5281/zenodo.19594599). Zenodo, 2026. Footage from Bicknell AW, Gierhart S, Witt MJ. [Site and species dependent effects of offshore windfarms on fish populations](https://doi.org/10.1016/j.marenvres.2025.106977). Marine Environmental Research 205, 2025
+
+- Data downloadable via Zenodo ([download link](https://zenodo.org/records/19594599/files/YOLO-BRUV_data.zip?download=1))
+- License: CC BY 4.0
+- Metadata raw format: EventMeasure point exports (tab-separated text, one row per animal with a box), JPEG frames
+- Categories/species: 21 species-level labels and an empty-frame marker
+  - fish: dab/flounder, haddock, unidentified flatfish, gobies, short-spined sea scorpion, grey gurnard, small-spotted catshark, plaice, dragonet, cod, ling, whiting, flapper skate, dab, poor cod
+  - non-fish: hermit crab, common starfish, edible crab, brittle star, common whelk, squid
+  - discarded: the marker used to export empty frames ("Botryllus spp")
+- Vehicle type: BRUV (GoPro on a baited frame, one camera)
+- Image information: 2,640 frames (1920x1080) from 19 recordings; 455 of them have no animal (kept as background). Of the 2,708 exported frames, 68 annotated with points instead of boxes are dropped, and 12 frames exported twice are kept once
+- Annotation information: 13,070 fish and 2,674 non-fish bounding boxes
+- Typical animal size in pixels: ~124 (median long side of the fish boxes)
+- Code to render sample annotated image: [yolo_bruv.py](./datasets/yolo_bruv.py)
+
+<img src="./previews/yolo_bruv_sample_image.png" alt="YOLO-BRUV sample" width="600">
+
 
 
 #### Labelled Mediterranean Fish Dataset (DEEPECOMAR)
@@ -761,6 +782,52 @@ Wilson KC, Lurbur M, Yochum N (2025). [Automated fish detection in videos to sup
 - Code to render sample annotated image: [afsc_salmon_pollock.py](./datasets/afsc_salmon_pollock.py)
 
 <img src="./previews/afsc_salmon_pollock_sample_image.png" alt="AFSC Salmon and Pollock sample" width="600">
+
+
+
+#### Griffith Seagrass Fish (Luderick Seagrass)
+
+4,280 frames from remote underwater video in seagrass meadows of two estuaries on the Gold Coast, Queensland, Australia (2019), with 9,429 boxes and segmentation masks on luderick and bream. Frames were extracted from video at 5 fps, so consecutive frames are often near-duplicates.
+
+Ditria EM, Connolly RM, Jinks EL, Lopez-Marcano S (2021). [Annotated Video Footage for Automated Identification and Counting of Fish in Unconstrained Seagrass Habitats](https://doi.org/10.3389/fmars.2021.629485). Frontiers in Marine Science 8:629485. Data: [PANGAEA](https://doi.org/10.1594/PANGAEA.926930)
+
+- Data downloadable via https from PANGAEA ([download link](https://download.pangaea.de/dataset/926930/files/Fish_automated_identification_and_counting.zip))
+- License: CC BY 4.0
+- Metadata raw format: COCO JSON (boxes and polygons), plus a per-image CSV with site, deployment, date and coordinates
+- Categories/species: luderick (Girella tricuspidata), yellowfin bream (Acanthopagrus australis)
+  - fish: luderick, bream
+  - non-fish: none
+  - discarded: none
+- Vehicle type: fixed remote underwater video (Haldex action camera, 1080p) on seagrass beds
+- Image information: 4,280 images (1920x1080); every image has at least one fish
+- Annotation information: 9,429 fish bounding boxes (9,304 luderick, 125 bream)
+- Typical animal size in pixels: ~183 (median long side of the fish boxes)
+- Code to render sample annotated image: [griffith_seagrass.py](./datasets/griffith_seagrass.py)
+
+<img src="./previews/griffith_seagrass_sample_image.png" alt="Griffith Seagrass Fish sample" width="600">
+
+
+
+#### Mediterranean Fish Census (autoUC)
+
+13,044 frames from diver-operated GoPro transect videos at 8 sites (1-37 m) on the French Riviera, Mediterranean Sea, with 68,590 boxes on 40 fish taxa, plus jellyfish and sea urchins. Only the training/test frames (`Data_T`) are used; the experimental transects (`Data_E`) have model detections, not annotations.
+
+Bürgi K, Bouveyron C, Lingrand D, Derijard B, Precioso F, Sabourault C (2025). [Towards a fully automated underwater census for fish assemblages in the Mediterranean Sea](https://doi.org/10.1016/j.ecoinf.2024.102959). Ecological Informatics 85, 102959. Data: [Dryad, doi:10.5061/dryad.f7m0cfz6f](https://datadryad.org/dataset/doi:10.5061/dryad.f7m0cfz6f)
+
+- Data downloadable via the Dryad API (needs a free Dryad API account) or manually from Dryad ([dataset page](https://datadryad.org/dataset/doi:10.5061/dryad.f7m0cfz6f)): `autoUC_Data.zip` is 121.7 GB, but only `Data_T` (4.4 GB) is read from it with HTTP Range requests
+- License: CC0 1.0
+- Metadata raw format: YOLO TXT (two label sets: `labels_allSpecies`, 46 classes, and `labels_Reduced`, 19 species + Other)
+- Categories/species: 40 Mediterranean fish taxa (e.g. Chromis chromis, Sarpa salpa, Anthias anthias, Coris julis, Diplodus vulgaris), jellyfish, sea urchins, background, diver
+  - fish: all 40 species classes (Chromis_chromis, Diplodus_vulgaris, Coris_julis, Symphodus_tinca, Spicara_smaris, Diplodus_sargus, Symphodus_roissali, Mugilidae, Antherina, Seriola, Boops_boops, Thalassoma_pavo, Oblada_melanura, Labrus_merula, Labrus_mixtus, Mullus_surmuletus, Sarpa_salpa, Labrus_viridis, Apogon_imberbis, Epinephelus_marginatus, Muraena_helena, Gobidae, Serranus_scriba, Scorpoeana_scrofa, Anthias_anthias, Symphodus_rostratus, Serranus_cabrilla, Sciaena_umbra, Sparus aurata, Trachurus sp., Dicentrachus labrax, Symphodus_mediterraneus, Sphyraena sphyraena, Spondyliosoma_cantharus, Blennidae, Symphodus_melanocercus, Spicara_maena, Phycis_phycis, Conger_conger, Diplodus_anularis), Other (rare species grouped together)
+  - non-fish: jellyfish (Pelagia noctiluca), seaurchin
+  - discarded: background (hard negatives: rocks, seagrass, wreck parts), diver, drone (no boxes), fish (its 4 boxes are seagrass leaves)
+- Vehicle type: diver-operated camera (GoPro HERO 9), frames extracted at 1 fps
+- Image information: 13,044 images (12,421 at 1920x1080, 609 at 2704x1520, 14 at 1280x960) from 166 videos, including 2,233 frames without fish or non-fish kept as background; 63 frames duplicated across the authors' train and test sets are kept once
+- Annotation information: 68,791 bounding boxes (68,590 fish, 201 non-fish)
+- Typical animal size in pixels: ~60 (median long side of the fish boxes)
+- Code to render sample annotated image: [med_fish_census.py](./datasets/med_fish_census.py)
+
+<img src="./previews/med_fish_census_sample_image.png" alt="Mediterranean Fish Census sample" width="600">
 
 
 

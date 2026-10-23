@@ -253,6 +253,41 @@ Each dataset script in `datasets/` follows a 4-step pattern: Download -> Process
   - discard: `Giant_clam`, `Sea_anemone`, `Sponges` (sessile); `Homo_Sapiens`, `Human_object`, `Waste`, `Trample`, `Useless`; all coral (`Acropora_*`, `Non-acropora_*`, `Living_coral`, `Dead_coral`, `Bleached_coral`, `Soft_coral`, `Gorgonian`), algae (`Algal_Assemblage`, `Algae_*`), seagrass (`Syringodium_isoetifolium`) and substrate (`Sand`, `Rubble`, `Rock`) classes
 - **Split**: By site, from the second token of the file name (`<date>_<site>_<vehicle>_...`). Mayotte (`MYT`) -> val (322 images, 3,356 fish, 33 non-fish); Reunion (`REU-Hermitage`), Europa Island (`ATF-Europa`) and Mauritius (`MUS-*`) -> train (877 images, 5,138 fish, 1,191 non-fish). Frames from the same session are often consecutive video frames, so many are near-duplicates
 
+### yolo_bruv
+- **Source**: [Zenodo](https://doi.org/10.5281/zenodo.19594599) (`YOLO-BRUV_data.zip`)
+- **Download**: Automatic (415 MB, resumes an interrupted download, checked against the Zenodo MD5); only `YOLO-BRUV_data/data/Annotations/` is extracted
+- **Annotations**: EventMeasure point exports (`EMOutputs/Raw/G1-G6_Points.txt`, tab-separated, one row per animal: `ImageCol`/`ImageRow` top-left corner and `RectWidth`/`RectHeight` in pixels, `Genus`, `Species`) -> COCO conversion. The raw exports are used, not `EMOutputs/Corrected/`, which only regroups the species into the authors' training classes. The 2,721 JPEGs (1920x1080) are 2,708 frames exported in 6 annotation groups:
+  - 68 frames of G1 in which animals are marked with points (no box; other animals in them are not marked) are dropped
+  - 12 frames were exported into two or three groups and annotated separately (e.g. 3 hermit crabs in one copy, none in the other): the copy with the most boxes is kept (13 copies dropped)
+  - 455 frames carry only the empty-frame marker and are kept as background
+  - no box reaches past the image; boxes 1 pixel or less wide or high would be dropped (none)
+  - 2,640 frames, 15,919 boxes before mapping. Each COCO image keeps `video`, `chapter`, `frame` and `group` (from the file name, e.g. `01_RGX030003.MP4_0009008.jpg` is chapter 03 of video 0003, frame 9008)
+- **Category mapping** (source category is `Genus species`, or the species alone when the genus is missing):
+  - fish: `Limanda-Platichthys limanda-flesus` (dab or flounder, 7,861), `Melanogrammus aeglefinus` (haddock, 3,469), `Pleuronectiformes spp` (1,472), `minutus` (gobies, 92), `Myoxocephalus scorpius` (44), `Eutrigla gurnardus` (31), `Scyliorhinus canicula` (30), `Pleuronectes platessa` (28), `Callionymus lyra` (18), `Gadus morhua` (12), `Merlangius merlangus` (4), `Molva molva` (4), `Dipturus intermedius` (3), `Limanda limanda` (1), `Trisopterus minutus` (1)
+  - non-fish: `Pagurus bernhardus` (hermit crab, 2,003), `Asterias rubens` (starfish, 637), `Buccinum undatum` (common whelk, 18; one or two live whelks crawling near the bait in video 0003, crops checked), `Cancer pagurus` (11), `Ophiura albida` (brittle star, 4, crops checked), `vulgaris` (1, genus missing; a squid, crop checked)
+  - discard: `Botryllus spp` (175 boxes, plus points), a marker placed in open water to export empty frames (not the sea squirt; crops checked)
+- **Split**: By video. Every frame comes from one of 19 GoPro recordings (camera deployments), and frames of one recording can be a few seconds apart. Whole videos are shuffled (`random_state`) and moved to val until it holds 20% of the frames: val videos 0006, 0007, 0008, 0011, 0021, 0024, 0025, 0027 (574 frames, 21.7%; 4,111 fish / 177 non-fish boxes), train the other 11 (2,066 frames; 8,959 / 2,497). The footage covers two of the four study sites, so val is not from a site unseen in train
+
+### griffith_seagrass
+- **Source**: [PANGAEA 926930](https://doi.pangaea.de/10.1594/PANGAEA.926930) (paper: https://doi.org/10.3389/fmars.2021.629485)
+- **Download**: Automatic (`Fish_automated_identification_and_counting.zip`, 3.7 GB, resumes an interrupted download). The outer zip holds the annotations, `dataset_images.csv` and an inner `luderick-seagrass.zip` with the 4,280 frames (flat, 1920x1080), which is extracted to `data/raw/griffith_seagrass/Fish_automated_identification_and_counting/images/`
+- **Annotations**: COCO JSON (`luderick_seagrass_all.json`, boxes and polygons, image/annotation/category ids 0-indexed) -> ids shifted to 1-indexed. 25 boxes that stick out of the frame by 1-2 px are clipped. Every frame has at least one box. Frames were extracted from video at 5 fps, so consecutive frames are often near-duplicates
+- **Category mapping**:
+  - fish: `luderick` (Girella tricuspidata, 9,304), `bream` (Acanthopagrus australis, 125)
+  - non-fish: none
+  - discard: none
+- **Split**: By estuary, from the `dataset` column of `dataset_images.csv`. Val = Tallebudgera Creek (the authors' "novel test" site, deployments 16-18; 764 images, 1,066 boxes); train = Jack Evans Boat Harbour (the authors' "Jack Evans A" train and "Jack Evans B" test subsets, deployments 1-15; 3,516 images, 8,363 boxes). A and B are not used as separate splits because they share deployments and one video (`2205_Luderick_25`)
+
+### med_fish_census
+- **Source**: [Dryad, doi:10.5061/dryad.f7m0cfz6f](https://datadryad.org/dataset/doi:10.5061/dryad.f7m0cfz6f) (paper: https://doi.org/10.1016/j.ecoinf.2024.102959)
+- **Download**: Automatic with Dryad API credentials (`DRYAD_CLIENT_ID` + `DRYAD_CLIENT_SECRET`, or `DRYAD_TOKEN`, in the environment or `.env`; create them under My account > API on datadryad.org). The token resolves the download to a signed S3 URL and only `Data_T` (4.4 GB, 39.6k files) plus the class lists are read from `autoUC_Data.zip` (121.7 GB) with HTTP Range requests (`HttpRangeFile`). Without credentials, download the zip manually to `data/raw/med_fish_census/autoUC_Data.zip`; the script picks it up and extracts `Data_T` from it. `datadryad.org/downloads/file_stream/...` sits behind a browser bot check and cannot be scripted
+- **Annotations**: YOLO TXT -> COCO. `Data_T/{trainSet,testSet}/images` with two label sets of identical fish boxes: `labels_allSpecies` (46 classes, used) and `labels_Reduced` (19 species + Other; used for the 118 train images without a `labels_allSpecies` file). 387 `labels_allSpecies` files without an image are ignored. 63 frames (videos GH010143_1, GH010149, GH010211_2) are byte-identical in both splits with the same labels and are kept once. Frames are `<video>_<frame>.jpg` (12,421 at 1920x1080, 609 at 2704x1520, 14 at 1280x960). Frames without kept boxes (2,233, mostly background/diver-only) are kept as background. 6 fish boxes with zero width or height in the source are dropped
+- **Category mapping**:
+  - fish: the 40 species classes (`Chromis_chromis` ... `Diplodus_anularis`, see `FISH_SPECIES` in the script) and `Other` (rare species grouped)
+  - non-fish: `jellyfish` (127, Pelagia noctiluca, crops checked), `seaurchin` (78)
+  - discard: `background` (6,685; hard negatives such as rocks, seagrass, wreck parts, crops checked), `diver` (2,061), `drone` (no boxes), `fish` (4 boxes, all seagrass leaves)
+- **Split**: The authors' split by video (testSet -> val, trainSet -> train), except that GoPro recordings with clips in both of their splits (GH010003, GH010004, GH010049, GH010144, e.g. GH010003 in test and GH010003_2 in train) go entirely to val. No site ids are in the data. Val: 3,994 images, 28,867 fish, 5 non-fish (~30%); train: 9,050 images, 39,723 fish, 196 non-fish
+
 ### eyesea
 - **Source**: [PNNL DataHub, EyeSea Underwater Video](https://data.pnnl.gov/group/nodes/dataset/12978); Xu & Matzner (2018), [doi:10.1109/CSCI46756.2018.00067](https://doi.org/10.1109/CSCI46756.2018.00067)
 - **Download**: Automatic (87 GB tar from the PNNL Globus endpoint, resumes an interrupted download). The tar holds a second tar, `eyesea.tar`, which is streamed without being written to disk; only `train_x/y` and `{voith,wells,orpc}_test_x/y` are extracted. `videos/` (source videos) and `keras-yolo3-master/` (the authors' model and debug output) are skipped. The outer tar is deleted after extraction
