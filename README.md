@@ -764,6 +764,29 @@ Wilson KC, Lurbur M, Yochum N (2025). [Automated fish detection in videos to sup
 
 
 
+#### Seaclear Marine Debris Dataset
+
+8,610 images of marine litter on the shallow (1-10 m) seabed, from ROVs at five sites in Croatia (Bistrina, Jakljan, Lokrum, Slano) and France (Marseille), annotated for 40 debris, animal, plant and robot-part categories. Fish are few and small: 985 boxes in 81 images, almost all at Lokrum.
+
+Đuraš A, Wolf BJ, Ilioudi A, Palunko I, De Schutter B (2024). [A Dataset for Detection and Segmentation of Underwater Marine Debris in Shallow Waters](https://doi.org/10.1038/s41597-024-03759-2). Scientific Data 11.
+
+- Data downloadable via [4TU.ResearchData](https://doi.org/10.4121/4f1dff25-e157-4399-a5d4-478055461689) (single .rar) or the [Kaggle mirror](https://www.kaggle.com/datasets/jocelyndumlao/seaclear-marine-debris-detection-and-segmentation) (1.6 GB zip, used by the script via kagglehub)
+- License: CC BY 4.0
+- Metadata raw format: COCO JSON (instance polygons), images in one folder per site and camera
+- Categories/species: 32 debris classes (`<instance>_<material>`), 4 robot classes, plant, unknown_instance and 6 animal classes (fish, sea urchin, sea cucumber, starfish, shells, sponge)
+  - fish: animal_fish
+  - non-fish: animal_urchin, animal_etc (sea cucumbers, crops checked), animal_starfish
+  - discarded: animal_shells (empty shells, oysters, snails), animal_sponge, plant, unknown_instance (debris), all debris and rov_* classes
+- Vehicle type: ROVs (BlueROV2 with Bluerobotics Low-Light HD and Paralenz Vaquita cameras; SST Mini-Tortuga with SIP-E323CV camera)
+- Image information: 8,610 images (1920x1080); Marseille (3,441 images) has no animal labels, and these images are kept as background
+- Annotation information: 11,213 bounding boxes kept from the polygons (985 fish, 10,228 non-fish) out of 31,555
+- Typical animal size in pixels: ~43 (median long side of the fish boxes)
+- Code to render sample annotated image: [seaclear.py](./datasets/seaclear.py)
+
+<img src="./previews/seaclear_sample_image.png" alt="Seaclear sample" width="600">
+
+
+
 ### Datasets that were not included in the Community Fish Detection Dataset
 
 - [Fishnet.AI](https://www.fishnet.ai/): ~163k bounding boxes on ~35k images of fish and people on fishing vessels.  Excluded because images are above-water.
