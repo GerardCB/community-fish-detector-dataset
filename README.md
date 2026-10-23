@@ -766,7 +766,7 @@ Wilson KC, Lurbur M, Yochum N (2025). [Automated fish detection in videos to sup
 
 #### Mediterranean Fish Census (autoUC)
 
-13,044 frames from diver-operated GoPro transect videos at 8 sites (1-37 m) on the French Riviera, Mediterranean Sea, with 68,596 boxes on 40 fish taxa, plus jellyfish and sea urchins. Only the training/test frames (`Data_T`) are used; the experimental transects (`Data_E`) have model detections, not annotations.
+13,044 frames from diver-operated GoPro transect videos at 8 sites (1-37 m) on the French Riviera, Mediterranean Sea, with 68,590 boxes on 40 fish taxa, plus jellyfish and sea urchins. Only the training/test frames (`Data_T`) are used; the experimental transects (`Data_E`) have model detections, not annotations.
 
 Bürgi K, Bouveyron C, Lingrand D, Derijard B, Precioso F, Sabourault C (2025). [Towards a fully automated underwater census for fish assemblages in the Mediterranean Sea](https://doi.org/10.1016/j.ecoinf.2024.102959). Ecological Informatics 85, 102959. Data: [Dryad, doi:10.5061/dryad.f7m0cfz6f](https://datadryad.org/dataset/doi:10.5061/dryad.f7m0cfz6f)
 
@@ -778,8 +778,8 @@ Bürgi K, Bouveyron C, Lingrand D, Derijard B, Precioso F, Sabourault C (2025). 
   - non-fish: jellyfish (Pelagia noctiluca), seaurchin
   - discarded: background (hard negatives: rocks, seagrass, wreck parts), diver, drone (no boxes), fish (its 4 boxes are seagrass leaves)
 - Vehicle type: diver-operated camera (GoPro HERO 9), frames extracted at 1 fps
-- Image information: 13,044 images (1920x1080) from 166 videos, including ~2,200 frames without fish or non-fish kept as background; 63 frames duplicated across the authors' train and test sets are kept once
-- Annotation information: 68,797 bounding boxes (68,596 fish, 201 non-fish)
+- Image information: 13,044 images (12,421 at 1920x1080, 609 at 2704x1520, 14 at 1280x960) from 166 videos, including 2,233 frames without fish or non-fish kept as background; 63 frames duplicated across the authors' train and test sets are kept once
+- Annotation information: 68,791 bounding boxes (68,590 fish, 201 non-fish)
 - Typical animal size in pixels: ~60 (median long side of the fish boxes)
 - Code to render sample annotated image: [med_fish_census.py](./datasets/med_fish_census.py)
 
