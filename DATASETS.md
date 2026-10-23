@@ -253,6 +253,16 @@ Each dataset script in `datasets/` follows a 4-step pattern: Download -> Process
   - discard: `Giant_clam`, `Sea_anemone`, `Sponges` (sessile); `Homo_Sapiens`, `Human_object`, `Waste`, `Trample`, `Useless`; all coral (`Acropora_*`, `Non-acropora_*`, `Living_coral`, `Dead_coral`, `Bleached_coral`, `Soft_coral`, `Gorgonian`), algae (`Algal_Assemblage`, `Algae_*`), seagrass (`Syringodium_isoetifolium`) and substrate (`Sand`, `Rubble`, `Rock`) classes
 - **Split**: By site, from the second token of the file name (`<date>_<site>_<vehicle>_...`). Mayotte (`MYT`) -> val (322 images, 3,356 fish, 33 non-fish); Reunion (`REU-Hermitage`), Europa Island (`ATF-Europa`) and Mauritius (`MUS-*`) -> train (877 images, 5,138 fish, 1,191 non-fish). Frames from the same session are often consecutive video frames, so many are near-duplicates
 
+### griffith_seagrass
+- **Source**: [PANGAEA 926930](https://doi.pangaea.de/10.1594/PANGAEA.926930) (paper: https://doi.org/10.3389/fmars.2021.629485)
+- **Download**: Automatic (`Fish_automated_identification_and_counting.zip`, 3.7 GB, resumes an interrupted download). The outer zip holds the annotations, `dataset_images.csv` and an inner `luderick-seagrass.zip` with the 4,280 frames (flat, 1920x1080), which is extracted to `data/raw/griffith_seagrass/Fish_automated_identification_and_counting/images/`
+- **Annotations**: COCO JSON (`luderick_seagrass_all.json`, boxes and polygons, image/annotation/category ids 0-indexed) -> ids shifted to 1-indexed. 25 boxes that stick out of the frame by 1-2 px are clipped. Every frame has at least one box. Frames were extracted from video at 5 fps, so consecutive frames are often near-duplicates
+- **Category mapping**:
+  - fish: `luderick` (Girella tricuspidata, 9,304), `bream` (Acanthopagrus australis, 125)
+  - non-fish: none
+  - discard: none
+- **Split**: By estuary, from the `dataset` column of `dataset_images.csv`. Val = Tallebudgera Creek (the authors' "novel test" site, deployments 16-18; 764 images, 1,066 boxes); train = Jack Evans Boat Harbour (the authors' "Jack Evans A" train and "Jack Evans B" test subsets, deployments 1-15; 3,516 images, 8,363 boxes). A and B are not used as separate splits because they share deployments and one video (`2205_Luderick_25`)
+
 ## Partial Datasets
 
 These datasets require manual download or have special dependencies.
