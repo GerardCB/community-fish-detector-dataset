@@ -762,6 +762,27 @@ Wilson KC, Lurbur M, Yochum N (2025). [Automated fish detection in videos to sup
 
 <img src="./previews/afsc_salmon_pollock_sample_image.png" alt="AFSC Salmon and Pollock sample" width="600">
 
+#### TrashCan 1.0
+
+7,174 frames from deep-sea ROV videos of JAMSTEC (J-EDI archive, mostly the Sea of Japan), selected for marine debris and annotated with instance masks of trash, ROVs, plants and animals, giving 1,153 fish boxes (eelpouts, grenadiers, eels, rockfish, chimaeras, rays) and 605 non-fish boxes (crabs, sea stars and brittle stars, squid and dumbo octopus, shrimp, lobsters). Animals are not boxed exhaustively: about 90% of fish have a box, but only about 1 in 4 non-fish (most brittle stars and sea stars are not boxed)
+
+Hong J, Fulton M, Sattar J (2020). [TrashCan 1.0: An Instance-Segmentation Labeled Dataset of Trash Observations](https://doi.org/10.13020/g1gx-y834). Data Repository for the University of Minnesota (DRUM). Paper: [TrashCan: A Semantically-Segmented Dataset towards Visual Detection of Marine Debris](https://arxiv.org/abs/2007.08097), arXiv 2007.08097. Images: JAMSTEC E-Library of Deep-sea Images (J-EDI)
+
+- Data downloadable via HTTPS from DRUM ([download link](https://conservancy.umn.edu/server/api/core/bitstreams/fffa78cc-3abf-42b9-b019-bc15a953a8e9/content), `dataset.zip`, 553 MB)
+- License: free for academic teaching and research use with attribution to the authors and JAMSTEC; commercial use needs permission from JAMSTEC ([LICENSE.txt](https://hdl.handle.net/11299/214865))
+- Metadata raw format: Supervisely JSON per image (bitmap masks with class and tags); the dataset also ships COCO versions (instance and material classes)
+- Categories/species: objects are trash, rov, bio (with an animal or plant tag) or unknown; the animal tags are fish, eel, stingray, crab, starfish, shell, squid, octopus, shrimp, crawfish, lobster, jellyfish, turtle, unknown, a few typos and numeric codes
+  - fish: animal tags fish, eel, stingray (rays and a chimaera-like fish) and 1 (eelpouts and grenadiers)
+  - non-fish: animal tags crab, 2 (spider crabs), starfish (sea stars and brittle stars), 6 (a sea star), squid (squid and dumbo octopus), octopus (a large jellyfish), shrimp, crawfish (deep-sea shrimp and squat lobsters), lobster
+  - discarded: animal tags shell (empty clam shells, mussel beds, whelk shells), unknown, jellyfish (faint blobs of doubtful size), turtle (a lump), 3, 4, 7 (anemones), 8, 9, b; all plant, rov, trash and unknown objects
+- Vehicle type: ROV (several JAMSTEC ROVs, 1980s-2010s)
+- Image information: 7,174 frames (480x270 or 480x360, one per second) from 310 videos; 5,940 frames have no box (kept as background). The 38 frames of 2 videos whose boxes cover groups of animals are dropped
+- Annotation information: 1,153 fish and 605 non-fish bounding boxes (from the masks)
+- Typical animal size in pixels: ~88 (median long side of the fish boxes)
+- Code to render sample annotated image: [trashcan.py](./datasets/trashcan.py)
+
+<img src="./previews/trashcan_sample_image.png" alt="TrashCan 1.0 sample" width="600">
+
 
 
 ### Datasets that were not included in the Community Fish Detection Dataset
