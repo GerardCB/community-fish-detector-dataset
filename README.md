@@ -337,19 +337,20 @@ Joly A, Goeau H, Glotin H, Spampinato C, Bonnet P, Vellinga W-P, Planquè R, Rau
 
 
 
-#### VIAME FishTrack
+#### VIAME FishTrack (FishTrack23)
 
-Several thousand BRUV images with bounding boxes on fish and bait
+~308,000 frames from 576 underwater videos and image sequences with fish tracks, from NOAA SEFSC (SEAMAP reef fish video survey, Gulf of Mexico), NOAA PIFSC (MOUSS, Hawaii), Ifremer (baited DropCam and Game of Trawls, Bay of Biscay) and CDFW (LakeCam, California reservoir)
 
+- Paper: Dawkins et al., "FishTrack23: An Ensemble Underwater Dataset for Multi-Object Tracking", WACV 2024 ([paper](https://openaccess.thecvf.com/content/WACV2024/papers/Dawkins_FishTrack23_An_Ensemble_Underwater_Dataset_for_Multi-Object_Tracking_WACV_2024_paper.pdf))
 - Data downloadable from Viame ([download link](https://viame.kitware.com/#/collection/65a140e8a4c218785d408b42))
-- Metadata raw format: N/A
-- Categories/species: General Fish, Fish Species, Bait and Algae
-  - fish: `micropterus_salmoides`, `unspecified_fish`, `etelis_coruscans`, `hyporthodus_quernus`, `pristipomoides_zonatus`, `pristipomoides_auricilla`, `seriola`, `caranx_melampygus`
-  - non-fish: `non_fish_animal`
-  - discarded: `non_fish_bait`, `non_fish_plant`
-- Vehicle type: BRUV
-- Image information: ~20,000
-- Annotation information: bounding boxes
+- Metadata raw format: VIAME CSV (tracks)
+- Categories/species: 155 labels, mostly fish species (148 fish species/genera/families, unspecified fish, crabs, other animals, bait and plants)
+  - fish: all fish species, genus and family labels (e.g. `lutjanus_campechanus`, `micropterus_salmoides`, `etelis_coruscans`) and `unspecified_fish`
+  - non-fish: `anomura` (squat/hermit crabs), `stenocionops_spinimana` (spider crab), `non_fish_animal`
+  - discarded: `non_fish_bait`, `non_fish_bait_apparatus`, `non_fish_plant`
+- Vehicle type: Baited and unbaited stationary cameras (BRUV, camera arrays, drop cameras), trawl camera
+- Image information: ~308,000 frames with fish or non-fish boxes (1280x720 to 1920x1200, part greyscale), annotated at 5-30 Hz (consecutive frames are near-duplicates)
+- Annotation information: ~725,000 bounding boxes in ~19,000 tracks
 - Code to render sample annotated image: [viame_fishtrack.py](./datasets/viame_fishtrack.py)
 
 <img src="./previews/viame_fishtrack_sample_image.png" alt="VIAME FishTrack sample" width="600">
@@ -714,6 +715,29 @@ Contini M, Illien V, Julien M, Ravitchandirane M, Russias V, Lazennec A, Chevrie
 - Code to render sample annotated image: [seatizen_atlas.py](./datasets/seatizen_atlas.py)
 
 <img src="./previews/seatizen_atlas_sample_image.png" alt="Seatizen Atlas sample" width="600">
+
+
+
+#### AFSC Salmon and Pollock Object Detection
+
+16,998 frames from a camera inside a commercial walleye pollock trawl in the eastern Bering Sea (2019-2020), with 84,986 boxes on pollock and Pacific salmon. Frames are consecutive 30 fps video frames from 184 two-second clips, so neighbouring frames are highly redundant
+
+Wilson KC, Lurbur M, Yochum N (2025). [Automated fish detection in videos to support commercial fishing sustainability and innovation in the Alaska walleye pollock (Gadus chalcogrammus) trawl fishery](https://doi.org/10.1093/icesjms/fsaf168). ICES Journal of Marine Science, 82(9). Data: Alaska Fisheries Science Center (2026), [AFSC/RACE/MACE: 2019-2020 Salmon and Pollock Object Detection](https://www.fisheries.noaa.gov/inport/item/69412)
+
+- Data downloadable via HTTPS from the NOAA public Google Cloud bucket ([browse link](https://console.cloud.google.com/storage/browser/nmfs_odp_afsc/RACE/MACE/salmon_pollock_object_detection/annotated_data)): 184 clip folders, ~17k PNG frames (~29 GB)
+- License: CC0 1.0
+- Metadata raw format: one custom COCO JSON per clip (with CVAT frame tags and track attributes)
+- Categories/species: walleye pollock (Gadus chalcogrammus), Pacific salmon (Oncorhynchus spp.), herring, unidentified fish, other
+  - fish: Pollock, Salmon, Fish, Herring
+  - non-fish: none
+  - discarded: Other (blurry, unclear shapes; the 76 frames containing one are dropped). Shark, Invertebrate, Krill, Occlusion, No Fish, Fish Low/Med/High, Low Light and Low Visibility have no boxes
+- Vehicle type: camera (Sexton housing, Mobius2 action camera, LED lights) inside a commercial pollock trawl net (F/V Pacific Explorer)
+- Image information: 16,922 images (13,254 at 1280x720, 3,668 at 1920x1080) from 7 tows, including 1,095 frames without fish
+- Annotation information: 84,786 bounding boxes (73,205 pollock, 11,510 salmon, 71 other fish)
+- Typical animal size in pixels: ~115 px (median box long side)
+- Code to render sample annotated image: [afsc_salmon_pollock.py](./datasets/afsc_salmon_pollock.py)
+
+<img src="./previews/afsc_salmon_pollock_sample_image.png" alt="AFSC Salmon and Pollock sample" width="600">
 
 
 

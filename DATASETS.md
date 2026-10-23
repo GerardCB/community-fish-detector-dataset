@@ -107,14 +107,14 @@ Each dataset script in `datasets/` follows a 4-step pattern: Download -> Process
 - **Split**: Pre-provided (uses Roboflow's original split)
 
 ### viame_fishtrack
-- **Source**: [VIAME](https://viame.kitware.com/)
-- **Download**: Automatic (separate train/val URLs)
-- **Annotations**: VIAME CSV -> COCO conversion, frames extracted from videos
+- **Source**: VIAME DIVE collection [FishTrack23](https://viame.kitware.com/#/collection/65a140e8a4c218785d408b42); paper: Dawkins et al., "FishTrack23: An Ensemble Underwater Dataset for Multi-Object Tracking", WACV 2024
+- **Download**: Automatic. The sequences in the collection's `Train` and `Test` folders are listed through the Girder API (saved to `data/raw/viame_fishtrack/sequences.json`) and each is downloaded as the zip DIVE builds on the fly (`dive_dataset/export`, media + annotations, ~53 GB in total, kept in `data/raw/viame_fishtrack/<Train|Test>/`). The export has no Content-Length and ignores Range, so a broken download restarts from scratch; finished zips are skipped on rerun. Every video appears twice in the collection; the `Video <name>.mp4` copies are unannotated duplicates and are skipped. The 3 `Sample` sequences are not used
+- **Annotations**: VIAME CSV (one row per box per frame, with track ids) -> COCO. 576 sequences (474 videos, 102 image sequences) from 5 collections: SEFSC SEAMAP (430, greyscale reef-fish survey, Gulf of Mexico), Ifremer DropCam (85, baited cameras) and Game of Trawls (3, inside a pelagic trawl), Bay of Biscay, PIFSC MOUSS (13, Hawaii bottomfish) and CDFW LakeCam (45, freshwater reservoir in California). 751k boxes in 19.5k tracks over 320k frames; 155 labels. Video frames are decoded sequentially and the frame at the annotation time (`frame / fps` of the CSV header) is kept; image sequences use the annotated PNGs. All frames are saved as JPEG. Boxes are clipped to the image. Only frames with at least one fish or non-fish box are kept (~308k frames). The last annotation of a few videos is stamped at the very end of the video, where there is no frame, and is dropped. Frames are annotated at 5-30 Hz, so consecutive frames of a sequence are near-duplicates; each image keeps its `sequence`, `source_split` and `frame_index` fields so frames can be subsampled later. 21 SEAMAP image files are in two sequences (JP-23 and JRS-5, both in train) and appear twice
 - **Category mapping**:
-  - fish: `micropterus_salmoides`, `unspecified_fish`, `etelis_coruscans`, `hyporthodus_quernus`, `pristipomoides_zonatus`, `pristipomoides_auricilla`, `seriola`, `caranx_melampygus`
-  - non-fish: `non_fish_animal`
-  - discard: `non_fish_bait`, `non_fish_plant`
-- **Split**: Pre-split by URL (train and val downloaded separately)
+  - fish: the 148 fish species, genus and family labels listed in `FISH_LABELS` (e.g. `lutjanus_campechanus`, 204k boxes, `micropterus_salmoides`, `etelis_coruscans`, `ioglossus` (a goby genus), `carcharhinus`, `sphyrna_lewini`) and `unspecified_fish`
+  - non-fish: `anomura` (10,060 boxes, squat/hermit crabs on the SEAMAP seafloor, blurry but the size of the 10-20 cm reef fish next to them), `stenocionops_spinimana` (703, a spider crab), `non_fish_animal` (332: a jellyfish in the trawl, crabs, a crayfish)
+  - discard: `non_fish_bait`, `non_fish_bait_apparatus`, `non_fish_plant`
+- **Split**: The authors' `Train` → train and `Test` → val (chosen by hand to cover several locations and difficulties), by SEAMAP camera drop. The authors put chunks of the same SEAMAP drop, and sometimes the same recording, in both folders (e.g. `761901310-Cam2-1..4` in Test and other `761901310` chunks in Train). SEAMAP sequences are grouped into drops: same station number (`7xxxxxxxx`, in the sequence name or image file names) or same camera system and date with start times at most 30 min apart (`SC2-Camera3-03-14-21-19-57`, in the name or image file names). A drop with any sequence in Train goes to train, which moves 27 Test sequences (25.6k boxes) to train. Result: 531 sequences → train (~283k frames, 655k fish / 11.1k non-fish boxes), 45 → val (~25k frames, 59k fish boxes, no non-fish: all non-fish labels are in Train sequences). The Ifremer `Bait-n`/`Fish-n`/`Plant-n` clips have no recording information and keep the authors' split
 
 ### zebrafish
 - **Source**: [Kaggle](https://www.kaggle.com/datasets/aalborguniversity/aau-zebrafish-reid)
@@ -152,6 +152,16 @@ Each dataset script in `datasets/` follows a 4-step pattern: Download -> Process
   - non-fish: none
   - discard: none
 - **Split**: By video (the frame filename without `_frame_<n>`, 1,673 videos; sorted names, `random_state`). The source's own train/valid/test split is also by video
+
+### afsc_salmon_pollock
+- **Source**: [NOAA InPort item 69412](https://www.fisheries.noaa.gov/inport/item/69412) (public GCS bucket `gs://nmfs_odp_afsc/RACE/MACE/salmon_pollock_object_detection/annotated_data/`); Wilson et al. (2025), https://doi.org/10.1093/icesjms/fsaf168
+- **Download**: Automatic (~17k files, ~29 GB). The bucket is listed with the GCS JSON API and every file is downloaded over HTTPS (16 threads; files already on disk with the right size are skipped, so an interrupted run resumes). `tow_data/` (full tow videos, no annotations) and `models/` are not downloaded
+- **Annotations**: One custom COCO JSON per clip (184 clips named `<year>_t<tow>_vid<n>_<start>_<end>`, ~60 PNG frames each, 1280x720 or 1920x1080) -> one COCO file. Category ids differ between clips, so they are matched by name. The `file_name` fields are URLs under `.../data/<clip>/frames/` while the bucket folder is `annotated_data/`, so only the frame name is used; frames are renamed `<clip>_frame_<n>.PNG`. The CVAT frame tags (`cvat_tags`) and box attributes (track id, occluded, poor visibility, ...) are kept. The 1,095 frames without boxes (tagged "No Fish") are kept. **Frames are consecutive 30 fps video frames (2-second clips), so neighbouring frames are highly redundant**; all frames are kept
+- **Category mapping**:
+  - fish: `Pollock` (walleye pollock), `Salmon` (Pacific salmon), `Fish` (unidentified, fish on inspection), `Herring`
+  - non-fish: none
+  - discard: `Other` (80 boxes of blurry, unclear shapes, partly fish-like), together with the 76 frames containing one, so possible fish are not left unlabelled. `Shark`, `Invertebrate`, `Krill`, `Occlusion`, `No Fish`, `Fish Low`, `Fish Med`, `Fish High`, `Low Light`, `Low Visibility` are listed as categories but have no boxes
+- **Split**: By tow (`<year>_t<tow>`, 7 tows; sorted, `random_state`). Val = 2019_t15 + 2019_t17 (6,540 frames, 17,588 boxes: 14,229 pollock, 3,334 salmon); train = 2019_t21, 2019_t22, 2020_t1, 2020_t5, 2020_t6 (10,382 frames, 67,198 boxes). Box counts are close to 80/20, but frame counts are ~61/39 because the val tows have fewer fish per frame
 
 ### pebl_farm_fauna
 - **Source**: LILA BC ([zip](https://lilawildlife.blob.core.windows.net/lila-wildlife/community-fish-detection-dataset/pebl_farm_fauna_v1.0.zip)); PEBL CIC (2026)
