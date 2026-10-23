@@ -20,6 +20,7 @@ datasets/                          # Unified dataset processing pipeline
 
 previews/                          # Sample annotated images output directory
 DATASETS.md                        # Per-dataset processing details
+tools/vlm_annotation/              # Claude pre-annotation of datasets with missing boxes (README; /pre-annotate skill)
 ```
 
 ## Pipeline Overview

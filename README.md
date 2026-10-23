@@ -101,6 +101,8 @@ This repo includes a custom [Claude Code](https://docs.anthropic.com/en/docs/cla
 
 This is the fastest way to add a new dataset if you're already familiar with Claude Code.
 
+If a dataset leaves many animals without a box, the `/pre-annotate <dataset_name>` skill proposes the missing boxes with Claude models and checks them before they are added (see [tools/vlm_annotation](./tools/vlm_annotation/README.md)).
+
 ## Fish datasets
 
 

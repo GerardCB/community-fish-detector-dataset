@@ -1,0 +1,4 @@
+anthropic>=1.15
+numpy
+opencv-python
+pillow

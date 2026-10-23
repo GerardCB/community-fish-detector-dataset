@@ -1,0 +1,9 @@
+{
+  "description": "OBSEA 2013-2014 (PANGAEA 946149): fixed camera on an artificial reef, 14,952 photos of 640x480; the human boxes are all fish. Run 2026-10-20, see README.",
+  "images_dir": "data/processing/obsea_2013_2014/JPEGImages",
+  "annotations": "data/processing/obsea_2013_2014/annotations_coco.json",
+  "raw_images_dir": "data/raw/obsea_2013_2014/images",
+  "prefix": "obsea_2013_2014_",
+  "human_classes": false,
+  "setting": "It comes from a fixed camera on an artificial reef at 20 m depth in the Mediterranean (OBSEA observatory), taken by day or by night with lights."
+}

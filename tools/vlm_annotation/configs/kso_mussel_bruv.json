@@ -1,0 +1,16 @@
+{
+  "description": "KSO Mussel Farm BRUV (Zenodo 14713926): GoPro looking down at a mat with bait, 910 frames of 640x360; the human boxes are fish and non-fish. Run 2026-10-23, see README.",
+  "images_dir": "data/processing/kso_mussel_bruv/JPEGImages",
+  "annotations": "data/processing/kso_mussel_bruv/annotations_coco.json",
+  "raw_images_dir": null,
+  "prefix": "kso_mussel_bruv_",
+  "human_classes": true,
+  "setting": "It comes from a GoPro looking straight down at a black mat with a bait box in the middle, lying on the seabed at 8-18 m depth at a blue-mussel farm on the Swedish west coast. Gobies, flatfish and crabs (shore and swimming crabs, spider crabs, hermit crabs) come to the bait; animals also appear on the algae and sand around the mat. The photo is small, so a goby is only a few dozen pixels long. Small pale snails (about 2-3 cm) that crawl on the mat get no box, and neither do curled pieces of algae lying on the mat or at its edges.",
+  "verify": {
+    "setting": "The photos come from a GoPro looking straight down at a black mat with a bait box in the middle, on the seabed at 8-18 m depth at a blue-mussel farm on the Swedish west coast. Gobies (about 5-8 cm long), flatfish and crabs (shore and swimming crabs, spider crabs, hermit crabs) come to the bait, on the mat and on the algae and sand around it. The frames are small (640x360 pixels), so animals are blurry.",
+    "fish_examples": "goby, flatfish or other",
+    "non_fish_examples": "crab, hermit crab, spider crab, shrimp, starfish, jellyfish...",
+    "no_animal": "algae or pieces of algae, debris, particles, a cable or rope, the mat, its edge or a fold, the bait box, a shadow, sand or rock, or a small pale snail (2-3 cm)",
+    "video_pattern": "^(.*)_frame_\\d+\\.jpg$"
+  }
+}
