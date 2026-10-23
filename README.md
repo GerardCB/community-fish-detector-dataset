@@ -831,6 +831,30 @@ Bürgi K, Bouveyron C, Lingrand D, Derijard B, Precioso F, Sabourault C (2025). 
 
 
 
+#### EyeSea Underwater Video
+
+Frames from monitoring video at three water power sites (a tidal turbine in Scotland, a hydropower dam fish ladder in Washington, and a river turbine in Alaska), with fish bounding boxes drawn by PNNL staff
+
+Xu W, Matzner S. [Underwater Fish Detection using Deep Learning for Water Power Applications](https://doi.org/10.1109/CSCI46756.2018.00067). International Conference on Computational Science and Computational Intelligence (CSCI), 2018
+
+- Home: [https://data.pnnl.gov/group/nodes/dataset/12978](https://data.pnnl.gov/group/nodes/dataset/12978)
+- Data downloadable via https from PNNL DataHub ([download link](https://g-83fdd0.1beed.03c0.data.globus.org/cartuids/12978_d072f8e31a3fede18c0b6a6d98d50042.tar), 87 GB tar, includes the source videos)
+- License: N/A
+- Metadata raw format: Pascal VOC XML (one file per PNG frame)
+- Categories/species: fish (no species); the paper lists unknown species at Voith Hydro, Chinook and Sockeye salmon at Wells Dam, adult and smolt salmon at Igiugig
+  - fish: fish (the single class)
+  - non-fish: none
+  - discarded: none
+- Vehicle type: fixed underwater cameras: Voith Hydro HyTide tidal turbine at the Fall of Warness, Orkney, Scotland (grayscale, 720x576, 15 fps); fish passage window at Wells Dam, Columbia River, Washington (1280x960, 30 fps); ORPC RivGen turbine in the Kvichak River at Igiugig, Alaska (352x240, 10 fps)
+- Image information: 70,195 PNG video frames (Voith Hydro 15,918, Wells Dam 24,000, Igiugig 30,277), 48,125 of them without fish; consecutive frames are very similar. Voith Hydro frames are a 2x2 mosaic of the turbine's camera views
+- Annotation information: 45,652 fish bounding boxes (Voith Hydro 20,914, Wells Dam 23,496, Igiugig 1,242)
+- Typical animal size in pixels: N/A
+- Code to render sample annotated image: [eyesea.py](./datasets/eyesea.py)
+
+<img src="./previews/eyesea_sample_image.png" alt="EyeSea Underwater Video sample" width="600">
+
+
+
 ### Datasets that were not included in the Community Fish Detection Dataset
 
 - [Fishnet.AI](https://www.fishnet.ai/): ~163k bounding boxes on ~35k images of fish and people on fishing vessels.  Excluded because images are above-water.

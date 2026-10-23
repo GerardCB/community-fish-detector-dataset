@@ -288,6 +288,16 @@ Each dataset script in `datasets/` follows a 4-step pattern: Download -> Process
   - discard: `background` (6,685; hard negatives such as rocks, seagrass, wreck parts, crops checked), `diver` (2,061), `drone` (no boxes), `fish` (4 boxes, all seagrass leaves)
 - **Split**: The authors' split by video (testSet -> val, trainSet -> train), except that GoPro recordings with clips in both of their splits (GH010003, GH010004, GH010049, GH010144, e.g. GH010003 in test and GH010003_2 in train) go entirely to val. No site ids are in the data. Val: 3,994 images, 28,867 fish, 5 non-fish (~30%); train: 9,050 images, 39,723 fish, 196 non-fish
 
+### eyesea
+- **Source**: [PNNL DataHub, EyeSea Underwater Video](https://data.pnnl.gov/group/nodes/dataset/12978); Xu & Matzner (2018), [doi:10.1109/CSCI46756.2018.00067](https://doi.org/10.1109/CSCI46756.2018.00067)
+- **Download**: Automatic (87 GB tar from the PNNL Globus endpoint, resumes an interrupted download). The tar holds a second tar, `eyesea.tar`, which is streamed without being written to disk; only `train_x/y` and `{voith,wells,orpc}_test_x/y` are extracted. `videos/` (source videos) and `keras-yolo3-master/` (the authors' model and debug output) are skipped. The outer tar is deleted after extraction
+- **Annotations**: Pascal VOC XML, one file per PNG frame in the matching `_y` folder -> COCO conversion. Image size is read from the PNG, and boxes are clipped to the image. Frames whose label file has no boxes are kept as empty images; frames without a label file are skipped. Frames come from video at 10-30 fps, so consecutive frames are very similar. Voith Hydro frames are a 2x2 mosaic of the turbine's camera views (one panel often "NO VIDEO"). 70,195 frames (all of them labelled; one Wells label file has no image), 45,652 boxes; 48,125 frames have no fish. Per site, the frames with fish match the paper's Table I (Voith 7,663, Wells 13,405, Igiugig 1,002). Two clips have descriptive names instead of the usual prefix and are assigned by name: `voith_Fish_with_operational_turbine_2` (450 frames) and `orpc_adults_then_smolt` (280 frames)
+- **Category mapping**:
+  - fish: `fish` (the only class)
+  - non-fish: none
+  - discard: none
+- **Split**: By site, from the filename prefix: Voith Hydro (`Voith_*`/`voith_*`, tidal turbine, Scotland, grayscale) -> val (15,918 frames, 20,914 boxes, 23%), from both the authors' train and test folders; Wells Dam (`WellsDam_*`, 24,000 frames, 23,496 boxes) and Igiugig/ORPC (`<YYYYMMDD>_<HHMMSS>*`/`orpc_*`, 30,277 frames, 1,242 boxes) -> train (54,277 frames, 24,738 boxes). The authors' split (about 80/20 per site) is ignored because, for Voith and Wells, it puts later 30 s segments of the same recording in test
+
 ## Partial Datasets
 
 These datasets require manual download or have special dependencies.
