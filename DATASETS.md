@@ -233,6 +233,16 @@ Each dataset script in `datasets/` follows a 4-step pattern: Download -> Process
   - discard: none
 - **Split**: By site, from the sequence name in the filename. Ancona (Adriatic Sea) -> val (1,200 images, 22,441 boxes, 20%); OBSEA and SmartBay1/SmartBay2 (Galway Bay, two cameras) -> train (4,649 images, 91,766 boxes). The OBSEA clip (camera ANERIS-EMUAS1, July 2025) is not from the cameras that `obsea` puts in val
 
+### deepecomar
+- **Source**: [Zenodo](https://zenodo.org/records/7534425) (Labelled Mediterranean Fish Dataset, DEEPECOMAR project)
+- **Download**: Automatic (`DEEPECOMAR_DATASET_YOLO.zip`, 638 MB, resumes an interrupted download)
+- **Annotations**: YOLO TXT (Roboflow YOLOv5 export, 25 classes in `data.yaml`) -> COCO conversion, source train/valid merged. Roboflow renames files to `<name>_jpg.rf.<hash>.jpg`; the suffix is stripped. 74 frames appear twice in train as identical copies (same pixels and labels), so one image per original name is kept: 1,590 files -> 1,516 images. Three sources, told apart by filename: `vivo_<YYYYMMDD>_<HHMMSS>M` (fixed time-lapse camera on an underwater structure, 886 images, 2018-19), `vlcsnap-<YYYY-MM-DD>-...` (video snapshots on 4 dates in 2021, 467 images), `E01L_-<n>-_frame_<n>` (one stereo video, left camera, 163 frames)
+- **Category mapping**:
+  - fish: all 22 named taxa (`Chromis chromis`, `Coris julis`, `Dentex dentex`, `Diplodus annularis`, `Diplodus puntazzo`, `Diplodus sargus`, `Diplodus sp-`, `Diplodus vulgaris`, `Epinephelus marginatus`, `Lithognathus mormyrus`, `Mugilidae prob Chelon`, `Mullus sp-`, `Oblada melanura`, `Pomatous salator`, `Sarpa salpa`, `Seriola dumerilii`, `Serranus cabrilla`, `Serranus scriba`, `Sparus aurata`, `Sphyraena sp-`, `Symphodus sp-`, `labrid unid-`), `Afish poly` (unidentified fish, crops checked), `small` (fish < ~100 px^2 per the authors; boxes are 1-20 px, kept so these fish are not learned as background)
+  - non-fish: none
+  - discard: `taca` (Spanish for stain: lens smudges, crops checked)
+- **Split**: By location. Val = video snapshots from 2021-04-29 and 2021-05-03 (separate dives; 296 images, 810 boxes, ~20%); train = the fixed camera, the other two video dates and the stereo video (1,220 images, 16,347 boxes). The authors' train/valid folders are a random per-image split and are ignored
+
 ### seatizen_atlas
 - **Source**: [Zenodo, Seatizen Atlas image dataset v1.1.0](https://zenodo.org/records/13951614) (paper: https://doi.org/10.1038/s41597-024-04267-z). The latest version of the record ([20459523](https://zenodo.org/records/20459523)) has only image-level multilabel CSVs, so v1.1.0 is used
 - **Download**: Automatic. `20241018_segmentation_annotations.json` (351 MB, resumable) is downloaded; `images.zip` (35 GB, 14,493 images) is not: only the 1,200 segmented images (~0.6 GB) are read from it with HTTP Range requests into `data/raw/seatizen_atlas/images/`
