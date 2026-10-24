@@ -901,6 +901,29 @@ Dwyer B. [Aquarium Combined](https://universe.roboflow.com/brad-dwyer/aquarium-c
 
 
 
+#### RUOD-R (re-annotated Real-world Underwater Object Detection)
+
+13,112 underwater photos from many sources (seabed-harvesting videos, diving videos, aquariums, web photos) with 104,202 fish and 67,937 non-fish boxes, from the RUOD-R re-annotation of the RUOD benchmark (about 3.5x the boxes of the original annotations, mostly small objects and fish in schools)
+
+Awad A, Saleem A, Aljnadi Y, Lucas E, Paheding S, Havens TC. [RUOD-R: A High-Fidelity Re-Annotated Benchmark for Underwater Object Detection](https://doi.org/10.1109/ACCESS.2026.3685121). IEEE Access, 2026. Images from Fu C, Liu R, Fan X, Chen P, Fu H, Yuan W, Zhu M, Luo Z. [Rethinking general underwater object detection: Datasets, challenges, and solutions](https://doi.org/10.1016/j.neucom.2022.10.039). Neurocomputing 517, 2023
+
+- Data downloadable via GitHub: annotations from the RUOD-R repository ([download link](https://github.com/RSSL-MTU/RUOD-R/tree/988939f93734b378f82d15a9a2f7371dae475363/Annotations/RUOD-R/COCO)), images from the RUOD releases ([download link](https://github.com/xiaoDetection/RUOD/releases/tag/untagged-4f7c7ab75187d68b6449))
+- License: N/A (none stated by either repository)
+- Metadata raw format: COCO JSON
+- Categories/species: 10 classes
+  - fish: fish (except 89 boxes on dolphins)
+  - non-fish: echinus (sea urchin), holothurian (sea cucumber), starfish, cuttlefish, turtle, jellyfish, and the 89 "fish" boxes on dolphins
+  - discarded: scallop, corals, diver
+- Vehicle type: mixed (divers, ROV/seabed-harvesting cameras, aquariums, web photos)
+- Image information: 13,112 images at 3,048 different sizes (225 to 8,088 px wide); of the 14,000 RUOD photos, 887 byte-identical copies and 1 misannotated photo are dropped
+- Annotation information: 104,202 fish and 67,937 non-fish bounding boxes; 296 photos have more than 100 boxes (up to 1,667 fish in one school)
+- Typical animal size in pixels: ~25 (median long side of the fish boxes)
+- Code to render sample annotated image: [ruod_r.py](./datasets/ruod_r.py)
+
+<img src="./previews/ruod_r_sample_image.png" alt="RUOD-R sample" width="600">
+
+
+
 ### Datasets that were not included in the Community Fish Detection Dataset
 
 - [Fishnet.AI](https://www.fishnet.ai/): ~163k bounding boxes on ~35k images of fish and people on fishing vessels.  Excluded because images are above-water.
