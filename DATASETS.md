@@ -107,14 +107,14 @@ Each dataset script in `datasets/` follows a 4-step pattern: Download -> Process
 - **Split**: Pre-provided (uses Roboflow's original split)
 
 ### viame_fishtrack
-- **Source**: [VIAME](https://viame.kitware.com/)
-- **Download**: Automatic (separate train/val URLs)
-- **Annotations**: VIAME CSV -> COCO conversion, frames extracted from videos
+- **Source**: VIAME DIVE collection [FishTrack23](https://viame.kitware.com/#/collection/65a140e8a4c218785d408b42); paper: Dawkins et al., "FishTrack23: An Ensemble Underwater Dataset for Multi-Object Tracking", WACV 2024
+- **Download**: Automatic. The sequences in the collection's `Train` and `Test` folders are listed through the Girder API (saved to `data/raw/viame_fishtrack/sequences.json`) and each is downloaded as the zip DIVE builds on the fly (`dive_dataset/export`, media + annotations, ~53 GB in total, kept in `data/raw/viame_fishtrack/<Train|Test>/`). The export has no Content-Length and ignores Range, so a broken download restarts from scratch; finished zips are skipped on rerun. Every video appears twice in the collection; the `Video <name>.mp4` copies are unannotated duplicates and are skipped. The 3 `Sample` sequences are not used
+- **Annotations**: VIAME CSV (one row per box per frame, with track ids) -> COCO. 576 sequences (474 videos, 102 image sequences) from 5 collections: SEFSC SEAMAP (430, greyscale reef-fish survey, Gulf of Mexico), Ifremer DropCam (85, baited cameras) and Game of Trawls (3, inside a pelagic trawl), Bay of Biscay, PIFSC MOUSS (13, Hawaii bottomfish) and CDFW LakeCam (45, freshwater reservoir in California). 751k boxes in 19.5k tracks over 320k frames; 155 labels. Video frames are decoded sequentially and the frame at the annotation time (`frame / fps` of the CSV header) is kept; image sequences use the annotated PNGs. All frames are saved as JPEG. Boxes are clipped to the image. Only frames with at least one fish or non-fish box are kept (~308k frames). The last annotation of a few videos is stamped at the very end of the video, where there is no frame, and is dropped. Frames are annotated at 5-30 Hz, so consecutive frames of a sequence are near-duplicates; each image keeps its `sequence`, `source_split` and `frame_index` fields so frames can be subsampled later. 21 SEAMAP image files are in two sequences (JP-23 and JRS-5, both in train) and appear twice
 - **Category mapping**:
-  - fish: `micropterus_salmoides`, `unspecified_fish`, `etelis_coruscans`, `hyporthodus_quernus`, `pristipomoides_zonatus`, `pristipomoides_auricilla`, `seriola`, `caranx_melampygus`
-  - non-fish: `non_fish_animal`
-  - discard: `non_fish_bait`, `non_fish_plant`
-- **Split**: Pre-split by URL (train and val downloaded separately)
+  - fish: the 148 fish species, genus and family labels listed in `FISH_LABELS` (e.g. `lutjanus_campechanus`, 204k boxes, `micropterus_salmoides`, `etelis_coruscans`, `ioglossus` (a goby genus), `carcharhinus`, `sphyrna_lewini`) and `unspecified_fish`
+  - non-fish: `anomura` (10,060 boxes, squat/hermit crabs on the SEAMAP seafloor, blurry but the size of the 10-20 cm reef fish next to them), `stenocionops_spinimana` (703, a spider crab), `non_fish_animal` (332: a jellyfish in the trawl, crabs, a crayfish)
+  - discard: `non_fish_bait`, `non_fish_bait_apparatus`, `non_fish_plant`
+- **Split**: The authors' `Train` → train and `Test` → val (chosen by hand to cover several locations and difficulties), by SEAMAP camera drop. The authors put chunks of the same SEAMAP drop, and sometimes the same recording, in both folders (e.g. `761901310-Cam2-1..4` in Test and other `761901310` chunks in Train). SEAMAP sequences are grouped into drops: same station number (`7xxxxxxxx`, in the sequence name or image file names) or same camera system and date with start times at most 30 min apart (`SC2-Camera3-03-14-21-19-57`, in the name or image file names). A drop with any sequence in Train goes to train, which moves 27 Test sequences (25.6k boxes) to train. Result: 531 sequences → train (~283k frames, 655k fish / 11.1k non-fish boxes), 45 → val (~25k frames, 59k fish boxes, no non-fish: all non-fish labels are in Train sequences). The Ifremer `Bait-n`/`Fish-n`/`Plant-n` clips have no recording information and keep the authors' split
 
 ### zebrafish
 - **Source**: [Kaggle](https://www.kaggle.com/datasets/aalborguniversity/aau-zebrafish-reid)
@@ -152,6 +152,16 @@ Each dataset script in `datasets/` follows a 4-step pattern: Download -> Process
   - non-fish: none
   - discard: none
 - **Split**: By video (the frame filename without `_frame_<n>`, 1,673 videos; sorted names, `random_state`). The source's own train/valid/test split is also by video
+
+### afsc_salmon_pollock
+- **Source**: [NOAA InPort item 69412](https://www.fisheries.noaa.gov/inport/item/69412) (public GCS bucket `gs://nmfs_odp_afsc/RACE/MACE/salmon_pollock_object_detection/annotated_data/`); Wilson et al. (2025), https://doi.org/10.1093/icesjms/fsaf168
+- **Download**: Automatic (~17k files, ~29 GB). The bucket is listed with the GCS JSON API and every file is downloaded over HTTPS (16 threads; files already on disk with the right size are skipped, so an interrupted run resumes). `tow_data/` (full tow videos, no annotations) and `models/` are not downloaded
+- **Annotations**: One custom COCO JSON per clip (184 clips named `<year>_t<tow>_vid<n>_<start>_<end>`, ~60 PNG frames each, 1280x720 or 1920x1080) -> one COCO file. Category ids differ between clips, so they are matched by name. The `file_name` fields are URLs under `.../data/<clip>/frames/` while the bucket folder is `annotated_data/`, so only the frame name is used; frames are renamed `<clip>_frame_<n>.PNG`. The CVAT frame tags (`cvat_tags`) and box attributes (track id, occluded, poor visibility, ...) are kept. The 1,095 frames without boxes (tagged "No Fish") are kept. **Frames are consecutive 30 fps video frames (2-second clips), so neighbouring frames are highly redundant**; all frames are kept
+- **Category mapping**:
+  - fish: `Pollock` (walleye pollock), `Salmon` (Pacific salmon), `Fish` (unidentified, fish on inspection), `Herring`
+  - non-fish: none
+  - discard: `Other` (80 boxes of blurry, unclear shapes, partly fish-like), together with the 76 frames containing one, so possible fish are not left unlabelled. `Shark`, `Invertebrate`, `Krill`, `Occlusion`, `No Fish`, `Fish Low`, `Fish Med`, `Fish High`, `Low Light`, `Low Visibility` are listed as categories but have no boxes
+- **Split**: By tow (`<year>_t<tow>`, 7 tows; sorted, `random_state`). Val = 2019_t15 + 2019_t17 (6,540 frames, 17,588 boxes: 14,229 pollock, 3,334 salmon); train = 2019_t21, 2019_t22, 2020_t1, 2020_t5, 2020_t6 (10,382 frames, 67,198 boxes). Box counts are close to 80/20, but frame counts are ~61/39 because the val tows have fewer fish per frame
 
 ### pebl_farm_fauna
 - **Source**: LILA BC ([zip](https://lilawildlife.blob.core.windows.net/lila-wildlife/community-fish-detection-dataset/pebl_farm_fauna_v1.0.zip)); PEBL CIC (2026)
@@ -222,6 +232,101 @@ Each dataset script in `datasets/` follows a 4-step pattern: Download -> Process
   - non-fish: none
   - discard: none
 - **Split**: By site, from the sequence name in the filename. Ancona (Adriatic Sea) -> val (1,200 images, 22,441 boxes, 20%); OBSEA and SmartBay1/SmartBay2 (Galway Bay, two cameras) -> train (4,649 images, 91,766 boxes). The OBSEA clip (camera ANERIS-EMUAS1, July 2025) is not from the cameras that `obsea` puts in val
+
+### deepecomar
+- **Source**: [Zenodo](https://zenodo.org/records/7534425) (Labelled Mediterranean Fish Dataset, DEEPECOMAR project)
+- **Download**: Automatic (`DEEPECOMAR_DATASET_YOLO.zip`, 638 MB, resumes an interrupted download)
+- **Annotations**: YOLO TXT (Roboflow YOLOv5 export, 25 classes in `data.yaml`) -> COCO conversion, source train/valid merged. Roboflow renames files to `<name>_jpg.rf.<hash>.jpg`; the suffix is stripped. 74 frames appear twice in train as identical copies (same pixels and labels), so one image per original name is kept: 1,590 files -> 1,516 images. Three sources, told apart by filename: `vivo_<YYYYMMDD>_<HHMMSS>M` (fixed time-lapse camera on an underwater structure, 886 images, 2018-19), `vlcsnap-<YYYY-MM-DD>-...` (video snapshots on 4 dates in 2021, 467 images), `E01L_-<n>-_frame_<n>` (one stereo video, left camera, 163 frames)
+- **Category mapping**:
+  - fish: all 22 named taxa (`Chromis chromis`, `Coris julis`, `Dentex dentex`, `Diplodus annularis`, `Diplodus puntazzo`, `Diplodus sargus`, `Diplodus sp-`, `Diplodus vulgaris`, `Epinephelus marginatus`, `Lithognathus mormyrus`, `Mugilidae prob Chelon`, `Mullus sp-`, `Oblada melanura`, `Pomatous salator`, `Sarpa salpa`, `Seriola dumerilii`, `Serranus cabrilla`, `Serranus scriba`, `Sparus aurata`, `Sphyraena sp-`, `Symphodus sp-`, `labrid unid-`), `Afish poly` (unidentified fish, crops checked), `small` (fish < ~100 px^2 per the authors; boxes are 1-20 px, kept so these fish are not learned as background)
+  - non-fish: none
+  - discard: `taca` (Spanish for stain: lens smudges, crops checked)
+- **Split**: By location. Val = video snapshots from 2021-04-29 and 2021-05-03 (separate dives; 296 images, 810 boxes, ~20%); train = the fixed camera, the other two video dates and the stereo video (1,220 images, 16,347 boxes). The authors' train/valid folders are a random per-image split and are ignored
+
+### seatizen_atlas
+- **Source**: [Zenodo, Seatizen Atlas image dataset v1.1.0](https://zenodo.org/records/13951614) (paper: https://doi.org/10.1038/s41597-024-04267-z). The latest version of the record ([20459523](https://zenodo.org/records/20459523)) has only image-level multilabel CSVs, so v1.1.0 is used
+- **Download**: Automatic. `20241018_segmentation_annotations.json` (351 MB, resumable) is downloaded; `images.zip` (35 GB, 14,493 images) is not: only the 1,200 segmented images (~0.6 GB) are read from it with HTTP Range requests into `data/raw/seatizen_atlas/images/`
+- **Annotations**: COCO instance segmentation (polygons, 0-indexed image/annotation ids, category ids 482-1020) -> COCO boxes only (the source `bbox` of each polygon), ids shifted to 1-indexed. 1,200 images, 34,709 instances in 37 classes. Images with no fish or non-fish (304) are kept as background. No EXIF-rotated images (checked in the script). `20210218_REU-Hermitage_scuba_4_00563.jpg` is dropped: it is 1920x1080 in the zip but annotated as 3840x2160, and its one kept box (a sea cucumber), scaled or not, frames no animal
+- **Category mapping**:
+  - fish: `Fish` (8,494)
+  - non-fish: `Sea_cucumber` (1,186), `Sea_urchin` (27), `Turtle` (7), `Other_starfish` (5)
+  - discard: `Giant_clam`, `Sea_anemone`, `Sponges` (sessile); `Homo_Sapiens`, `Human_object`, `Waste`, `Trample`, `Useless`; all coral (`Acropora_*`, `Non-acropora_*`, `Living_coral`, `Dead_coral`, `Bleached_coral`, `Soft_coral`, `Gorgonian`), algae (`Algal_Assemblage`, `Algae_*`), seagrass (`Syringodium_isoetifolium`) and substrate (`Sand`, `Rubble`, `Rock`) classes
+- **Split**: By site, from the second token of the file name (`<date>_<site>_<vehicle>_...`). Mayotte (`MYT`) -> val (322 images, 3,356 fish, 33 non-fish); Reunion (`REU-Hermitage`), Europa Island (`ATF-Europa`) and Mauritius (`MUS-*`) -> train (877 images, 5,138 fish, 1,191 non-fish). Frames from the same session are often consecutive video frames, so many are near-duplicates
+
+### yolo_bruv
+- **Source**: [Zenodo](https://doi.org/10.5281/zenodo.19594599) (`YOLO-BRUV_data.zip`)
+- **Download**: Automatic (415 MB, resumes an interrupted download, checked against the Zenodo MD5); only `YOLO-BRUV_data/data/Annotations/` is extracted
+- **Annotations**: EventMeasure point exports (`EMOutputs/Raw/G1-G6_Points.txt`, tab-separated, one row per animal: `ImageCol`/`ImageRow` top-left corner and `RectWidth`/`RectHeight` in pixels, `Genus`, `Species`) -> COCO conversion. The raw exports are used, not `EMOutputs/Corrected/`, which only regroups the species into the authors' training classes. The 2,721 JPEGs (1920x1080) are 2,708 frames exported in 6 annotation groups:
+  - 68 frames of G1 in which animals are marked with points (no box; other animals in them are not marked) are dropped
+  - 12 frames were exported into two or three groups and annotated separately (e.g. 3 hermit crabs in one copy, none in the other): the copy with the most boxes is kept (13 copies dropped)
+  - 455 frames carry only the empty-frame marker and are kept as background
+  - no box reaches past the image; boxes 1 pixel or less wide or high would be dropped (none)
+  - 2,640 frames, 15,919 boxes before mapping. Each COCO image keeps `video`, `chapter`, `frame` and `group` (from the file name, e.g. `01_RGX030003.MP4_0009008.jpg` is chapter 03 of video 0003, frame 9008)
+- **Category mapping** (source category is `Genus species`, or the species alone when the genus is missing):
+  - fish: `Limanda-Platichthys limanda-flesus` (dab or flounder, 7,861), `Melanogrammus aeglefinus` (haddock, 3,469), `Pleuronectiformes spp` (1,472), `minutus` (gobies, 92), `Myoxocephalus scorpius` (44), `Eutrigla gurnardus` (31), `Scyliorhinus canicula` (30), `Pleuronectes platessa` (28), `Callionymus lyra` (18), `Gadus morhua` (12), `Merlangius merlangus` (4), `Molva molva` (4), `Dipturus intermedius` (3), `Limanda limanda` (1), `Trisopterus minutus` (1)
+  - non-fish: `Pagurus bernhardus` (hermit crab, 2,003), `Asterias rubens` (starfish, 637), `Buccinum undatum` (common whelk, 18; one or two live whelks crawling near the bait in video 0003, crops checked), `Cancer pagurus` (11), `Ophiura albida` (brittle star, 4, crops checked), `vulgaris` (1, genus missing; a squid, crop checked)
+  - discard: `Botryllus spp` (175 boxes, plus points), a marker placed in open water to export empty frames (not the sea squirt; crops checked)
+- **Split**: By video. Every frame comes from one of 19 GoPro recordings (camera deployments), and frames of one recording can be a few seconds apart. Whole videos are shuffled (`random_state`) and moved to val until it holds 20% of the frames: val videos 0006, 0007, 0008, 0011, 0021, 0024, 0025, 0027 (574 frames, 21.7%; 4,111 fish / 177 non-fish boxes), train the other 11 (2,066 frames; 8,959 / 2,497). The footage covers two of the four study sites, so val is not from a site unseen in train
+
+### griffith_seagrass
+- **Source**: [PANGAEA 926930](https://doi.pangaea.de/10.1594/PANGAEA.926930) (paper: https://doi.org/10.3389/fmars.2021.629485)
+- **Download**: Automatic (`Fish_automated_identification_and_counting.zip`, 3.7 GB, resumes an interrupted download). The outer zip holds the annotations, `dataset_images.csv` and an inner `luderick-seagrass.zip` with the 4,280 frames (flat, 1920x1080), which is extracted to `data/raw/griffith_seagrass/Fish_automated_identification_and_counting/images/`
+- **Annotations**: COCO JSON (`luderick_seagrass_all.json`, boxes and polygons, image/annotation/category ids 0-indexed) -> ids shifted to 1-indexed. 25 boxes that stick out of the frame by 1-2 px are clipped. Every frame has at least one box. Frames were extracted from video at 5 fps, so consecutive frames are often near-duplicates
+- **Category mapping**:
+  - fish: `luderick` (Girella tricuspidata, 9,304), `bream` (Acanthopagrus australis, 125)
+  - non-fish: none
+  - discard: none
+- **Split**: By estuary, from the `dataset` column of `dataset_images.csv`. Val = Tallebudgera Creek (the authors' "novel test" site, deployments 16-18; 764 images, 1,066 boxes); train = Jack Evans Boat Harbour (the authors' "Jack Evans A" train and "Jack Evans B" test subsets, deployments 1-15; 3,516 images, 8,363 boxes). A and B are not used as separate splits because they share deployments and one video (`2205_Luderick_25`)
+
+### med_fish_census
+- **Source**: [Dryad, doi:10.5061/dryad.f7m0cfz6f](https://datadryad.org/dataset/doi:10.5061/dryad.f7m0cfz6f) (paper: https://doi.org/10.1016/j.ecoinf.2024.102959)
+- **Download**: Automatic with Dryad API credentials (`DRYAD_CLIENT_ID` + `DRYAD_CLIENT_SECRET`, or `DRYAD_TOKEN`, in the environment or `.env`; create them under My account > API on datadryad.org). The token resolves the download to a signed S3 URL and only `Data_T` (4.4 GB, 39.6k files) plus the class lists are read from `autoUC_Data.zip` (121.7 GB) with HTTP Range requests (`HttpRangeFile`). Without credentials, download the zip manually to `data/raw/med_fish_census/autoUC_Data.zip`; the script picks it up and extracts `Data_T` from it. `datadryad.org/downloads/file_stream/...` sits behind a browser bot check and cannot be scripted
+- **Annotations**: YOLO TXT -> COCO. `Data_T/{trainSet,testSet}/images` with two label sets of identical fish boxes: `labels_allSpecies` (46 classes, used) and `labels_Reduced` (19 species + Other; used for the 118 train images without a `labels_allSpecies` file). 387 `labels_allSpecies` files without an image are ignored. 63 frames (videos GH010143_1, GH010149, GH010211_2) are byte-identical in both splits with the same labels and are kept once. Frames are `<video>_<frame>.jpg` (12,421 at 1920x1080, 609 at 2704x1520, 14 at 1280x960). Frames without kept boxes (2,233, mostly background/diver-only) are kept as background. 6 fish boxes with zero width or height in the source are dropped
+- **Category mapping**:
+  - fish: the 40 species classes (`Chromis_chromis` ... `Diplodus_anularis`, see `FISH_SPECIES` in the script) and `Other` (rare species grouped)
+  - non-fish: `jellyfish` (127, Pelagia noctiluca, crops checked), `seaurchin` (78)
+  - discard: `background` (6,685; hard negatives such as rocks, seagrass, wreck parts, crops checked), `diver` (2,061), `drone` (no boxes), `fish` (4 boxes, all seagrass leaves)
+- **Split**: The authors' split by video (testSet -> val, trainSet -> train), except that GoPro recordings with clips in both of their splits (GH010003, GH010004, GH010049, GH010144, e.g. GH010003 in test and GH010003_2 in train) go entirely to val. No site ids are in the data. Val: 3,994 images, 28,867 fish, 5 non-fish (~30%); train: 9,050 images, 39,723 fish, 196 non-fish
+
+### eyesea
+- **Source**: [PNNL DataHub, EyeSea Underwater Video](https://data.pnnl.gov/group/nodes/dataset/12978); Xu & Matzner (2018), [doi:10.1109/CSCI46756.2018.00067](https://doi.org/10.1109/CSCI46756.2018.00067)
+- **Download**: Automatic (87 GB tar from the PNNL Globus endpoint, resumes an interrupted download). The tar holds a second tar, `eyesea.tar`, which is streamed without being written to disk; only `train_x/y` and `{voith,wells,orpc}_test_x/y` are extracted. `videos/` (source videos) and `keras-yolo3-master/` (the authors' model and debug output) are skipped. The outer tar is deleted after extraction
+- **Annotations**: Pascal VOC XML, one file per PNG frame in the matching `_y` folder -> COCO conversion. Image size is read from the PNG, and boxes are clipped to the image. Frames whose label file has no boxes are kept as empty images; frames without a label file are skipped. Frames come from video at 10-30 fps, so consecutive frames are very similar. Voith Hydro frames are a 2x2 mosaic of the turbine's camera views (one panel often "NO VIDEO"). 70,195 frames (all of them labelled; one Wells label file has no image), 45,652 boxes; 48,125 frames have no fish. Per site, the frames with fish match the paper's Table I (Voith 7,663, Wells 13,405, Igiugig 1,002). Two clips have descriptive names instead of the usual prefix and are assigned by name: `voith_Fish_with_operational_turbine_2` (450 frames) and `orpc_adults_then_smolt` (280 frames)
+- **Category mapping**:
+  - fish: `fish` (the only class)
+  - non-fish: none
+  - discard: none
+- **Split**: By site, from the filename prefix: Voith Hydro (`Voith_*`/`voith_*`, tidal turbine, Scotland, grayscale) -> val (15,918 frames, 20,914 boxes, 23%), from both the authors' train and test folders; Wells Dam (`WellsDam_*`, 24,000 frames, 23,496 boxes) and Igiugig/ORPC (`<YYYYMMDD>_<HHMMSS>*`/`orpc_*`, 30,277 frames, 1,242 boxes) -> train (54,277 frames, 24,738 boxes). The authors' split (about 80/20 per site) is ignored because, for Voith and Wells, it puts later 30 s segments of the same recording in test
+
+### seaclear
+- **Source**: [4TU.ResearchData, Seaclear Marine Debris Detection & Segmentation Dataset](https://doi.org/10.4121/4f1dff25-e157-4399-a5d4-478055461689) (paper: https://doi.org/10.1038/s41597-024-03759-2)
+- **Download**: Automatic from the [Kaggle mirror](https://www.kaggle.com/datasets/jocelyndumlao/seaclear-marine-debris-detection-and-segmentation) via kagglehub (1.6 GB zip, no login). 4TU serves a single .rar and refused connections when the script was written
+- **Annotations**: One COCO file (`dataset.json`, instance polygons, 0-indexed image/annotation ids, 1-indexed categories) -> COCO boxes only (the source `bbox`), ids renumbered from 1. Images sit in `<site>/<camera>/` folders while COCO file names have no folder; names are unique across folders, so the site is recovered by file name. 8,610 images, 31,555 instances in 40 classes. Marseille (3,441 images) has no animal labels; a sample showed no unlabelled fish, so those images are kept as background. Fish are labelled in only 81 images
+- **Category mapping**:
+  - fish: `animal_fish` (985)
+  - non-fish: `animal_urchin` (6,462), `animal_etc` (3,749; ~50 crops from all sites were sea cucumbers, with a few unclear blobs at Jakljan), `animal_starfish` (17)
+  - discard: `animal_shells` (empty shells, oysters, snails), `animal_sponge` (sessile), `plant`, `unknown_instance` (crops are debris and rubble), the 32 debris classes (`can_metal`, `bottle_glass`, `tire_rubber`, ...) and robot parts (`rov_cable`, `rov_tortuga`, `rov_vehicle_leg`, `rov_bluerov`)
+- **Split**: By site. 950 of the 985 fish are at Lokrum, so Lokrum stays in train. Val = Jakljan + Slano (545 images, 26 fish, 77 non-fish); train = Bistrina, Lokrum, Marseille (8,065 images, 959 fish, 10,151 non-fish). Many images are frames from the same ROV video, so neighbours are near-duplicates
+
+### roboflow_aquarium
+- **Source**: [Roboflow Universe, Aquarium Combined](https://universe.roboflow.com/brad-dwyer/aquarium-combined) (also https://public.roboflow.com/object-detection/aquarium)
+- **Download**: Automatic, via `kagglehub` from the Kaggle mirror [slavkoprytula/aquarium-data-cots](https://www.kaggle.com/datasets/slavkoprytula/aquarium-data-cots) (67 MB, no login). Roboflow Universe blocks scripted access (403) and its API needs a key
+- **Annotations**: YOLO TXT (Roboflow YOLOv5 export, 7 classes in `data.yaml`) -> COCO conversion, source train/valid/test merged (638 images, no duplicates). Roboflow renames files to `<name>_jpeg_jpg.rf.<hash>.jpg`; the suffix is stripped. Photos taken through tank glass at two US aquariums, resized to fit 1024x1024. Two cameras, told apart by filename: `IMG_2xxx`-`IMG_3xxx` (437 images, the only ones with penguins and starfish) and `IMG_83xx`-`IMG_85xx` (201 images, stills and `MOV-<n>` video frames)
+- **Category mapping**:
+  - fish: `fish`, `shark`, `stingray`
+  - non-fish: `jellyfish` (large sea nettles and spotted jellies), `starfish`
+  - discard: `penguin`, `puffin` (birds, almost always photographed on rocks out of the water, crops checked). The 136 images that contain only birds are kept without boxes
+- **Split**: By camera. Train = `IMG_2xxx`-`IMG_3xxx` (437 images, 1,842 fish + 433 non-fish boxes); val = `IMG_83xx`-`IMG_85xx` (201 images, 1,365 fish + 377 non-fish boxes, ~32%; no starfish). The provided train/valid/test split is random per image and is ignored
+
+### ruod_r
+- **Source**: annotations [RUOD-R](https://github.com/RSSL-MTU/RUOD-R) (`Annotations/RUOD-R/COCO`, commit `988939f`), images [RUOD](https://github.com/xiaoDetection/RUOD) (release `RUOD.tar.partaa` + `RUOD.tar.partab`)
+- **Download**: Automatic (annotations 58 MB, images 3.7 GB in two tar parts; resumes interrupted downloads, every file MD5 checked; the parts are streamed into `tar` and only `RUOD/RUOD_pic` is extracted)
+- **Annotations**: COCO (both RUOD-R splits merged; image ids repeat across the splits, so images and boxes are renumbered). The full RUOD-R version is used, not "Filtered RUOD-R" (which drops the 302 photos with more than 100 boxes and about 58,000 fish boxes). 756 groups of byte-identical photos (1,643 photos; in 322 groups the copies are on both sides of the RUOD split, and the copies were annotated separately, with the same box count in only 269 groups): only the copy with the most boxes is kept (887 copies dropped). Photo `008431.jpg` is dropped: it is stored rotated (EXIF orientation 6) and none of its 5 boxes fits any orientation. Boxes reaching past the image edge are clipped (2,207 in all 14,000 photos); 28 boxes 1 pixel or less wide or high are dropped. 13,112 images, 253,530 boxes before mapping; images left without boxes (1,350) are kept. Each image keeps `ruod_split` and `source_group`. The 300 `Environment_pic` photos of the archive are copies of RUOD photos and are not used
+- **Category mapping**:
+  - fish: `fish`, except 89 boxes on bottlenose dolphins (4 diving videos and 2 single photos), which are relabelled `dolphin` -> non-fish. They are listed in `datasets/ruod_r_dolphins.json` and were found by checking every fish box at least 10% of the image in the videos with dolphins, and every low-saturation (grey) fish box at least 15% of the image in the whole dataset (679 boxes: sharks, rays, remoras, groupers, bass, no other dolphins). Smaller, distant dolphins may remain labelled fish
+  - non-fish: `echinus` (sea urchin), `holothurian` (sea cucumber), `starfish`, `cuttlefish`, `turtle`, `jellyfish`, and `dolphin` (above). Many echinus, holothurian and starfish boxes in murky green seabed frames are faint blobs
+  - discard: `scallop` (a shell; 29,153 boxes), `corals`, `diver`
+- **Split**: By source group, not the RUOD train/test split. Photos are numbered in blocks from the same video (e.g. 827 consecutive 4K frames), and the RUOD split assigns them randomly, so 3,434 neighbouring frames straddle train and test. Photos are grouped (union-find) when they are consecutive file numbers of the same size, near-identical (normalised 32x18 grayscale thumbnails, correlation >= 0.95 at the same size or >= 0.98 at different sizes) or byte-identical: 5,145 groups, the largest 1,707 photos. Whole groups are shuffled (`random_state`) and moved to val until it holds 20% of the photos: val 2,624 images (1,103 groups, 26,836 fish / 10,461 non-fish boxes), train 10,488 images (4,041 groups, 77,366 / 57,476). Remaining overlap: 78 val photos have a train photo with correlation 0.95-0.98 at a different size, about two thirds of them the same scene rescaled, cropped or colour-corrected; a lower threshold chains thousands of murky seabed frames into one group of a quarter of the photos
 
 ### uiis10k
 - **Source**: [UIIS10K](https://github.com/LiamLian0727/UIIS10K), data on [Hugging Face](https://huggingface.co/datasets/LiamLian0727/UIIS10K) (`UIIS10K.zip`, revision `5c43163`)
