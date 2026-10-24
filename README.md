@@ -764,7 +764,7 @@ Wilson KC, Lurbur M, Yochum N (2025). [Automated fish detection in videos to sup
 
 #### KSO Mussel Farm BRUV
 
-910 frames from 8 baited remote underwater video (BRUV) recordings of a downward-facing GoPro over a black mat with bait, at a blue-mussel farm and a control site on the Swedish west coast (8-18 m, February-May 2024), with 1,976 fish boxes (gobies, flatfish) and 260 non-fish boxes (crabs). The human boxes miss about a third of the animals, so 572 boxes found by Claude pre-annotation are added (about 94% correct in a check of 100)
+910 frames from 8 baited remote underwater video (BRUV) recordings of a downward-facing GoPro over a black mat with bait, at a blue-mussel farm and a control site on the Swedish west coast (8-18 m, February-May 2024), with 1,457 fish boxes (gobies, flatfish) and 207 non-fish boxes (crabs). The boxes miss about a third of the animals, mostly gobies in busy frames
 
 Dalipi X, Burman E, Germishuys J, Anton V, Strand Å, Obst M. [Object detection model for epibenthic species in low-trophic aquacultures (LTA): A case study on the Swedish west coast](https://doi.org/10.5281/zenodo.14713926). Zenodo, 2025 (COOL BLUE project)
 
@@ -772,13 +772,13 @@ Dalipi X, Burman E, Germishuys J, Anton V, Strand Å, Obst M. [Object detection 
 - License: CC BY 4.0
 - Metadata raw format: YOLO (Roboflow export, one polygon label)
 - Categories/species: Gobiidae sp, Pleuronectiformes sp, Hyas araneus, Paguridae sp, Portunoidea sp, Gastropoda sp
-  - fish: Gobiidae sp, Pleuronectiformes sp, and the added fish boxes
-  - non-fish: Hyas araneus (spider crab), Paguridae sp (hermit crabs), Portunoidea sp (swimming crabs), and the added non-fish boxes
+  - fish: Gobiidae sp, Pleuronectiformes sp
+  - non-fish: Hyas araneus (spider crab), Paguridae sp (hermit crabs), Portunoidea sp (swimming crabs)
   - discarded: Gastropoda sp (small pale snails of 2-3 cm: size doubtful)
 - Vehicle type: BRUV (GoPro 9 on a tripod looking down at a black mat with a bait box)
-- Image information: 910 frames (640x360, resized by Roboflow) from 8 recordings on 4 days; 311 frames have no box (kept as background)
-- Annotation information: 1,976 fish and 260 non-fish bounding boxes (1,664 human, 572 added by Claude pre-annotation)
-- Typical animal size in pixels: ~46 (median long side of the fish boxes)
+- Image information: 910 frames (640x360, resized by Roboflow) from 8 recordings on 4 days; 328 frames have no box (kept as background)
+- Annotation information: 1,457 fish and 207 non-fish bounding boxes
+- Typical animal size in pixels: ~47 (median long side of the fish boxes)
 - Code to render sample annotated image: [kso_mussel_bruv.py](./datasets/kso_mussel_bruv.py)
 
 <img src="./previews/kso_mussel_bruv_sample_image.png" alt="KSO Mussel Farm BRUV sample" width="600">

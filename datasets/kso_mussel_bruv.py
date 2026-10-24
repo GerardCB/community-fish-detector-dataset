@@ -7,21 +7,15 @@ Split logic: By sampling day. Each day has one farm and one control recording (8
     besides 12 Apr with fish and crabs together (6 Mar is almost only gobies, 12 Apr holds every
     hermit crab, 17 Apr only small snails).
 Category mapping:
-  fish: Gobiidae sp, Pleuronectiformes sp, and the added fish boxes
-  non-fish: Hyas araneus (spider crab), Paguridae sp (hermit crab), Portunoidea sp (swimming crabs),
-    and the added non-fish boxes
+  fish: Gobiidae sp, Pleuronectiformes sp
+  non-fish: Hyas araneus (spider crab), Paguridae sp (hermit crab), Portunoidea sp (swimming crabs)
   discard: Gastropoda sp (pale snails of 2-3 cm crawling on the mat; size doubtful)
 
 910 frames (640x360, resized by Roboflow) from 30-minute recordings of a downward-facing GoPro over a
 black mat with a bait box, at a blue-mussel farm and a control site (COOL BLUE project). The human
 boxes (Roboflow YOLO export; one label is a polygon, converted to its box) miss about a third of the
-animals over 3 cm, mostly gobies in busy frames and animals on the algae beside the mat.
-kso_mussel_bruv_added_boxes.json adds 572 boxes found by Claude pre-annotation (two Claude Haiku 5.5
-passes, tools/vlm_annotation on the gc/vlm-fish-annotation branch), cleaned as follows: added boxes
-on a human box, on static objects (the same spot in several frames of a recording, checked by eye:
-algae, debris, the mat clip) and in the 17 Apr recordings (only snails) were dropped; medium and low
-confidence boxes were kept only if Claude Opus 5.5 confirmed them as fish or non-fish with high or
-medium confidence. Each added annotation keeps its source and confidence in "attributes".
+animals over 3 cm, mostly gobies in busy frames and animals on the algae beside the mat. Only the
+original human boxes are used.
 Boxes are clipped to the image; boxes 1 pixel or less wide or high are dropped. Frames without
 boxes are kept. File names drop the Roboflow suffix ("_jpg.rf.<hash>").
 """
@@ -58,14 +52,9 @@ CATEGORIES_FILTER = {
     "Hyas araneus": "non-fish",  # spider crab
     "Paguridae sp": "non-fish",  # hermit crabs
     "Portunoidea sp": "non-fish",  # swimming and shore crabs
-    "added fish": "fish",  # kso_mussel_bruv_added_boxes.json
-    "added non-fish": "non-fish",  # kso_mussel_bruv_added_boxes.json
 }
 # Discarded: Gastropoda sp (small pale snails, about 2-3 cm: size doubtful)
 
-# Boxes added by the Claude pre-annotation: {file name: [{bbox [x, y, w, h], class, source, confidence,
-# verified}, ...]}
-ADDED_BOXES_PATH = Path(__file__).with_name("kso_mussel_bruv_added_boxes.json")
 VALIDATION_DAYS = {"4_5"}  # 4 May 2024
 MIN_BOX_SIZE = 1  # pixels
 FILE_NAME = re.compile(r"^(?P<site>control|farm)_(?P<day>\d+_\d+)_frame_(?P<frame>\d+)_jpg\.rf\.[0-9a-f]+\.jpg$")
@@ -124,14 +113,12 @@ def yolo_box(values: list[float], width: int, height: int) -> list[float] | None
 
 
 def convert_kso_to_coco():
-    """One COCO file with every frame (copied with the dataset prefix), the human and the added boxes."""
+    """One COCO file with every frame (copied with the dataset prefix) and its human boxes."""
     if source_annotations_path.exists():
         print(f"Source-class COCO file already exists: {source_annotations_path}")
         return
 
-    added = json.loads(ADDED_BOXES_PATH.read_text())
-    names = SOURCE_CLASSES + ["added fish", "added non-fish"]
-    category_ids = {name: i for i, name in enumerate(names, start=1)}
+    category_ids = {name: i for i, name in enumerate(SOURCE_CLASSES, start=1)}
     coco = {"images": [], "annotations": [],
             "categories": [{"id": cid, "name": name} for name, cid in category_ids.items()]}
     images_path.mkdir(parents=True, exist_ok=True)
@@ -152,11 +139,6 @@ def convert_kso_to_coco():
                                "site": parts["site"], "day": parts["day"], "frame": int(parts["frame"]),
                                "recording": f"{parts['site']}_{parts['day']}", "roboflow_split": split})
 
-        def add(category: str, bbox: list[float], attributes: dict):
-            coco["annotations"].append({"id": len(coco["annotations"]) + 1, "image_id": image_id,
-                                        "category_id": category_ids[category], "bbox": bbox,
-                                        "area": bbox[2] * bbox[3], "iscrowd": 0, "attributes": attributes})
-
         for line in (source_dir / split / "labels" / (path.stem + ".txt")).read_text().splitlines():
             values = line.split()
             if not values:
@@ -166,13 +148,9 @@ def convert_kso_to_coco():
                 stats["human boxes dropped as too small"] += 1
                 continue
             stats["polygon labels"] += len(values) > 5
-            add(SOURCE_CLASSES[int(values[0])], bbox, {"source": "human"})
-        for box in added.pop(original, []):
-            attributes = {k: box[k] for k in ("source", "confidence", "verified") if k in box}
-            add(f"added {box['class']}", box["bbox"], attributes)
-            stats[f"added {box['class']}"] += 1
-    if added:
-        raise ValueError(f"Added boxes for frames that are not in the dataset: {sorted(added)[:5]}")
+            coco["annotations"].append({"id": len(coco["annotations"]) + 1, "image_id": image_id,
+                                        "category_id": category_ids[SOURCE_CLASSES[int(values[0])]],
+                                        "bbox": bbox, "area": bbox[2] * bbox[3], "iscrowd": 0})
 
     print(f"Frames: {len(coco['images'])}, boxes: {len(coco['annotations'])}, {dict(stats)}")
     partial = source_annotations_path.with_name(source_annotations_path.name + ".part")
